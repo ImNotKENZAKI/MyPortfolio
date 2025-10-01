@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio</title>
+
+  <!-- box icons-->
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+
+  <!-- custom css-->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- EmailJS -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+</head>
+
+<body>
+<!-- Header design-->
+  <header class="header">
+  <a href="#" class="logo">Kenzaki's Website.</a>
+  <i class="bx bx-menu" id="menu-icon"></i>
+
+  <nav class="navbar">
+    <a href="#home" class="active">HOME</a>
+    <a href="#about">ABOUT</a>
+    <a href="#services">SERVICES</a>
+    <a href="#portfolio">PORTFOLIO</a>
+    <a href="#contact">CONTACT</a>
+  </nav>
+  <i class='bx bx-moon' id="theme-toggle" aria-label="Toggle theme"></i>
+  </header>
+
+  <!-- home section design -->
+  <section class="home" id="home">
+    <div class="home-content">
+      <h3>Hello, It's Me</h3>
+      <h1>Jefferson Manalo</h1>
+      <h3>And I'm a <span class="multiple-text"></span></h3>
+      <p> "As a skilled and versatile freelancer, I leverage my expertise to help businesses achieve their goals and grow their brands. With a passion for creating compelling content and delivering high-quality work, I provide exceptional value to every client. By collaborating closely and delivering customized solutions, I aim to exceed expectations and establish strong, successful relationships."</p>
+        <div class="social-media">
+            <a href="https://www.dropbox.com/scl/fo/0k31nkpbyfros1q7hjl1x/AD-HnbDb7G2GePZWwaqZpzA?rlkey=vyl4l4ojvoluoxc2u4xr2m8et&st=2yst52tl&dl=0" class="social-link social-dropbox" target="_blank" rel="noopener"><i class='bx bxl-dropbox' aria-label="Dropbox"></i></a>
+            <a href="https://www.onlinejobs.ph/jobseekers/info/4491696" class="social-link social-onlinejobs" target="_blank" rel="noopener"><i class='bx bx-briefcase' aria-label="OnlineJobs.ph"></i></a>
+            <a href="https://www.upwork.com/freelancers/~01b859ac91bdf7ade3?mp_source=share" class="social-link social-upwork" target="_blank" rel="noopener"><i class='bx bxl-upwork' aria-label="Upwork"></i></a>
+            <a href="https://www.linkedin.com/in/john-jefferson-manalo-117322380/" class="social-link social-linkedin" target="_blank" rel="noopener"><i class='bx bxl-linkedin' aria-label="LinkedIn"></i></a>
+            <a href="https://wa.me/639276455260" class="social-link social-whatsapp" target="_blank" rel="noopener"><i class='bx bxl-whatsapp' aria-label="WhatsApp"></i></a>
+            <a href="#" class="social-link social-discord" id="discord-copy" data-discord="kenzaki5885"><i class='bx bxl-discord' aria-label="Discord"></i></a>
+        </div>
+
+        <!-- Toast container for Discord copy feedback -->
+        <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+
+        <a href="#" onclick="downloadResume()" class="btn">
+          Download Resume
+        </a>
+        
+        <script>
+        function downloadResume() {
+          var link = document.createElement("a");
+          link.href = "resume.pdf";
+          link.download = "my_resume.pdf";
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        }
+        </script>
+        
+
+    </div>
+    <div class="home-img">
+      <img src="images/home.png" alt="">
+
+    </div>
+  </section>
+
+  <!--about section design-->
+<section class="about" id="about">
+  <div class="about-img">
+    <img src="images/about.png" alt="">
+  </div>
+
+  <div class="about-content">
+    <h2 class="heading">About <span>Me</span></h2>
+    <h3>Freelancer!</h3>
+    <div class="about-text-container">
+      <p class="about-text-short">"Hi, I'm a BSIT graduate turned freelancer, passionate about helping businesses and creators bring their ideas to life through reliable, creative, and professional work."</p>
+      <p class="about-text-extended">With a background in Information Technology, I combine technical knowledge with creativity to bring fresh ideas into every project. My main focus is on video editing, motion graphics, and digital content creation—always making sure the final output is polished, engaging, and aligned with what my client really needs. What makes me different is that I don't just deliver the work—I take time to understand each project, listen carefully, and adjust based on feedback so the end result feels personal and valuable. In freelancing, where competition is tough, I stand out by being consistent, easy to work with, and committed to giving my clients work they can be proud of. Whether it's a quick edit or a long-term project, I always aim to make the process smooth and the outcome worthwhile.</p>
+    </div>
+    <a href="#" class="btn read-more-btn" data-target="about">Read More</a>
+  </div>
+</section>
+
+<!-- services section design -->
+<section class="services" id="services">
+  <h2 class="heading">My <Span>Services</Span></h2>
+    <div class="services-container">
+    <div class="services-box">
+      <i class='bx bx-code-alt' ></i>
+      <h3>Web Development</h3>
+      <div class="service-text-container">
+        <p class="service-text-short">"Clean, responsive, and user-friendly websites tailored to your needs."</p>
+        <p class="service-text-extended">I create customized websites that are not only visually appealing but also functional and responsive across all devices. Using the latest web technologies and best practices, I ensure your site reflects your brand, enhances user experience, and supports your business goals. Whether it's a personal portfolio, business site, or custom project, I'll build a web presence that truly works for you.</p>
+      </div>
+        <a href="#" class="btn read-more-btn" data-target="web-dev">Read More</a>
+    </div>
+
+      <div class="services-box">
+        <i class='bx bx-paint' ></i>
+        <h3>Graphic Design</h3>
+        <div class="service-text-container">
+          <p class="service-text-short">"Designs that capture attention and communicate your message."</p>
+          <p class="service-text-extended">Good design makes a lasting impression. I offer graphic design services that help you build a strong and professional visual identity. From social media graphics to brand visuals, I focus on creating designs that align with your vision, resonate with your audience, and help your brand stand out. Every project is tailored to your style and goals, ensuring a unique and consistent look across platforms.</p>
+        </div>
+          <a href="#" class="btn read-more-btn" data-target="graphic-design">Read More</a>
+      </div>
+
+        <div class="services-box">
+          <i class='bx bx-movie'></i>
+          <h3>Video Editing</h3>
+          <div class="service-text-container">
+            <p class="service-text-short">Transforming raw clips into polished, engaging stories.</p>
+            <p class="service-text-extended">Great stories deserve great editing. I turn your raw footage into cinematic, professional, and engaging videos that connect with your audience. Whether it's content for social media, marketing, or personal projects, I make sure every cut, transition, and effect supports your message and enhances the final product. My goal is to bring your vision to life and deliver videos that truly stand out.</p>
+          </div>
+            <a href="#" class="btn read-more-btn" data-target="video-editing">Read More</a>
+        </div>
+  </div>
+</section>
+
+<!--Portfolio Section design-->
+  <section class="portfolio" id="portfolio">
+    <h2 class="heading">My <span>Portfolio</span></h2>
+
+    <div class="portfolio-container">
+        <div class="portfolio-box">
+            <img src="images/portfolio1.jpg" alt="">
+            <div class="portfolio-layer">
+              <h4>My Works</h4>
+              <p>A collection of my completed projects showcasing creativity, skills, and professional results.</p>
+              <a href="https://www.dropbox.com/scl/fo/0k31nkpbyfros1q7hjl1x/AD-HnbDb7G2GePZWwaqZpzA?rlkey=vyl4l4ojvoluoxc2u4xr2m8et&st=dlmjaoqd&dl=0" target="_blank" rel="noopener"><i class='bx bx-link-external'></i></a>
+            </div>
+        </div>
+
+        <div class="portfolio-box">
+          <img src="images/portfolio2.jpg" alt="">
+          <div class="portfolio-layer">
+            <h4>My Certificates</h4>
+            <p>Showcasing my earned certifications as proof of skills, growth, and commitment to continuous learning.</p>
+            <a href="https://www.dropbox.com/scl/fo/teo39x0l0b1i9g0g5n2so/AHooXzBnkKXyjXPoZcJQRkw?rlkey=vmwi95gkurhvh11pqv3jprfmj&st=0bsf1334&dl=0" target="_blank" rel="noopener"><i class='bx bx-link-external'></i></a>
+          </div>
+        </div>
+
+      <div class="portfolio-box">
+        <img src="images/portfolio3.jpg" alt="">
+        <div class="portfolio-layer">
+          <h4>Web Design</h4>
+          <p>Creative and responsive website designs that combine functionality with a modern, user-friendly look.</p>
+          <a href="https://www.dropbox.com/scl/fo/k3zajg1j5cdvp12mr9unz/ABYmenie1V1FP0QixSvS8Jk?rlkey=8exk7aibap8vqo1clp3scqpyd&st=m4058rhj&dl=0" target="_blank" rel="noopener"><i class='bx bx-link-external'></i></a>
+        </div>
+      </div>
+
+    <div class="portfolio-box">
+      <img src="images/portfolio4.jpg" alt="">
+      <div class="portfolio-layer">
+        <h4>Data Entry</h4>
+        <p>Accurate and efficient data entry services to keep your records organized and reliable.</p>
+        <a href="#" class="data-entry-link"><i class='bx bx-link-external'></i></a>
+      </div>
+    </div>
+
+  <div class="portfolio-box">
+    <img src="images/portfolio5.jpg" alt="">
+    <div class="portfolio-layer">
+      <h4>Graphic Design</h4>
+      <p>Creative visuals and designs crafted to enhance brand identity and communicate ideas effectively.</p>
+      <a href="https://www.dropbox.com/scl/fo/him8j9u4j0vaqz25kcsdg/AAzEPdoI1I5zLnpQQn3zRdU?rlkey=a66tapptqwlrdxzy3ofe70ks7&st=hoeq6neu&dl=0" target="_blank" rel="noopener"><i class='bx bx-link-external'></i></a>
+    </div>
+  </div>
+
+  <div class="portfolio-box">
+  <img src="images/portfolio6.jpg" alt="">
+    <div class="portfolio-layer">
+    <h4>Social Media Management</h4>
+    <p>Managing and growing social media accounts with engaging content and effective strategies to boost online presence.</p>
+    <a href="https://www.dropbox.com/scl/fo/2nf6qx65xwtkmioiy948r/ANBkmR__BBUACfRFW0-hlBg?rlkey=uar63gpkknnz7salu5fa3ah2k&st=bafsslsd&dl=0" target="_blank" rel="noopener"><i class='bx bx-link-external'></i></a>
+    </div> 
+  </div>
+    </div>
+  </section>
+
+    <!-- Data Entry Privacy Modal -->
+    <div id="data-entry-modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="data-entry-title" aria-describedby="data-entry-desc">
+      <div class="modal-dialog" role="document">
+        <button class="modal-close" aria-label="Close">&times;</button>
+        <h3 id="data-entry-title">Data Entry Portfolio Unavailable</h3>
+        <p id="data-entry-desc">To respect client privacy and confidentiality, detailed samples for Data Entry are not publicly displayed. I'm happy to discuss my experience, workflows, and anonymized examples upon request.</p>
+        <a href="#contact" class="btn">Get in touch</a>
+      </div>
+    </div>
+
+<!--Contact Section design-->
+<section class="contact" id="contact">
+    <h2 class="heading">Contact <span>Me!</span></h2>
+
+    <form id="contact-form" 
+          data-emailjs-public-key="YOUR_PUBLIC_KEY" 
+          data-emailjs-service-id="YOUR_SERVICE_ID" 
+          data-emailjs-template-id="YOUR_TEMPLATE_ID" 
+          data-email-to="jjmanalo.va@gmail.com">
+      <div class="input-box">
+          <input type="text" id="full-name" name="full_name" placeholder="Full Name" required>
+          <input type="email" id="email" name="email" placeholder="Email Address" required>
+      </div>
+      <div class="input-box">
+        <input type="tel" id="mobile" name="mobile" placeholder="Mobile Number">
+        <input type="text" id="subject" name="subject" placeholder="Email Subject" required>
+      </div>
+      <textarea id="message" name="message" cols="30" rows="10" placeholder="Your Message" required></textarea>
+      <input type="submit" value="Send Message" class="btn" id="submit-btn">
+    </form>
+    
+    <!-- Success/Error Messages -->
+    <div id="form-message" class="form-message"></div>
+</section>
+
+<!--Footer Design-->
+<footer class="footer">
+  <div class="footer-text">
+    <p><span class="footer-caption">Designed & built with <span class="heart" aria-hidden="true">❤</span></span> © 2025 Jefferson Manalo. All rights reserved.</p>
+  </div>
+
+  <div class="footer-iconTop">
+      <a href="#home"><i class='bx bx-up-arrow-alt'></i></a>
+  </div>
+
+
+</footer>
+
+<!-- Scroll Reveal -->
+<script src="https://unpkg.com/scrollreveal"></script>
+
+<!-- Type Js -->
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+
+<!-- Custom Js -->
+  <script src="js/script.js"></script>
+
+</body>
+
+
+</html>

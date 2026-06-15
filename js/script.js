@@ -226,6 +226,11 @@ document.querySelectorAll('[data-modal]').forEach(el=>{
       } else {
         openModal({title, body:`<video src="${src}" controls autoplay></video>`});
       }
+    } else if(type === 'system'){
+      const image = el.dataset.image || el.querySelector('img')?.src || '';
+      const tools = (el.dataset.tools || '').split('•').map(t=>t.trim()).filter(Boolean);
+      const result = el.dataset.result || '';
+      openModal({title, body:`<div class="modal-system-card"><img src="${image}" alt="${title}"><div class="modal-system-copy"><span>System Case Study</span><h4>${title}</h4><p>${result}</p><div class="modal-system-tools">${tools.map(t=>`<em>${t}</em>`).join('')}</div><div class="modal-system-result"><p>Built to make the workflow clearer, faster to manage, and easier to scale for real business operations.</p></div></div></div>`});
     } else if(type === 'image'){
       openModal({title, body:`<img src="${el.dataset.src}" alt="${title}">`});
     } else if(type === 'link'){
@@ -680,4 +685,149 @@ if (window.gsap && window.ScrollTrigger) {
   window.addEventListener('scroll', requestPaint, {passive:true});
   window.addEventListener('resize', requestPaint, {passive:true});
   requestPaint();
+})();
+
+
+// V6.5.6 Systems Galaxy Showcase — lightweight CSS/JS version inspired by the uploaded 3D stellar gallery.
+(function initSystemsGalaxy(){
+  const shell = document.getElementById('systemsGalaxy');
+  if(!shell) return;
+  const cards = Array.from(shell.querySelectorAll('.system-orbit-card'));
+  if(!cards.length) return;
+  const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let rotation = 0;
+  let targetRotation = 0;
+  let raf = null;
+  let paused = false;
+
+  function layout(){
+    const rect = shell.getBoundingClientRect();
+    const w = rect.width;
+    const h = rect.height;
+    if(window.innerWidth <= 980){
+      cards.forEach(card=>{ card.style.transform=''; card.style.opacity=''; });
+      return;
+    }
+    const count = cards.length;
+    const rx = Math.min(w * .36, 430);
+    const ry = Math.min(h * .28, 220);
+    cards.forEach((card,i)=>{
+      const angle = ((i / count) * Math.PI * 2) + rotation;
+      const x = Math.cos(angle) * rx;
+      const y = Math.sin(angle) * ry;
+      const depth = (Math.sin(angle) + 1) / 2;
+      const scale = .82 + depth * .28;
+      const opacity = .52 + depth * .48;
+      const z = Math.round(100 + depth * 80);
+      const tilt = Math.cos(angle) * -8;
+      card.style.transform = `translate(-50%,-50%) translate3d(${x}px,${y}px,0) rotate(${tilt}deg) scale(${scale})`;
+      card.style.opacity = opacity.toFixed(3);
+      card.style.zIndex = String(z);
+    });
+  }
+
+  function tick(){
+    if(!reduced && !paused){ targetRotation += 0.0022; }
+    rotation += (targetRotation - rotation) * 0.08;
+    layout();
+    raf = requestAnimationFrame(tick);
+  }
+
+  cards.forEach((card,i)=>{
+    card.addEventListener('mouseenter',()=>{
+      paused = true;
+      targetRotation = -((i / cards.length) * Math.PI * 2) + Math.PI / 2;
+    });
+    card.addEventListener('mouseleave',()=>{ paused = false; });
+    card.addEventListener('focus',()=>{
+      paused = true;
+      targetRotation = -((i / cards.length) * Math.PI * 2) + Math.PI / 2;
+    });
+    card.addEventListener('blur',()=>{ paused = false; });
+  });
+
+  window.addEventListener('resize', layout, {passive:true});
+  layout();
+  if(!reduced && window.innerWidth > 980) tick();
+})();
+
+
+// V6.5.7 Systems Card Stack — professional replacement for the previous galaxy layout.
+(function initSystemsCardStack(){
+  const wrap = document.getElementById('systemsStack');
+  if(!wrap) return;
+  const stage = wrap.querySelector('.systems-card-stage');
+  const cards = Array.from(wrap.querySelectorAll('.system-stack-card'));
+  const prev = wrap.querySelector('[data-stack-prev]');
+  const next = wrap.querySelector('[data-stack-next]');
+  const dotsWrap = wrap.querySelector('#systemsStackDots');
+  if(!stage || !cards.length) return;
+
+  let active = 0;
+  const maxVisible = 5;
+  const maxOffset = Math.floor(maxVisible / 2);
+  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if(dotsWrap){
+    cards.forEach((_,i)=>{
+      const dot = document.createElement('button');
+      dot.className = 'stack-dot';
+      dot.type = 'button';
+      dot.setAttribute('aria-label', `Go to system ${i+1}`);
+      dot.addEventListener('click',()=>setActive(i));
+      dotsWrap.appendChild(dot);
+    });
+  }
+  const dots = dotsWrap ? Array.from(dotsWrap.querySelectorAll('.stack-dot')) : [];
+
+  function wrapIndex(n){ return ((n % cards.length) + cards.length) % cards.length; }
+  function signedOffset(i){
+    const raw = i - active;
+    const alt = raw > 0 ? raw - cards.length : raw + cards.length;
+    return Math.abs(alt) < Math.abs(raw) ? alt : raw;
+  }
+
+  function layout(){
+    const mobile = window.innerWidth <= 980;
+    cards.forEach((card,i)=>{
+      card.classList.toggle('is-active', i === active);
+      if(mobile){
+        card.style.transform = '';
+        card.style.opacity = '';
+        card.style.zIndex = '';
+        return;
+      }
+      const off = signedOffset(i);
+      const abs = Math.abs(off);
+      const visible = abs <= maxOffset;
+      const spacing = Math.min(260, Math.max(190, stage.clientWidth * 0.19));
+      const x = off * spacing;
+      const y = abs * 15;
+      const rot = off * 10;
+      const scale = off === 0 ? 1.03 : Math.max(.78, .94 - abs * .05);
+      const opacity = visible ? (off === 0 ? 1 : Math.max(.38, 1 - abs * .22)) : 0;
+      const z = 100 - abs;
+      card.style.transform = `translate3d(${x}px, ${y}px, ${-abs * 90}px) rotateZ(${rot}deg) rotateX(${off===0?0:8}deg) scale(${scale})`;
+      card.style.opacity = opacity.toFixed(3);
+      card.style.zIndex = String(z);
+      card.style.pointerEvents = visible ? 'auto' : 'none';
+    });
+    dots.forEach((d,i)=>d.classList.toggle('is-active',i===active));
+  }
+  function setActive(i){ active = wrapIndex(i); layout(); }
+  if(prev) prev.addEventListener('click',()=>setActive(active-1));
+  if(next) next.addEventListener('click',()=>setActive(active+1));
+  stage.addEventListener('keydown',(e)=>{ if(e.key==='ArrowLeft') setActive(active-1); if(e.key==='ArrowRight') setActive(active+1); });
+  cards.forEach((card,i)=>{
+    card.addEventListener('mouseenter',()=>{ if(window.innerWidth > 980) setActive(i); });
+    card.addEventListener('focus',()=>setActive(i));
+  });
+  let startX = 0;
+  stage.addEventListener('pointerdown',e=>{ startX = e.clientX; });
+  stage.addEventListener('pointerup',e=>{
+    const delta = e.clientX - startX;
+    if(Math.abs(delta) > 60){ setActive(active + (delta < 0 ? 1 : -1)); }
+  });
+  window.addEventListener('resize', layout, {passive:true});
+  layout();
 })();

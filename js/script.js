@@ -100,15 +100,32 @@ if (window.gsap && window.ScrollTrigger && window.innerWidth > 760) {
   });
 }
 
-// active nav
-const links = [...document.querySelectorAll('nav a')];
+// active nav — stronger section detection, including sticky Services gallery
+const links = [...document.querySelectorAll('.nav-pill a[href^="#"]')];
 const sections = links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
-window.addEventListener('scroll',()=>{
-  let current = sections[0]?.id;
-  sections.forEach(s=>{ if(scrollY >= s.offsetTop - 180) current = s.id; });
+function updateActiveNav(){
+  const probe = window.scrollY + Math.min(window.innerHeight * 0.42, 360);
+  let current = sections[0]?.id || 'home';
+  sections.forEach(s=>{
+    const top = s.offsetTop;
+    const bottom = top + s.offsetHeight;
+    if(probe >= top && probe < bottom) current = s.id;
+  });
+  // sticky services sometimes spans visually beyond normal offsets, so prioritize it while its gallery is on screen
+  const services = document.getElementById('services');
+  if(services){
+    const r = services.getBoundingClientRect();
+    if(r.top <= window.innerHeight * .45 && r.bottom >= window.innerHeight * .35) current = 'services';
+  }
   links.forEach(a=>a.classList.toggle('active', a.getAttribute('href') === '#'+current));
-});
-links.forEach(a=>a.addEventListener('click',()=>document.querySelector('.navbar nav')?.classList.remove('open')));
+}
+window.addEventListener('scroll', updateActiveNav, {passive:true});
+window.addEventListener('resize', updateActiveNav);
+updateActiveNav();
+links.forEach(a=>a.addEventListener('click',()=>{
+  document.querySelector('.navbar nav')?.classList.remove('open');
+  setTimeout(updateActiveNav, 120);
+}));
 
 // spotlight on interactive cards
 const spotSelector = '.timeline-item,.info-card,.feature-card,.vault-card,.credential-card,.service-rail article,.contact-links a';
@@ -119,6 +136,31 @@ for (const card of document.querySelectorAll(spotSelector)) {
     card.style.setProperty('--my', `${e.clientY-r.top}px`);
   });
 }
+
+
+
+// V6.5.4 Glow Credentials Vault — mouse reactive border spotlight, optimized and scoped only to credentials.
+(function initGlowCredentials(){
+  const cards = Array.from(document.querySelectorAll('[data-glow-card]'));
+  if(!cards.length) return;
+  const colorMap = {
+    blue:{base:220, spread:160}, purple:{base:280, spread:170}, green:{base:145, spread:130}, red:{base:0, spread:150}, orange:{base:32, spread:145}
+  };
+  cards.forEach(card => {
+    const c = colorMap[card.dataset.glowColor] || colorMap.blue;
+    card.style.setProperty('--base', c.base);
+    card.style.setProperty('--spread', c.spread);
+    card.addEventListener('pointermove', (e) => {
+      const r = card.getBoundingClientRect();
+      const x = e.clientX - r.left;
+      const y = e.clientY - r.top;
+      card.style.setProperty('--x', x.toFixed(1));
+      card.style.setProperty('--y', y.toFixed(1));
+      card.style.setProperty('--xp', (e.clientX / window.innerWidth).toFixed(3));
+      card.style.setProperty('--yp', (e.clientY / window.innerHeight).toFixed(3));
+    }, {passive:true});
+  });
+})();
 
 // lightweight premium tilt
 // Premium hover without lag: only major cards get a very light tilt.
@@ -180,7 +222,7 @@ document.querySelectorAll('[data-modal]').forEach(el=>{
       const src = el.dataset.src;
       const external = el.dataset.type === 'external';
       if(external){
-        openModal({title, body:`<div class="modal-link-card"><p>This project is hosted externally. Click below to open the video sample.</p><a class="btn primary" href="${src}" target="_blank" rel="noopener">Open External Preview <i class='bx bx-right-arrow-alt'></i></a></div>`});
+        openModal({title, body:`<div class="modal-link-card"><p>This preview is available through an external portfolio link.</p><a class="btn primary" href="${src}" target="_blank" rel="noopener">Open Preview <i class='bx bx-right-arrow-alt'></i></a></div>`});
       } else {
         openModal({title, body:`<video src="${src}" controls autoplay></video>`});
       }
@@ -188,7 +230,7 @@ document.querySelectorAll('[data-modal]').forEach(el=>{
       openModal({title, body:`<img src="${el.dataset.src}" alt="${title}">`});
     } else if(type === 'link'){
       const url = el.dataset.url;
-      openModal({title, body:`<div class="modal-link-card"><p>This link contains proof, samples, or credentials connected to my portfolio.</p><a class="btn primary" href="${url}" target="_blank" rel="noopener">Open Link <i class='bx bx-right-arrow-alt'></i></a></div>`});
+      openModal({title, body:`<div class="modal-link-card"><p>Open this item to view related samples, credentials, or project proof.</p><a class="btn primary" href="${url}" target="_blank" rel="noopener">Open Item <i class='bx bx-right-arrow-alt'></i></a></div>`});
     }
   });
 });
@@ -447,4 +489,195 @@ if (window.gsap && window.ScrollTrigger) {
   navLinks.forEach(link => link.addEventListener('click', closeMenu));
   window.addEventListener('resize', () => { if (window.innerWidth > 980) closeMenu(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+})();
+
+// V6.5.3 Services sticky gallery — vertical scroll friendly, no extra horizontal fatigue.
+(function initBuildGallery(){
+  const gallery = document.getElementById('buildGallery');
+  if(!gallery) return;
+  const tiles = Array.from(gallery.querySelectorAll('.build-tile'));
+  const image = document.getElementById('buildPreviewImage');
+  const tag = document.getElementById('buildPreviewTag');
+  const kicker = document.getElementById('buildPreviewKicker');
+  const title = document.getElementById('buildPreviewTitle');
+  const text = document.getElementById('buildPreviewText');
+  const tools = document.getElementById('buildPreviewTools');
+
+  const data = [
+    {
+      image:'images/project-vsl.jpg', tag:'Editing System', kicker:'01 / Creative Execution', title:'Video Editing',
+      text:'I build retention-focused editing systems for ads, reels, talking-head videos, B-roll edits, VSLs, and podcast clips — designed to hold attention and make the message easier to understand.',
+      tools:['Filmora','CapCut','Premiere Pro','DaVinci Resolve']
+    },
+    {
+      image:'images/project-ai-video.jpg', tag:'AI Creative Engine', kicker:'02 / AI Production', title:'AI Content Creation',
+      text:'I create AI-assisted content workflows for visuals, avatars, voiceovers, transitions, and creative variations that help brands test more ideas faster.',
+      tools:['Kling','Higgsfield','Flux','Gemini','ElevenLabs']
+    },
+    {
+      image:'images/project-ghl.jpg', tag:'GHL System', kicker:'03 / CRM + Funnel Build', title:'GoHighLevel Setup',
+      text:'I set up client-ready GoHighLevel systems with funnels, forms, calendars, pipelines, tags, opportunities, and CRM structures that support lead capture and follow-up.',
+      tools:['GoHighLevel','Funnels','Pipelines','Forms','Calendars']
+    },
+    {
+      image:'images/founder-tracker-workflow.png', tag:'Operations System', kicker:'04 / Business Operations', title:'Automation Workflows',
+      text:'I design automation workflows, reporting trackers, lead-routing logic, and SOP support systems that reduce repetitive tasks and improve operational visibility.',
+      tools:['Make','n8n','Google Sheets','Automation','SOPs']
+    },
+    {
+      image:'images/project-web.jpg', tag:'Website + Funnel', kicker:'05 / Digital Experience', title:'Web & Funnel Design',
+      text:'I build modern website and funnel pages focused on trust, clean presentation, lead capture, responsive design, and clear calls-to-action.',
+      tools:['HTML','CSS','JavaScript','GHL Pages','Responsive Design']
+    },
+    {
+      image:'images/project-social.jpg', tag:'Publishing System', kicker:'06 / Distribution System', title:'Content Operations',
+      text:'I help organize content machines for repurposing, scheduling, asset management, posting workflows, and performance-based content iteration.',
+      tools:['Content Calendar','Reels','Shorts','Posting Workflow','Analytics']
+    }
+  ];
+
+  function setActive(index){
+    const item = data[index];
+    if(!item) return;
+    tiles.forEach(t => t.classList.toggle('active', Number(t.dataset.build) === index));
+    if(window.gsap){
+      gsap.to([image, title, text], {opacity:0, y:10, duration:.16, ease:'power1.out', onComplete:()=>{
+        image.src = item.image;
+        image.alt = item.title + ' preview';
+        tag.textContent = item.tag;
+        kicker.textContent = item.kicker;
+        title.textContent = item.title;
+        text.textContent = item.text;
+        tools.innerHTML = item.tools.map(tool => `<em>${tool}</em>`).join('');
+        gsap.to([image, title, text], {opacity:1, y:0, duration:.42, stagger:.035, ease:'power3.out'});
+      }});
+    } else {
+      image.src = item.image; tag.textContent = item.tag; kicker.textContent = item.kicker; title.textContent = item.title; text.textContent = item.text; tools.innerHTML = item.tools.map(tool => `<em>${tool}</em>`).join('');
+    }
+  }
+
+  tiles.forEach(tile => {
+    tile.addEventListener('mouseenter', () => setActive(Number(tile.dataset.build)));
+    tile.addEventListener('focus', () => setActive(Number(tile.dataset.build)));
+    tile.addEventListener('click', () => setActive(Number(tile.dataset.build)));
+  });
+
+  if(window.gsap && window.ScrollTrigger && window.innerWidth > 1080){
+    const triggers = tiles.map((tile) => ScrollTrigger.create({
+      trigger: tile,
+      start: 'top 62%',
+      end: 'bottom 42%',
+      onEnter: () => setActive(Number(tile.dataset.build)),
+      onEnterBack: () => setActive(Number(tile.dataset.build))
+    }));
+    setTimeout(()=>ScrollTrigger.refresh(), 300);
+  }
+})();
+
+// V6.5.5 Interactive Reels Universe — creative orbit gallery replacing Netflix rows.
+(function initReelsUniverse(){
+  const section = document.getElementById('vault');
+  const stage = document.getElementById('reelsOrbit');
+  if(!section || !stage) return;
+  const cards = Array.from(stage.querySelectorAll('[data-orbit-card]'));
+  const progressBar = section.querySelector('.orbit-progress span');
+  if(!cards.length) return;
+
+  if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if(window.innerWidth <= 780) return;
+
+  const scatter = cards.map((_, i) => ({
+    x:(Math.random()-.5)*900,
+    y:(Math.random()-.5)*520,
+    r:(Math.random()-.5)*90,
+    s:.62,
+    o:0
+  }));
+
+  let introPhase = 0;
+  function ease(t){ return 1 - Math.pow(1-t, 3); }
+  function lerp(a,b,t){ return a*(1-t)+b*t; }
+  function clamp(v,a,b){ return Math.max(a,Math.min(b,v)); }
+
+  function paint(progress=0){
+    const rect = stage.getBoundingClientRect();
+    const w = rect.width, h = rect.height;
+    const total = cards.length;
+    const isSmall = w < 920;
+    const circleRadius = Math.min(w,h) * (isSmall ? .27 : .31);
+    const arcRadius = Math.min(w * .64, h * .98);
+    const arcCenterY = h * .86;
+    const spread = isSmall ? 118 : 132;
+    const start = -90 - spread/2;
+    const step = spread / (total - 1);
+    const morph = ease(clamp(progress/.34,0,1));
+    const shuffle = ease(clamp((progress-.28)/.72,0,1));
+    const shift = -shuffle * spread * .74;
+
+    cards.forEach((card, i) => {
+      const lineSpacing = isSmall ? 92 : 112;
+      const lineX = (i - (total-1)/2) * lineSpacing;
+      const line = {x:lineX, y:0, r:0, s:.88, o:1};
+      const angle = (i/total) * Math.PI * 2 - Math.PI/2;
+      const circle = {x:Math.cos(angle)*circleRadius, y:Math.sin(angle)*circleRadius + h*.04, r:(angle*180/Math.PI)+90, s:.86, o:1};
+      const deg = start + i*step + shift;
+      const rad = deg * Math.PI/180;
+      const arc = {x:Math.cos(rad)*arcRadius, y:Math.sin(rad)*arcRadius + arcCenterY, r:deg+90, s:isSmall?1.20:1.34, o:1};
+
+      const base = introPhase < .5 ? {
+        x:lerp(scatter[i].x,line.x,ease(introPhase*2)),
+        y:lerp(scatter[i].y,line.y,ease(introPhase*2)),
+        r:lerp(scatter[i].r,line.r,ease(introPhase*2)),
+        s:lerp(scatter[i].s,line.s,ease(introPhase*2)),
+        o:lerp(scatter[i].o,line.o,ease(introPhase*2))
+      } : {
+        x:lerp(line.x,circle.x,ease((introPhase-.5)*2)),
+        y:lerp(line.y,circle.y,ease((introPhase-.5)*2)),
+        r:lerp(line.r,circle.r,ease((introPhase-.5)*2)),
+        s:lerp(line.s,circle.s,ease((introPhase-.5)*2)),
+        o:1
+      };
+
+      const x = lerp(base.x, arc.x, morph);
+      const y = lerp(base.y, arc.y, morph);
+      const r = lerp(base.r, arc.r, morph);
+      const s = lerp(base.s, arc.s, morph);
+      const opacity = lerp(base.o, Math.max(.38, 1 - Math.abs(deg + 90) / 165), morph);
+      card.style.transform = `translate(-50%,-50%) translate3d(${x}px,${y}px,0) rotate(${r}deg) scale(${s})`;
+      card.style.opacity = opacity.toFixed(3);
+      card.style.zIndex = String(Math.round(1000 - Math.abs(deg + 90)));
+    });
+    if(progressBar) progressBar.style.width = `${Math.round(progress*100)}%`;
+  }
+
+  let raf = null;
+  function updateFromScroll(){
+    const r = section.getBoundingClientRect();
+    const max = Math.max(1, section.offsetHeight - window.innerHeight);
+    const progress = clamp(-r.top / max, 0, 1);
+    paint(progress);
+    raf = null;
+  }
+  function requestPaint(){ if(!raf) raf = requestAnimationFrame(updateFromScroll); }
+
+  function runIntro(){
+    const start = performance.now();
+    function tick(now){
+      introPhase = clamp((now-start)/1600,0,1);
+      paint(0);
+      if(introPhase < 1) requestAnimationFrame(tick); else requestPaint();
+    }
+    requestAnimationFrame(tick);
+  }
+
+  let started = false;
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting && !started){ started = true; runIntro(); }
+    });
+  },{threshold:.25});
+  io.observe(section);
+  window.addEventListener('scroll', requestPaint, {passive:true});
+  window.addEventListener('resize', requestPaint, {passive:true});
+  requestPaint();
 })();

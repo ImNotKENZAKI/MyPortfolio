@@ -26,7 +26,7 @@
       <img src="images/kenzaki-icon.svg" alt="KENZAKI logo" />
       <span>KENZAKI</span>
     </a>
-    <button class="nav-toggle" id="navToggle" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+    <button class="nav-toggle" aria-label="Open navigation">☰</button>
     <nav class="nav-pill">
       <a href="#home" data-icon="🏠">Home</a>
       <a href="#story" data-icon="📖">Story</a>
@@ -141,7 +141,7 @@
 
       <div class="pin-showcase featured-pin" data-pin-section>
         <div class="pin-track featured-track">
-          <article class="case-card flagship clickable" data-modal="video" data-title="Chip Wilson — B-roll + Voiceover" data-src="https://www.dropbox.com/scl/fi/mqxpro9mvechrej7i2e4q/Chip-Wilson.mp4?rlkey=r58amrkfg0om07ekgsuz3810n&dl=0" data-type="external">
+          <article class="case-card flagship clickable" data-modal="video" data-title="Chip Wilson — B-roll + Voiceover" data-src="https://www.youtube.com/embed/QcLnIjk2Dn8?autoplay=1&rel=0" data-type="youtube">
             <div class="case-copy">
               <span class="case-number">01 / B-roll + Voiceover</span>
               <h3>Chip Wilson</h3>
@@ -152,7 +152,7 @@
             <div class="case-media"><img src="images/project-vsl.jpg" alt="Chip Wilson project thumbnail"><span class="big-play"><i class='bx bx-play'></i></span></div>
           </article>
 
-          <article class="case-card clickable" data-modal="video" data-title="LONA Bag Product Ad" data-src="https://www.dropbox.com/scl/fi/l50cjy2uj5xdzf8lh6phw/LONA-BAG-1.mp4?rlkey=8z7gyn10xji5cm2foiwi71ozg&dl=0" data-type="external">
+          <article class="case-card clickable" data-modal="video" data-title="LONA Bag Product Ad" data-src="https://www.youtube.com/embed/aTporYmDW9U?autoplay=1&rel=0" data-type="youtube">
             <div class="case-copy">
               <span class="case-number">02 / Product Ad</span>
               <h3>LONA Bag</h3>
@@ -204,99 +204,282 @@
       </div>
     </section>
 
-    <section class="section vault premium-vault" id="vault">
-      <div class="section-head reveal split-head">
-        <span class="eyebrow"><span></span> Project Vault</span>
-        <h2><span>REELS</span><span>VAULT</span></h2>
-        <p>Netflix-style rows with real thumbnails. Scroll down inside this section and the gallery moves horizontally first.</p>
+    <section class="section reels-universe" id="vault">
+      <div class="section-head reveal split-head orbit-head">
+        <span class="eyebrow"><span></span> Content Showcase</span>
+        <h2><span>REELS</span><span>UNIVERSE</span></h2>
+        <p>A curated collection of client work, AI content, product ads, and short-form edits built for storytelling, attention, and performance.</p>
       </div>
 
-      <div class="pin-showcase vault-pin" data-pin-section>
-        <div class="vault-track pin-track">
-          <div class="vault-column">
-            <div class="vault-row-label"><span>01</span><strong>Featured Samples</strong></div>
-            <div class="vault-row">
-              <article class="vault-card video-card clickable" data-modal="youtube" data-title="Motion Graphics Sample" data-src="QcLnIjk2Dn8">
-              <div class="video-thumb"><img src="https://img.youtube.com/vi/QcLnIjk2Dn8/hqdefault.jpg" alt="Dynamic Motion Graphics thumbnail" loading="lazy"><span class="play-badge"><i class='bx bx-play'></i></span><em>Motion Graphics</em></div>
-              <div class="video-content"><span>Motion Graphics</span><h3>Dynamic Motion Graphics</h3><p>Professional motion graphics with smooth animation and modern design elements.</p><b>Watch in Frame <i class='bx bx-right-arrow-alt'></i></b></div>
-            </article>
-              <article class="vault-card video-card clickable" data-modal="youtube" data-title="GTA V Character Showcase" data-src="pA5lpp6oPe4">
-              <div class="video-thumb"><img src="https://img.youtube.com/vi/pA5lpp6oPe4/hqdefault.jpg" alt="GTA V Character Showcase thumbnail" loading="lazy"><span class="play-badge"><i class='bx bx-play'></i></span><em>Gaming Content</em></div>
-              <div class="video-content"><span>Gaming Content</span><h3>GTA V Character Showcase</h3><p>Creative character animation with transitions and cinematic gaming content style.</p><b>Watch in Frame <i class='bx bx-right-arrow-alt'></i></b></div>
-            </article>
-              <article class="vault-card video-card clickable" data-modal="youtube" data-title="Game Highlight Reel" data-src="AXy5y6aLhsw">
-              <div class="video-thumb"><img src="https://img.youtube.com/vi/AXy5y6aLhsw/hqdefault.jpg" alt="Game Highlight Reel thumbnail" loading="lazy"><span class="play-badge"><i class='bx bx-play'></i></span><em>Gaming Highlights</em></div>
-              <div class="video-content"><span>Gaming Highlights</span><h3>Game Highlight Reel</h3><p>Action-packed gaming highlights with dynamic editing and engaging visual effects.</p><b>Watch in Frame <i class='bx bx-right-arrow-alt'></i></b></div>
-            </article>
-              <article class="vault-card video-card clickable" data-modal="youtube" data-title="German Client VSL" data-src="aTporYmDW9U">
-              <div class="video-thumb"><img src="https://img.youtube.com/vi/aTporYmDW9U/hqdefault.jpg" alt="German Client VSL thumbnail" loading="lazy"><span class="play-badge"><i class='bx bx-play'></i></span><em>Commercial VSL</em></div>
-              <div class="video-content"><span>Commercial VSL</span><h3>German Client VSL</h3><p>Short-form product sales video with conversion-focused editing and visual pacing.</p><b>Watch in Frame <i class='bx bx-right-arrow-alt'></i></b></div>
-            </article>
-            </div>
+      <div class="orbit-showcase" id="reelsUniverse">
+        <div class="orbit-sticky">
+          <div class="orbit-copy reveal">
+            <span>Scroll to explore</span>
+            <h3>Video work presented as a creative orbit.</h3>
+            <p>Each card opens inside a preview frame, keeping the experience polished while showing the range of my editing, AI content, and brand video work.</p>
           </div>
-          <div class="vault-column">
-            <div class="vault-row-label"><span>02</span><strong>Client / Product Work</strong></div>
-            <div class="vault-row">
-              <article class="vault-card video-card clickable" data-modal="youtube" data-title="Tranquil Japan" data-src="8WpufLL-5Wo">
-              <div class="video-thumb"><img src="https://img.youtube.com/vi/8WpufLL-5Wo/hqdefault.jpg" alt="Tranquil Japan 4K thumbnail" loading="lazy"><span class="play-badge"><i class='bx bx-play'></i></span><em>Travel</em></div>
-              <div class="video-content"><span>Travel</span><h3>Tranquil Japan 4K</h3><p>Relaxing scenery video with cinematic flow and calm visual pacing.</p><b>Watch in Frame <i class='bx bx-right-arrow-alt'></i></b></div>
-            </article>
-              <article class="vault-card video-card clickable" data-modal="youtube" data-title="Beautiful Philippines" data-src="lknvpxGdW_0">
-              <div class="video-thumb"><img src="https://img.youtube.com/vi/lknvpxGdW_0/hqdefault.jpg" alt="Beautiful Philippines thumbnail" loading="lazy"><span class="play-badge"><i class='bx bx-play'></i></span><em>Travel</em></div>
-              <div class="video-content"><span>Travel</span><h3>Beautiful Philippines</h3><p>Landscape cinematography and travel-focused visual storytelling.</p><b>Watch in Frame <i class='bx bx-right-arrow-alt'></i></b></div>
-            </article>
-              <article class="vault-card video-card clickable" data-modal="youtube" data-title="AI-Powered VSL" data-src="W-hJTS_-Ztc">
-              <div class="video-thumb"><img src="https://img.youtube.com/vi/W-hJTS_-Ztc/hqdefault.jpg" alt="AI-Powered VSL thumbnail" loading="lazy"><span class="play-badge"><i class='bx bx-play'></i></span><em>AI Content</em></div>
-              <div class="video-content"><span>AI Content</span><h3>AI-Powered VSL</h3><p>AI-generated video sales letter for modern ad and content workflows.</p><b>Watch in Frame <i class='bx bx-right-arrow-alt'></i></b></div>
-            </article>
-              <article class="vault-card video-card clickable" data-modal="youtube" data-title="CIC Pro Hearing Aid" data-src="R1LLIn18NC8">
-              <div class="video-thumb"><img src="https://img.youtube.com/vi/R1LLIn18NC8/hqdefault.jpg" alt="CIC Pro / Hearing Aids thumbnail" loading="lazy"><span class="play-badge"><i class='bx bx-play'></i></span><em>Healthcare Product</em></div>
-              <div class="video-content"><span>Healthcare Product</span><h3>CIC Pro / Hearing Aids</h3><p>Clean product video focused on benefits, trust, and clarity.</p><b>Watch in Frame <i class='bx bx-right-arrow-alt'></i></b></div>
-            </article>
+          <div class="orbit-stage" id="reelsOrbit" aria-label="Interactive video showcase">
+          <article class="orbit-card clickable" data-orbit-card data-index="0" data-modal="youtube" data-title="Chip Wilson" data-src="QcLnIjk2Dn8">
+            <div class="orbit-card-inner">
+              <div class="orbit-face orbit-front">
+                <img src="https://img.youtube.com/vi/QcLnIjk2Dn8/hqdefault.jpg" alt="Chip Wilson thumbnail" loading="lazy">
+                <span class="orbit-play"><i class='bx bx-play'></i></span>
+                <em>Business Storytelling</em>
+              </div>
+              <div class="orbit-face orbit-back">
+                <span>Business Storytelling</span>
+                <h3>Chip Wilson</h3>
+                <p>Documentary-style edit with voiceover, pacing, and B-roll built around a founder narrative.</p>
+                <b>Play preview <i class='bx bx-right-arrow-alt'></i></b>
+              </div>
             </div>
+          </article>
+          <article class="orbit-card clickable" data-orbit-card data-index="1" data-modal="youtube" data-title="LONA Bag" data-src="aTporYmDW9U">
+            <div class="orbit-card-inner">
+              <div class="orbit-face orbit-front">
+                <img src="https://img.youtube.com/vi/aTporYmDW9U/hqdefault.jpg" alt="LONA Bag thumbnail" loading="lazy">
+                <span class="orbit-play"><i class='bx bx-play'></i></span>
+                <em>Product VSL</em>
+              </div>
+              <div class="orbit-face orbit-back">
+                <span>Product VSL</span>
+                <h3>LONA Bag</h3>
+                <p>Conversion-focused product ad with AI-assisted visuals, rhythm, and direct-response structure.</p>
+                <b>Play preview <i class='bx bx-right-arrow-alt'></i></b>
+              </div>
+            </div>
+          </article>
+          <article class="orbit-card clickable" data-orbit-card data-index="2" data-modal="youtube" data-title="CIC Pro / Hearing Aids" data-src="R1LLIn18NC8">
+            <div class="orbit-card-inner">
+              <div class="orbit-face orbit-front">
+                <img src="https://img.youtube.com/vi/R1LLIn18NC8/hqdefault.jpg" alt="CIC Pro / Hearing Aids thumbnail" loading="lazy">
+                <span class="orbit-play"><i class='bx bx-play'></i></span>
+                <em>Healthcare Product</em>
+              </div>
+              <div class="orbit-face orbit-back">
+                <span>Healthcare Product</span>
+                <h3>CIC Pro / Hearing Aids</h3>
+                <p>Clean product video focused on clarity, benefits, trust, and easy-to-follow messaging.</p>
+                <b>Play preview <i class='bx bx-right-arrow-alt'></i></b>
+              </div>
+            </div>
+          </article>
+          <article class="orbit-card clickable" data-orbit-card data-index="3" data-modal="youtube" data-title="AI-Powered VSL" data-src="W-hJTS_-Ztc">
+            <div class="orbit-card-inner">
+              <div class="orbit-face orbit-front">
+                <img src="https://img.youtube.com/vi/W-hJTS_-Ztc/hqdefault.jpg" alt="AI-Powered VSL thumbnail" loading="lazy">
+                <span class="orbit-play"><i class='bx bx-play'></i></span>
+                <em>AI Ad Creative</em>
+              </div>
+              <div class="orbit-face orbit-back">
+                <span>AI Ad Creative</span>
+                <h3>AI-Powered VSL</h3>
+                <p>AI-generated sales video built for fast visual testing and performance-driven ad concepts.</p>
+                <b>Play preview <i class='bx bx-right-arrow-alt'></i></b>
+              </div>
+            </div>
+          </article>
+          <article class="orbit-card clickable" data-orbit-card data-index="4" data-modal="youtube" data-title="Fußwohl Leather Shoes" data-src="WfJOJ65yrT8">
+            <div class="orbit-card-inner">
+              <div class="orbit-face orbit-front">
+                <img src="https://img.youtube.com/vi/WfJOJ65yrT8/hqdefault.jpg" alt="Fußwohl Leather Shoes thumbnail" loading="lazy">
+                <span class="orbit-play"><i class='bx bx-play'></i></span>
+                <em>Product Ad</em>
+              </div>
+              <div class="orbit-face orbit-back">
+                <span>Product Ad</span>
+                <h3>Fußwohl Leather Shoes</h3>
+                <p>Premium product showcase with polished visuals and clear commercial presentation.</p>
+                <b>Play preview <i class='bx bx-right-arrow-alt'></i></b>
+              </div>
+            </div>
+          </article>
+          <article class="orbit-card clickable" data-orbit-card data-index="5" data-modal="youtube" data-title="Mary Digi Solutions" data-src="Lv1jWaATdIY">
+            <div class="orbit-card-inner">
+              <div class="orbit-face orbit-front">
+                <img src="https://img.youtube.com/vi/Lv1jWaATdIY/hqdefault.jpg" alt="Mary Digi Solutions thumbnail" loading="lazy">
+                <span class="orbit-play"><i class='bx bx-play'></i></span>
+                <em>Agency Brand</em>
+              </div>
+              <div class="orbit-face orbit-back">
+                <span>Agency Brand</span>
+                <h3>Mary Digi Solutions</h3>
+                <p>Brand video introducing digital services, automation, and agency positioning.</p>
+                <b>Play preview <i class='bx bx-right-arrow-alt'></i></b>
+              </div>
+            </div>
+          </article>
+          <article class="orbit-card clickable" data-orbit-card data-index="6" data-modal="youtube" data-title="Victoria AI Transition" data-src="5h0JCng6r0s">
+            <div class="orbit-card-inner">
+              <div class="orbit-face orbit-front">
+                <img src="https://img.youtube.com/vi/5h0JCng6r0s/hqdefault.jpg" alt="Victoria AI Transition thumbnail" loading="lazy">
+                <span class="orbit-play"><i class='bx bx-play'></i></span>
+                <em>AI Short</em>
+              </div>
+              <div class="orbit-face orbit-back">
+                <span>AI Short</span>
+                <h3>Victoria AI Transition</h3>
+                <p>AI model transition content built around visual transformation and scroll-stopping style.</p>
+                <b>Play preview <i class='bx bx-right-arrow-alt'></i></b>
+              </div>
+            </div>
+          </article>
+          <article class="orbit-card clickable" data-orbit-card data-index="7" data-modal="youtube" data-title="Willow AI Cosplay" data-src="IDkR2tnQ6Ds">
+            <div class="orbit-card-inner">
+              <div class="orbit-face orbit-front">
+                <img src="https://img.youtube.com/vi/IDkR2tnQ6Ds/hqdefault.jpg" alt="Willow AI Cosplay thumbnail" loading="lazy">
+                <span class="orbit-play"><i class='bx bx-play'></i></span>
+                <em>AI Character Content</em>
+              </div>
+              <div class="orbit-face orbit-back">
+                <span>AI Character Content</span>
+                <h3>Willow AI Cosplay</h3>
+                <p>Creative AI character content using stylized transformation and short-form pacing.</p>
+                <b>Play preview <i class='bx bx-right-arrow-alt'></i></b>
+              </div>
+            </div>
+          </article>
+          <article class="orbit-card clickable" data-orbit-card data-index="8" data-modal="youtube" data-title="GTA V Character Showcase" data-src="pA5lpp6oPe4">
+            <div class="orbit-card-inner">
+              <div class="orbit-face orbit-front">
+                <img src="https://img.youtube.com/vi/pA5lpp6oPe4/hqdefault.jpg" alt="GTA V Character Showcase thumbnail" loading="lazy">
+                <span class="orbit-play"><i class='bx bx-play'></i></span>
+                <em>Gaming Content</em>
+              </div>
+              <div class="orbit-face orbit-back">
+                <span>Gaming Content</span>
+                <h3>GTA V Character Showcase</h3>
+                <p>Cinematic character showcase with transitions, movement, and gaming-focused visuals.</p>
+                <b>Play preview <i class='bx bx-right-arrow-alt'></i></b>
+              </div>
+            </div>
+          </article>
+          <article class="orbit-card clickable" data-orbit-card data-index="9" data-modal="youtube" data-title="Game Highlight Reel" data-src="AXy5y6aLhsw">
+            <div class="orbit-card-inner">
+              <div class="orbit-face orbit-front">
+                <img src="https://img.youtube.com/vi/AXy5y6aLhsw/hqdefault.jpg" alt="Game Highlight Reel thumbnail" loading="lazy">
+                <span class="orbit-play"><i class='bx bx-play'></i></span>
+                <em>Gaming Highlights</em>
+              </div>
+              <div class="orbit-face orbit-back">
+                <span>Gaming Highlights</span>
+                <h3>Game Highlight Reel</h3>
+                <p>Action-focused highlight reel with fast cuts and dynamic visual energy.</p>
+                <b>Play preview <i class='bx bx-right-arrow-alt'></i></b>
+              </div>
+            </div>
+          </article>
+          <article class="orbit-card clickable" data-orbit-card data-index="10" data-modal="youtube" data-title="Tranquil Japan 4K" data-src="8WpufLL-5Wo">
+            <div class="orbit-card-inner">
+              <div class="orbit-face orbit-front">
+                <img src="https://img.youtube.com/vi/8WpufLL-5Wo/hqdefault.jpg" alt="Tranquil Japan 4K thumbnail" loading="lazy">
+                <span class="orbit-play"><i class='bx bx-play'></i></span>
+                <em>Travel Visuals</em>
+              </div>
+              <div class="orbit-face orbit-back">
+                <span>Travel Visuals</span>
+                <h3>Tranquil Japan 4K</h3>
+                <p>Relaxing scenery video with cinematic flow, ambient pacing, and clean presentation.</p>
+                <b>Play preview <i class='bx bx-right-arrow-alt'></i></b>
+              </div>
+            </div>
+          </article>
+          <article class="orbit-card clickable" data-orbit-card data-index="11" data-modal="youtube" data-title="Beautiful Philippines" data-src="lknvpxGdW_0">
+            <div class="orbit-card-inner">
+              <div class="orbit-face orbit-front">
+                <img src="https://img.youtube.com/vi/lknvpxGdW_0/hqdefault.jpg" alt="Beautiful Philippines thumbnail" loading="lazy">
+                <span class="orbit-play"><i class='bx bx-play'></i></span>
+                <em>Travel Visuals</em>
+              </div>
+              <div class="orbit-face orbit-back">
+                <span>Travel Visuals</span>
+                <h3>Beautiful Philippines</h3>
+                <p>Landscape-driven travel edit with calm storytelling and scenic composition.</p>
+                <b>Play preview <i class='bx bx-right-arrow-alt'></i></b>
+              </div>
+            </div>
+          </article>
           </div>
-          <div class="vault-column">
-            <div class="vault-row-label"><span>03</span><strong>AI + Brand Content</strong></div>
-            <div class="vault-row">
-              <article class="vault-card video-card clickable" data-modal="youtube" data-title="Fußwohl Leather Shoes" data-src="WfJOJ65yrT8">
-              <div class="video-thumb"><img src="https://img.youtube.com/vi/WfJOJ65yrT8/hqdefault.jpg" alt="Fußwohl® Leather Shoes thumbnail" loading="lazy"><span class="play-badge"><i class='bx bx-play'></i></span><em>Product Ad</em></div>
-              <div class="video-content"><span>Product Ad</span><h3>Fußwohl® Leather Shoes</h3><p>Product showcase for premium footwear with polished visual presentation.</p><b>Watch in Frame <i class='bx bx-right-arrow-alt'></i></b></div>
-            </article>
-              <article class="vault-card video-card clickable" data-modal="youtube" data-title="Mary Digi Solutions Video" data-src="Lv1jWaATdIY">
-              <div class="video-thumb"><img src="https://img.youtube.com/vi/Lv1jWaATdIY/hqdefault.jpg" alt="Mary Digi Solutions thumbnail" loading="lazy"><span class="play-badge"><i class='bx bx-play'></i></span><em>Agency Brand</em></div>
-              <div class="video-content"><span>Agency Brand</span><h3>Mary Digi Solutions</h3><p>Brand video for Mary Digi Solutions focused on digital services and automation.</p><b>Watch in Frame <i class='bx bx-right-arrow-alt'></i></b></div>
-            </article>
-              <article class="vault-card video-card clickable" data-modal="youtube" data-title="Victoria AI Model Transition" data-src="5h0JCng6r0s">
-              <div class="video-thumb"><img src="https://img.youtube.com/vi/5h0JCng6r0s/hqdefault.jpg" alt="Victoria AI Transition thumbnail" loading="lazy"><span class="play-badge"><i class='bx bx-play'></i></span><em>AI Short</em></div>
-              <div class="video-content"><span>AI Short</span><h3>Victoria AI Transition</h3><p>AI model transition content with strong visual transformation style.</p><b>Watch in Frame <i class='bx bx-right-arrow-alt'></i></b></div>
-            </article>
-              <article class="vault-card video-card clickable" data-modal="youtube" data-title="Willow AI Cosplay" data-src="IDkR2tnQ6Ds">
-              <div class="video-thumb"><img src="https://img.youtube.com/vi/IDkR2tnQ6Ds/hqdefault.jpg" alt="Willow AI Cosplay thumbnail" loading="lazy"><span class="play-badge"><i class='bx bx-play'></i></span><em>AI Cosplay</em></div>
-              <div class="video-content"><span>AI Cosplay</span><h3>Willow AI Cosplay</h3><p>AI cosplay short-form content inspired by anime and social trends.</p><b>Watch in Frame <i class='bx bx-right-arrow-alt'></i></b></div>
-            </article>
-            </div>
+          <div class="orbit-progress" aria-hidden="true">
+            <span></span>
           </div>
         </div>
-        <div class="scroll-hint"><span></span> Keep scrolling to explore the video vault</div>
       </div>
     </section>
 
-    <section class="section services" id="services">
-      <div class="section-head reveal split-head mini-split">
-        <span class="eyebrow"><span></span> Services</span>
-        <h2><span>WHAT I</span><span>BUILD</span></h2>
-        <p>Scroll through the systems I can help create — from videos and AI content to GoHighLevel funnels and automation workflows.</p>
+    <section class="section services sticky-services" id="services">
+      <div class="section-head reveal split-head mini-split services-intro">
+        <span class="eyebrow"><span></span> What I Build</span>
+        <h2><span>SYSTEMS</span><span>THAT SCALE</span></h2>
+        <p>A focused showcase of the digital systems I build — from high-retention videos and AI content workflows to GoHighLevel funnels, automation, and business operations support.</p>
       </div>
-      <div class="pin-showcase service-pin" data-pin-section>
-        <div class="service-rail pin-track" id="serviceRail">
-          <article class="clickable service-card" data-service="Video Editing"><span>🎬</span><h3>Video Editing</h3><p>Short-form videos, B-roll, talking-head clips, podcast cuts, subtitles, hooks, and retention-focused edits.</p><b>High-retention edits <i class='bx bx-right-arrow-alt'></i></b></article>
-          <article class="clickable service-card" data-service="AI Content"><span>🤖</span><h3>AI Content Creation</h3><p>AI-generated videos, avatars, image prompts, voiceovers, creative variations, and visual storytelling.</p><b>AI creative workflow <i class='bx bx-right-arrow-alt'></i></b></article>
-          <article class="clickable service-card" data-service="GHL"><span>⚙️</span><h3>GoHighLevel Setup</h3><p>Landing pages, forms, booking pages, pipelines, opportunities, tags, and workflow automations.</p><b>Funnels + CRM <i class='bx bx-right-arrow-alt'></i></b></article>
-          <article class="clickable service-card" data-service="Automation"><span>🧠</span><h3>AI Automation</h3><p>Workflow planning, n8n/Make logic, trackers, SOPs, and AI-assisted operations.</p><b>Systems thinking <i class='bx bx-right-arrow-alt'></i></b></article>
-          <article class="clickable service-card" data-service="Web"><span>🌐</span><h3>Website & Funnel Design</h3><p>Modern websites, lead capture pages, brand sections, CTA structure, and responsive layouts.</p><b>Conversion layout <i class='bx bx-right-arrow-alt'></i></b></article>
-          <article class="clickable service-card" data-service="Content"><span>📈</span><h3>Content Systems</h3><p>Social media repurposing, content calendars, caption support, publishing flow, and performance iteration.</p><b>Content operations <i class='bx bx-right-arrow-alt'></i></b></article>
+
+      <div class="sticky-build-gallery" id="buildGallery">
+        <div class="build-column build-left">
+          <article class="build-tile clickable active" data-build="0">
+            <span class="build-num">01</span>
+            <i class='bx bx-movie-play'></i>
+            <h3>Video Editing</h3>
+            <p>Retention-based edits for ads, reels, talking-head videos, B-roll, VSLs, and podcast clips.</p>
+            <b>Hooks • pacing • captions</b>
+          </article>
+          <article class="build-tile clickable" data-build="1">
+            <span class="build-num">02</span>
+            <i class='bx bx-brain'></i>
+            <h3>AI Content Creation</h3>
+            <p>AI-generated visuals, avatars, voiceovers, prompt workflows, and creative variations for ad testing.</p>
+            <b>Kling • Higgsfield • ElevenLabs</b>
+          </article>
+          <article class="build-tile clickable" data-build="2">
+            <span class="build-num">03</span>
+            <i class='bx bx-git-branch'></i>
+            <h3>GoHighLevel Setup</h3>
+            <p>Funnels, forms, calendars, pipelines, opportunities, tags, CRM setup, and client-ready workflows.</p>
+            <b>GHL • CRM • pipelines</b>
+          </article>
         </div>
-        <div class="scroll-hint"><span></span> Keep scrolling to move through services</div>
+
+        <div class="build-preview-wrap" aria-live="polite">
+          <div class="build-preview-card">
+            <div class="preview-grid-bg"></div>
+            <div class="build-preview-media">
+              <img id="buildPreviewImage" src="images/project-vsl.jpg" alt="Video Editing service preview">
+              <span class="build-preview-tag" id="buildPreviewTag">Editing System</span>
+            </div>
+            <div class="build-preview-copy">
+              <span id="buildPreviewKicker">01 / Creative Execution</span>
+              <h3 id="buildPreviewTitle">Video Editing</h3>
+              <p id="buildPreviewText">I turn raw footage into polished, high-retention videos with strong hooks, captions, pacing, sound design, B-roll, and clear storytelling.</p>
+              <div class="build-tools" id="buildPreviewTools">
+                <em>Filmora</em><em>CapCut</em><em>Premiere Pro</em><em>DaVinci Resolve</em>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="build-column build-right">
+          <article class="build-tile clickable" data-build="3">
+            <span class="build-num">04</span>
+            <i class='bx bx-cog'></i>
+            <h3>AI Automation</h3>
+            <p>Workflow logic, reporting systems, SOP support, task tracking, and AI-assisted operations.</p>
+            <b>Make • n8n • workflows</b>
+          </article>
+          <article class="build-tile clickable" data-build="4">
+            <span class="build-num">05</span>
+            <i class='bx bx-globe'></i>
+            <h3>Web & Funnel Design</h3>
+            <p>Modern landing pages, portfolio pages, service pages, lead capture forms, and CTA-focused layouts.</p>
+            <b>Websites • funnels • forms</b>
+          </article>
+          <article class="build-tile clickable" data-build="5">
+            <span class="build-num">06</span>
+            <i class='bx bx-line-chart'></i>
+            <h3>Content Systems</h3>
+            <p>Content repurposing, posting workflows, social scheduling, asset organization, and performance iteration.</p>
+            <b>Repurpose • schedule • publish</b>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -306,12 +489,12 @@
         <h2>Certificates, profiles, and proof links in premium cards.</h2>
       </div>
       <div class="credential-grid">
-        <article class="credential-card clickable" data-modal="link" data-title="Portfolio Vault" data-url="https://www.dropbox.com/scl/fo/0k31nkpbyfros1q7hjl1x/AD-HnbDb7G2GePZWwaqZpzA?rlkey=vyl4l4ojvoluoxc2u4xr2m8et&st=2yst52tl&dl=0"><i class='bx bxl-dropbox'></i><h3>Work Portfolio Vault</h3><p>Complete Dropbox folder for sample works and client projects.</p><b>Open Vault →</b></article>
-        <article class="credential-card clickable" data-modal="link" data-title="Certificates Vault" data-url="https://www.dropbox.com/scl/fo/teo39x0l0b1i9g0g5n2so/AHooXzBnkKXyjXPoZcJQRkw?rlkey=vmwi95gkurhvh11pqv3jprfmj&st=0bsf1334&dl=0"><i class='bx bx-certification'></i><h3>Certificates Vault</h3><p>Canva, Data Entry, Graphics Design, Lead Generation, Facebook Ads, and SMM certificates.</p><b>Preview →</b></article>
-        <article class="credential-card clickable" data-modal="link" data-title="Web Design Samples" data-url="https://www.dropbox.com/scl/fo/k3zajg1j5cdvp12mr9unz/ABYmenie1V1FP0QixSvS8Jk?rlkey=8exk7aibap8vqo1clp3scqpyd&st=m4058rhj&dl=0"><i class='bx bx-code-alt'></i><h3>Web Design Samples</h3><p>Website layouts, creative pages, and design/development samples.</p><b>Open Samples →</b></article>
-        <article class="credential-card clickable" data-modal="link" data-title="Graphic Design Samples" data-url="https://www.dropbox.com/scl/fo/him8j9u4j0vaqz25kcsdg/AAzEPdoI1I5zLnpQQn3zRdU?rlkey=a66tapptqwlrdxzy3ofe70ks7&st=hoeq6neu&dl=0"><i class='bx bx-paint'></i><h3>Graphic Design Samples</h3><p>Brand visuals, social graphics, and design-related work.</p><b>Open Samples →</b></article>
-        <article class="credential-card clickable" data-modal="link" data-title="Social Media Management" data-url="https://www.dropbox.com/scl/fo/2nf6qx65xwtkmioiy948r/ANBkmR__BBUACfRFW0-hlBg?rlkey=uar63gpkknnz7salu5fa3ah2k&st=bafsslsd&dl=0"><i class='bx bx-share-alt'></i><h3>SMM Samples</h3><p>Social media management, post samples, and content support assets.</p><b>Open Folder →</b></article>
-        <article class="credential-card clickable" data-modal="link" data-title="Resume PDF" data-url="resume.pdf"><i class='bx bx-file'></i><h3>Resume / CV</h3><p>Updated professional CV for video editing, AI content, VA, and automation roles.</p><b>View Resume →</b></article>
+        <article class="credential-card clickable glow-credential" data-glow-card data-glow-color="blue" data-modal="link" data-title="Portfolio Vault" data-url="https://www.dropbox.com/scl/fo/0k31nkpbyfros1q7hjl1x/AD-HnbDb7G2GePZWwaqZpzA?rlkey=vyl4l4ojvoluoxc2u4xr2m8et&st=2yst52tl&dl=0"><i class='bx bxl-dropbox'></i><h3>Work Portfolio Vault</h3><p>Complete Dropbox folder for sample works and client projects.</p><b>Open Vault →</b></article>
+        <article class="credential-card clickable glow-credential" data-glow-card data-glow-color="purple" data-modal="link" data-title="Certificates Vault" data-url="https://www.dropbox.com/scl/fo/teo39x0l0b1i9g0g5n2so/AHooXzBnkKXyjXPoZcJQRkw?rlkey=vmwi95gkurhvh11pqv3jprfmj&st=0bsf1334&dl=0"><i class='bx bx-certification'></i><h3>Certificates Vault</h3><p>Canva, Data Entry, Graphics Design, Lead Generation, Facebook Ads, and SMM certificates.</p><b>Preview →</b></article>
+        <article class="credential-card clickable glow-credential" data-glow-card data-glow-color="green" data-modal="link" data-title="Web Design Samples" data-url="https://www.dropbox.com/scl/fo/k3zajg1j5cdvp12mr9unz/ABYmenie1V1FP0QixSvS8Jk?rlkey=8exk7aibap8vqo1clp3scqpyd&st=m4058rhj&dl=0"><i class='bx bx-code-alt'></i><h3>Web Design Samples</h3><p>Website layouts, creative pages, and design/development samples.</p><b>Open Samples →</b></article>
+        <article class="credential-card clickable glow-credential" data-glow-card data-glow-color="orange" data-modal="link" data-title="Graphic Design Samples" data-url="https://www.dropbox.com/scl/fo/him8j9u4j0vaqz25kcsdg/AAzEPdoI1I5zLnpQQn3zRdU?rlkey=a66tapptqwlrdxzy3ofe70ks7&st=hoeq6neu&dl=0"><i class='bx bx-paint'></i><h3>Graphic Design Samples</h3><p>Brand visuals, social graphics, and design-related work.</p><b>Open Samples →</b></article>
+        <article class="credential-card clickable glow-credential" data-glow-card data-glow-color="purple" data-modal="link" data-title="Social Media Management" data-url="https://www.dropbox.com/scl/fo/2nf6qx65xwtkmioiy948r/ANBkmR__BBUACfRFW0-hlBg?rlkey=uar63gpkknnz7salu5fa3ah2k&st=bafsslsd&dl=0"><i class='bx bx-share-alt'></i><h3>SMM Samples</h3><p>Social media management, post samples, and content support assets.</p><b>Open Folder →</b></article>
+        <article class="credential-card clickable glow-credential" data-glow-card data-glow-color="blue" data-modal="link" data-title="Resume PDF" data-url="resume.pdf"><i class='bx bx-file'></i><h3>Resume / CV</h3><p>Updated professional CV for video editing, AI content, VA, and automation roles.</p><b>View Resume →</b></article>
       </div>
     </section>
 

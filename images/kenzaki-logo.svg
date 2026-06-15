@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 220">
+<defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#22d3ee"/><stop offset=".45" stop-color="#3b82f6"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient><filter id="glow"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<rect width="820" height="220" rx="38" fill="#020617"/>
+<path d="M80 145 L80 55 L122 55 L122 92 L174 55 L225 55 L162 105 L232 165 L176 165 L122 116 L122 165 L80 165Z" fill="url(#g)" filter="url(#glow)"/>
+<path d="M260 55h260v28H298v24h198v27H298v31h229v30H260V55Z" fill="#e5f3ff"/>
+<text x="80" y="205" font-family="Inter,Arial" font-size="22" letter-spacing="9" fill="#60a5fa">AI • VIDEO • AUTOMATION • GHL</text>
+<text x="560" y="133" font-family="Sora,Arial" font-size="58" font-weight="800" fill="url(#g)">KENZAKI</text>
+<circle cx="735" cy="79" r="36" fill="none" stroke="url(#g)" stroke-width="6"/><path d="M716 79h38M735 60v38" stroke="#e0f2fe" stroke-width="6" stroke-linecap="round"/>
+</svg>

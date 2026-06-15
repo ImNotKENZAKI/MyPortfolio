@@ -1,797 +1,399 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jeff Portfolio</title>
-
-  <!-- box icons-->
-  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-
-  <!-- premium fonts: Sora (headings) + Inter (body) -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KENZAKI | John Jefferson Manalo</title>
+  <meta name="description" content="Portfolio of John Jefferson Manalo — Video Editor, AI Content Creator, GoHighLevel Builder, and Automation Specialist." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Sora:wght@600;700&display=swap" rel="stylesheet">
-
-
-  <!-- custom css-->
-  <link rel="stylesheet" href="css/style.css">
-
-  <!-- EmailJS -->
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
-
 <body>
-<!-- Header design-->
-  <header class="header">
-  <a href="#" class="logo">Kenzaki's Website.</a>
-  <i class="bx bx-menu" id="menu-icon"></i>
+  <div class="loader" id="loader">
+    <img src="images/kenzaki-icon.svg" alt="KENZAKI icon" />
+    <span>Loading KENZAKI Systems</span>
+  </div>
 
-  <nav class="navbar">
-    <a href="#home" class="active">HOME</a>
-    <a href="#about">ABOUT</a>
-    <a href="#skills">SKILLS</a>
-    <a href="#services">SERVICES</a>
-    <a href="#portfolio">PORTFOLIO</a>
-    <a href="#samples">SAMPLES</a>
-    <a href="#contact">CONTACT</a>
-  </nav>
-  <i class='bx bx-moon' id="theme-toggle" aria-label="Toggle theme"></i>
+  <canvas id="particle-canvas" aria-hidden="true"></canvas>
+  <div class="page-glow"></div>
+
+  <header class="navbar lamp-nav">
+    <a class="brand" href="#home" aria-label="KENZAKI home">
+      <img src="images/kenzaki-icon.svg" alt="KENZAKI logo" />
+      <span>KENZAKI</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="nav-pill">
+      <a href="#home" data-icon="🏠">Home</a>
+      <a href="#story" data-icon="📖">Story</a>
+      <a href="#featured" data-icon="🎬">Work</a>
+      <a href="#services" data-icon="⚙️">Services</a>
+      <a href="#vault" data-icon="🧩">Vault</a>
+      <a href="#credentials" data-icon="🏆">Credentials</a>
+      <a href="#contact" data-icon="💬">Contact</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark and light mode">☾</button>
+      <span class="nav-lamp" aria-hidden="true"></span>
+    </nav>
   </header>
 
-  <!-- home section design -->
-  <section class="home" id="home">
-    <div class="home-content">
-      <h3>Hello, It's Me</h3>
-      <h1>Jefferson Manalo</h1>
-      <h3>And I'm a <span class="multiple-text"></span></h3>
-      <p> "As a skilled and versatile freelancer, I leverage my expertise to help businesses achieve their goals and grow their brands. With a passion for creating compelling content and delivering high-quality work, I provide exceptional value to every client. By collaborating closely and delivering customized solutions, I aim to exceed expectations and establish strong, successful relationships."</p>
-        <div class="social-media">
-            <a href="https://www.dropbox.com/scl/fo/0k31nkpbyfros1q7hjl1x/AD-HnbDb7G2GePZWwaqZpzA?rlkey=vyl4l4ojvoluoxc2u4xr2m8et&st=2yst52tl&dl=0" class="social-link social-dropbox" target="_blank" rel="noopener"><i class='bx bxl-dropbox' aria-label="Dropbox"></i></a>
-            <a href="https://www.onlinejobs.ph/jobseekers/info/4491696" class="social-link social-onlinejobs" target="_blank" rel="noopener"><i class='bx bx-briefcase' aria-label="OnlineJobs.ph"></i></a>
-            <a href="https://www.upwork.com/freelancers/~01b859ac91bdf7ade3?mp_source=share" class="social-link social-upwork" target="_blank" rel="noopener"><i class='bx bxl-upwork' aria-label="Upwork"></i></a>
-            <a href="https://www.linkedin.com/in/john-jefferson-manalo-117322380/" class="social-link social-linkedin" target="_blank" rel="noopener"><i class='bx bxl-linkedin' aria-label="LinkedIn"></i></a>
-            <a href="https://wa.me/639276455260" class="social-link social-whatsapp" target="_blank" rel="noopener"><i class='bx bxl-whatsapp' aria-label="WhatsApp"></i></a>
-            <a href="#" class="social-link social-discord" id="discord-copy" data-discord="kenzaki5885"><i class='bx bxl-discord' aria-label="Discord"></i></a>
+  <main>
+    <section class="hero section" id="home">
+      <canvas id="hero-trail-canvas" class="hero-trail-canvas" aria-hidden="true"></canvas>
+      <div class="hero-copy reveal">
+        <div class="eyebrow"><span></span> AI • Automation • Video • GHL</div>
+        <h1>I build <em>videos</em>, systems, and automation that help brands scale.</h1>
+        <h3 class="hero-role">I’m a <span id="rotatingTitle">Video Editor</span></h3>
+        <p>I’m <strong>John Jefferson Manalo</strong>, also known as <strong>KENZAKI</strong> — a BSIT degree holder, Video Editor, AI Content Creator, GoHighLevel Builder, and digital systems creator based in the Philippines.</p>
+        <div class="hero-actions">
+          <a href="#featured" class="btn primary magnetic">View Featured Work <i class='bx bx-right-arrow-alt'></i></a>
+          <a href="#credentials" class="btn ghost magnetic">Open Credentials Vault <i class='bx bx-certification'></i></a>
         </div>
-
-        <!-- Toast container for Discord copy feedback -->
-        <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true"></div>
-
-        <a href="#" onclick="downloadResume()" class="btn">
-          Download Resume
-        </a>
-        
-        <script>
-        function downloadResume() {
-          var link = document.createElement("a");
-          link.href = "resume.pdf";
-          link.download = "my_resume.pdf";
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-        }
-        </script>
-        
-
-    </div>
-    <div class="home-img">
-      <img src="images/home.png" alt="">
-
-    </div>
-  </section>
-
-  <!--about section design-->
-<section class="about" id="about">
-  <div class="about-img">
-    <img src="images/about.png" alt="">
-  </div>
-
-  <div class="about-content">
-    <h2 class="heading">About <span>Me</span></h2>
-    <h3>Freelancer!</h3>
-    <div class="about-text-container">
-      <p class="about-text-short">"Hi, I'm a BSIT graduate turned freelancer, passionate about helping businesses and creators bring their ideas to life through reliable, creative, and professional work."</p>
-      <p class="about-text-extended">With a background in Information Technology, I combine technical knowledge with creativity to bring fresh ideas into every project. My main focus is on video editing, motion graphics, and digital content creation—always making sure the final output is polished, engaging, and aligned with what my client really needs. What makes me different is that I don't just deliver the work—I take time to understand each project, listen carefully, and adjust based on feedback so the end result feels personal and valuable. In freelancing, where competition is tough, I stand out by being consistent, easy to work with, and committed to giving my clients work they can be proud of. Whether it's a quick edit or a long-term project, I always aim to make the process smooth and the outcome worthwhile.</p>
-    </div>
-    <a href="#" class="btn read-more-btn" data-target="about">Read More</a>
-  </div>
-</section>
-
-<!-- Skills section design -->
-<section class="skills" id="skills">
-  <h2 class="heading">My <span>Skills</span></h2>
-  <div class="skills-container">
-    <div class="skills-category">
-      <h3>Technical Skills</h3>
-      <div class="skill-item">
-        <span class="skill-name">Video Editing</span>
-        <div class="skill-bar">
-          <div class="skill-progress" data-width="95%"></div>
+        <div class="metrics">
+          <div><strong>AI</strong><span>video workflows</span></div>
+          <div><strong>GHL</strong><span>funnels & CRM</span></div>
+          <div><strong>VSL</strong><span>ads & retention</span></div>
         </div>
       </div>
-      <div class="skill-item">
-        <span class="skill-name">Motion Graphics</span>
-        <div class="skill-bar">
-          <div class="skill-progress" data-width="90%"></div>
-        </div>
+      <div class="hero-visual reveal delay-1">
+        <div class="orbit"></div>
+        <img src="images/jeff-premium-cutout.png" alt="John Jefferson Manalo professional portrait" />
+        <button class="floating-card card-one clickable" data-modal="link" data-url="https://www.dropbox.com/scl/fo/0k31nkpbyfros1q7hjl1x/AD-HnbDb7G2GePZWwaqZpzA?rlkey=vyl4l4ojvoluoxc2u4xr2m8et&st=2yst52tl&dl=0">Portfolio Vault</button>
+        <button class="floating-card card-two clickable" data-modal="link" data-url="https://www.onlinejobs.ph/jobseekers/info/4491696">OLJ Profile</button>
       </div>
-      <div class="skill-item">
-        <span class="skill-name">Graphic Design</span>
-        <div class="skill-bar">
-          <div class="skill-progress" data-width="88%"></div>
-        </div>
-      </div>
-      <div class="skill-item">
-        <span class="skill-name">Web Development</span>
-        <div class="skill-bar">
-          <div class="skill-progress" data-width="85%"></div>
-        </div>
-      </div>
-    </div>
-    
-    <div class="skills-category">
-      <h3>Software Proficiency</h3>
-      <div class="software-grid">
-        <div class="software-item">
-          <div class="software-icon">🎬</div>
-          <span>Adobe Premiere Pro</span>
-        </div>
-        <div class="software-item">
-          <div class="software-icon">🎬</div>
-          <span>Filmora 14 Pro</span>
-        </div>
-        <div class="software-item">
-          <div class="software-icon">🖼️</div>
-          <span>Adobe Photoshop</span>
-        </div>
-        <div class="software-item">
-          <div class="software-icon">💻</div>
-          <span>Visual Code</span>
-        </div>
-        <div class="software-item">
-          <div class="software-icon">📽</div>
-          <span>CapCut</span>
-        </div>
-        <div class="software-item">
-          <div class="software-icon">🎨</div>
-          <span>Canva</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- services section design -->
-<section class="services" id="services">
-  <h2 class="heading">My <Span>Services</Span></h2>
-    <div class="services-container">
-    <div class="services-box">
-      <i class='bx bx-code-alt' ></i>
-      <h3>Web Development</h3>
-      <div class="service-text-container">
-        <p class="service-text-short">"Clean, responsive, and user-friendly websites tailored to your needs."</p>
-        <p class="service-text-extended">I create customized websites that are not only visually appealing but also functional and responsive across all devices. Using the latest web technologies and best practices, I ensure your site reflects your brand, enhances user experience, and supports your business goals. Whether it's a personal portfolio, business site, or custom project, I'll build a web presence that truly works for you.</p>
-      </div>
-        <a href="#" class="btn read-more-btn" data-target="web-dev">Read More</a>
-    </div>
-
-      <div class="services-box">
-        <i class='bx bx-paint' ></i>
-        <h3>Graphic Design</h3>
-        <div class="service-text-container">
-          <p class="service-text-short">"Designs that capture attention and communicate your message."</p>
-          <p class="service-text-extended">Good design makes a lasting impression. I offer graphic design services that help you build a strong and professional visual identity. From social media graphics to brand visuals, I focus on creating designs that align with your vision, resonate with your audience, and help your brand stand out. Every project is tailored to your style and goals, ensuring a unique and consistent look across platforms.</p>
+    <section class="section story" id="story">
+      <div class="story-layout">
+        <div class="story-photo reveal">
+          <img src="images/jeff-tech-seated.png" alt="John Jefferson Manalo professional portrait with blue background" />
         </div>
-          <a href="#" class="btn read-more-btn" data-target="graphic-design">Read More</a>
-      </div>
-
-        <div class="services-box">
-          <i class='bx bx-movie'></i>
-          <h3>Video Editing</h3>
-          <div class="service-text-container">
-            <p class="service-text-short">Transforming raw clips into polished, engaging stories.</p>
-            <p class="service-text-extended">Great stories deserve great editing. I turn your raw footage into cinematic, professional, and engaging videos that connect with your audience. Whether it's content for social media, marketing, or personal projects, I make sure every cut, transition, and effect supports your message and enhances the final product. My goal is to bring your vision to life and deliver videos that truly stand out.</p>
-          </div>
-            <a href="#" class="btn read-more-btn" data-target="video-editing">Read More</a>
+        <div class="story-copy reveal delay-1">
+          <span class="eyebrow"><span></span> My Story</span>
+          <h2>From editing videos to building business systems.</h2>
+          <p>I started with video editing, learning how pacing, captions, music, and B-roll keep people watching. Then I started working with AI content, product ads, and VSL-style videos, where every second needs to support attention and conversion.</p>
+          <p>Today, I combine creative execution with technical systems: GoHighLevel, automation workflows, website/funnel design, content repurposing, and AI-assisted production.</p>
         </div>
-  </div>
-</section>
-
-<!--Portfolio Section design-->
-  <section class="portfolio" id="portfolio">
-    <h2 class="heading">My <span>Portfolio</span></h2>
-
-    <div class="portfolio-container">
-        <div class="portfolio-box">
-            <img src="images/portfolio1.jpg" alt="">
-            <div class="portfolio-layer">
-              <h4>My Works</h4>
-              <p>A collection of my completed projects showcasing creativity, skills, and professional results.</p>
-              <a href="https://www.dropbox.com/scl/fo/0k31nkpbyfros1q7hjl1x/AD-HnbDb7G2GePZWwaqZpzA?rlkey=vyl4l4ojvoluoxc2u4xr2m8et&st=dlmjaoqd&dl=0" target="_blank" rel="noopener"><i class='bx bx-link-external'></i></a>
+      </div>
+      <div class="journey-flow" data-flow-art aria-label="KENZAKI story scroll">
+        <section class="flow-section" data-flow-section aria-label="BSIT Foundation">
+          <div class="flow-inner flow-art-container">
+            <div class="flow-kicker">01 / Foundation</div>
+            <div class="flow-copy">
+              <h3>BSIT Graduate</h3>
+              <p>I started with a technical foundation: systems thinking, troubleshooting, web basics, and digital tools. That background helps me understand both creative work and the backend systems behind it.</p>
             </div>
-        </div>
-
-        <div class="portfolio-box">
-          <img src="images/portfolio2.jpg" alt="">
-          <div class="portfolio-layer">
-            <h4>My Certificates</h4>
-            <p>Showcasing my earned certifications as proof of skills, growth, and commitment to continuous learning.</p>
-            <a href="https://www.dropbox.com/scl/fo/teo39x0l0b1i9g0g5n2so/AHooXzBnkKXyjXPoZcJQRkw?rlkey=vmwi95gkurhvh11pqv3jprfmj&st=0bsf1334&dl=0" target="_blank" rel="noopener"><i class='bx bx-link-external'></i></a>
+            <div class="flow-badge"><i class='bx bx-code-alt'></i><span>Technical Core</span></div>
           </div>
-        </div>
+        </section>
+        <section class="flow-section" data-flow-section aria-label="Video Editing">
+          <div class="flow-inner flow-art-container">
+            <div class="flow-kicker">02 / Creative Execution</div>
+            <div class="flow-copy">
+              <h3>Video Editor</h3>
+              <p>I moved into short-form edits, VSL-style videos, B-roll storytelling, captions, sound design, pacing, and retention-focused content built for TikTok, Reels, Shorts, and ads.</p>
+            </div>
+            <div class="flow-badge"><i class='bx bx-movie-play'></i><span>Retention Editing</span></div>
+          </div>
+        </section>
+        <section class="flow-section" data-flow-section aria-label="AI Content Creation">
+          <div class="flow-inner flow-art-container">
+            <div class="flow-kicker">03 / AI Systems</div>
+            <div class="flow-copy">
+              <h3>AI Content Creator</h3>
+              <p>I expanded into AI-generated visuals, character workflows, prompt engineering, voiceovers, product creatives, and fast content production using tools like Kling, Higgsfield, Flux, Gemini, and ElevenLabs.</p>
+            </div>
+            <div class="flow-badge"><i class='bx bx-brain'></i><span>AI Workflow</span></div>
+          </div>
+        </section>
+        <section class="flow-section" data-flow-section aria-label="Automation Builder">
+          <div class="flow-inner flow-art-container">
+            <div class="flow-kicker">04 / Business Systems</div>
+            <div class="flow-copy">
+              <h3>Automation Builder</h3>
+              <p>Now I build digital systems: GoHighLevel setups, forms, calendars, funnels, lead capture, reporting trackers, and automation workflows that help businesses reduce manual work.</p>
+            </div>
+            <div class="flow-badge"><i class='bx bx-git-branch'></i><span>GHL + Automation</span></div>
+          </div>
+        </section>
+        <section class="flow-section" data-flow-section aria-label="CTO Mary Digi Solutions">
+          <div class="flow-inner flow-art-container final-flow">
+            <div class="flow-kicker">05 / Current Direction</div>
+            <div class="flow-copy">
+              <h3>CTO — Mary Digi Solutions</h3>
+              <p>Today, I combine video editing, AI content, websites, and automation as the technical lead for Mary Digi Solutions — helping turn ideas into systems, assets, and client-ready workflows.</p>
+            </div>
+            <div class="flow-badge"><i class='bx bx-rocket'></i><span>Digital Systems Creator</span></div>
+          </div>
+        </section>
+      </div>
+    </section>
 
-      <div class="portfolio-box">
-        <img src="images/portfolio3.jpg" alt="">
-        <div class="portfolio-layer">
-          <h4>Web Design</h4>
-          <p>Creative and responsive website designs that combine functionality with a modern, user-friendly look.</p>
-          <a href="https://www.dropbox.com/scl/fo/k3zajg1j5cdvp12mr9unz/ABYmenie1V1FP0QixSvS8Jk?rlkey=8exk7aibap8vqo1clp3scqpyd&st=m4058rhj&dl=0" target="_blank" rel="noopener"><i class='bx bx-link-external'></i></a>
-        </div>
+    <section class="section featured premium-featured" id="featured">
+      <div class="section-head reveal split-head">
+        <span class="eyebrow"><span></span> Featured Work</span>
+        <h2><span>FEATURED</span><span>WORK</span></h2>
+        <p>My strongest commercial-style projects — presented as case studies, not just links.</p>
       </div>
 
-    <div class="portfolio-box">
-      <img src="images/portfolio4.jpg" alt="">
-      <div class="portfolio-layer">
-        <h4>Data Entry</h4>
-        <p>Accurate and efficient data entry services to keep your records organized and reliable.</p>
-        <a href="#" class="data-entry-link"><i class='bx bx-link-external'></i></a>
+      <div class="pin-showcase featured-pin" data-pin-section>
+        <div class="pin-track featured-track">
+          <article class="case-card flagship clickable" data-modal="video" data-title="Chip Wilson — B-roll + Voiceover" data-src="https://www.dropbox.com/scl/fi/mqxpro9mvechrej7i2e4q/Chip-Wilson.mp4?rlkey=r58amrkfg0om07ekgsuz3810n&dl=0" data-type="external">
+            <div class="case-copy">
+              <span class="case-number">01 / B-roll + Voiceover</span>
+              <h3>Chip Wilson</h3>
+              <p>Business-documentary style edit using voiceover, B-roll, pacing, and clean storytelling to keep viewers engaged.</p>
+              <ul><li>Storytelling pacing</li><li>B-roll selection</li><li>Voiceover-driven structure</li></ul>
+              <b>Open Preview <i class='bx bx-right-arrow-alt'></i></b>
+            </div>
+            <div class="case-media"><img src="images/project-vsl.jpg" alt="Chip Wilson project thumbnail"><span class="big-play"><i class='bx bx-play'></i></span></div>
+          </article>
+
+          <article class="case-card clickable" data-modal="video" data-title="LONA Bag Product Ad" data-src="https://www.dropbox.com/scl/fi/l50cjy2uj5xdzf8lh6phw/LONA-BAG-1.mp4?rlkey=8z7gyn10xji5cm2foiwi71ozg&dl=0" data-type="external">
+            <div class="case-copy">
+              <span class="case-number">02 / Product Ad</span>
+              <h3>LONA Bag</h3>
+              <p>AI-assisted e-commerce product creative designed to present the product clearly and feel ad-ready.</p>
+              <ul><li>Product focus</li><li>AI visual workflow</li><li>Ad-ready finish</li></ul>
+              <b>Open Preview <i class='bx bx-right-arrow-alt'></i></b>
+            </div>
+            <div class="case-media"><img src="images/project-ai-video.jpg" alt="LONA Bag ad thumbnail"><span class="big-play"><i class='bx bx-play'></i></span></div>
+          </article>
+
+          <article class="case-card clickable" data-modal="youtube" data-title="CIC Pro Hearing Aid" data-src="R1LLIn18NC8">
+            <div class="case-copy">
+              <span class="case-number">03 / Healthcare Product</span>
+              <h3>CIC Pro / Hearing Aids</h3>
+              <p>Clean direct-response product video focused on benefits, trust, clarity, and conversion-focused messaging.</p>
+              <ul><li>Problem-solution structure</li><li>Benefit highlights</li><li>Healthcare niche</li></ul>
+              <b>Watch in Frame <i class='bx bx-right-arrow-alt'></i></b>
+            </div>
+            <div class="case-media"><img src="https://img.youtube.com/vi/R1LLIn18NC8/hqdefault.jpg" alt="CIC Pro video thumbnail"><span class="big-play"><i class='bx bx-play'></i></span></div>
+          </article>
+
+          <article class="case-card clickable" data-modal="youtube" data-title="German Client VSL" data-src="aTporYmDW9U">
+            <div class="case-copy">
+              <span class="case-number">04 / Commercial VSL</span>
+              <h3>German Client VSL</h3>
+              <p>Short-form sales video with retention-focused pacing, product framing, and conversion-oriented visual flow.</p>
+              <ul><li>VSL-style editing</li><li>Ad structure</li><li>German market client</li></ul>
+              <b>Watch in Frame <i class='bx bx-right-arrow-alt'></i></b>
+            </div>
+            <div class="case-media"><img src="https://img.youtube.com/vi/aTporYmDW9U/hqdefault.jpg" alt="German VSL thumbnail"><span class="big-play"><i class='bx bx-play'></i></span></div>
+          </article>
+        </div>
+        <div class="scroll-hint"><span></span> Keep scrolling to move through the featured projects</div>
       </div>
-    </div>
+    </section>
 
-  <div class="portfolio-box">
-    <img src="images/portfolio5.jpg" alt="">
-    <div class="portfolio-layer">
-      <h4>Graphic Design</h4>
-      <p>Creative visuals and designs crafted to enhance brand identity and communicate ideas effectively.</p>
-      <a href="https://www.dropbox.com/scl/fo/him8j9u4j0vaqz25kcsdg/AAzEPdoI1I5zLnpQQn3zRdU?rlkey=a66tapptqwlrdxzy3ofe70ks7&st=hoeq6neu&dl=0" target="_blank" rel="noopener"><i class='bx bx-link-external'></i></a>
-    </div>
-  </div>
+    <section class="section systems" id="systems">
+      <div class="section-head reveal">
+        <span class="eyebrow"><span></span> Systems & Case Studies</span>
+        <h2>Not just videos. Systems that support the business.</h2>
+      </div>
+      <div class="infographic-grid">
+        <div class="info-card reveal clickable" data-modal="image" data-title="Founder Daily Report Automation" data-src="images/founder-tracker-workflow.png"><img src="images/founder-tracker-workflow.png" alt="Founder Daily Report Automation screenshot"><h3>Founder Daily Report Automation</h3><p>GoHighLevel workflow that sends founder reports to Google Sheets and updates opportunity status.</p><b>View Screenshot →</b></div>
+        <div class="info-card reveal"><img src="images/project-ghl.jpg" alt="GHL funnel map infographic"><h3>GHL Funnel Map</h3><p>Lead capture, forms, booking, pipelines, CRM stages, tags, and automation flow.</p></div>
+        <div class="info-card reveal"><img src="images/project-ai-video.jpg" alt="AI video engine infographic"><h3>AI Video Engine</h3><p>Idea → Prompt → Generation → Edit → Publish system for AI content production.</p></div>
+        <div class="info-card reveal"><img src="images/project-vsl.jpg" alt="VSL framework"><h3>VSL & Ads Framework</h3><p>Hook, pain point, proof, benefit stack, objection handling, and CTA support.</p></div>
+        <div class="info-card reveal"><img src="images/project-filmora.jpg" alt="Editing workflow"><h3>Editing Workflow</h3><p>Filmora, CapCut, Premiere, DaVinci, captions, B-roll, sound design, and clean pacing.</p></div>
+        <div class="info-card reveal"><img src="images/project-social.jpg" alt="Content repurposing"><h3>Content Machine</h3><p>Long-form to clips, reels, shorts, captions, thumbnails, and multi-platform distribution.</p></div>
+      </div>
+    </section>
 
-  <div class="portfolio-box">
-  <img src="images/portfolio6.jpg" alt="">
-    <div class="portfolio-layer">
-    <h4>Social Media Management</h4>
-    <p>Managing and growing social media accounts with engaging content and effective strategies to boost online presence.</p>
-    <a href="https://www.dropbox.com/scl/fo/2nf6qx65xwtkmioiy948r/ANBkmR__BBUACfRFW0-hlBg?rlkey=uar63gpkknnz7salu5fa3ah2k&st=bafsslsd&dl=0" target="_blank" rel="noopener"><i class='bx bx-link-external'></i></a>
-    </div> 
-  </div>
-  </div>
-</section>
+    <section class="section vault premium-vault" id="vault">
+      <div class="section-head reveal split-head">
+        <span class="eyebrow"><span></span> Project Vault</span>
+        <h2><span>REELS</span><span>VAULT</span></h2>
+        <p>Netflix-style rows with real thumbnails. Scroll down inside this section and the gallery moves horizontally first.</p>
+      </div>
 
-  <!-- Testimonials Section -->
-  <section class="testimonials" id="testimonials">
-    <h2 class="heading">Client <span>Testimonials</span></h2>
-    <div class="testimonials-container">
-      <div class="testimonial-item">
-        <div class="testimonial-content">
-          <div class="stars">
-            <i class='bx bxs-star'></i>
-            <i class='bx bxs-star'></i>
-            <i class='bx bxs-star'></i>
-            <i class='bx bxs-star'></i>
-            <i class='bx bxs-star'></i>
+      <div class="pin-showcase vault-pin" data-pin-section>
+        <div class="vault-track pin-track">
+          <div class="vault-column">
+            <div class="vault-row-label"><span>01</span><strong>Featured Samples</strong></div>
+            <div class="vault-row">
+              <article class="vault-card video-card clickable" data-modal="youtube" data-title="Motion Graphics Sample" data-src="QcLnIjk2Dn8">
+              <div class="video-thumb"><img src="https://img.youtube.com/vi/QcLnIjk2Dn8/hqdefault.jpg" alt="Dynamic Motion Graphics thumbnail" loading="lazy"><span class="play-badge"><i class='bx bx-play'></i></span><em>Motion Graphics</em></div>
+              <div class="video-content"><span>Motion Graphics</span><h3>Dynamic Motion Graphics</h3><p>Professional motion graphics with smooth animation and modern design elements.</p><b>Watch in Frame <i class='bx bx-right-arrow-alt'></i></b></div>
+            </article>
+              <article class="vault-card video-card clickable" data-modal="youtube" data-title="GTA V Character Showcase" data-src="pA5lpp6oPe4">
+              <div class="video-thumb"><img src="https://img.youtube.com/vi/pA5lpp6oPe4/hqdefault.jpg" alt="GTA V Character Showcase thumbnail" loading="lazy"><span class="play-badge"><i class='bx bx-play'></i></span><em>Gaming Content</em></div>
+              <div class="video-content"><span>Gaming Content</span><h3>GTA V Character Showcase</h3><p>Creative character animation with transitions and cinematic gaming content style.</p><b>Watch in Frame <i class='bx bx-right-arrow-alt'></i></b></div>
+            </article>
+              <article class="vault-card video-card clickable" data-modal="youtube" data-title="Game Highlight Reel" data-src="AXy5y6aLhsw">
+              <div class="video-thumb"><img src="https://img.youtube.com/vi/AXy5y6aLhsw/hqdefault.jpg" alt="Game Highlight Reel thumbnail" loading="lazy"><span class="play-badge"><i class='bx bx-play'></i></span><em>Gaming Highlights</em></div>
+              <div class="video-content"><span>Gaming Highlights</span><h3>Game Highlight Reel</h3><p>Action-packed gaming highlights with dynamic editing and engaging visual effects.</p><b>Watch in Frame <i class='bx bx-right-arrow-alt'></i></b></div>
+            </article>
+              <article class="vault-card video-card clickable" data-modal="youtube" data-title="German Client VSL" data-src="aTporYmDW9U">
+              <div class="video-thumb"><img src="https://img.youtube.com/vi/aTporYmDW9U/hqdefault.jpg" alt="German Client VSL thumbnail" loading="lazy"><span class="play-badge"><i class='bx bx-play'></i></span><em>Commercial VSL</em></div>
+              <div class="video-content"><span>Commercial VSL</span><h3>German Client VSL</h3><p>Short-form product sales video with conversion-focused editing and visual pacing.</p><b>Watch in Frame <i class='bx bx-right-arrow-alt'></i></b></div>
+            </article>
+            </div>
           </div>
-          <p>"Jefferson delivered exceptional video editing work for our German market campaign. His attention to detail and ability to understand our brand vision was outstanding. The final VSL exceeded our expectations and significantly improved our conversion rates."</p>
-          <div class="client-info">
-            <div class="client-avatar">🇩🇪</div>
-            <div class="client-details">
-              <h4>Klaus Weber</h4>
-              <span>Marketing Director, Germany</span>
+          <div class="vault-column">
+            <div class="vault-row-label"><span>02</span><strong>Client / Product Work</strong></div>
+            <div class="vault-row">
+              <article class="vault-card video-card clickable" data-modal="youtube" data-title="Tranquil Japan" data-src="8WpufLL-5Wo">
+              <div class="video-thumb"><img src="https://img.youtube.com/vi/8WpufLL-5Wo/hqdefault.jpg" alt="Tranquil Japan 4K thumbnail" loading="lazy"><span class="play-badge"><i class='bx bx-play'></i></span><em>Travel</em></div>
+              <div class="video-content"><span>Travel</span><h3>Tranquil Japan 4K</h3><p>Relaxing scenery video with cinematic flow and calm visual pacing.</p><b>Watch in Frame <i class='bx bx-right-arrow-alt'></i></b></div>
+            </article>
+              <article class="vault-card video-card clickable" data-modal="youtube" data-title="Beautiful Philippines" data-src="lknvpxGdW_0">
+              <div class="video-thumb"><img src="https://img.youtube.com/vi/lknvpxGdW_0/hqdefault.jpg" alt="Beautiful Philippines thumbnail" loading="lazy"><span class="play-badge"><i class='bx bx-play'></i></span><em>Travel</em></div>
+              <div class="video-content"><span>Travel</span><h3>Beautiful Philippines</h3><p>Landscape cinematography and travel-focused visual storytelling.</p><b>Watch in Frame <i class='bx bx-right-arrow-alt'></i></b></div>
+            </article>
+              <article class="vault-card video-card clickable" data-modal="youtube" data-title="AI-Powered VSL" data-src="W-hJTS_-Ztc">
+              <div class="video-thumb"><img src="https://img.youtube.com/vi/W-hJTS_-Ztc/hqdefault.jpg" alt="AI-Powered VSL thumbnail" loading="lazy"><span class="play-badge"><i class='bx bx-play'></i></span><em>AI Content</em></div>
+              <div class="video-content"><span>AI Content</span><h3>AI-Powered VSL</h3><p>AI-generated video sales letter for modern ad and content workflows.</p><b>Watch in Frame <i class='bx bx-right-arrow-alt'></i></b></div>
+            </article>
+              <article class="vault-card video-card clickable" data-modal="youtube" data-title="CIC Pro Hearing Aid" data-src="R1LLIn18NC8">
+              <div class="video-thumb"><img src="https://img.youtube.com/vi/R1LLIn18NC8/hqdefault.jpg" alt="CIC Pro / Hearing Aids thumbnail" loading="lazy"><span class="play-badge"><i class='bx bx-play'></i></span><em>Healthcare Product</em></div>
+              <div class="video-content"><span>Healthcare Product</span><h3>CIC Pro / Hearing Aids</h3><p>Clean product video focused on benefits, trust, and clarity.</p><b>Watch in Frame <i class='bx bx-right-arrow-alt'></i></b></div>
+            </article>
+            </div>
+          </div>
+          <div class="vault-column">
+            <div class="vault-row-label"><span>03</span><strong>AI + Brand Content</strong></div>
+            <div class="vault-row">
+              <article class="vault-card video-card clickable" data-modal="youtube" data-title="Fußwohl Leather Shoes" data-src="WfJOJ65yrT8">
+              <div class="video-thumb"><img src="https://img.youtube.com/vi/WfJOJ65yrT8/hqdefault.jpg" alt="Fußwohl® Leather Shoes thumbnail" loading="lazy"><span class="play-badge"><i class='bx bx-play'></i></span><em>Product Ad</em></div>
+              <div class="video-content"><span>Product Ad</span><h3>Fußwohl® Leather Shoes</h3><p>Product showcase for premium footwear with polished visual presentation.</p><b>Watch in Frame <i class='bx bx-right-arrow-alt'></i></b></div>
+            </article>
+              <article class="vault-card video-card clickable" data-modal="youtube" data-title="Mary Digi Solutions Video" data-src="Lv1jWaATdIY">
+              <div class="video-thumb"><img src="https://img.youtube.com/vi/Lv1jWaATdIY/hqdefault.jpg" alt="Mary Digi Solutions thumbnail" loading="lazy"><span class="play-badge"><i class='bx bx-play'></i></span><em>Agency Brand</em></div>
+              <div class="video-content"><span>Agency Brand</span><h3>Mary Digi Solutions</h3><p>Brand video for Mary Digi Solutions focused on digital services and automation.</p><b>Watch in Frame <i class='bx bx-right-arrow-alt'></i></b></div>
+            </article>
+              <article class="vault-card video-card clickable" data-modal="youtube" data-title="Victoria AI Model Transition" data-src="5h0JCng6r0s">
+              <div class="video-thumb"><img src="https://img.youtube.com/vi/5h0JCng6r0s/hqdefault.jpg" alt="Victoria AI Transition thumbnail" loading="lazy"><span class="play-badge"><i class='bx bx-play'></i></span><em>AI Short</em></div>
+              <div class="video-content"><span>AI Short</span><h3>Victoria AI Transition</h3><p>AI model transition content with strong visual transformation style.</p><b>Watch in Frame <i class='bx bx-right-arrow-alt'></i></b></div>
+            </article>
+              <article class="vault-card video-card clickable" data-modal="youtube" data-title="Willow AI Cosplay" data-src="IDkR2tnQ6Ds">
+              <div class="video-thumb"><img src="https://img.youtube.com/vi/IDkR2tnQ6Ds/hqdefault.jpg" alt="Willow AI Cosplay thumbnail" loading="lazy"><span class="play-badge"><i class='bx bx-play'></i></span><em>AI Cosplay</em></div>
+              <div class="video-content"><span>AI Cosplay</span><h3>Willow AI Cosplay</h3><p>AI cosplay short-form content inspired by anime and social trends.</p><b>Watch in Frame <i class='bx bx-right-arrow-alt'></i></b></div>
+            </article>
             </div>
           </div>
         </div>
+        <div class="scroll-hint"><span></span> Keep scrolling to explore the video vault</div>
       </div>
-      
-      <div class="testimonial-item">
-        <div class="testimonial-content">
-          <div class="stars">
-            <i class='bx bxs-star'></i>
-            <i class='bx bxs-star'></i>
-            <i class='bx bxs-star'></i>
-            <i class='bx bxs-star'></i>
-            <i class='bx bxs-star'></i>
-          </div>
-          <p>"Working with Jefferson has been a game-changer for our content creation. His motion graphics and video editing skills are top-notch, and he always delivers on time. Professional, creative, and easy to work with!"</p>
-          <div class="client-info">
-            <div class="client-avatar">🎬</div>
-            <div class="client-details">
-              <h4>Sarah Johnson</h4>
-              <span>Content Creator, USA</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="testimonial-item">
-        <div class="testimonial-content">
-          <div class="stars">
-            <i class='bx bxs-star'></i>
-            <i class='bx bxs-star'></i>
-            <i class='bx bxs-star'></i>
-            <i class='bx bxs-star'></i>
-            <i class='bx bxs-star'></i>
-          </div>
-          <p>"Jefferson's graphic design work helped elevate our brand identity. He took our vision and created stunning visuals that perfectly captured our message. Highly recommend his services!"</p>
-          <div class="client-info">
-            <div class="client-avatar">🎨</div>
-            <div class="client-details">
-              <h4>Maria Santos</h4>
-              <span>Business Owner, Philippines</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Samples Section -->
-  <section class="samples" id="samples">
-    <h2 class="heading">Video <span>Samples</span></h2>
-    <p class="samples-intro">Explore my creative work across different video formats and styles</p>
-    <div class="samples-stats">
-      <div class="stat-item">
-        <span class="stat-number" data-target="9">0</span>
-        <span class="stat-label">Video Samples</span>
+    <section class="section services" id="services">
+      <div class="section-head reveal split-head mini-split">
+        <span class="eyebrow"><span></span> Services</span>
+        <h2><span>WHAT I</span><span>BUILD</span></h2>
+        <p>Scroll through the systems I can help create — from videos and AI content to GoHighLevel funnels and automation workflows.</p>
       </div>
-      <div class="stat-item">
-        <span class="stat-number" data-target="7">0</span>
-        <span class="stat-label">Categories</span>
-      </div>
-        <div class="stat-item">
-          <span class="stat-number" data-target="100">0</span>
-          <span class="stat-label">Professional</span>
+      <div class="pin-showcase service-pin" data-pin-section>
+        <div class="service-rail pin-track" id="serviceRail">
+          <article class="clickable service-card" data-service="Video Editing"><span>🎬</span><h3>Video Editing</h3><p>Short-form videos, B-roll, talking-head clips, podcast cuts, subtitles, hooks, and retention-focused edits.</p><b>High-retention edits <i class='bx bx-right-arrow-alt'></i></b></article>
+          <article class="clickable service-card" data-service="AI Content"><span>🤖</span><h3>AI Content Creation</h3><p>AI-generated videos, avatars, image prompts, voiceovers, creative variations, and visual storytelling.</p><b>AI creative workflow <i class='bx bx-right-arrow-alt'></i></b></article>
+          <article class="clickable service-card" data-service="GHL"><span>⚙️</span><h3>GoHighLevel Setup</h3><p>Landing pages, forms, booking pages, pipelines, opportunities, tags, and workflow automations.</p><b>Funnels + CRM <i class='bx bx-right-arrow-alt'></i></b></article>
+          <article class="clickable service-card" data-service="Automation"><span>🧠</span><h3>AI Automation</h3><p>Workflow planning, n8n/Make logic, trackers, SOPs, and AI-assisted operations.</p><b>Systems thinking <i class='bx bx-right-arrow-alt'></i></b></article>
+          <article class="clickable service-card" data-service="Web"><span>🌐</span><h3>Website & Funnel Design</h3><p>Modern websites, lead capture pages, brand sections, CTA structure, and responsive layouts.</p><b>Conversion layout <i class='bx bx-right-arrow-alt'></i></b></article>
+          <article class="clickable service-card" data-service="Content"><span>📈</span><h3>Content Systems</h3><p>Social media repurposing, content calendars, caption support, publishing flow, and performance iteration.</p><b>Content operations <i class='bx bx-right-arrow-alt'></i></b></article>
         </div>
-    </div>
-    
-    <div class="samples-container">
-      <!-- Motion Graphics -->
-      <div class="sample-item" data-category="motion-graphics">
-        <div class="sample-video">
-          <iframe src="https://www.youtube.com/embed/QcLnIjk2Dn8?autoplay=0&mute=1&controls=1&modestbranding=1&rel=0&enablejsapi=1" 
-                  frameborder="0" 
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                  allowfullscreen
-                  loading="lazy"
-                  referrerpolicy="strict-origin-when-cross-origin"
-                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          </iframe>
-          <div class="video-fallback">
-            <h4>Motion Graphics Video</h4>
-            <p>Click to watch this video on YouTube</p>
-            <a href="https://youtube.com/shorts/QcLnIjk2Dn8" target="_blank" rel="noopener" class="btn">Watch on YouTube</a>
+        <div class="scroll-hint"><span></span> Keep scrolling to move through services</div>
+      </div>
+    </section>
+
+    <section class="section credentials" id="credentials">
+      <div class="section-head reveal">
+        <span class="eyebrow"><span></span> Credentials Vault</span>
+        <h2>Certificates, profiles, and proof links in premium cards.</h2>
+      </div>
+      <div class="credential-grid">
+        <article class="credential-card clickable" data-modal="link" data-title="Portfolio Vault" data-url="https://www.dropbox.com/scl/fo/0k31nkpbyfros1q7hjl1x/AD-HnbDb7G2GePZWwaqZpzA?rlkey=vyl4l4ojvoluoxc2u4xr2m8et&st=2yst52tl&dl=0"><i class='bx bxl-dropbox'></i><h3>Work Portfolio Vault</h3><p>Complete Dropbox folder for sample works and client projects.</p><b>Open Vault →</b></article>
+        <article class="credential-card clickable" data-modal="link" data-title="Certificates Vault" data-url="https://www.dropbox.com/scl/fo/teo39x0l0b1i9g0g5n2so/AHooXzBnkKXyjXPoZcJQRkw?rlkey=vmwi95gkurhvh11pqv3jprfmj&st=0bsf1334&dl=0"><i class='bx bx-certification'></i><h3>Certificates Vault</h3><p>Canva, Data Entry, Graphics Design, Lead Generation, Facebook Ads, and SMM certificates.</p><b>Preview →</b></article>
+        <article class="credential-card clickable" data-modal="link" data-title="Web Design Samples" data-url="https://www.dropbox.com/scl/fo/k3zajg1j5cdvp12mr9unz/ABYmenie1V1FP0QixSvS8Jk?rlkey=8exk7aibap8vqo1clp3scqpyd&st=m4058rhj&dl=0"><i class='bx bx-code-alt'></i><h3>Web Design Samples</h3><p>Website layouts, creative pages, and design/development samples.</p><b>Open Samples →</b></article>
+        <article class="credential-card clickable" data-modal="link" data-title="Graphic Design Samples" data-url="https://www.dropbox.com/scl/fo/him8j9u4j0vaqz25kcsdg/AAzEPdoI1I5zLnpQQn3zRdU?rlkey=a66tapptqwlrdxzy3ofe70ks7&st=hoeq6neu&dl=0"><i class='bx bx-paint'></i><h3>Graphic Design Samples</h3><p>Brand visuals, social graphics, and design-related work.</p><b>Open Samples →</b></article>
+        <article class="credential-card clickable" data-modal="link" data-title="Social Media Management" data-url="https://www.dropbox.com/scl/fo/2nf6qx65xwtkmioiy948r/ANBkmR__BBUACfRFW0-hlBg?rlkey=uar63gpkknnz7salu5fa3ah2k&st=bafsslsd&dl=0"><i class='bx bx-share-alt'></i><h3>SMM Samples</h3><p>Social media management, post samples, and content support assets.</p><b>Open Folder →</b></article>
+        <article class="credential-card clickable" data-modal="link" data-title="Resume PDF" data-url="resume.pdf"><i class='bx bx-file'></i><h3>Resume / CV</h3><p>Updated professional CV for video editing, AI content, VA, and automation roles.</p><b>View Resume →</b></article>
+      </div>
+    </section>
+
+
+    <section class="section testimonials" id="testimonials">
+      <div class="section-head reveal">
+        <span class="eyebrow"><span></span> Client Feedback</span>
+        <h2>Proof from clients and collaborators.</h2>
+        <p>A more premium testimonial stack restored from the original portfolio, redesigned for the KENZAKI experience.</p>
+      </div>
+      <div class="testimonial-stage reveal" id="testimonialStage">
+        <button class="testimonial-nav prev" type="button" aria-label="Previous testimonial"><i class='bx bx-chevron-left'></i></button>
+        <div class="testimonial-card active" data-index="0">
+          <div class="quote-mark">“</div>
+          <div class="stars"><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i></div>
+          <p>Jefferson delivered exceptional video editing work for our German market campaign. His attention to detail and ability to understand our brand vision was outstanding.</p>
+          <div class="client-row"><div class="client-avatar">🇩🇪</div><div><h3>Klaus Weber</h3><span>Marketing Director, Germany</span></div></div>
+        </div>
+        <div class="testimonial-card next" data-index="1">
+          <div class="quote-mark">“</div>
+          <div class="stars"><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i></div>
+          <p>Working with Jefferson has been a game-changer for our content creation. His motion graphics and video editing skills are top-notch, and he always delivers on time.</p>
+          <div class="client-row"><div class="client-avatar">🎬</div><div><h3>Sarah Johnson</h3><span>Content Creator, USA</span></div></div>
+        </div>
+        <div class="testimonial-card prev-card" data-index="2">
+          <div class="quote-mark">“</div>
+          <div class="stars"><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i><i class='bx bxs-star'></i></div>
+          <p>Jefferson's graphic design work helped elevate our brand identity. He took our vision and created stunning visuals that perfectly captured our message.</p>
+          <div class="client-row"><div class="client-avatar">🎨</div><div><h3>Maria Santos</h3><span>Business Owner, Philippines</span></div></div>
+        </div>
+        <button class="testimonial-nav next-btn" type="button" aria-label="Next testimonial"><i class='bx bx-chevron-right'></i></button>
+      </div>
+    </section>
+
+    <section class="section contact contact-premium" id="contact">
+      <div class="contact-shell reveal">
+        <div class="contact-copy">
+          <span class="eyebrow"><span></span> Contact Hub</span>
+          <h2><span>LET'S</span><span>BUILD.</span></h2>
+          <p>Need a video editor, AI content creator, GoHighLevel builder, or automation support? Choose the channel that fits your workflow and message me directly.</p>
+          <div class="availability-chip"><i class='bx bxs-circle'></i> Available for remote work, part-time, and project-based roles</div>
+          <div class="quick-cta">
+            <a class="btn primary magnetic" href="mailto:jjmanalo.va@gmail.com">Email Me <i class='bx bx-envelope'></i></a>
+            <a class="btn ghost magnetic" href="resume.pdf" target="_blank">View Resume <i class='bx bx-file'></i></a>
           </div>
         </div>
-        <div class="sample-content">
-          <div class="sample-category">Motion Graphics</div>
-          <h3>Dynamic Motion Graphics</h3>
-          <p>Professional motion graphics with smooth animations and modern design elements. Perfect for brand presentations and social media content.</p>
-        </div>
-      </div>
-
-      <!-- GTA V Character Animation -->
-      <div class="sample-item" data-category="gaming">
-        <div class="sample-video">
-          <iframe src="https://www.youtube.com/embed/pA5lpp6oPe4?autoplay=0&mute=1&controls=1&modestbranding=1&rel=0&enablejsapi=1" 
-                  frameborder="0" 
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                  allowfullscreen
-                  loading="lazy"
-                  referrerpolicy="strict-origin-when-cross-origin"
-                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          </iframe>
-          <div class="video-fallback">
-            <h4>GTA V Character Animation</h4>
-            <p>Click to watch this video on YouTube</p>
-            <a href="https://youtube.com/shorts/pA5lpp6oPe4" target="_blank" rel="noopener" class="btn">Watch on YouTube</a>
+        <div class="contact-orbit">
+          <img src="images/kenzaki-icon.svg" alt="KENZAKI icon" class="contact-mark" />
+          <div class="contact-links rich contact-hub">
+            <a class="clickable contact-card primary-contact" href="mailto:jjmanalo.va@gmail.com"><i class='bx bxl-gmail'></i><span>Email</span><strong>jjmanalo.va@gmail.com</strong><em>Send message →</em></a>
+            <a class="clickable contact-card" href="https://wa.me/639276455260" target="_blank"><i class='bx bxl-whatsapp'></i><span>WhatsApp</span><strong>0927 645 5260</strong><em>Chat now →</em></a>
+            <a class="clickable contact-card" href="https://discord.com/" target="_blank"><i class='bx bxl-discord-alt'></i><span>Discord</span><strong>kenzaki5885</strong><em>Connect →</em></a>
+            <a class="clickable contact-card" href="https://www.linkedin.com/in/john-jefferson-manalo-117322380/" target="_blank"><i class='bx bxl-linkedin'></i><span>LinkedIn</span><strong>Professional Profile</strong><em>View profile →</em></a>
+            <a class="clickable contact-card" href="https://www.onlinejobs.ph/jobseekers/info/4491696" target="_blank"><i class='bx bx-briefcase'></i><span>OnlineJobs.ph</span><strong>OLJ Profile</strong><em>Open profile →</em></a>
+            <a class="clickable contact-card" href="https://www.upwork.com/freelancers/~01b859ac91bdf7ade3?mp_source=share" target="_blank"><i class='bx bxl-upwork'></i><span>Upwork</span><strong>Freelancer Profile</strong><em>Open Upwork →</em></a>
+            <a class="clickable contact-card" href="resume.pdf" target="_blank"><i class='bx bx-download'></i><span>Resume</span><strong>Updated CV</strong><em>Download →</em></a>
+            <a class="clickable contact-card" href="https://www.dropbox.com/scl/fo/teo39x0l0b1i9g0g5n2so/AHooXzBnkKXyjXPoZcJQRkw?rlkey=vmwi95gkurhvh11pqv3jprfmj&st=0bsf1334&dl=0" target="_blank"><i class='bx bx-medal'></i><span>Certificates</span><strong>Credentials Vault</strong><em>View proof →</em></a>
           </div>
         </div>
-        <div class="sample-content">
-          <div class="sample-category">Gaming Content</div>
-          <h3>GTA V Character Showcase</h3>
-          <p>Creative character animation with smooth transitions from dancing to stylish walk sequences. Gaming content with cinematic flair.</p>
-        </div>
       </div>
+    </section>
+  </main>
 
-      <!-- GTA V Highlights -->
-      <div class="sample-item" data-category="gaming">
-        <div class="sample-video">
-          <iframe src="https://www.youtube.com/embed/AXy5y6aLhsw?autoplay=0&mute=1&controls=1&modestbranding=1&rel=0&enablejsapi=1" 
-                  frameborder="0" 
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                  allowfullscreen
-                  loading="lazy"
-                  referrerpolicy="strict-origin-when-cross-origin"
-                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          </iframe>
-          <div class="video-fallback">
-            <h4>GTA V Game Highlights</h4>
-            <p>Click to watch this video on YouTube</p>
-            <a href="https://youtu.be/AXy5y6aLhsw" target="_blank" rel="noopener" class="btn">Watch on YouTube</a>
-          </div>
-        </div>
-        <div class="sample-content">
-          <div class="sample-category">Gaming Highlights</div>
-          <h3>Game Highlight Reel</h3>
-          <p>Action-packed gaming highlights with dynamic editing and engaging visual effects. Perfect for gaming channels and social media.</p>
-        </div>
-      </div>
+  <footer>
+    <div><strong>KENZAKI</strong><span>Video Editing • AI Content • GHL Automation • Digital Systems</span></div>
+    <p>© 2026 John Jefferson Manalo. Built to tell the story of content, automation, and digital execution.</p>
+  </footer>
 
-      <!-- German Client VSL -->
-      <div class="sample-item" data-category="commercial">
-        <div class="sample-video">
-          <iframe src="https://www.youtube.com/embed/aTporYmDW9U?autoplay=0&mute=1&controls=1&modestbranding=1&rel=0&enablejsapi=1" 
-                  frameborder="0" 
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                  allowfullscreen
-                  loading="lazy"
-                  referrerpolicy="strict-origin-when-cross-origin"
-                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          </iframe>
-          <div class="video-fallback">
-            <h4>German Client VSL</h4>
-            <p>Click to watch this video on YouTube</p>
-            <a href="https://youtube.com/shorts/aTporYmDW9U" target="_blank" rel="noopener" class="btn">Watch on YouTube</a>
-          </div>
-        </div>
-        <div class="sample-content">
-          <div class="sample-category">Commercial VSL</div>
-          <h3>German Client VSL</h3>
-          <p>Professional Video Sales Letter for German market. Compelling storytelling with persuasive visual elements and clear call-to-action.</p>
-        </div>
-      </div>
-
-      <!-- Japan Scenery -->
-      <div class="sample-item" data-category="travel">
-        <div class="sample-video">
-          <iframe src="https://www.youtube.com/embed/8WpufLL-5Wo?autoplay=0&mute=1&controls=1&modestbranding=1&rel=0&enablejsapi=1" 
-                  frameborder="0" 
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                  allowfullscreen
-                  loading="lazy"
-                  referrerpolicy="strict-origin-when-cross-origin"
-                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          </iframe>
-          <div class="video-fallback">
-            <h4>Tranquil Japan – Serene 4K Escape</h4>
-            <p>Click to watch this video on YouTube</p>
-            <a href="https://youtu.be/8WpufLL-5Wo" target="_blank" rel="noopener" class="btn">Watch on YouTube</a>
-          </div>
-        </div>
-        <div class="sample-content">
-          <div class="sample-category">Scenic & Relaxing</div>
-          <h3>Tranquil Japan – Serene 4K 60 FPS Escape Across Japan</h3>
-          <p>Beautiful scenery in Japan with relaxing sounds. A serene 4K 60 FPS escape showcasing the tranquil beauty and peaceful landscapes across Japan.</p>
-        </div>
-      </div>
-
-      <!-- Philippines Travel -->
-      <div class="sample-item" data-category="travel">
-        <div class="sample-video">
-          <iframe src="https://www.youtube.com/embed/lknvpxGdW_0?autoplay=0&mute=1&controls=1&modestbranding=1&rel=0&enablejsapi=1" 
-                  frameborder="0" 
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                  allowfullscreen
-                  loading="lazy"
-                  referrerpolicy="strict-origin-when-cross-origin"
-                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          </iframe>
-          <div class="video-fallback">
-            <h4>Beautiful Philippines Travel</h4>
-            <p>Click to watch this video on YouTube</p>
-            <a href="https://www.youtube.com/watch?v=lknvpxGdW_0" target="_blank" rel="noopener" class="btn">Watch on YouTube</a>
-          </div>
-        </div>
-        <div class="sample-content">
-          <div class="sample-category">Travel & Landscape</div>
-          <h3>Beautiful Philippines</h3>
-          <p>Stunning landscape cinematography showcasing the natural beauty of the Philippines. Professional travel videography with cinematic quality.</p>
-        </div>
-      </div>
-
-      <!-- AI Generated VSL -->
-      <div class="sample-item" data-category="ai-content">
-        <div class="sample-video">
-          <iframe src="https://www.youtube.com/embed/W-hJTS_-Ztc?autoplay=0&mute=1&controls=1&modestbranding=1&rel=0&enablejsapi=1" 
-                  frameborder="0" 
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                  allowfullscreen
-                  loading="lazy"
-                  referrerpolicy="strict-origin-when-cross-origin"
-                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          </iframe>
-          <div class="video-fallback">
-            <h4>AI-Generated VSL Video</h4>
-            <p>Click to watch this video on YouTube</p>
-            <a href="https://youtube.com/shorts/W-hJTS_-Ztc" target="_blank" rel="noopener" class="btn">Watch on YouTube</a>
-          </div>
-        </div>
-        <div class="sample-content">
-          <div class="sample-category">AI-Generated Content</div>
-          <h3>AI-Powered VSL</h3>
-          <p>Innovative AI-generated Video Sales Letter combining cutting-edge technology with compelling storytelling for modern marketing needs.</p>
-        </div>
-      </div>
-
-      <!-- Hearing Aid Product -->
-      <div class="sample-item" data-category="commercial">
-        <div class="sample-video">
-          <iframe src="https://www.youtube.com/embed/R1LLIn18NC8?autoplay=0&mute=1&controls=1&modestbranding=1&rel=0&enablejsapi=1" 
-                  frameborder="0" 
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                  allowfullscreen
-                  loading="lazy"
-                  referrerpolicy="strict-origin-when-cross-origin"
-                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          </iframe>
-          <div class="video-fallback">
-            <h4>CIC Pro Hearing Aid</h4>
-            <p>Click to watch this video on YouTube</p>
-            <a href="https://youtube.com/shorts/R1LLIn18NC8" target="_blank" rel="noopener" class="btn">Watch on YouTube</a>
-          </div>
-        </div>
-        <div class="sample-content">
-          <div class="sample-category">Product Commercial</div>
-          <h3>CIC Pro Hearing Aid</h3>
-          <p>Professional product video for German client's CIC Pro Hearing Aid. Clean, informative presentation with focus on product benefits.</p>
-        </div>
-      </div>
-
-      <!-- Leather Shoes Product -->
-      <div class="sample-item" data-category="commercial">
-        <div class="sample-video">
-          <iframe src="https://www.youtube.com/embed/WfJOJ65yrT8?autoplay=0&mute=1&controls=1&modestbranding=1&rel=0&enablejsapi=1" 
-                  frameborder="0" 
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                  allowfullscreen
-                  loading="lazy"
-                  referrerpolicy="strict-origin-when-cross-origin"
-                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          </iframe>
-          <div class="video-fallback">
-            <h4>Fußwohl® Leather Shoes</h4>
-            <p>Click to watch this video on YouTube</p>
-            <a href="https://youtube.com/shorts/WfJOJ65yrT8" target="_blank" rel="noopener" class="btn">Watch on YouTube</a>
-          </div>
-        </div>
-        <div class="sample-content">
-          <div class="sample-category">Product Commercial</div>
-          <h3>Fußwohl® Leather Shoes</h3>
-          <p>Elegant product showcase for premium German leather shoes. Sophisticated visual presentation highlighting craftsmanship and quality.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Category Filter -->
-    <div class="samples-filter">
-      <button class="filter-btn active" data-filter="all">All Samples</button>
-      <button class="filter-btn" data-filter="motion-graphics">Motion Graphics</button>
-      <button class="filter-btn" data-filter="gaming">Gaming</button>
-      <button class="filter-btn" data-filter="commercial">Commercial</button>
-      <button class="filter-btn" data-filter="travel">Travel</button>
-      <button class="filter-btn" data-filter="ai-content">AI Content</button>
-      <button class="filter-btn" data-filter="timelapse">Timelapse</button>
-    </div>
-  </section>
-
-  <!-- Floating Action Button -->
-  <div class="floating-action-btn" id="floating-btn">
-    <div class="fab-main">
-      <i class='bx bx-plus'></i>
-    </div>
-    <div class="fab-options">
-      <a href="#contact" class="fab-option" data-tooltip="Get Quote">
-        <i class='bx bx-message-dots'></i>
-      </a>
-      <a href="https://wa.me/639276455260" class="fab-option" data-tooltip="WhatsApp" target="_blank">
-        <i class='bx bxl-whatsapp'></i>
-      </a>
-      <a href="#samples" class="fab-option" data-tooltip="View Samples">
-        <i class='bx bx-play-circle'></i>
-      </a>
-      <a href="#" onclick="downloadResume()" class="fab-option" data-tooltip="Download Resume">
-        <i class='bx bx-download'></i>
-      </a>
+  <div class="modal" id="previewModal" aria-hidden="true">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-dialog">
+      <button class="modal-close" data-close-modal aria-label="Close preview">×</button>
+      <div class="modal-label">Preview Frame</div>
+      <h3 id="modalTitle">Project Preview</h3>
+      <div class="modal-body" id="modalBody"></div>
     </div>
   </div>
 
-  <!-- Professional Scroll Progress -->
-  <div class="scroll-progress">
-    <div class="scroll-progress-bar"></div>
-  </div>
-
-  <!-- Live Visitor Counter -->
-  <div class="visitor-counter" id="visitor-counter">
-    <div class="counter-content">
-      <i class='bx bx-user'></i>
-      <span class="counter-text">Visitors: <span id="visitor-count">1,247</span></span>
-    </div>
-  </div>
-
-    <!-- Data Entry Privacy Modal -->
-    <div id="data-entry-modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="data-entry-title" aria-describedby="data-entry-desc">
-      <div class="modal-dialog" role="document">
-        <button class="modal-close" aria-label="Close">&times;</button>
-        <h3 id="data-entry-title">Data Entry Portfolio Unavailable</h3>
-        <p id="data-entry-desc">To respect client privacy and confidentiality, detailed samples for Data Entry are not publicly displayed. I'm happy to discuss my experience, workflows, and anonymized examples upon request.</p>
-        <a href="#contact" class="btn">Get in touch</a>
-      </div>
-    </div>
-
-<!--Contact Section design-->
-<section class="contact" id="contact">
-    <h2 class="heading">Contact <span>Me!</span></h2>
-
-    <form id="contact-form" 
-          action="/api/contact" 
-          method="POST">
-      <div class="input-box">
-          <input type="text" id="full-name" name="full_name" placeholder="Full Name" required>
-          <input type="email" id="email" name="email" placeholder="Email Address" required>
-      </div>
-      <div class="input-box">
-        <input type="tel" id="mobile" name="mobile" placeholder="Mobile Number">
-        <input type="text" id="subject" name="subject" placeholder="Email Subject" required>
-      </div>
-      <textarea id="message" name="message" cols="30" rows="10" placeholder="Your Message" required></textarea>
-      <!-- Serverless endpoint expects these names -->
-      <input type="submit" value="Send Message" class="btn" id="submit-btn">
-    </form>
-    
-    <!-- Success/Error Messages -->
-    <div id="form-message" class="form-message"></div>
-    
-    <!-- Enhanced Contact Methods Section -->
-    <div class="contact-methods">
-      <div class="contact-methods-header">
-        <h3>Quick Contact Options</h3>
-        <p>Choose your preferred way to reach out</p>
-      </div>
-      
-      <div class="contact-grid">
-        <!-- Primary Contact Methods -->
-        <div class="contact-card primary">
-          <div class="contact-card-header">
-            <i class='bx bxl-gmail'></i>
-            <div class="contact-info">
-              <h4>Email Me</h4>
-              <span class="contact-detail">jjmanalo.va@gmail.com</span>
-            </div>
-            <div class="response-time">
-              <span class="status-dot active"></span>
-              <span class="response-text">24h response</span>
-            </div>
-          </div>
-          <div class="contact-actions">
-            <a href="https://mail.google.com/mail/?view=cm&to=jjmanalo.va@gmail.com&su=Portfolio%20Inquiry&body=Hi%20Jefferson,%0A%0AI%27m%20interested%20in%20your%20services.%20Let%27s%20discuss%20my%20project.%0A%0ABest%20regards" 
-               class="btn btn-primary btn-gmail" target="_blank" rel="noopener" aria-label="Compose in Gmail">
-              <i class='bx bxl-gmail'></i>
-              <span>Compose in Gmail</span>
-            </a>
-            <button class="btn btn-secondary" onclick="copyEmail()" aria-label="Copy email address">
-              <i class='bx bx-copy'></i>
-              <span>Copy Email</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- WhatsApp Contact -->
-        <div class="contact-card">
-          <div class="contact-card-header">
-            <i class='bx bxl-whatsapp'></i>
-            <div class="contact-info">
-              <h4>WhatsApp</h4>
-              <span class="contact-detail">+63 927 645 5260</span>
-            </div>
-            <div class="response-time">
-              <span class="status-dot active"></span>
-              <span class="response-text">Instant reply</span>
-            </div>
-          </div>
-          <div class="contact-actions">
-            <a href="https://wa.me/639276455260?text=Hi%20Jefferson%2C%20I%27d%20like%20to%20discuss%20a%20project%20with%20you.%20Are%20you%20available%3F" 
-               class="btn btn-primary btn-whatsapp" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
-              <i class='bx bxl-whatsapp'></i>
-              <span>Start Chat</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- LinkedIn Contact -->
-        <div class="contact-card">
-          <div class="contact-card-header">
-            <i class='bx bxl-linkedin'></i>
-            <div class="contact-info">
-              <h4>LinkedIn</h4>
-              <span class="contact-detail">Professional Network</span>
-            </div>
-            <div class="response-time">
-              <span class="status-dot"></span>
-              <span class="response-text">2-3 days</span>
-            </div>
-          </div>
-          <div class="contact-actions">
-            <a href="https://www.linkedin.com/in/john-jefferson-manalo-117322380/" 
-               class="btn btn-primary btn-linkedin" target="_blank" rel="noopener" aria-label="Connect on LinkedIn">
-              <i class='bx bxl-linkedin'></i>
-              <span>Connect</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- Telegram Contact -->
-        <div class="contact-card">
-          <div class="contact-card-header">
-            <i class='bx bxl-telegram'></i>
-            <div class="contact-info">
-              <h4>Telegram</h4>
-              <span class="contact-detail">John Jefferson Manalo</span>
-              <span class="contact-detail">+63 927 645 5260</span>
-            </div>
-            <div class="response-time">
-              <span class="status-dot active"></span>
-              <span class="response-text">Fast reply</span>
-            </div>
-          </div>
-          <div class="contact-actions">
-            <a href="https://t.me/+639276455260" 
-               class="btn btn-primary btn-telegram" target="_blank" rel="noopener" aria-label="Message on Telegram">
-              <i class='bx bxl-telegram'></i>
-              <span>Message</span>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Availability Status -->
-      <div class="availability-status">
-        <div class="availability-indicator">
-          <span class="status-dot active pulse"></span>
-          <span class="availability-text">Currently Available for New Projects</span>
-        </div>
-        <div class="timezone-info">
-          <i class='bx bx-time'></i>
-          <span>Philippines Time (GMT+8) • Usually responds within 24 hours</span>
-        </div>
-      </div>
-    </div>
-</section>
-
-<!--Footer Design-->
-<footer class="footer">
-  <div class="footer-inner">
-    <div class="footer-brand">
-      <a href="#home" class="footer-logo">Kenzaki's Website.</a>
-      <p class="footer-sub">Freelancer · Video Editor · Designer</p>
-      <p class="footer-copy">© 2025 Jefferson Manalo</p>
-    </div>
-    <nav class="footer-nav" aria-label="Footer">
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#services">Services</a>
-      <a href="#portfolio">Portfolio</a>
-      <a href="#samples">Samples</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <div class="footer-actions">
-      <a href="#home" class="to-top" aria-label="Back to top"><i class='bx bx-up-arrow-alt'></i></a>
-    </div>
-  </div>
-</footer>
-
-  <!-- ScrollReveal for animations -->
-  <script src="https://unpkg.com/scrollreveal"></script>
-
-<!-- Type Js -->
-<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-
-
-<!-- Custom Js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="js/script.js"></script>
-
 </body>
-
-
 </html>

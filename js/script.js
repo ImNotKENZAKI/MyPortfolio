@@ -1,955 +1,450 @@
-/* Enhanced toggle icon navbar with accessibility */
-let menuIcon = document.querySelector('#menu-icon');
-let navbar = document.querySelector('.navbar');
+const loader = document.getElementById('loader');
+window.addEventListener('load', () => setTimeout(()=>loader?.classList.add('hide'), 650));
 
-function toggleMobileMenu() {
-    const isActive = navbar.classList.contains('active');
-    
-    menuIcon.classList.toggle('bx-x');
-    navbar.classList.toggle('active');
-    
-    // Improve accessibility
-    menuIcon.setAttribute('aria-expanded', !isActive);
-    navbar.setAttribute('aria-hidden', isActive);
-    
-    // Prevent body scroll when menu is open
-    document.body.style.overflow = !isActive ? 'hidden' : '';
+// theme toggle
+const themeToggle = document.getElementById('themeToggle');
+const savedTheme = localStorage.getItem('kenzaki-theme');
+if (savedTheme === 'light') { document.body.classList.add('light'); if(themeToggle) themeToggle.textContent='☀'; }
+themeToggle?.addEventListener('click', () => {
+  document.body.classList.toggle('light');
+  const isLight = document.body.classList.contains('light');
+  themeToggle.textContent = isLight ? '☀' : '☾';
+  localStorage.setItem('kenzaki-theme', isLight ? 'light' : 'dark');
+});
+
+// Smooth scroll with Lenis when available
+if (window.Lenis) {
+  const lenis = new Lenis({ duration: 1.05, smoothWheel: true, lerp: 0.075, wheelMultiplier: 0.82, touchMultiplier: 0.9 });
+  function raf(time){ lenis.raf(time); requestAnimationFrame(raf); }
+  requestAnimationFrame(raf);
 }
 
-menuIcon.onclick = toggleMobileMenu;
+// title rotator
+const titles = ['Video Editor', 'AI Content Creator', 'GHL Automation Builder', 'Digital Systems Creator', 'VSL & Ads Editor'];
+const rotatingTitle = document.getElementById('rotatingTitle');
+let titleIndex = 0;
+setInterval(() => {
+  if(!rotatingTitle) return;
+  titleIndex = (titleIndex + 1) % titles.length;
+  if(window.gsap){
+    gsap.to(rotatingTitle,{opacity:0,y:10,duration:.22,onComplete:()=>{
+      rotatingTitle.textContent = titles[titleIndex];
+      gsap.to(rotatingTitle,{opacity:1,y:0,duration:.32});
+    }});
+  } else rotatingTitle.textContent = titles[titleIndex];
+}, 2200);
 
-// Add keyboard navigation support
-menuIcon.addEventListener('keydown', function(e) {
-    if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        toggleMobileMenu();
-    }
-});
-
-// Close menu with Escape key
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && navbar.classList.contains('active')) {
-        toggleMobileMenu();
-    }
-}); 
-
-
-
-/* Optimized scroll section active link with throttling */
-let section = document.querySelectorAll('section');
-let navLinks = document.querySelectorAll('header nav a');
-let header = document.querySelector('header');
-
-// Throttle function for better performance
-function throttle(func, limit) {
-    let inThrottle;
-    return function() {
-        const args = arguments;
-        const context = this;
-        if (!inThrottle) {
-            func.apply(context, args);
-            inThrottle = true;
-            setTimeout(() => inThrottle = false, limit);
-        }
-    }
+// GSAP reveal
+if (window.gsap && window.ScrollTrigger) {
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.utils.toArray('.reveal').forEach((el, i) => {
+    gsap.to(el, { opacity:1, y:0, duration:.8, ease:'power3.out', delay:(i%3)*.04,
+      scrollTrigger:{ trigger:el, start:'top 88%' } });
+  });
+  gsap.to('.hero-visual img', { y:-16, duration:2.8, ease:'sine.inOut', repeat:-1, yoyo:true });
+  gsap.from('.metrics div', { opacity:0, y:18, stagger:.08, duration:.7, delay:.35, ease:'power3.out' });
+} else {
+  const io = new IntersectionObserver(entries=>entries.forEach(e=>{ if(e.isIntersecting){ e.target.style.opacity=1; e.target.style.transform='none'; io.unobserve(e.target); }}),{threshold:.15});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 }
 
-function handleScroll() {
-    const scrollY = window.scrollY;
-    
-    // Update active navigation links
-    section.forEach(sec => {
-        let offset = sec.offsetTop - 150;
-        let height = sec.offsetHeight;
-        let id = sec.getAttribute('id');
 
-        if(scrollY >= offset && scrollY < offset + height) {
-            navLinks.forEach(links => {
-                links.classList.remove('active');
-            });
-            const activeLink = document.querySelector('header nav a[href*=' + id +']');
-            if (activeLink) {
-                activeLink.classList.add('active');
-            }
+
+// V6.4.6 smoother page-to-page polish: subtle section lift + title breathing.
+if (window.gsap && window.ScrollTrigger) {
+  gsap.utils.toArray('.section').forEach((section) => {
+    const head = section.querySelector('.section-head');
+    if (head) {
+      gsap.fromTo(head,
+        { opacity: 0.85, y: 22, filter: 'blur(3px)' },
+        { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.9, ease: 'power3.out',
+          scrollTrigger: { trigger: section, start: 'top 78%', once: true }
         }
-    });
-    
-    // Sticky navbar
-    header.classList.toggle('sticky', scrollY > 100);
-    
-    // Close mobile menu on scroll
-    if (navbar.classList.contains('active')) {
-        menuIcon.classList.remove('bx-x');
-        navbar.classList.remove('active');
-        document.body.style.overflow = '';
-        menuIcon.setAttribute('aria-expanded', 'false');
-        navbar.setAttribute('aria-hidden', 'true');
+      );
     }
+  });
+
+  gsap.utils.toArray('.case-card,.vault-card,.service-card,.credential-card,.info-card,.contact-card').forEach((card) => {
+    gsap.fromTo(card,
+      { opacity: 0.92, y: 18 },
+      { opacity: 1, y: 0, duration: 0.65, ease: 'power3.out',
+        scrollTrigger: { trigger: card, start: 'top 92%', once: true }
+      }
+    );
+  });
 }
 
-// Use throttled scroll handler
-window.addEventListener('scroll', throttle(handleScroll, 16)); // ~60fps
 
-/* Remove GSAP: using ScrollReveal only */
+// V6 horizontal pinned showcases: scroll down moves cards horizontally first.
+if (window.gsap && window.ScrollTrigger && window.innerWidth > 760) {
+  gsap.registerPlugin(ScrollTrigger);
+  document.querySelectorAll('[data-pin-section]').forEach((section) => {
+    const track = section.querySelector('.pin-track');
+    if (!track) return;
 
-/* Restore original ScrollReveal timings and targets (slower, smoother) */
-ScrollReveal({ distance: '70px', duration: 2200, delay: 220 });
-ScrollReveal().reveal('.home-content,.heading', { origin: 'top' });
-ScrollReveal().reveal('.home-img,.services-container, .portfolio-box, .contact form, .samples-container, .skills-container', { origin: 'bottom' });
-ScrollReveal().reveal('.home-content h1, .about-img', { origin: 'left' });
-ScrollReveal().reveal('.home-content p, .about-content, .samples-intro', { origin: 'right' });
-ScrollReveal().reveal('.samples-filter', { origin: 'bottom', delay: 400 });
+    const getDistance = () => Math.max(0, track.scrollWidth - section.clientWidth + 56);
 
-/* Typed Js */
-const typed = new Typed('.multiple-text', {
-    strings: ['Freelancer', 'Video Editor', 'Graphic Designer'],
-    typeSpeed: 100,
-    backSpeed: 100,
-    backDelay: 1000,
-    loop: true
-});
-
-/* Theme toggle: persists preference */
-const themeToggle = document.getElementById('theme-toggle');
-const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-const storedTheme = localStorage.getItem('theme');
-
-function applyTheme(theme) {
-    const isDark = theme === 'dark';
-    document.body.classList.toggle('dark', isDark);
-    themeToggle.classList.toggle('bx-sun', isDark);
-    themeToggle.classList.toggle('bx-moon', !isDark);
+    gsap.to(track, {
+      x: () => -getDistance(),
+      ease: 'none',
+      scrollTrigger: {
+        trigger: section,
+        start: 'top 10%',
+        end: () => `+=${getDistance() + window.innerHeight * 0.35}`,
+        pin: true,
+        scrub: 1.15,
+        anticipatePin: 1,
+        invalidateOnRefresh: true
+      }
+    });
+  });
 }
 
-applyTheme(storedTheme || (prefersDark ? 'dark' : 'light'));
-
-themeToggle.addEventListener('click', () => {
-    const isDark = document.body.classList.toggle('dark');
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    themeToggle.classList.toggle('bx-sun', isDark);
-    themeToggle.classList.toggle('bx-moon', !isDark);
+// active nav
+const links = [...document.querySelectorAll('nav a')];
+const sections = links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+window.addEventListener('scroll',()=>{
+  let current = sections[0]?.id;
+  sections.forEach(s=>{ if(scrollY >= s.offsetTop - 180) current = s.id; });
+  links.forEach(a=>a.classList.toggle('active', a.getAttribute('href') === '#'+current));
 });
+links.forEach(a=>a.addEventListener('click',()=>document.querySelector('.navbar nav')?.classList.remove('open')));
 
-/* Discord copy-to-clipboard with toast */
-const discordButton = document.getElementById('discord-copy');
-const toast = document.getElementById('toast');
-
-function showToast(message) {
-    if (!toast) return;
-    // Inject Discord icon for better recognition
-    toast.innerHTML = `<i class='bx bxl-discord' aria-hidden="true"></i><span>${message}</span>`;
-    // Set duration CSS var for progress bar animation
-    toast.style.setProperty('--toast-duration', '2200ms');
-    toast.classList.add('show');
-    clearTimeout(showToast._t);
-    showToast._t = setTimeout(() => toast.classList.remove('show'), 2200);
+// spotlight on interactive cards
+const spotSelector = '.timeline-item,.info-card,.feature-card,.vault-card,.credential-card,.service-rail article,.contact-links a';
+for (const card of document.querySelectorAll(spotSelector)) {
+  card.addEventListener('pointermove', e=>{
+    const r = card.getBoundingClientRect();
+    card.style.setProperty('--mx', `${e.clientX-r.left}px`);
+    card.style.setProperty('--my', `${e.clientY-r.top}px`);
+  });
 }
 
-async function copyDiscordTag(tag) {
-    try {
-        await navigator.clipboard.writeText(tag);
-        showToast('Add me on Discord: ' + tag);
-        setTimeout(() => showToast('Copied: ' + tag), 1100);
-    } catch (e) {
-        // Fallback: create temp input
-        const input = document.createElement('input');
-        input.value = tag;
-        document.body.appendChild(input);
-        input.select();
-        try { document.execCommand('copy'); showToast('Copied: ' + tag); }
-        catch { showToast('Copy failed. ' + tag); }
-        document.body.removeChild(input);
-    }
+// lightweight premium tilt
+// Premium hover without lag: only major cards get a very light tilt.
+for (const el of document.querySelectorAll('.feature-card,.info-card')) {
+  let rafId = null;
+  el.addEventListener('pointermove', (e) => {
+    if (rafId) return;
+    rafId = requestAnimationFrame(() => {
+      const r = el.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - .5;
+      const y = (e.clientY - r.top) / r.height - .5;
+      el.style.transform = `perspective(1000px) rotateX(${-y*1.4}deg) rotateY(${x*1.8}deg) translateY(-6px)`;
+      rafId = null;
+    });
+  });
+  el.addEventListener('pointerleave', () => { el.style.transform = ''; if(rafId) cancelAnimationFrame(rafId); rafId=null; });
 }
 
-if (discordButton) {
-    discordButton.addEventListener('click', (e) => {
-        e.preventDefault();
-        const tag = discordButton.getAttribute('data-discord') || 'kenzaki5885';
-        copyDiscordTag(tag);
-    });
+// Swiper video vault
+if(window.Swiper){
+  new Swiper('.videoSwiper', {
+    slidesPerView: 1.05,
+    spaceBetween: 22,
+    speed: 520,
+    grabCursor: true,
+    navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+    breakpoints: { 720:{slidesPerView:2.1}, 1100:{slidesPerView:3.1} }
+  });
 }
 
-/* Read More functionality */
-document.addEventListener('DOMContentLoaded', function() {
-    const readMoreButtons = document.querySelectorAll('.read-more-btn');
-    
-    readMoreButtons.forEach(button => {
-        button.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const target = this.getAttribute('data-target');
-            const isExpanded = this.classList.contains('expanded');
-            
-            if (target === 'about') {
-                toggleAboutText(this, isExpanded);
-            } else {
-                toggleServiceText(this, target, isExpanded);
-            }
-        });
-    });
-    
-    function toggleAboutText(button, isExpanded) {
-        const extendedText = document.querySelector('.about-text-extended');
-        
-        if (isExpanded) {
-            // Collapse
-            extendedText.classList.remove('expanded', 'text-reveal');
-            button.textContent = 'Read More';
-            button.classList.remove('expanded');
-        } else {
-            // Expand
-            extendedText.classList.add('expanded');
-            setTimeout(() => {
-                extendedText.classList.add('text-reveal');
-            }, 100);
-            button.textContent = 'Read Less';
-            button.classList.add('expanded');
-        }
+// Modal system
+const modal = document.getElementById('previewModal');
+const modalTitle = document.getElementById('modalTitle');
+const modalBody = document.getElementById('modalBody');
+function openModal({title, body}){
+  modalTitle.textContent = title || 'Preview';
+  modalBody.innerHTML = body;
+  modal.classList.add('open');
+  document.body.classList.add('modal-open');
+  modal.setAttribute('aria-hidden','false');
+}
+function closeModal(){
+  modal.classList.remove('open');
+  document.body.classList.remove('modal-open');
+  modal.setAttribute('aria-hidden','true');
+  modalBody.innerHTML = '';
+}
+document.querySelectorAll('[data-close-modal]').forEach(el=>el.addEventListener('click', closeModal));
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeModal(); });
+
+document.querySelectorAll('[data-modal]').forEach(el=>{
+  el.addEventListener('click', (e)=>{
+    const type = el.dataset.modal;
+    const title = el.dataset.title || el.textContent.trim();
+    if(type === 'youtube'){
+      const id = el.dataset.src;
+      openModal({title, body:`<iframe src="https://www.youtube.com/embed/${id}?autoplay=1&mute=0&controls=1&rel=0&modestbranding=1" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`});
+    } else if(type === 'video'){
+      const src = el.dataset.src;
+      const external = el.dataset.type === 'external';
+      if(external){
+        openModal({title, body:`<div class="modal-link-card"><p>This project is hosted externally. Click below to open the video sample.</p><a class="btn primary" href="${src}" target="_blank" rel="noopener">Open External Preview <i class='bx bx-right-arrow-alt'></i></a></div>`});
+      } else {
+        openModal({title, body:`<video src="${src}" controls autoplay></video>`});
+      }
+    } else if(type === 'image'){
+      openModal({title, body:`<img src="${el.dataset.src}" alt="${title}">`});
+    } else if(type === 'link'){
+      const url = el.dataset.url;
+      openModal({title, body:`<div class="modal-link-card"><p>This link contains proof, samples, or credentials connected to my portfolio.</p><a class="btn primary" href="${url}" target="_blank" rel="noopener">Open Link <i class='bx bx-right-arrow-alt'></i></a></div>`});
     }
-    
-    function toggleServiceText(button, target, isExpanded) {
-        const serviceBox = button.closest('.services-box');
-        const extendedText = serviceBox.querySelector('.service-text-extended');
-        
-        if (isExpanded) {
-            // Collapse this service box
-            extendedText.classList.remove('expanded');
-            button.textContent = 'Read More';
-            button.classList.remove('expanded');
-            serviceBox.classList.remove('service-active');
-        } else {
-            // Expand this service box
-            extendedText.classList.add('expanded');
-            button.textContent = 'Read Less';
-            button.classList.add('expanded');
-            serviceBox.classList.add('service-active');
-        }
-    }
+  });
 });
 
-/* Contact Form: native submission only (no JS delivery) */
-document.addEventListener('DOMContentLoaded', function() {
-    const contactForm = document.getElementById('contact-form');
-    const formMessage = document.getElementById('form-message');
-    const submitBtn = document.getElementById('submit-btn');
-    
-    if (contactForm) {
-        // Add floating label effect
-        const inputs = contactForm.querySelectorAll('input, textarea');
-        inputs.forEach(input => {
-            input.addEventListener('focus', function() {
-                this.parentElement.classList.add('focused');
-            });
-            
-            input.addEventListener('blur', function() {
-                if (!this.value) {
-                    this.parentElement.classList.remove('focused');
-                }
-            });
-            
-            // Check if input has value on page load
-            if (input.value) {
-                input.parentElement.classList.add('focused');
-            }
-        });
-        
-        contactForm.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            // Enhanced validation
-            const formData = {
-                from_name: document.getElementById('full-name').value.trim(),
-                from_email: document.getElementById('email').value.trim(),
-                mobile: document.getElementById('mobile').value.trim(),
-                subject: document.getElementById('subject').value.trim(),
-                message: document.getElementById('message').value.trim()
-            };
-            
-            // Validate required fields
-            if (!formData.from_name || !formData.from_email || !formData.message) {
-                showMessage('❌ Please fill in all required fields.', 'error');
-                return;
-            }
-            
-            // Validate email format
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(formData.from_email)) {
-                showMessage('❌ Please enter a valid email address.', 'error');
-                return;
-            }
-            
-            // Show loading state
-            const originalText = submitBtn.textContent;
-            submitBtn.textContent = 'Sending...';
-            submitBtn.disabled = true;
-            
-            try {
-                const resp = await fetch('/api/contact', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(formData)
-                });
-                
-                const result = await resp.json();
-                
-                if (resp.ok) {
-                    showMessage('🎉 Message sent successfully! I\'ll get back to you soon.', 'success');
-                    contactForm.reset();
-                    // Reset focused states
-                    inputs.forEach(input => {
-                        input.parentElement.classList.remove('focused');
-                    });
-                    createParticles();
-                } else {
-                    showMessage(`❌ ${result.error || 'Failed to send message'}. Please use Gmail/WhatsApp below.`, 'error');
-                }
-            } catch (err) {
-                console.error('Contact form error:', err);
-                showMessage('❌ Network error. Please check your connection or use Gmail/WhatsApp below.', 'error');
-            } finally {
-                // Reset button state
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            }
-        });
+// particle background - light and smooth
+const canvas = document.getElementById('particle-canvas');
+const ctx = canvas?.getContext('2d');
+let W,H,particles=[];
+function resize(){
+  if(!canvas) return;
+  W=canvas.width=innerWidth; H=canvas.height=innerHeight;
+  particles = Array.from({length: Math.min(18, Math.floor(W/70))},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.28,vy:(Math.random()-.5)*.28,r:Math.random()*1.6+.4}));
+}
+resize(); addEventListener('resize', resize);
+function draw(){
+  if(!ctx) return;
+  ctx.clearRect(0,0,W,H);
+  particles.forEach((p,i)=>{
+    p.x+=p.vx; p.y+=p.vy; if(p.x<0||p.x>W)p.vx*=-1; if(p.y<0||p.y>H)p.vy*=-1;
+    ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fillStyle='rgba(99,231,255,.55)'; ctx.fill();
+    for(let j=i+1;j<particles.length;j++){
+      const q=particles[j], dx=p.x-q.x, dy=p.y-q.y, d=Math.hypot(dx,dy);
+      if(d<90){ ctx.strokeStyle=`rgba(99,231,255,${(1-d/90)*.06})`; ctx.lineWidth=1; ctx.beginPath(); ctx.moveTo(p.x,p.y); ctx.lineTo(q.x,q.y); ctx.stroke(); }
     }
-    
-    // Remove JS validation (native service will handle)
-    
-    function showMessage(text, type) {
-        if (formMessage) {
-            // Hide any existing message first
-            formMessage.classList.remove('show', 'success', 'error', 'loading');
-            
-            // Set content and type
-            formMessage.textContent = text;
-            formMessage.className = `form-message ${type}`;
-            
-            // Show with animation
-            setTimeout(() => {
-                formMessage.classList.add('show');
-            }, 100);
-            
-            // Auto-hide success messages after 5 seconds
-            if (type === 'success') {
-                setTimeout(() => {
-                    hideMessage();
-                }, 5000);
-            }
-            
-            // Auto-hide error messages after 7 seconds
-            if (type === 'error') {
-                setTimeout(() => {
-                    hideMessage();
-                }, 7000);
-            }
-        }
-    }
-    
-    function hideMessage() {
-        if (formMessage) {
-            formMessage.classList.remove('show');
-            setTimeout(() => {
-                formMessage.classList.remove('success', 'error', 'loading');
-            }, 400);
-        }
-    }
-    
-    function resetUi() {}
+  });
+  requestAnimationFrame(draw);
+}
+draw();
 
-    // Removed endpoint submission
-    
-    function createParticles() {
-        const particleCount = 20;
-        const colors = ['#FF4136', '#28a745', '#007bff', '#ffc107'];
-        
-        for (let i = 0; i < particleCount; i++) {
-            const particle = document.createElement('div');
-            particle.style.position = 'fixed';
-            particle.style.width = '6px';
-            particle.style.height = '6px';
-            particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-            particle.style.borderRadius = '50%';
-            particle.style.pointerEvents = 'none';
-            particle.style.zIndex = '10001';
-            
-            // Random position around the message
-            const angle = (Math.PI * 2 * i) / particleCount;
-            const radius = 100;
-            const x = window.innerWidth / 2 + Math.cos(angle) * radius;
-            const y = window.innerHeight / 2 + Math.sin(angle) * radius;
-            
-            particle.style.left = x + 'px';
-            particle.style.top = y + 'px';
-            
-            document.body.appendChild(particle);
-            
-            // Animate particle
-            particle.animate([
-                { transform: 'translate(0, 0) scale(0)', opacity: 1 },
-                { transform: `translate(${(Math.random() - 0.5) * 200}px, ${(Math.random() - 0.5) * 200}px) scale(1)`, opacity: 0 }
-            ], {
-                duration: 2000,
-                easing: 'ease-out'
-            }).onfinish = () => {
-                particle.remove();
-            };
-        }
-    }
-    
-    // Add click outside to close message
-    document.addEventListener('click', function(e) {
-        if (formMessage && formMessage.classList.contains('show') && !formMessage.contains(e.target)) {
-            hideMessage();
-        }
-    });
-    
-    // Add escape key to close message
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && formMessage && formMessage.classList.contains('show')) {
-            hideMessage();
-        }
-    });
-});
 
-/* Enhanced Contact Methods Functionality */
-// Copy email function
-function copyEmail() {
-    const email = 'jjmanalo.va@gmail.com';
-    
-    if (navigator.clipboard) {
-        navigator.clipboard.writeText(email).then(() => {
-            showCopyToast('Email copied to clipboard!', 'success');
-        }).catch(() => {
-            fallbackCopyEmail(email);
+// Staggered testimonials inspired by the supplied React component, converted to lightweight JS.
+const testimonialCards = Array.from(document.querySelectorAll('.testimonial-card'));
+let testimonialIndex = 0;
+function paintTestimonials(){
+  if(!testimonialCards.length) return;
+  testimonialCards.forEach((card, idx) => {
+    card.classList.remove('active','next','prev-card');
+    const diff = (idx - testimonialIndex + testimonialCards.length) % testimonialCards.length;
+    if(diff === 0) card.classList.add('active');
+    else if(diff === 1) card.classList.add('next');
+    else if(diff === testimonialCards.length - 1) card.classList.add('prev-card');
+    else card.style.opacity = '0';
+    if(diff === 0 || diff === 1 || diff === testimonialCards.length - 1) card.style.opacity = '';
+  });
+}
+document.querySelector('.testimonial-nav.next-btn')?.addEventListener('click', () => { testimonialIndex = (testimonialIndex + 1) % testimonialCards.length; paintTestimonials(); });
+document.querySelector('.testimonial-nav.prev')?.addEventListener('click', () => { testimonialIndex = (testimonialIndex - 1 + testimonialCards.length) % testimonialCards.length; paintTestimonials(); });
+testimonialCards.forEach((card, idx) => card.addEventListener('click', () => { testimonialIndex = idx; paintTestimonials(); }));
+paintTestimonials();
+
+// V6.4 FlowArt-inspired journey section (vanilla GSAP conversion)
+if (window.gsap && window.ScrollTrigger) {
+  gsap.registerPlugin(ScrollTrigger);
+  const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isDesktopFlow = window.innerWidth > 900;
+  const flow = document.querySelector('[data-flow-art]');
+  if (flow && !reduceMotion && isDesktopFlow) {
+    const flowSections = gsap.utils.toArray('[data-flow-art] [data-flow-section]');
+    flowSections.forEach((section, i) => {
+      const inner = section.querySelector('.flow-art-container');
+      if (!inner) return;
+      gsap.set(section, { zIndex: i + 1 });
+      if (i > 0) {
+        gsap.set(inner, { rotation: 8, y: 50, opacity: 0.9, transformOrigin: 'bottom left' });
+        gsap.to(inner, {
+          rotation: 0,
+          y: 0,
+          opacity: 1,
+          ease: 'power1.out',
+          scrollTrigger: {
+            trigger: section,
+            start: 'top bottom',
+            end: 'top 32%',
+            scrub: 1.15
+          }
         });
-    } else {
-        fallbackCopyEmail(email);
-    }
+      }
+      if (i < flowSections.length - 1) {
+        ScrollTrigger.create({
+          trigger: section,
+          start: 'top top',
+          end: 'bottom top',
+          pin: true,
+          pinSpacing: false,
+          anticipatePin: 1
+        });
+      }
+    });
+    setTimeout(() => ScrollTrigger.refresh(), 350);
+  }
 }
 
-function fallbackCopyEmail(email) {
-    const textArea = document.createElement('textarea');
-    textArea.value = email;
-    textArea.style.position = 'fixed';
-    textArea.style.left = '-999999px';
-    textArea.style.top = '-999999px';
-    document.body.appendChild(textArea);
-    textArea.focus();
-    textArea.select();
-    
-    try {
-        document.execCommand('copy');
-        showCopyToast('Email copied to clipboard!', 'success');
-    } catch (err) {
-        showCopyToast('Failed to copy email', 'error');
+
+// V6.4.6 Hero-only interactive mouse light trails — more visible, still optimized.
+(function initHeroTrails(){
+  const canvas = document.getElementById('hero-trail-canvas');
+  const hero = document.querySelector('.hero');
+  if(!canvas || !hero) return;
+  const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isDesktop = window.innerWidth > 900;
+  if(reduceMotion || !isDesktop) return;
+
+  const ctx = canvas.getContext('2d', { alpha: true });
+  if(!ctx) return;
+
+  let rect, width = 0, height = 0, raf = null;
+  let active = true;
+  let userControlled = false;
+  const pointer = { x: 0, y: 0 };
+  let idlePhase = 0;
+
+  const settings = {
+    trails: 26,
+    nodes: 28,
+    friction: 0.57,
+    dampening: 0.032,
+    tension: 0.985,
+    lineWidth: 5.2,
+    alpha: 0.074
+  };
+
+  function resize(){
+    rect = hero.getBoundingClientRect();
+    const dpr = Math.min(window.devicePixelRatio || 1, 1.75);
+    width = Math.max(1, Math.floor(rect.width));
+    height = Math.max(1, Math.floor(rect.height));
+    canvas.width = Math.floor(width * dpr);
+    canvas.height = Math.floor(height * dpr);
+    canvas.style.width = width + 'px';
+    canvas.style.height = height + 'px';
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    if(!pointer.x && !pointer.y){ pointer.x = width * .54; pointer.y = height * .42; }
+  }
+
+  function Node(x=0,y=0){ this.x=x; this.y=y; this.vx=0; this.vy=0; }
+  function Line(spring){
+    this.spring = spring;
+    this.friction = settings.friction + Math.random()*0.025 - 0.012;
+    this.nodes = Array.from({length: settings.nodes}, () => new Node(pointer.x, pointer.y));
+  }
+  Line.prototype.update = function(){
+    let spring = this.spring;
+    let node = this.nodes[0];
+    node.vx += (pointer.x - node.x) * spring;
+    node.vy += (pointer.y - node.y) * spring;
+    for(let i=0;i<this.nodes.length;i++){
+      node = this.nodes[i];
+      if(i>0){
+        const prev = this.nodes[i-1];
+        node.vx += (prev.x - node.x) * spring;
+        node.vy += (prev.y - node.y) * spring;
+        node.vx += prev.vx * settings.dampening;
+        node.vy += prev.vy * settings.dampening;
+      }
+      node.vx *= this.friction;
+      node.vy *= this.friction;
+      node.x += node.vx;
+      node.y += node.vy;
+      spring *= settings.tension;
     }
-    
-    document.body.removeChild(textArea);
-}
-
-function showCopyToast(message, type) {
-    // Remove any existing toast
-    const existingToast = document.querySelector('.copy-toast');
-    if (existingToast) {
-        existingToast.remove();
+  };
+  Line.prototype.draw = function(index){
+    const nodes = this.nodes;
+    ctx.beginPath();
+    ctx.moveTo(nodes[0].x, nodes[0].y);
+    for(let i=1;i<nodes.length-2;i++){
+      const n=nodes[i], next=nodes[i+1];
+      ctx.quadraticCurveTo(n.x, n.y, (n.x+next.x)/2, (n.y+next.y)/2);
     }
-    
-    // Create new toast
-    const toast = document.createElement('div');
-    toast.className = `copy-toast ${type}`;
-    toast.innerHTML = `
-        <div class="toast-content">
-            <i class='bx ${type === 'success' ? 'bx-check' : 'bx-error'}'></i>
-            <span>${message}</span>
-        </div>
-    `;
-    
-    // Add toast styles
-    toast.style.cssText = `
-        position: fixed;
-        top: 2rem;
-        right: 2rem;
-        background: ${type === 'success' ? 'linear-gradient(135deg, #28a745, #20c997)' : 'linear-gradient(135deg, #dc3545, #e74c3c)'};
-        color: white;
-        padding: 1.2rem 2rem;
-        border-radius: 0.8rem;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-        z-index: 10000;
-        opacity: 0;
-        transform: translateY(-20px) scale(0.9);
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-    `;
-    
-    toast.querySelector('.toast-content').style.cssText = `
-        display: flex;
-        align-items: center;
-        gap: 0.8rem;
-        font-size: 1.4rem;
-        font-weight: 600;
-    `;
-    
-    toast.querySelector('i').style.cssText = `
-        font-size: 1.8rem;
-    `;
-    
-    document.body.appendChild(toast);
-    
-    // Animate in
-    setTimeout(() => {
-        toast.style.opacity = '1';
-        toast.style.transform = 'translateY(0) scale(1)';
-    }, 100);
-    
-    // Animate out and remove
-    setTimeout(() => {
-        toast.style.opacity = '0';
-        toast.style.transform = 'translateY(-20px) scale(0.9)';
-        setTimeout(() => {
-            if (toast.parentNode) {
-                toast.parentNode.removeChild(toast);
-            }
-        }, 300);
-    }, 3000);
-}
+    const a = nodes[nodes.length-2], b = nodes[nodes.length-1];
+    ctx.quadraticCurveTo(a.x, a.y, b.x, b.y);
+    const hue = 188 + index * 1.7;
+    const alpha = Math.max(0.018, settings.alpha - index * 0.00145);
+    ctx.strokeStyle = `hsla(${hue}, 100%, 63%, ${alpha})`;
+    ctx.lineWidth = Math.max(1.15, settings.lineWidth - index * 0.09);
+    ctx.stroke();
+  };
 
-// Enhanced contact card animations
-document.addEventListener('DOMContentLoaded', function() {
-    const contactCards = document.querySelectorAll('.contact-card');
-    
-    // Add intersection observer for contact cards
-    const contactObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
-            if (entry.isIntersecting) {
-                setTimeout(() => {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }, index * 150);
-                contactObserver.unobserve(entry.target);
-            }
-        });
-    }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    });
-    
-    // Initially hide cards and observe them
-    contactCards.forEach(card => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
-        card.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
-        contactObserver.observe(card);
-    });
-    
-    // Add hover sound effect simulation (visual feedback)
-    contactCards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-8px) scale(1.02)';
-        });
-        
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
-        });
-    });
-    
-    // Animate availability status
-    const availabilityStatus = document.querySelector('.availability-status');
-    if (availabilityStatus) {
-        const statusObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0) scale(1)';
-                    statusObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.3 });
-        
-        availabilityStatus.style.opacity = '0';
-        availabilityStatus.style.transform = 'translateY(20px) scale(0.95)';
-        availabilityStatus.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
-        statusObserver.observe(availabilityStatus);
-    }
-    
-    // Add click tracking for analytics (placeholder)
-    document.querySelectorAll('.contact-actions .btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const platform = this.classList.contains('btn-gmail') ? 'Gmail' :
-                           this.classList.contains('btn-whatsapp') ? 'WhatsApp' :
-                           this.classList.contains('btn-linkedin') ? 'LinkedIn' :
-                           this.classList.contains('btn-telegram') ? 'Telegram' : 'Unknown';
-            
-            console.log(`Contact method clicked: ${platform}`);
-            
-            // Add visual feedback
-            this.style.transform = 'scale(0.95)';
-            setTimeout(() => {
-                this.style.transform = '';
-            }, 150);
-        });
-    });
-});
+  let lines=[];
+  function resetLines(){
+    lines = Array.from({length:settings.trails},(_,i)=>new Line(0.31 + (i/settings.trails)*0.034));
+  }
 
-/* Samples Section Functionality */
-document.addEventListener('DOMContentLoaded', function() {
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const sampleItems = document.querySelectorAll('.sample-item');
-    
-    // Enhanced filter functionality with professional animations
-    filterButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const filter = this.getAttribute('data-filter');
-            
-            // Update active button
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            this.classList.add('active');
-            
-            // First hide all items with staggered animation
-            sampleItems.forEach((item, index) => {
-                setTimeout(() => {
-                    item.classList.add('hidden');
-                }, index * 50);
-            });
-            
-            // Then show matching items with staggered animation
-            setTimeout(() => {
-                let visibleIndex = 0;
-                sampleItems.forEach(item => {
-                    const category = item.getAttribute('data-category');
-                    
-                    if (filter === 'all' || category === filter) {
-                        setTimeout(() => {
-                            item.classList.remove('hidden');
-                        }, visibleIndex * 100);
-                        visibleIndex++;
-                    }
-                });
-            }, 300);
-        });
-    });
-    
-    // Enhanced video error handling
-    const iframes = document.querySelectorAll('.sample-video iframe');
-    iframes.forEach(iframe => {
-        // Check if iframe loads successfully
-        iframe.addEventListener('load', function() {
-            // Try to detect if the video is actually available
-            setTimeout(() => {
-                try {
-                    // If iframe content is not accessible, it might be restricted
-                    const iframeDoc = this.contentDocument || this.contentWindow.document;
-                    if (!iframeDoc) {
-                        // Content not accessible, might be restricted
-                        console.log('Video might be restricted for embedding');
-                    }
-                } catch (e) {
-                    // Cross-origin restriction is normal for YouTube
-                    console.log('Video loaded successfully');
-                }
-            }, 1000);
-        });
-        
-        iframe.addEventListener('error', function() {
-            console.log('Video failed to load, showing fallback');
-            this.style.display = 'none';
-            const fallback = this.nextElementSibling;
-            if (fallback && fallback.classList.contains('video-fallback')) {
-                fallback.style.display = 'flex';
-            }
-        });
-    });
-    
-    // Enhanced Intersection Observer for professional autoplay on scroll
-    const videoObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            const iframe = entry.target.querySelector('iframe');
-            const fallback = entry.target.querySelector('.video-fallback');
-            const sampleItem = entry.target;
-            
-            // Only try autoplay if iframe is visible (not fallback)
-            if (iframe && iframe.style.display !== 'none' && fallback && fallback.style.display !== 'flex') {
-                if (entry.isIntersecting) {
-                    // Add visual indicator that video is about to play
-                    sampleItem.classList.add('video-playing');
-                    
-                    // Auto-play when in view (muted) with slight delay for smooth experience
-                    setTimeout(() => {
-                        const src = iframe.src;
-                        if (!src.includes('autoplay=1')) {
-                            iframe.src = src.replace('autoplay=0', 'autoplay=1');
-                        }
-                    }, 200);
-                } else {
-                    // Remove playing indicator and pause
-                    sampleItem.classList.remove('video-playing');
-                    const src = iframe.src;
-                    if (src.includes('autoplay=1')) {
-                        iframe.src = src.replace('autoplay=1', 'autoplay=0');
-                    }
-                }
-            }
-        });
-    }, {
-        threshold: 0.4, // More aggressive threshold for better autoplay
-        rootMargin: '0px 0px -20px 0px' // Start playing sooner
-    });
-    
-    // Observe all sample items
-    sampleItems.forEach(item => {
-        videoObserver.observe(item);
-    });
-    
-    // Professional counter animation for stats
-    const statNumbers = document.querySelectorAll('.stat-number');
-    const statsObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const target = parseInt(entry.target.getAttribute('data-target'));
-                const duration = 2000; // 2 seconds
-                const increment = target / (duration / 16); // 60fps
-                let current = 0;
-                
-                const updateCounter = () => {
-                    current += increment;
-                    if (current < target) {
-                        const displayValue = Math.floor(current);
-                        // Add % symbol for the percentage stat
-                        if (target === 100) {
-                            entry.target.textContent = displayValue + '%';
-                        } else {
-                            entry.target.textContent = displayValue;
-                        }
-                        requestAnimationFrame(updateCounter);
-                    } else {
-                        // Final value with proper formatting
-                        if (target === 100) {
-                            entry.target.textContent = target + '%';
-                        } else {
-                            entry.target.textContent = target;
-                        }
-                    }
-                };
-                
-                updateCounter();
-                statsObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.5 });
-    
-    statNumbers.forEach(stat => {
-        statsObserver.observe(stat);
-    });
-    
-    // Additional fallback check after page load
-    setTimeout(() => {
-        iframes.forEach(iframe => {
-            // Check if iframe has loaded content
-            if (iframe.offsetHeight === 0 || iframe.offsetWidth === 0) {
-                console.log('Video appears to have loading issues, showing fallback');
-                iframe.style.display = 'none';
-                const fallback = iframe.nextElementSibling;
-                if (fallback && fallback.classList.contains('video-fallback')) {
-                    fallback.style.display = 'flex';
-                }
-            }
-        });
-    }, 3000);
-});
+  function autoPointer(){
+    if(userControlled) return;
+    idlePhase += 0.0065;
+    const cx = width * 0.50, cy = height * 0.45;
+    pointer.x = cx + Math.cos(idlePhase) * Math.min(width * 0.17, 150);
+    pointer.y = cy + Math.sin(idlePhase * 1.35) * Math.min(height * 0.12, 90);
+  }
 
-/* Data Entry privacy modal */
-document.addEventListener('DOMContentLoaded', function() {
-    const dataEntryLinks = document.querySelectorAll('.data-entry-link');
-    const modal = document.getElementById('data-entry-modal');
-    const closeBtn = modal ? modal.querySelector('.modal-close') : null;
+  function draw(){
+    if(!active){ raf=null; return; }
+    autoPointer();
+    ctx.globalCompositeOperation='source-over';
+    ctx.clearRect(0,0,width,height);
+    ctx.globalCompositeOperation='lighter';
+    ctx.shadowColor = 'rgba(99,231,255,.28)';
+    ctx.shadowBlur = 18;
+    lines.forEach((line,i)=>{ line.update(); line.draw(i); });
+    ctx.shadowBlur = 0;
+    raf = requestAnimationFrame(draw);
+  }
 
-    function openModal(e) {
-        if (e) e.preventDefault();
-        if (!modal) return;
-        modal.classList.add('show');
-        modal.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden';
-    }
+  function setPointer(e){
+    rect = hero.getBoundingClientRect();
+    const touch = e.touches && e.touches[0];
+    const clientX = touch ? touch.clientX : e.clientX;
+    const clientY = touch ? touch.clientY : e.clientY;
+    pointer.x = clientX - rect.left;
+    pointer.y = clientY - rect.top;
+    if(pointer.x < 0 || pointer.y < 0 || pointer.x > rect.width || pointer.y > rect.height) return;
+    userControlled = true;
+    if(!active){ active = true; resetLines(); }
+    if(!raf) raf = requestAnimationFrame(draw);
+    clearTimeout(setPointer.idleTimer);
+    setPointer.idleTimer = setTimeout(()=>{ userControlled = false; }, 1800);
+  }
 
-    function closeModal() {
-        if (!modal) return;
-        modal.classList.remove('show');
-        modal.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
-    }
+  function stop(){ userControlled=false; }
+  resize();
+  resetLines();
+  if(!raf) raf = requestAnimationFrame(draw);
+  hero.addEventListener('mousemove', setPointer, {passive:true});
+  hero.addEventListener('touchmove', setPointer, {passive:true});
+  hero.addEventListener('mouseenter', setPointer, {passive:true});
+  hero.addEventListener('mouseleave', stop);
+  window.addEventListener('resize', () => { resize(); resetLines(); }, {passive:true});
+})();
 
-    dataEntryLinks.forEach(link => {
-        link.addEventListener('click', openModal);
-    });
 
-    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+// V6.5 no-feature-left-behind: Hero trails, Featured Work, Netflix Vault, Journey Cards, Services, Credentials, Contact Hub are all preserved.
 
-    if (modal) {
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) closeModal();
-        });
-    }
+/* V6.5.2 Navigation polish only */
+(() => {
+  const navToggle = document.getElementById('navToggle');
+  const navMenu = document.querySelector('.navbar .nav-pill');
+  const navLinks = [...document.querySelectorAll('.navbar .nav-pill a')];
+  if (!navToggle || !navMenu) return;
 
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeModal();
-    });
-});
-
-/* ========== STANDOUT FEATURES FUNCTIONALITY ========== */
-
-/* Floating Action Button */
-document.addEventListener('DOMContentLoaded', function() {
-    const floatingBtn = document.getElementById('floating-btn');
-    const fabMain = floatingBtn.querySelector('.fab-main');
-    
-    fabMain.addEventListener('click', function() {
-        floatingBtn.classList.toggle('active');
-    });
-    
-    // Close FAB when clicking outside
-    document.addEventListener('click', function(e) {
-        if (!floatingBtn.contains(e.target)) {
-            floatingBtn.classList.remove('active');
-        }
-    });
-});
-
-/* Professional Scroll Progress */
-window.addEventListener('scroll', function() {
-    const scrollProgress = document.querySelector('.scroll-progress-bar');
-    const scrollTop = window.pageYOffset;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const scrollPercent = (scrollTop / docHeight) * 100;
-    
-    scrollProgress.style.width = scrollPercent + '%';
-});
-
-/* Live Visitor Counter with Animation */
-document.addEventListener('DOMContentLoaded', function() {
-    const visitorCount = document.getElementById('visitor-count');
-    
-    // Simulate live visitor count updates
-    function updateVisitorCount() {
-        const currentCount = parseInt(visitorCount.textContent.replace(',', ''));
-        const increment = Math.floor(Math.random() * 3) + 1; // Random 1-3
-        const newCount = currentCount + increment;
-        
-        // Add comma formatting
-        visitorCount.textContent = newCount.toLocaleString();
-        
-        // Add flash effect
-        visitorCount.style.color = '#ff6b6d';
-        setTimeout(() => {
-            visitorCount.style.color = 'var(--main-color)';
-        }, 300);
-    }
-    
-    // Update visitor count every 15-30 seconds
-    setInterval(updateVisitorCount, Math.random() * 15000 + 15000);
-});
-
-/* Enhanced Video Hover Effects */
-document.addEventListener('DOMContentLoaded', function() {
-    const sampleItems = document.querySelectorAll('.sample-item');
-    
-    sampleItems.forEach(item => {
-        const video = item.querySelector('.sample-video');
-        
-        item.addEventListener('mouseenter', function() {
-            // Add subtle pulse effect to video
-            video.style.transform = 'scale(1.02)';
-        });
-        
-        item.addEventListener('mouseleave', function() {
-            video.style.transform = 'scale(1)';
-        });
-    });
-});
-
-/* Professional Loading Animation with Performance Optimization */
-window.addEventListener('load', function() {
-    // Add loaded class to body for any load-based animations
-    document.body.classList.add('loaded');
-    
-    // Lazy load images for better performance
-    const images = document.querySelectorAll('img[data-src]');
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;
-                img.classList.remove('lazy');
-                imageObserver.unobserve(img);
-            }
-        });
-    });
-    
-    images.forEach(img => imageObserver.observe(img));
-    
-    // Animate elements in sequence with requestAnimationFrame for better performance
-    const elementsToAnimate = [
-        '.samples-stats .stat-item',
-        '.sample-item',
-        '.filter-btn'
-    ];
-    
-    elementsToAnimate.forEach((selector, index) => {
-        setTimeout(() => {
-            const elements = document.querySelectorAll(selector);
-            elements.forEach((el, i) => {
-                requestAnimationFrame(() => {
-                    setTimeout(() => {
-                        el.style.opacity = '1';
-                        el.style.transform = 'translateY(0)';
-                    }, i * 100);
-                });
-            });
-        }, index * 200);
-    });
-});
-
-/* Skills Section Animations */
-document.addEventListener('DOMContentLoaded', function() {
-    // Animate skill progress bars when they come into view
-    const skillBars = document.querySelectorAll('.skill-progress');
-    const skillsObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const targetWidth = entry.target.getAttribute('data-width');
-                setTimeout(() => {
-                    entry.target.style.width = targetWidth;
-                }, 200);
-                skillsObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.3 });
-    
-    skillBars.forEach(bar => {
-        skillsObserver.observe(bar);
-    });
-    
-    // Animate software items with stagger effect
-    const softwareItems = document.querySelectorAll('.software-item');
-    const softwareObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
-            if (entry.isIntersecting) {
-                setTimeout(() => {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }, index * 100);
-                softwareObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.1 });
-    
-    // Initially hide software items
-    softwareItems.forEach(item => {
-        item.style.opacity = '0';
-        item.style.transform = 'translateY(30px)';
-        item.style.transition = 'all 0.6s ease';
-        softwareObserver.observe(item);
-    });
-});
-  
+  const closeMenu = () => {
+    navMenu.classList.remove('open');
+    navToggle.classList.remove('is-open');
+    navToggle.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('nav-open');
+  };
+  const openMenu = () => {
+    navMenu.classList.add('open');
+    navToggle.classList.add('is-open');
+    navToggle.setAttribute('aria-expanded', 'true');
+    document.body.classList.add('nav-open');
+  };
+  navToggle.addEventListener('click', () => {
+    navMenu.classList.contains('open') ? closeMenu() : openMenu();
+  });
+  navLinks.forEach(link => link.addEventListener('click', closeMenu));
+  window.addEventListener('resize', () => { if (window.innerWidth > 980) closeMenu(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+})();

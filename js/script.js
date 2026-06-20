@@ -469,31 +469,52 @@ if (window.gsap && window.ScrollTrigger) {
 
 // V6.5 no-feature-left-behind: Hero trails, Featured Work, Netflix Vault, Journey Cards, Services, Credentials, Contact Hub are all preserved.
 
-/* V6.5.2 Navigation polish only */
+/* V6.6 Navigation — hamburger fix + backdrop + scroll progress + reveal upgrades */
 (() => {
+  /* --- Scroll progress bar --- */
+  const bar = document.createElement('div');
+  bar.id = 'scroll-progress';
+  document.body.prepend(bar);
+  window.addEventListener('scroll', () => {
+    const pct = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+    bar.style.width = Math.min(pct, 100) + '%';
+  }, {passive: true});
+
+  /* --- Nav backdrop --- */
+  const backdrop = document.createElement('div');
+  backdrop.className = 'nav-backdrop';
+  document.body.appendChild(backdrop);
+
+  /* --- Hamburger menu --- */
   const navToggle = document.getElementById('navToggle');
   const navMenu = document.querySelector('.navbar .nav-pill');
-  const navLinks = [...document.querySelectorAll('.navbar .nav-pill a')];
   if (!navToggle || !navMenu) return;
+  const navLinks = [...navMenu.querySelectorAll('a')];
 
   const closeMenu = () => {
     navMenu.classList.remove('open');
     navToggle.classList.remove('is-open');
     navToggle.setAttribute('aria-expanded', 'false');
     document.body.classList.remove('nav-open');
+    backdrop.classList.remove('visible');
   };
   const openMenu = () => {
     navMenu.classList.add('open');
     navToggle.classList.add('is-open');
     navToggle.setAttribute('aria-expanded', 'true');
     document.body.classList.add('nav-open');
+    /* slight delay so display:block kicks in before opacity transition */
+    requestAnimationFrame(() => backdrop.classList.add('visible'));
   };
+
   navToggle.addEventListener('click', () => {
     navMenu.classList.contains('open') ? closeMenu() : openMenu();
   });
+  backdrop.addEventListener('click', closeMenu);
   navLinks.forEach(link => link.addEventListener('click', closeMenu));
   window.addEventListener('resize', () => { if (window.innerWidth > 980) closeMenu(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+
 })();
 
 // V6.5.3 Services sticky gallery — vertical scroll friendly, no extra horizontal fatigue.

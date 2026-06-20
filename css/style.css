@@ -238,18 +238,21 @@ body.light .navbar .nav-pill a:hover,body.light .navbar .nav-pill a.active{color
     border-radius:28px !important;
     opacity:0 !important;
     pointer-events:none !important;
+    visibility:hidden !important;
     background:linear-gradient(180deg,rgba(4,14,28,.96),rgba(8,31,58,.92)) !important;
     border:1px solid rgba(104,229,255,.20) !important;
     box-shadow:0 28px 90px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.09) !important;
     backdrop-filter:blur(22px) saturate(145%) !important;
     -webkit-backdrop-filter:blur(22px) saturate(145%) !important;
-    transition:opacity .25s ease, transform .25s ease !important;
+    transition:opacity .3s ease,transform .3s ease,visibility 0s linear .3s !important;
     z-index:65 !important;
   }
   .navbar .nav-pill.open{
     opacity:1 !important;
     pointer-events:auto !important;
+    visibility:visible !important;
     transform:translateX(-50%) translateY(0) scale(1) !important;
+    transition:opacity .3s ease,transform .3s ease,visibility 0s linear 0s !important;
   }
   .navbar .nav-pill a{
     width:100%;
@@ -440,3 +443,477 @@ body.light .orbit-sticky{background:linear-gradient(180deg,rgba(255,255,255,.1),
 .stack-controls{position:relative;z-index:5;margin-top:26px;display:flex;align-items:center;justify-content:center;gap:18px}.stack-btn{width:48px;height:48px;border-radius:16px;border:1px solid rgba(99,231,255,.22);background:rgba(99,231,255,.08);color:#e9fbff;display:grid;place-items:center;font-size:26px;cursor:pointer;transition:transform .25s ease,background .25s ease,border-color .25s ease,box-shadow .25s ease}.stack-btn:hover{transform:translateY(-3px);background:rgba(99,231,255,.16);border-color:rgba(99,231,255,.48);box-shadow:0 12px 36px rgba(99,231,255,.14)}.stack-dots{display:flex;gap:8px;align-items:center}.stack-dot{width:8px;height:8px;border-radius:999px;border:0;background:rgba(255,255,255,.28);cursor:pointer;transition:width .25s ease,background .25s ease}.stack-dot.is-active{width:28px;background:#75e9ff}
 body.light .stack-head p{color:#31506b}body.light .systems-stack-wrap{background:linear-gradient(180deg,#ffffff,#eff8ff);border-color:rgba(20,110,170,.18);box-shadow:0 28px 90px rgba(16,72,115,.13)}body.light .stack-copy h3,body.light .stack-card-copy h3{color:#fff}body.light .stack-copy p{color:#31506b}body.light .system-stack-card{background:linear-gradient(180deg,#fff,#eff8ff);border-color:rgba(20,110,170,.16)}body.light .stack-btn{color:#006fae;background:rgba(0,157,220,.08);border-color:rgba(0,157,220,.16)}body.light .stack-dot{background:rgba(6,18,36,.25)}body.light .stack-dot.is-active{background:#008fd4}
 @media(max-width:980px){.systems-stack-wrap{padding:26px 18px;border-radius:30px}.stack-copy{grid-template-columns:1fr;gap:16px;margin-bottom:28px}.systems-card-stage{height:auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;perspective:none}.system-stack-card{position:relative!important;bottom:auto!important;left:auto!important;right:auto!important;transform:none!important;opacity:1!important;width:100%;height:300px}.system-stack-card.is-active{box-shadow:0 22px 54px rgba(0,0,0,.32),0 0 28px rgba(99,231,255,.12)}}@media(max-width:620px){.systems-card-stage{grid-template-columns:1fr}.system-stack-card{height:310px}.stack-controls{display:none}.systems-stack-section{padding-top:80px;padding-bottom:80px}.stack-card-copy{padding:22px}.stack-card-copy h3{font-size:30px}}
+
+
+/* ============================================================
+   MOBILE RESPONSIVENESS FIXES — All Sections
+   ============================================================ */
+
+/* ---- HERO: Fix orbit circle overflow & floating cards on mobile ---- */
+@media(max-width:980px){
+  .hero-visual{min-height:420px;overflow:hidden}
+  .orbit{width:min(420px,90vw);height:min(420px,90vw)}
+  .floating-card{font-size:13px;padding:10px 14px;border-radius:14px}
+  .card-one{top:14%;left:4%}
+  .card-two{right:2%;bottom:14%}
+}
+
+@media(max-width:560px){
+  .hero-visual{min-height:320px}
+  .orbit{width:min(300px,82vw);height:min(300px,82vw)}
+  .floating-card{display:none}
+  .metrics div{padding:14px}
+  .metrics strong{font-size:24px}
+  .hero-actions .btn{padding:13px 18px;font-size:14px}
+}
+
+/* ---- TESTIMONIALS: Fix card translate overflow on small screens ---- */
+@media(max-width:760px){
+  .testimonial-card.next{
+    transform:translate(calc(-50% + 120px),calc(-50% + 30px)) rotate(4deg) scale(.8)
+  }
+  .testimonial-card.prev-card{
+    transform:translate(calc(-50% - 120px),calc(-50% + 30px)) rotate(-4deg) scale(.8)
+  }
+}
+
+@media(max-width:480px){
+  .testimonial-card{width:88vw;padding:24px 20px;min-height:360px}
+  .testimonial-card.next,.testimonial-card.prev-card{opacity:.15}
+  .testimonial-card.next{transform:translate(calc(-50% + 60px),calc(-50% + 20px)) rotate(3deg) scale(.84)}
+  .testimonial-card.prev-card{transform:translate(calc(-50% - 60px),calc(-50% + 20px)) rotate(-3deg) scale(.84)}
+  .testimonial-stage{height:520px}
+}
+
+/* ---- SERVICES (Sticky Build Gallery): Fix preview card gap & heading ---- */
+@media(max-width:1080px){
+  .build-preview-wrap{min-height:auto!important;position:relative!important;top:auto!important}
+  .build-preview-card{min-height:auto!important}
+}
+
+@media(max-width:700px){
+  .build-preview-copy h3{font-size:clamp(32px,10vw,46px)!important}
+  .build-tile{min-height:200px}
+  .build-column{gap:14px}
+}
+
+/* ---- REELS UNIVERSE (Orbit Cards): Fix grid height & card clipping ---- */
+@media(max-width:780px){
+  .orbit-card{height:auto!important;min-height:200px}
+  .orbit-stage{width:min(580px,94vw)!important;gap:12px}
+  .orbit-front em{font-size:10px;padding:4px 8px}
+  .orbit-back{padding:14px}
+  .orbit-back h3{font-size:16px;margin-bottom:6px}
+  .orbit-back p{font-size:13px;line-height:1.5;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+}
+
+@media(max-width:460px){
+  .orbit-stage{grid-template-columns:1fr!important}
+  .orbit-card{min-height:220px}
+}
+
+/* ---- SYSTEMS STACK: Fix card visibility & z-index stacking on mobile ---- */
+@media(max-width:980px){
+  .system-stack-card{
+    position:relative!important;
+    opacity:1!important;
+    transform:none!important;
+    z-index:1!important;
+    height:auto!important;
+    min-height:280px
+  }
+  .systems-card-stage{height:auto!important}
+}
+
+@media(max-width:620px){
+  .stack-card-copy{padding:18px}
+  .stack-card-copy span{font-size:11px}
+  .stack-card-copy h3{font-size:22px;margin-bottom:8px}
+  .stack-card-copy p{font-size:13px}
+  .system-stack-card{min-height:260px}
+  .systems-stack-wrap{padding:20px 14px;border-radius:24px}
+}
+
+/* ---- CONTACT GRID: 1 column on very small screens ---- */
+@media(max-width:480px){
+  .contact-links.rich.contact-hub{grid-template-columns:1fr!important}
+  .contact-links.rich .primary-contact{grid-column:auto!important}
+  .contact-card{min-height:auto!important;padding:16px 14px}
+  .contact-card strong{font-size:13px}
+  .contact-card em{font-size:12px}
+  .contact-copy h2{font-size:clamp(44px,16vw,72px)!important}
+}
+
+/* ---- FOOTER: Fix bottom margin & layout on mobile ---- */
+@media(max-width:560px){
+  footer{
+    flex-direction:column;
+    margin-bottom:110px;
+    padding:24px 18px;
+    gap:12px;
+    text-align:center
+  }
+  footer strong{font-size:14px}
+  footer p{font-size:13px}
+}
+
+/* ---- GENERAL: Prevent horizontal overflow site-wide ---- */
+@media(max-width:768px){
+  .section{width:92vw}
+  .hero-copy,.hero-visual{min-width:0}
+  .hero-copy h1{word-break:break-word}
+}
+
+/* ---- FEATURED WORK: Better single-column card layout ---- */
+@media(max-width:760px){
+  .case-card{grid-template-columns:1fr!important}
+  .case-copy h3{font-size:clamp(32px,10vw,56px)}
+  .case-copy p{font-size:16px}
+  .case-copy ul{gap:8px}
+  .case-copy li{font-size:12px;padding:8px 11px}
+}
+
+/* ---- STORY FLOW: Better padding on small screens ---- */
+@media(max-width:480px){
+  .flow-inner{padding:24px 18px!important;border-radius:24px!important}
+  .flow-copy h3{font-size:clamp(36px,14vw,60px)!important}
+  .flow-copy p{font-size:15px}
+  .flow-badge{padding:20px;min-height:130px!important}
+  .flow-badge i{font-size:44px!important}
+  .flow-badge span{font-size:18px!important}
+}
+
+/* ---- NAV: Ensure bottom nav doesn't block content ---- */
+@media(max-width:980px){
+  main{padding-bottom:90px}
+}
+
+
+/* ============================================================
+   HAMBURGER MENU FIX + ANIMATION UPGRADES + DESIGN POLISH
+   ============================================================ */
+
+/* --- Hamburger button: proper display & centering --- */
+.nav-toggle{
+  display:none;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:5px;
+  width:46px;
+  height:46px;
+  border-radius:14px;
+  border:1px solid rgba(104,229,255,.25);
+  background:linear-gradient(180deg,rgba(14,45,82,.85),rgba(6,20,38,.86));
+  cursor:pointer;
+  padding:0;
+  position:relative;
+  z-index:70;
+  box-shadow:0 8px 24px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.10);
+  transition:border-color .25s ease,box-shadow .25s ease,background .25s ease;
+  flex-shrink:0;
+}
+.nav-toggle:hover{
+  border-color:rgba(104,229,255,.55);
+  box-shadow:0 8px 28px rgba(0,0,0,.34),0 0 22px rgba(99,231,255,.18),inset 0 1px 0 rgba(255,255,255,.14);
+}
+.nav-toggle span{
+  display:block;
+  width:20px;
+  height:2px;
+  border-radius:999px;
+  background:#eaf8ff;
+  transition:transform .3s cubic-bezier(.4,0,.2,1),opacity .2s ease,width .3s ease;
+  box-shadow:0 0 10px rgba(104,229,255,.6);
+}
+/* Animated X state */
+.nav-toggle.is-open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-toggle.is-open span:nth-child(2){opacity:0;width:0;}
+.nav-toggle.is-open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.nav-toggle.is-open{
+  border-color:rgba(104,229,255,.5);
+  background:linear-gradient(180deg,rgba(20,60,110,.9),rgba(8,28,54,.9));
+}
+
+/* --- Mobile nav backdrop overlay --- */
+.nav-backdrop{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:60;
+  background:rgba(1,5,14,.6);
+  backdrop-filter:blur(4px);
+  -webkit-backdrop-filter:blur(4px);
+  opacity:0;
+  transition:opacity .3s ease;
+}
+.nav-backdrop.visible{
+  opacity:1;
+}
+body.nav-open .nav-backdrop{display:block;}
+
+/* --- Smooth mobile nav panel --- */
+@media(max-width:980px){
+  .nav-toggle{display:flex !important;}
+
+  /* Nav links */
+  .navbar .nav-pill a{
+    width:100% !important;
+    display:flex !important;
+    align-items:center !important;
+    gap:12px !important;
+    min-height:52px !important;
+    padding:0 16px !important;
+    font-size:15px !important;
+    font-weight:800 !important;
+    color:#ddf3ff !important;
+    border-radius:16px !important;
+    border:1px solid rgba(255,255,255,.06) !important;
+    background:rgba(255,255,255,.03) !important;
+    transition:background .2s ease,border-color .2s ease,transform .2s ease !important;
+    text-align:left !important;
+    letter-spacing:.01em !important;
+  }
+  .navbar .nav-pill a:hover{
+    background:rgba(99,231,255,.10) !important;
+    border-color:rgba(99,231,255,.2) !important;
+    transform:translateX(4px) !important;
+  }
+  .navbar .nav-pill a.active{
+    background:linear-gradient(90deg,rgba(92,213,255,.16),rgba(39,133,255,.08)) !important;
+    border-color:rgba(104,229,255,.28) !important;
+    color:#fff !important;
+  }
+  .navbar .nav-pill a::before{
+    content:attr(data-icon) !important;
+    display:inline-flex !important;
+    font-size:18px !important;
+    width:28px !important;
+    flex-shrink:0 !important;
+    line-height:1 !important;
+  }
+  .navbar .nav-pill a.active::after{display:none !important;}
+
+  /* Theme toggle inside pill */
+  .navbar .theme-toggle{
+    width:100% !important;
+    height:50px !important;
+    border-radius:16px !important;
+    position:static !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    gap:10px !important;
+    background:rgba(255,255,255,.045) !important;
+    border:1px solid rgba(255,255,255,.08) !important;
+    margin-top:4px !important;
+    font-size:15px !important;
+  }
+  .navbar .theme-toggle::after{
+    content:"Toggle theme";
+    font-size:14px;
+    font-weight:700;
+    color:#afd8ef;
+    letter-spacing:.02em;
+  }
+
+  /* Light mode nav */
+  body.light .navbar .nav-pill{
+    background:rgba(245,252,255,.97) !important;
+    border-color:rgba(0,112,190,.16) !important;
+    box-shadow:0 28px 90px rgba(15,65,115,.18) !important;
+  }
+  body.light .navbar .nav-pill a{
+    color:#122d48 !important;
+    border-color:rgba(6,18,36,.07) !important;
+    background:rgba(6,18,36,.03) !important;
+  }
+  body.light .navbar .nav-pill a:hover{
+    background:rgba(0,125,185,.08) !important;
+    border-color:rgba(0,125,185,.18) !important;
+  }
+  body.light .navbar .theme-toggle{
+    background:rgba(6,18,36,.05) !important;
+    color:#061224 !important;
+  }
+  body.light .navbar .theme-toggle::after{color:#2d5070;}
+
+  /* Scroll lock when nav open */
+  body.nav-open{overflow:hidden;}
+}
+
+/* --- Scroll progress bar --- */
+#scroll-progress{
+  position:fixed;
+  top:0;
+  left:0;
+  height:2px;
+  width:0%;
+  background:linear-gradient(90deg,#63e7ff,#1fb8ff,#7c3cff);
+  z-index:9999;
+  transition:width .1s linear;
+  box-shadow:0 0 10px rgba(99,231,255,.55);
+  pointer-events:none;
+}
+
+/* --- Button hover glow upgrade --- */
+.btn.primary:hover{
+  box-shadow:0 18px 50px rgba(0,119,255,.5),0 0 28px rgba(31,184,255,.3) !important;
+}
+.btn.ghost:hover{
+  border-color:rgba(99,231,255,.6) !important;
+  box-shadow:0 12px 36px rgba(0,0,0,.3),0 0 20px rgba(99,231,255,.15) !important;
+}
+
+/* NOTE: html scroll-behavior intentionally NOT set to smooth here.
+   GSAP ScrollTrigger requires scroll-behavior:auto to work correctly.
+   Smooth scrolling is handled by Lenis (already loaded in script.js). */
+@media(prefers-reduced-motion:reduce){
+  #scroll-progress{transition:none !important;}
+  .flow-inner,.flow-badge,.flow-badge i{transition:none !important;}
+}
+
+
+/* ============================================================
+   MOBILE NAV — FINAL AUTHORITATIVE FIX (overrides all above)
+   backdrop-filter on navbar breaks position:fixed children on iOS/Android
+   ============================================================ */
+
+@media(max-width:980px){
+  /* CRITICAL FIX: .navbar has z-index:50 + position:fixed, which creates its
+     own stacking context. Children (.nav-pill) with z-index:9000 only compete
+     WITHIN that context — they cannot escape above .nav-backdrop (z-index:8999)
+     which is a sibling at body level. Raising .navbar's own z-index above the
+     backdrop is what actually fixes tap-through. Also kill backdrop-filter and
+     transform on navbar — both create a containing block that breaks
+     position:fixed children on mobile. Re-center using inset+margin instead. */
+  .navbar,
+  .navbar.lamp-nav{
+    z-index:9500 !important;
+    backdrop-filter:none !important;
+    -webkit-backdrop-filter:none !important;
+    background:rgba(3,10,22,.96) !important;
+    transform:none !important;
+    left:0 !important;
+    right:0 !important;
+    margin:0 auto !important;
+  }
+
+  /* 2. Nav pill — fixed to VIEWPORT, centered, hidden by default */
+  .navbar .nav-pill{
+    position:fixed !important;
+    top:80px !important;
+    left:50% !important;
+    transform:translateX(-50%) translateY(-12px) scale(.96) !important;
+    width:min(92vw,520px) !important;
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:stretch !important;
+    gap:6px !important;
+    padding:12px !important;
+    border-radius:26px !important;
+    opacity:0 !important;
+    visibility:hidden !important;
+    pointer-events:none !important;
+    background:rgba(5,16,32,.98) !important;
+    border:1px solid rgba(99,231,255,.22) !important;
+    box-shadow:0 24px 80px rgba(0,0,0,.55) !important;
+    /* NO backdrop-filter here — causes same stacking context bug */
+    backdrop-filter:none !important;
+    -webkit-backdrop-filter:none !important;
+    transition:opacity .28s ease, transform .28s ease, visibility 0s linear .28s !important;
+    z-index:9000 !important;
+  }
+
+  /* 3. Open state */
+  .navbar .nav-pill.open{
+    opacity:1 !important;
+    visibility:visible !important;
+    pointer-events:auto !important;
+    transform:translateX(-50%) translateY(0) scale(1) !important;
+    transition:opacity .28s ease, transform .28s ease, visibility 0s linear 0s !important;
+  }
+
+  /* 4. Nav links — full width, tappable, no tiny font-size:0 */
+  .navbar .nav-pill a{
+    display:flex !important;
+    align-items:center !important;
+    gap:12px !important;
+    width:100% !important;
+    min-height:52px !important;
+    padding:0 16px !important;
+    font-size:15px !important;
+    font-weight:800 !important;
+    color:#ddf3ff !important;
+    border-radius:16px !important;
+    border:1px solid rgba(255,255,255,.06) !important;
+    background:rgba(255,255,255,.04) !important;
+    text-align:left !important;
+    transition:background .2s ease, border-color .2s ease !important;
+    /* Reset the icon-only style from the bottom nav */
+    text-indent:0 !important;
+    letter-spacing:normal !important;
+  }
+  /* Remove the icon-only ::before override */
+  .navbar .nav-pill a::before{
+    content:attr(data-icon) !important;
+    font-size:18px !important;
+    width:24px !important;
+    flex-shrink:0 !important;
+  }
+  .navbar .nav-pill a:hover,
+  .navbar .nav-pill a.active{
+    background:rgba(99,231,255,.10) !important;
+    border-color:rgba(99,231,255,.22) !important;
+    color:#fff !important;
+  }
+  .navbar .nav-pill a.active::after{
+    display:none !important;
+  }
+
+  /* 5. Theme toggle inside pill */
+  .navbar .nav-pill .theme-toggle,
+  .navbar .theme-toggle{
+    width:100% !important;
+    height:50px !important;
+    border-radius:16px !important;
+    position:static !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    gap:10px !important;
+    background:rgba(255,255,255,.05) !important;
+    border:1px solid rgba(255,255,255,.09) !important;
+    font-size:20px !important;
+    margin-top:4px !important;
+    cursor:pointer !important;
+  }
+}
+
+/* Backdrop overlay — also NO backdrop-filter to avoid stacking context */
+.nav-backdrop{
+  position:fixed !important;
+  inset:0 !important;
+  z-index:8999 !important;
+  background:rgba(1,5,14,.7) !important;
+  backdrop-filter:none !important;
+  -webkit-backdrop-filter:none !important;
+  opacity:0 !important;
+  transition:opacity .28s ease !important;
+  pointer-events:none !important;
+}
+.nav-backdrop.visible{
+  opacity:1 !important;
+  pointer-events:auto !important;
+}
+
+/* Hamburger button — ensure it's above the bottom nav bar */
+.nav-toggle{
+  z-index:9001 !important;
+  position:relative !important;
+}
+
+/* Scroll lock */
+body.nav-open{
+  overflow:hidden !important;
+}

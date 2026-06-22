@@ -789,7 +789,7 @@ body.nav-open .nav-backdrop{display:block;}
      position:fixed children on mobile. Re-center using inset+margin instead. */
   .navbar,
   .navbar.lamp-nav{
-    z-index:9500 !important;
+    z-index:9050 !important;
     backdrop-filter:none !important;
     -webkit-backdrop-filter:none !important;
     background:rgba(3,10,22,.96) !important;
@@ -916,4 +916,549 @@ body.nav-open .nav-backdrop{display:block;}
 /* Scroll lock */
 body.nav-open{
   overflow:hidden !important;
+}
+
+
+/* ============================================================
+   SCROLL EFFECTS + PREMIUM POLISH
+   ============================================================ */
+
+/* --- Cursor spotlight (desktop only, very subtle) --- */
+#cursor-spotlight{
+  position:fixed;
+  top:0;
+  left:0;
+  width:600px;
+  height:600px;
+  margin-left:-300px;
+  margin-top:-300px;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(99,231,255,.05) 0%,transparent 65%);
+  pointer-events:none;
+  z-index:1;
+  will-change:transform;
+}
+body.light #cursor-spotlight{
+  background:radial-gradient(circle,rgba(0,125,185,.04) 0%,transparent 65%);
+}
+@media(max-width:980px){
+  #cursor-spotlight{display:none;}
+}
+
+/* --- Magnetic buttons: smooth spring-back transition --- */
+.magnetic{
+  transition:transform .25s cubic-bezier(.34,1.56,.64,1);
+}
+
+/* --- Staggered word reveal for headings --- */
+.word-reveal{
+  display:inline-block;
+  opacity:0;
+  transform:translateY(.4em);
+  filter:blur(3px);
+  transition:opacity .55s cubic-bezier(.2,.8,.2,1),
+             transform .55s cubic-bezier(.2,.8,.2,1),
+             filter .55s ease;
+}
+.word-reveal.in{
+  opacity:1;
+  transform:translateY(0);
+  filter:blur(0);
+}
+
+/* --- Card 3D tilt on hover (subtle, premium) --- */
+@media(min-width:981px){
+  .credential-card,
+  .build-tile,
+  .info-card,
+  .vault-card.video-card,
+  .system-orbit-card{
+    transition:transform .35s cubic-bezier(.19,1,.22,1),
+               border-color .28s ease,
+               box-shadow .28s ease !important;
+    transform-style:preserve-3d;
+  }
+}
+
+/* --- Smoother global card hover lift (refines existing transitions) --- */
+.case-card:hover,
+.contact-links.rich .contact-card:hover{
+  transition:transform .4s cubic-bezier(.19,1,.22,1),
+             border-color .3s ease,
+             box-shadow .3s ease !important;
+}
+
+/* --- Refined section reveal: slight scale-in for extra polish --- */
+.reveal{
+  transition:opacity .7s cubic-bezier(.16,1,.3,1),
+             transform .7s cubic-bezier(.16,1,.3,1) !important;
+}
+.reveal:not(.visible){
+  transform:translateY(36px) scale(.985);
+}
+
+/* --- Dock entrance animation on page load --- */
+@keyframes dockRise{
+  from{ opacity:0; transform:translateX(-50%) translateY(40px) scale(.9); }
+  to{ opacity:1; transform:translateX(-50%) translateY(0) scale(1); }
+}
+.dock-nav{
+  animation:dockRise .7s cubic-bezier(.19,1,.22,1) .4s both;
+}
+
+@media(prefers-reduced-motion:reduce){
+  .word-reveal{transition:none !important;opacity:1 !important;transform:none !important;filter:none !important;}
+  .dock-nav{animation:none !important;}
+  .reveal{transition:none !important;}
+  .magnetic{transition:none !important;}
+}
+
+
+/* ============================================================
+   WEB DESIGN SERVICE MODAL — Accordion Pricing
+   ============================================================ */
+
+/* Wider modal for this content */
+.wd-modal-mode .modal-dialog{
+  max-width:780px !important;
+  width:min(96vw,780px) !important;
+  max-height:88vh;
+  overflow-y:auto;
+  scrollbar-width:thin;
+  scrollbar-color:rgba(99,231,255,.3) transparent;
+}
+.wd-modal-mode .modal-body{padding:0 !important;}
+
+/* Tile CTA hint */
+.tile-cta-hint{
+  display:inline-block;
+  margin-top:10px;
+  font-size:12px;
+  font-weight:700;
+  color:#63e7ff;
+  letter-spacing:.04em;
+  opacity:.75;
+  transition:opacity .2s ease;
+}
+.build-tile:hover .tile-cta-hint{opacity:1;}
+
+/* --- Modal inner layout --- */
+.wd-modal-inner{
+  display:flex;
+  flex-direction:column;
+  gap:28px;
+  padding:0;
+}
+
+/* Hero block */
+.wd-hero{
+  padding:28px 28px 0;
+}
+.wd-eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:#63e7ff;
+  margin-bottom:10px;
+}
+.wd-eyebrow::before{
+  content:'';
+  width:20px;
+  height:2px;
+  background:currentColor;
+  border-radius:2px;
+}
+.wd-title{
+  font-size:clamp(24px,5vw,36px);
+  font-weight:900;
+  color:#fff;
+  line-height:1.1;
+  margin-bottom:10px;
+}
+.wd-subtitle{
+  font-size:14px;
+  color:var(--muted,#8aa4bc);
+  line-height:1.7;
+  max-width:580px;
+}
+
+/* --- Accordion --- */
+.wd-accordion{
+  display:flex;
+  flex-direction:column;
+  gap:0;
+  padding:0 20px;
+}
+.wd-accordion-item{
+  border-radius:16px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.07);
+  background:rgba(255,255,255,.03);
+  margin-bottom:8px;
+  transition:border-color .25s ease, box-shadow .25s ease;
+}
+.wd-accordion-item.open{
+  border-color:rgba(99,231,255,.28);
+  box-shadow:0 8px 32px rgba(0,0,0,.22),0 0 0 1px rgba(99,231,255,.08);
+  background:rgba(99,231,255,.04);
+}
+.wd-accordion-head{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  width:100%;
+  padding:16px 18px;
+  cursor:pointer;
+  border:none;
+  background:transparent;
+  text-align:left;
+  transition:background .2s ease;
+}
+.wd-accordion-head:hover{background:rgba(255,255,255,.04);}
+.wd-acc-icon{
+  font-size:24px;
+  width:36px;
+  flex-shrink:0;
+  text-align:center;
+}
+.wd-acc-info{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  flex:1;
+  min-width:0;
+}
+.wd-acc-tier{
+  font-size:15px;
+  font-weight:800;
+  color:#fff;
+  line-height:1.2;
+}
+.wd-acc-tag{
+  font-size:11px;
+  font-weight:600;
+  color:#63e7ff;
+  opacity:.8;
+  letter-spacing:.04em;
+}
+.wd-acc-price{
+  font-size:14px;
+  font-weight:800;
+  color:#eafaff;
+  white-space:nowrap;
+  flex-shrink:0;
+}
+.wd-acc-chevron{
+  font-size:20px;
+  color:rgba(255,255,255,.4);
+  transition:transform .3s cubic-bezier(.4,0,.2,1);
+  flex-shrink:0;
+  line-height:1;
+}
+.wd-accordion-item.open .wd-acc-chevron{
+  transform:rotate(90deg);
+  color:#63e7ff;
+}
+
+/* Accordion body — animated expand */
+.wd-accordion-body{
+  display:grid;
+  grid-template-rows:0fr;
+  transition:grid-template-rows .35s cubic-bezier(.4,0,.2,1);
+  padding:0 18px;
+}
+.wd-accordion-item.open .wd-accordion-body{
+  grid-template-rows:1fr;
+}
+.wd-accordion-body > *{
+  overflow:hidden;
+}
+.wd-acc-desc{
+  font-size:13px;
+  color:var(--muted,#8aa4bc);
+  line-height:1.6;
+  padding-top:4px;
+  margin-bottom:14px;
+}
+.wd-include-list{
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  padding-bottom:18px;
+}
+.wd-include-list li{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  font-size:13px;
+  color:#c8ddef;
+  line-height:1.5;
+}
+.wd-check{
+  color:#63e7ff;
+  font-weight:800;
+  font-size:12px;
+  flex-shrink:0;
+  margin-top:1px;
+}
+
+/* Extras block */
+.wd-extras{
+  padding:0 20px;
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+.wd-addons-block h4,
+.wd-terms-block h4{
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.45);
+  margin-bottom:12px;
+}
+.wd-addons-wrap{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+.wd-addon-tag{
+  font-size:12px;
+  font-weight:600;
+  color:#afd8ef;
+  background:rgba(99,231,255,.07);
+  border:1px solid rgba(99,231,255,.14);
+  border-radius:8px;
+  padding:5px 11px;
+  cursor:default;
+  transition:background .2s ease,border-color .2s ease;
+}
+.wd-addon-tag:hover{
+  background:rgba(99,231,255,.14);
+  border-color:rgba(99,231,255,.28);
+}
+
+/* Terms */
+.wd-terms-block{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  background:rgba(255,255,255,.025);
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:16px;
+  padding:16px 18px;
+}
+.wd-term-row{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  font-size:13px;
+  line-height:1.55;
+}
+.wd-term-icon{font-size:16px;flex-shrink:0;margin-top:1px;}
+.wd-term-row strong{
+  color:#ddf3ff;
+  font-weight:700;
+  display:block;
+  margin-bottom:2px;
+}
+.wd-term-row span{color:var(--muted,#8aa4bc);}
+
+/* CTA button */
+.wd-cta-btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  margin:0 20px 28px;
+  padding:16px 24px;
+  border-radius:16px;
+  background:linear-gradient(135deg,#1fb8ff,#0070c9);
+  color:#fff;
+  font-size:15px;
+  font-weight:800;
+  letter-spacing:.02em;
+  text-decoration:none;
+  transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .3s ease,filter .3s ease;
+  box-shadow:0 12px 36px rgba(0,119,255,.38);
+}
+.wd-cta-btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 20px 50px rgba(0,119,255,.52),0 0 28px rgba(31,184,255,.28);
+  filter:brightness(1.07);
+}
+.wd-cta-btn span{
+  font-size:18px;
+  transition:transform .2s ease;
+}
+.wd-cta-btn:hover span{transform:translateX(4px);}
+
+/* Light mode */
+body.light .wd-accordion-item{
+  background:rgba(6,18,36,.03);
+  border-color:rgba(6,18,36,.08);
+}
+body.light .wd-accordion-item.open{
+  background:rgba(0,125,185,.05);
+  border-color:rgba(0,125,185,.22);
+}
+body.light .wd-acc-tier{color:#061224;}
+body.light .wd-acc-price{color:#0a2540;}
+body.light .wd-include-list li{color:#2d5070;}
+body.light .wd-addon-tag{
+  color:#0a4070;
+  background:rgba(0,125,185,.07);
+  border-color:rgba(0,125,185,.16);
+}
+body.light .wd-terms-block{
+  background:rgba(6,18,36,.03);
+  border-color:rgba(6,18,36,.07);
+}
+body.light .wd-term-row strong{color:#061224;}
+
+/* Mobile tweaks */
+@media(max-width:600px){
+  .wd-modal-mode .modal-dialog{max-height:92vh !important;}
+  .wd-hero{padding:20px 16px 0;}
+  .wd-accordion{padding:0 10px;}
+  .wd-extras{padding:0 10px;}
+  .wd-cta-btn{margin:0 10px 22px;}
+  .wd-acc-price{font-size:12px;}
+  .wd-acc-tier{font-size:14px;}
+}
+
+
+/* ============================================================
+   TOP NAVBAR REDESIGN — Premium, Clean, Single Navigation
+   ============================================================ */
+
+/* --- Restore desktop nav links (removed when dock was added) --- */
+@media(min-width:981px){
+  .navbar .nav-pill a{display:flex !important;}
+  .navbar .nav-pill{padding:5px !important;gap:4px !important;}
+  .navbar .theme-toggle{display:grid !important;}
+  .nav-toggle{display:none !important;}
+}
+
+/* --- Refined top navbar: wider, tighter, more premium --- */
+@media(min-width:981px){
+  .navbar.lamp-nav{
+    top:16px !important;
+    height:60px !important;
+    width:min(1160px,92vw) !important;
+    padding:0 16px 0 20px !important;
+    background:linear-gradient(180deg,rgba(8,22,44,.82),rgba(4,12,26,.78)) !important;
+    border-color:rgba(99,231,255,.16) !important;
+    box-shadow:0 12px 48px rgba(0,0,0,.36),inset 0 1px 0 rgba(255,255,255,.07) !important;
+    backdrop-filter:blur(22px) saturate(160%) !important;
+    -webkit-backdrop-filter:blur(22px) saturate(160%) !important;
+  }
+
+  /* Nav pill: refined container */
+  .navbar .nav-pill{
+    background:rgba(255,255,255,.04) !important;
+    border:1px solid rgba(255,255,255,.07) !important;
+    border-radius:999px !important;
+    padding:4px !important;
+    gap:2px !important;
+    display:flex !important;
+    align-items:center !important;
+  }
+
+  /* Links: clean, readable, proper sizing */
+  .navbar .nav-pill a{
+    display:flex !important;
+    align-items:center !important;
+    padding:8px 14px !important;
+    border-radius:999px !important;
+    font-size:13px !important;
+    font-weight:700 !important;
+    color:rgba(210,235,255,.75) !important;
+    letter-spacing:.01em !important;
+    transition:color .2s ease, background .2s ease, transform .2s ease !important;
+    white-space:nowrap !important;
+    text-indent:0 !important;
+    font-size:13px !important;
+  }
+  .navbar .nav-pill a::before{
+    display:none !important; /* hide emoji icons on desktop — text only */
+  }
+  .navbar .nav-pill a:hover{
+    color:#fff !important;
+    background:rgba(99,231,255,.10) !important;
+    transform:translateY(-1px) !important;
+  }
+  .navbar .nav-pill a.active{
+    color:#fff !important;
+    background:rgba(99,231,255,.14) !important;
+    box-shadow:0 0 0 1px rgba(99,231,255,.20),0 0 22px rgba(99,231,255,.12) !important;
+  }
+
+  /* Active glow dot above link */
+  .navbar .nav-pill a.active::after{
+    content:"" !important;
+    position:absolute !important;
+    top:-10px !important;
+    left:50% !important;
+    transform:translateX(-50%) !important;
+    width:28px !important;
+    height:3px !important;
+    border-radius:999px !important;
+    background:#63e7ff !important;
+    box-shadow:0 0 14px #63e7ff, 0 0 30px rgba(99,231,255,.5) !important;
+    opacity:1 !important;
+  }
+
+  /* Theme toggle — consistent */
+  .navbar .theme-toggle{
+    width:38px !important;
+    height:38px !important;
+    margin-left:6px !important;
+    border-radius:50% !important;
+    flex-shrink:0 !important;
+  }
+
+  /* Brand — cleaner spacing */
+  .navbar .brand{
+    gap:10px !important;
+    flex-shrink:0 !important;
+  }
+  .navbar .brand img{
+    width:38px !important;
+    height:38px !important;
+  }
+  .navbar .brand span{
+    font-size:16px !important;
+    letter-spacing:.13em !important;
+  }
+
+  /* Remove padding-bottom override for desktop */
+  main{padding-bottom:0 !important;}
+}
+
+/* --- Light mode top nav --- */
+body.light .navbar.lamp-nav{
+  background:linear-gradient(180deg,rgba(255,255,255,.92),rgba(240,250,255,.88)) !important;
+  border-color:rgba(0,112,190,.16) !important;
+  box-shadow:0 12px 48px rgba(16,72,115,.14),inset 0 1px 0 rgba(255,255,255,.7) !important;
+}
+body.light .navbar .nav-pill{
+  background:rgba(6,18,36,.04) !important;
+  border-color:rgba(6,18,36,.08) !important;
+}
+body.light .navbar .nav-pill a{color:rgba(6,40,80,.65) !important;}
+body.light .navbar .nav-pill a:hover{
+  color:#061224 !important;
+  background:rgba(0,125,185,.08) !important;
+}
+body.light .navbar .nav-pill a.active{
+  color:#061224 !important;
+  background:rgba(0,125,185,.12) !important;
+  box-shadow:0 0 0 1px rgba(0,125,185,.22) !important;
 }

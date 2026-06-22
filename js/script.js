@@ -236,6 +236,25 @@ document.querySelectorAll('[data-modal]').forEach(el=>{
     } else if(type === 'link'){
       const url = el.dataset.url;
       openModal({title, body:`<div class="modal-link-card"><p>Open this item to view related samples, credentials, or project proof.</p><a class="btn primary" href="${url}" target="_blank" rel="noopener">Open Item <i class='bx bx-right-arrow-alt'></i></a></div>`});
+    } else if(type === 'webdesign'){
+      const modal = document.getElementById('previewModal');
+      const modalLabel = modal?.querySelector('.modal-label');
+      if(modalLabel) modalLabel.textContent = 'Service Packages';
+      openModal({title:'Website Design & Development', body: window.__buildWebDesignModal ? window.__buildWebDesignModal() : ''});
+      modal?.classList.add('wd-modal-mode');
+      // Accordion behavior — attach after modal body is populated
+      setTimeout(() => {
+        document.querySelectorAll('[data-wd-accordion]').forEach(item => {
+          item.querySelector('.wd-accordion-head')?.addEventListener('click', () => {
+            const isOpen = item.classList.contains('open');
+            document.querySelectorAll('[data-wd-accordion]').forEach(i => {
+              i.classList.remove('open');
+              i.querySelector('.wd-accordion-head')?.setAttribute('aria-expanded','false');
+            });
+            if(!isOpen){ item.classList.add('open'); item.querySelector('.wd-accordion-head')?.setAttribute('aria-expanded','true'); }
+          });
+        });
+      }, 50);
     }
   });
 });
@@ -851,4 +870,277 @@ if (window.gsap && window.ScrollTrigger) {
   });
   window.addEventListener('resize', layout, {passive:true});
   layout();
+})();
+
+/* ============================================================
+   V7.0 — DOCK NAV (magnification) + SCROLL EFFECTS + POLISH
+   ============================================================ */
+
+/* --- Magnetic buttons: pull toward cursor when nearby --- */
+(() => {
+  if (window.innerWidth < 981) return; // desktop-only, avoid touch jank
+  const magnets = document.querySelectorAll('.magnetic');
+  const STRENGTH = 0.35;
+  const RADIUS = 90;
+
+  magnets.forEach(btn => {
+    btn.addEventListener('mousemove', (e) => {
+      const rect = btn.getBoundingClientRect();
+      const relX = e.clientX - (rect.left + rect.width / 2);
+      const relY = e.clientY - (rect.top + rect.height / 2);
+      const dist = Math.hypot(relX, relY);
+      if (dist < RADIUS * 2.2) {
+        btn.style.transform = `translate(${relX * STRENGTH}px, ${relY * STRENGTH}px)`;
+      }
+    });
+    btn.addEventListener('mouseleave', () => {
+      btn.style.transform = '';
+    });
+  });
+})();
+
+/* --- Cursor spotlight: subtle radial glow following the cursor --- */
+(() => {
+  if (window.innerWidth < 981) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const spotlight = document.createElement('div');
+  spotlight.id = 'cursor-spotlight';
+  document.body.appendChild(spotlight);
+
+  let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
+  let curX = mouseX, curY = mouseY;
+
+  window.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; }, { passive: true });
+
+  function animateSpotlight(){
+    curX += (mouseX - curX) * 0.08;
+    curY += (mouseY - curY) * 0.08;
+    spotlight.style.transform = `translate(${curX}px, ${curY}px)`;
+    requestAnimationFrame(animateSpotlight);
+  }
+  animateSpotlight();
+})();
+
+/* --- Scroll parallax: background glows drift at different speeds --- */
+(() => {
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const layers = document.querySelectorAll('.hero::after, .reels-universe::before');
+  // Pseudo-elements can't be selected by JS directly; instead parallax real elements:
+  const parallaxTargets = [
+    { el: document.querySelector('.page-glow'), speed: 0.12 },
+    { el: document.querySelector('.orbit'), speed: -0.06 },
+  ].filter(t => t.el);
+
+  function onScroll(){
+    const y = window.scrollY;
+    parallaxTargets.forEach(({ el, speed }) => {
+      el.style.transform = (el.style.transform || '').includes('translateX(-50%)')
+        ? `translateX(-50%) translateY(${y * speed}px)`
+        : `translateY(${y * speed}px)`;
+    });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+})();
+
+/* --- Staggered word reveal for big section headings --- */
+(() => {
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const headings = document.querySelectorAll('.section-head h2, .split-head h2');
+  headings.forEach(h => {
+    if (h.dataset.wordSplit) return; // avoid double-processing
+    h.dataset.wordSplit = '1';
+    const text = h.textContent;
+    h.innerHTML = '';
+    text.split(/(\s+)/).forEach(part => {
+      if (part.trim() === '') { h.appendChild(document.createTextNode(part)); return; }
+      const span = document.createElement('span');
+      span.className = 'word-reveal';
+      span.textContent = part;
+      h.appendChild(span);
+    });
+  });
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const words = entry.target.querySelectorAll('.word-reveal');
+        words.forEach((w, i) => {
+          setTimeout(() => w.classList.add('in'), i * 45);
+        });
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  headings.forEach(h => io.observe(h));
+})();
+
+/* ============================================================
+   WEB DESIGN SERVICE MODAL — Accordion Pricing
+   ============================================================ */
+(() => {
+  const WD_PACKAGES = [
+    {
+      tier: 'Basic Website',
+      price: '₱5,000 – ₱8,000',
+      tag: 'Personal & Portfolio',
+      icon: '🌱',
+      desc: 'Best for simple personal websites, portfolios, freelancers, and small service pages.',
+      includes: [
+        '1-page responsive website',
+        'Home / introduction section',
+        'About section',
+        'Services, skills, or business info section',
+        'Portfolio / works / showcase section',
+        'Contact information section',
+        'Social media links',
+        'Mobile-friendly layout',
+        'Clean professional design',
+        '1 round of revision',
+      ]
+    },
+    {
+      tier: 'Standard Website',
+      price: '₱8,000 – ₱15,000',
+      tag: 'Small Business & Freelancers',
+      icon: '🚀',
+      desc: 'Best for small businesses, freelancers, professionals, and service providers.',
+      includes: [
+        'Multi-section website or up to 3 pages',
+        'Home page',
+        'About page or section',
+        'Services section',
+        'Portfolio / projects / business showcase',
+        'Contact section',
+        'Social media links',
+        'Mobile and tablet responsive design',
+        'Custom styling based on your brand',
+        'Basic SEO setup',
+        '2 rounds of revisions',
+      ]
+    },
+    {
+      tier: 'Premium Website',
+      price: '₱15,000 – ₱25,000',
+      tag: 'Modern & Premium',
+      icon: '💎',
+      desc: 'Best for businesses and professionals who want a more premium and modern website.',
+      includes: [
+        'Custom premium website design',
+        'Up to 5 pages',
+        'Strong hero section',
+        'About / company profile section',
+        'Services page or section',
+        'Portfolio / project / case study section',
+        'Testimonials or achievements section',
+        'Contact form or inquiry section',
+        'Basic animations and smooth scrolling',
+        'Mobile, tablet, and desktop responsive design',
+        'Basic SEO optimization',
+        'Deployment support',
+        '2 rounds of revisions',
+      ]
+    },
+    {
+      tier: 'Business / Pro Website',
+      price: '₱25,000+',
+      tag: 'Full Business Solution',
+      icon: '⚡',
+      desc: 'Best for businesses, agencies, consultants, coaches, and service providers who need advanced features.',
+      includes: [
+        'Premium custom website design',
+        'Multiple pages depending on business needs',
+        'Service pages',
+        'Landing page or lead generation structure',
+        'Contact form / lead inquiry form',
+        'Booking or appointment section',
+        'Analytics setup',
+        'Basic automation or integration support',
+        'SEO-ready structure',
+        'Mobile, tablet, and desktop optimization',
+        'Deployment support',
+        '2 to 3 rounds of revisions',
+      ]
+    }
+  ];
+
+  const ADDONS = [
+    'Domain and hosting setup', 'Website maintenance', 'Additional pages',
+    'Copywriting assistance', 'Logo or branding support', 'Booking calendar setup',
+    'Contact form automation', 'Google Analytics setup', 'Monthly website updates',
+    'Business email setup', 'Website redesign',
+  ];
+
+  function buildWebDesignModal() {
+    const packagesHTML = WD_PACKAGES.map((pkg, i) => `
+      <div class="wd-accordion-item ${i === 0 ? 'open' : ''}" data-wd-accordion>
+        <button class="wd-accordion-head" aria-expanded="${i === 0 ? 'true' : 'false'}">
+          <span class="wd-acc-icon">${pkg.icon}</span>
+          <span class="wd-acc-info">
+            <span class="wd-acc-tier">${pkg.tier}</span>
+            <span class="wd-acc-tag">${pkg.tag}</span>
+          </span>
+          <span class="wd-acc-price">${pkg.price}</span>
+          <span class="wd-acc-chevron">›</span>
+        </button>
+        <div class="wd-accordion-body">
+          <p class="wd-acc-desc">${pkg.desc}</p>
+          <ul class="wd-include-list">
+            ${pkg.includes.map(item => `<li><span class="wd-check">✓</span>${item}</li>`).join('')}
+          </ul>
+        </div>
+      </div>
+    `).join('');
+
+    const addonsHTML = ADDONS.map(a => `<span class="wd-addon-tag">${a}</span>`).join('');
+
+    return `
+      <div class="wd-modal-inner">
+        <div class="wd-hero">
+          <span class="wd-eyebrow">Professional Service</span>
+          <h2 class="wd-title">Website Design & Development</h2>
+          <p class="wd-subtitle">Your website is your digital first impression. I build clean, responsive, and professional websites that make your brand look credible online.</p>
+        </div>
+
+        <div class="wd-accordion">
+          ${packagesHTML}
+        </div>
+
+        <div class="wd-extras">
+          <div class="wd-addons-block">
+            <h4>Optional Add-ons</h4>
+            <div class="wd-addons-wrap">${addonsHTML}</div>
+          </div>
+          <div class="wd-terms-block">
+            <div class="wd-term-row">
+              <span class="wd-term-icon">🔧</span>
+              <div><strong>Maintenance</strong><span>Starts at ₱1,000/month for minor updates, fixes, and basic support.</span></div>
+            </div>
+            <div class="wd-term-row">
+              <span class="wd-term-icon">💳</span>
+              <div><strong>Payment Terms</strong><span>50% down payment to start. Remaining 50% before final turnover.</span></div>
+            </div>
+            <div class="wd-term-row">
+              <span class="wd-term-icon">⚠️</span>
+              <div><strong>Note</strong><span>Domain, hosting, paid tools, premium plugins, and third-party subscriptions are not included.</span></div>
+            </div>
+          </div>
+        </div>
+
+        <a href="mailto:jjmanalo.va@gmail.com?subject=Website%20Package%20Inquiry" class="wd-cta-btn">
+          Message Me Today <span>→</span>
+        </a>
+      </div>
+    `;
+  }
+
+  // Register globally so the existing modal handler can call it
+  window.__buildWebDesignModal = buildWebDesignModal;
+
+  // Clean up wd-modal-mode class when modal closes
+  document.querySelectorAll('[data-close-modal]').forEach(el => {
+    el.addEventListener('click', () => {
+      document.getElementById('previewModal')?.classList.remove('wd-modal-mode');
+    });
+  });
 })();

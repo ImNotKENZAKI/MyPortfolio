@@ -1462,3 +1462,51 @@ body.light .navbar .nav-pill a.active{
   background:rgba(0,125,185,.12) !important;
   box-shadow:0 0 0 1px rgba(0,125,185,.22) !important;
 }
+
+
+/* ============================================================
+   AVAILABILITY BADGE + FINAL POLISH
+   ============================================================ */
+
+/* Available for hire badge */
+.hero-available{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:#63e7ff;
+  background:rgba(99,231,255,.08);
+  border:1px solid rgba(99,231,255,.22);
+  border-radius:999px;
+  padding:6px 14px;
+  margin-bottom:16px;
+}
+.available-dot{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#4ade80;
+  box-shadow:0 0 10px #4ade80, 0 0 20px rgba(74,222,128,.5);
+  animation:pulse-dot 2s ease-in-out infinite;
+  flex-shrink:0;
+}
+@keyframes pulse-dot{
+  0%,100%{transform:scale(1);opacity:1;}
+  50%{transform:scale(1.35);opacity:.7;}
+}
+body.light .hero-available{
+  color:#0070c9;
+  background:rgba(0,112,201,.07);
+  border-color:rgba(0,112,201,.22);
+}
+
+/* fetchpriority hint for hero image — already in HTML but add CSS side */
+.hero-visual img{content-visibility:auto;}
+
+/* Remove bottom padding override that dock added */
+@media(min-width:981px){
+  main{padding-bottom:0 !important;}
+}

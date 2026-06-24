@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>404 — Page Not Found | KENZAKI</title>
+  <link rel="icon" type="image/svg+xml" href="images/kenzaki-icon.svg"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    body{display:flex;align-items:center;justify-content:center;min-height:100vh;text-align:center;padding:24px;}
+    .err-wrap{max-width:480px;}
+    .err-code{font-size:clamp(80px,20vw,140px);font-weight:900;color:#63e7ff;line-height:1;margin-bottom:8px;text-shadow:0 0 60px rgba(99,231,255,.4);}
+    .err-msg{font-size:22px;font-weight:800;color:#fff;margin-bottom:12px;}
+    .err-sub{color:var(--muted,#8aa4bc);font-size:15px;line-height:1.6;margin-bottom:32px;}
+    .err-btn{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;border-radius:999px;background:linear-gradient(135deg,#1fb8ff,#0070c9);color:#fff;font-weight:800;font-size:15px;text-decoration:none;transition:transform .25s ease,box-shadow .25s ease;}
+    .err-btn:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,119,255,.45);}
+  </style>
+</head>
+<body>
+  <div class="err-wrap">
+    <div class="err-code">404</div>
+    <div class="err-msg">Page not found.</div>
+    <p class="err-sub">The page you're looking for doesn't exist or may have been moved. Head back to the portfolio.</p>
+    <a href="/" class="err-btn">← Back to Portfolio</a>
+  </div>
+</body>
+</html>

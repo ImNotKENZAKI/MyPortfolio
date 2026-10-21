@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://kenzaki.dev/sitemap.xml
+Sitemap: https://my-portfolio-six-xi-ara259rwnj.vercel.app/sitemap.xml

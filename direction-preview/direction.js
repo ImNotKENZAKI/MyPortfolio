@@ -119,7 +119,7 @@
         const t=elapsed*.001;
         const entrance=Math.min(1,elapsed/1500);
         sculpture.style.transform='translate3d('+(easedX*16)+'px,'+(Math.sin(t*.45)*13+easedY*9)+'px,0) rotateZ('+(-9+Math.sin(t*.22)*5+easedX*3)+'deg) rotateY('+(easedX*12)+'deg) rotateX('+(-easedY*5)+'deg)';
-        portrait.style.transform='translate3d('+(easedX*-10*entrance)+'px,'+(easedY*-5)+'px,30px) rotateY('+(easedX*-2.5)+'deg)';
+        portrait.style.transform='translate3d('+(easedX*-10*entrance)+'px,'+(easedY*-5)+'px,0) rotateY('+(easedX*-2.5)+'deg)';
         sceneCards[0].style.transform='translate3d('+(easedX*-23)+'px,'+(easedY*-12)+'px,55px) rotate(4deg)';
         sceneCards[1].style.transform='translate3d('+(easedX*27)+'px,'+(easedY*18)+'px,70px) rotate(-5deg)';
         drawSignals(elapsed);
@@ -166,17 +166,6 @@
       element.style.transform='translate('+((event.clientX-r.left-r.width/2)*.16)+'px,'+((event.clientY-r.top-r.height/2)*.2)+'px)';
     });
     element.addEventListener('pointerleave',()=>element.style.transform='');
-  });
-  const labels={'kinetic-k':'A / Kinetic K','nexus-k':'B / Nexus K','signature-k':'C / Signature K'};
-  $$('input[name="logo-direction"]').forEach(input=>input.addEventListener('change',()=>{
-    if(!input.checked)return;
-    $$('[data-brand-mark]').forEach(mark=>mark.src='assets/'+input.value+'.svg');
-    $$('.logo-option').forEach(option=>option.classList.toggle('selected',option.contains(input)));
-    $('#brand-status').textContent='Previewing '+labels[input.value];
-  }));
-  $$('.logo-option').forEach(option=>{
-    option.addEventListener('pointermove',event=>{if(paused||event.pointerType==='touch')return;const r=option.getBoundingClientRect();option.style.setProperty('--lx',(event.clientX-r.left)/r.width*100+'%');option.style.setProperty('--ly',(event.clientY-r.top)/r.height*100+'%');});
-    option.addEventListener('pointerleave',()=>{option.style.removeProperty('--lx');option.style.removeProperty('--ly');});
   });
   const roles=['Video Editor','AI Content Creator','Website Developer','Automation Builder','Cybersecurity Speaker'];
   let roleIndex=0,roleTimer=0;

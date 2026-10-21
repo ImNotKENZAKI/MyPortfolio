@@ -52,6 +52,7 @@
     $('.chapter-progress>span').style.width=((caseProgress*2+1)/3*100)+'%';
   }
   function update() {
+    $('.navigation').classList.toggle('is-scrolled',scrollY>60);
     const max=document.documentElement.scrollHeight-innerHeight;
     $('.reading-line').style.transform='scaleX('+(max>0?Math.min(1,scrollY/max):0)+')';
     if(!paused)updateCase((scrollY-(metrics.chapterTop||0))/(metrics.chapterRange||1));

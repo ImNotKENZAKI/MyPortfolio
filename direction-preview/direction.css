@@ -254,6 +254,14 @@ footer>a:last-child{width:100%;padding-top:18px;border-top:1px solid #253044;fon
 .scroll-line:after {content:'';position:absolute;height:1px;width:16px;background:#b2e8ff;left:-16px;animation:scan 2s ease-in-out infinite}
 @keyframes sculpture-arrive {from{opacity:0;translate:45px 15px;scale:.92}to{opacity:.85;translate:0 0;scale:1}}
 
+.chapter-copy .eyebrow {font-size:10px}
+.chapter-copy>p:not(.eyebrow) {font-size:14px;color:#8fa6bd}
+.chapter-backlink {font-size:11px}
+.browser-bar small {font-size:8px;letter-spacing:.1em}
+.depth-caption>span {font-size:9px}
+.case-readout>span {font-size:10px}
+.case-readout strong {font-size:15px}
+
 /* Kinetic is the selected identity; show its applications instead of another choice. */
 .identity-section {padding:110px 5.5% 85px;border-top:1px solid #273444;background:radial-gradient(ellipse at 45% 80%,#1d2c4229,transparent 65%),#090c12}
 .identity-heading {display:flex;justify-content:space-between;align-items:flex-end;gap:45px;margin-bottom:48px}
@@ -329,8 +337,9 @@ footer>a:last-child{width:100%;padding-top:18px;border-top:1px solid #253044;fon
   .navigation nav {display:none}
   .hero {height:850px}
   .hero-content {padding-top:142px;width:82%}
-  .hero h1 {font-size:11.6cqw}
+  .hero h1 {font-size:10.3cqw}
   .hero-scene {inset:180px -8% 74px 37%}
+  .kinetic-sculpture {left:-4%;width:130%}
   .portrait {height:590px;right:-16%}
   .hero-description {max-width:330px}
   .hero-role {margin-top:24px;font-size:19px}
@@ -402,6 +411,14 @@ footer>a:last-child{width:100%;padding-top:18px;border-top:1px solid #253044;fon
   .hero-bottom a {gap:9px}
   .scroll-line {width:22px}
   .hero-bottom a>span:last-child {font-size:18px}
+  .chapter-copy {top:14.5%}
+  .chapter-copy .eyebrow {font-size:8px}
+  .chapter-copy>p:not(.eyebrow) {font-size:12px}
+  .chapter-backlink {font-size:10px}
+  .browser-bar small {font-size:7px;letter-spacing:.06em}
+  .depth-caption>span {font-size:8px}
+  .case-readout>span {font-size:8px}
+  .case-readout strong {font-size:12px}
   .identity-section {padding:66px 6% 50px}
   .identity-heading {display:block;margin-bottom:30px}
   .identity-heading .eyebrow {font-size:8px;margin-bottom:22px}

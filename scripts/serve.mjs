@@ -10,10 +10,11 @@ const server = http.createServer(async (req, res) => {
   if (!['GET','HEAD'].includes(req.method)) {res.writeHead(405);res.end();return;}
   try {
     const pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname);
-    const relative = pathname === '/' ? 'index.html' : pathname.replace(/^\/+/, '');
+    const requested = pathname.replace(/^\/+/, '');
+    const relative = !requested ? 'index.html' : requested.endsWith('/') ? requested + 'index.html' : requested;
     if (relative.replaceAll('\\', '/').split('/').some(segment => segment.startsWith('.'))) throw new Error('Not found');
     const filename = resolve(root, relative);
-    const allowed = /^(?:index\.html|404\.html|resume\.pdf|robots\.txt|sitemap\.xml|(?:css|js|images|media)\/[^.].*)$/.test(relative);
+    const allowed = /^(?:index\.html|404\.html|resume\.pdf|robots\.txt|sitemap\.xml|(?:css|js|images|media|direction-preview)\/[^.].*)$/.test(relative);
     if (!allowed || !filename.startsWith(root.endsWith(sep) ? root : root + sep)) throw new Error('Not found');
     const info = await stat(filename);
     if (!info.isFile()) throw new Error('Not found');

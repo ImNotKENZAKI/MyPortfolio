@@ -1,30 +1,27 @@
-# KENZAKI Portfolio
+# KENZAKI — portfolio and V2 direction preview
 
-John Jefferson Manalo's personal portfolio: websites and landing pages, video editing, AI content, GoHighLevel automation, and cybersecurity speaking.
+The original portfolio is the content baseline. Its index, styles, and interaction script have been restored from commit d39a7cd. The nine original sections, twelve video projects, six system case studies, service previews, pricing packages, proof links, client feedback, and contact hub remain available.
 
-## Preview
+## Review the new direction
 
-With Node.js 20 or newer, run `node scripts/serve.mjs`, then open `http://127.0.0.1:4173/`. This is a buildless HTML/CSS/JavaScript site. No frontend dependency installation is needed.
+Open `/direction-preview/` on the Vercel preview. This is the first visual and motion prototype for review before applying the selected direction across the full portfolio.
 
-## Content
+It includes a new hero with the original portrait, original Imagegen chrome artwork, responsive parallax, custom signal trails, a scroll-driven project stage, and three selectable vector logo concepts. The complete existing portfolio remains at `/`.
 
-- `index.html`: biography, services, speaking evidence, resource links, and contact information.
-- `js/script.js`: project descriptions, supplied live URLs, video IDs, gallery filters, previews, and motion controls.
-- `css/style.css`: responsive layout, custom graphics, and animations.
-- `images/`: original assets plus optimized portraits and event photographs.
-- `media/cybersecurity-speaking-oct-2026.mp4`: supplied event highlights. Loads only when the visitor chooses to play it.
-- `resume.pdf`: the supplied résumé, retained without content changes.
+- A: Kinetic K — angular, directional, and bold.
+- B: Nexus K — connected, geometric, and open.
+- C: Signature K — expressive and personal.
 
-The speaking section is grounded in the supplied October 2, 2026 certificate for the Training on Cashless Society and Cybersecurity Awareness, issued by DTI / Negosyo Center Roxas-LGU. All eight web projects use the URLs supplied by the owner and screenshots captured from their live websites. Website screenshots show client website content; any performance figures within those screenshots are not claims about this portfolio owner's results.
+The concept marks are in `direction-preview/assets/`. The built-in Imagegen prompt is saved alongside the optimized hero artwork as `artwork-prompt.txt`. The original generated PNG is retained for future art direction.
 
-## Deployment
+## Next approved stage
 
-Keep the existing Vercel project's framework setting as Other, with the repository root as its output directory and no build command. Merge the review branch through GitHub to update the connected production deployment. Preview changes before merging.
+Once the visual direction and logo are selected, carry them across the original story journey, featured work, Systems Stack, Reels Universe, service gallery, credentials, feedback, packages, and contact hub. Add the eight supplied MDS/SRG web projects, updated workflow skills, and the October 2 cybersecurity speaking evidence without removing original material. The source screenshots, event photos, certificate, and event video are already retained in this branch.
 
-The displayed contact actions open email, WhatsApp, or professional profiles directly. No SMTP setup is required for those actions. The original optional `api/contact.js` endpoint is retained; it requires the existing `SMTP_USER`, `SMTP_PASS`, and optional SMTP settings if used separately. Never put credentials in the repository.
+## Local preview
 
-## Accessibility and motion
+Run `node scripts/serve.mjs`, then open `http://127.0.0.1:4173/direction-preview/`. No frontend dependency installation or build step is needed. Original server-side email code and its existing SMTP environment configuration are unchanged.
 
-Keyboard navigation, native dialogs with focus restoration, visible focus indicators, and a skip link are supported. Motion respects the system's reduced-motion preference and can be paused with the header control. The orbital canvas stops rendering while it is outside the viewport or the tab is hidden. Video previews load on demand; YouTube embeds include a direct viewing link.
+Motion respects the device's reduced-motion setting and can be paused in the prototype header. The new canvas stops while the hero is out of view or the tab is hidden. Project controls and logo options work with the keyboard.
 
-Run `node --check js/script.js`, `node --check scripts/serve.mjs`, and `node --check api/contact.js` for syntax checks, or use `npm run check` when npm is available.
+Production is not changed by this draft branch. Review the Vercel preview before merging.

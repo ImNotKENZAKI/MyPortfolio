@@ -19,7 +19,7 @@ Timing is an editorial starting point, not a forced playback requirement. The we
 
 ## Image-to-video generation brief
 
-Input: `atelier-entrance-v1.png` as the visual identity and ending wide-shot reference. Use a matching macro keyframe before attempting a strict start/end-frame sequence.
+Input: `atelier-entrance-v1.png` as the visual identity and ending wide-shot reference. The matching `atelier-macro-v1.png` is prepared as the starting-frame candidate; the entrance is the ending wide-frame candidate. See `video-brief.json`.
 
 > A single restrained premium architectural product-film move inside the same fictional graphite-basalt atelier at blue hour. Begin close to the finely brushed silver K bevel and its cyan seam; glide slowly back and laterally to reveal the exact split-stem angular K sculpture and the coastal aperture. Preserve the precise K silhouette, cyan accent geometry, stone architecture, lighting direction, distant coastline, exposure, and warm/cool palette. Physically credible parallax, subtle depth of field, natural highlight travel, no morphing, new objects, text, people, pulsing light, wobble, liquid metal, flicker, excessive bloom, or impossible camera acceleration. End with a stable wide composition and quiet left-side space for HTML typography. Silent output. Use a short shot suitable for controlled scroll playback or conversion to a frame sequence.
 
@@ -35,7 +35,7 @@ No frame sequence should be presented as interactive geometry by itself. If used
 | Brushed-metal base color | Generated candidate | Test grain scale on the actual K and specular behavior. |
 | Roughness/normal detail | Not authored as a finished PBR set | Derive or author coherent maps; validate against the generated visual target. |
 | Final 3D atelier model | Not built | Rebuild the prototype architecture to match the approved space rather than retaining the simple repeating portal room. |
-| Matching macro keyframe | Storyboard reference only | Create a full-frame matching image before strict frame-to-frame video generation. |
+| Matching macro keyframe | Generated, saved | Review start/end continuity and stability in the video test. |
 | AI video bridge | Not generated | Add and connect a suitable generation service; Runway was suggested but connection is unconfirmed. |
 | Actual work / speaking proof | Existing supplied assets | Keep original files and verified factual details. |
 | Mobile experience | Prototype exists | Deliberate reframing and input testing; not an automatic desktop crop. |

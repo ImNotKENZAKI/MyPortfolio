@@ -47,7 +47,11 @@ export async function createExperience(host,{onFrame,onLoad,onFailure}) {
   const front=new THREE.DirectionalLight('#e2f1f4',2.1);front.position.set(8,12,16);scene.add(front);
 
   box(90,.25,180,matte,0,-.16,-45);
-  const mirror=new Reflector(new THREE.PlaneGeometry(75,170),{color:'#42535b',textureWidth:mobile()?256:768,textureHeight:mobile()?256:768,clipBias:.003,multisample:0});
+  const floorShader={...Reflector.ReflectorShader,fragmentShader:Reflector.ReflectorShader.fragmentShader.replace(
+    'vec4 base = texture2DProj( tDiffuse, vUv );',
+    'vec2 uv=vUv.xy/vUv.w; vec2 d=vec2(0.0028); vec4 base=texture2D(tDiffuse,uv)*0.36; base+=(texture2D(tDiffuse,uv+vec2(d.x,0.0))+texture2D(tDiffuse,uv-vec2(d.x,0.0))+texture2D(tDiffuse,uv+vec2(0.0,d.y))+texture2D(tDiffuse,uv-vec2(0.0,d.y)))*0.16;'
+  )};
+  const mirror=new Reflector(new THREE.PlaneGeometry(75,170),{color:'#34454c',textureWidth:mobile()?512:1024,textureHeight:mobile()?512:1024,clipBias:.003,multisample:mobile()?0:2,shader:floorShader});
   mirror.rotation.x=-Math.PI/2;mirror.position.set(0,.001,-45);scene.add(mirror);
   // An architectural perimeter keeps the world grounded as the camera travels.
   box(.5,16,160,matte,-15,8,-45);box(.5,16,160,matte,15,8,-45);
@@ -61,7 +65,7 @@ export async function createExperience(host,{onFrame,onLoad,onFailure}) {
     const light=new THREE.PointLight(i%2?'#8ccfe8':'#f5cf94',130,24,2);light.position.set(i%2?9:-9,8,z);scene.add(light);
   }
   box(.025,.015,125,warm,-3.5,.025,-48);box(.025,.015,125,cool,3.5,.025,-48);
-  const plinth=cylinder(4.9,.28,darkMetal,.15);cylinder(4.55,.7,matte,.64);
+  const plinth=cylinder(4.9,.28,darkMetal,.15);const plinthTop=cylinder(4.55,.7,matte,.64);
   const plinthRim=new THREE.Mesh(new THREE.TorusGeometry(4.55,.025,8,128),warm);plinthRim.rotation.x=Math.PI/2;plinthRim.position.y=1.005;scene.add(plinthRim);
   const ring=new THREE.Mesh(new THREE.TorusGeometry(6.05,.035,12,160),warm);ring.position.set(0,6.5,-3);scene.add(ring);
   const halo=new THREE.Mesh(new THREE.TorusGeometry(6.05,.18,12,128),new THREE.MeshBasicMaterial({color:'#d9b983',transparent:true,opacity:.06,depthWrite:false,blending:THREE.AdditiveBlending}));halo.position.copy(ring.position);scene.add(halo);
@@ -154,6 +158,7 @@ export async function createExperience(host,{onFrame,onLoad,onFailure}) {
     position.x+=px*(mobile()?0:.8);position.y+=py*(mobile()?0:.3)+(paused?0:Math.sin(t*.25)*.025);
     camera.position.copy(position);camera.lookAt(look);
     monogram.visible=progress<.28;
+    for(const object of [plinth,plinthTop,plinthRim,ring,halo,beam])object.visible=!mobile()||progress<.275;
     const split=THREE.MathUtils.smoothstep(progress,.12,.24);
     kParts.forEach((part,i)=>{part.position.x=split*[-.8,1.4,.7,-1][i];part.position.z=split*[.4,-.3,.9,.6][i];part.rotation.y=split*[.05,-.12,.2,-.1][i];});
     monogram.position.y=4.9+(paused?0:Math.sin(t*.65)*.075);monogram.rotation.y=.22+(paused?0:Math.sin(t*.18)*.07)+split*.3;

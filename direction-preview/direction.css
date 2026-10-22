@@ -179,7 +179,7 @@ footer>a:last-child{width:100%;padding-top:18px;border-top:1px solid #253044;fon
 
 /* The portrait is sized from the available height, so wide screens never crop the head. */
 .hero {
-  position:relative; isolation:isolate; overflow:hidden; height:clamp(820px,100svh,1040px);
+  position:relative; isolation:isolate; overflow:clip; height:clamp(820px,100svh,1040px);
   background:radial-gradient(ellipse at 78% 45%,#17365555,transparent 53%),linear-gradient(125deg,#080a0e 30%,#0b111b);
 }
 .hero:after {content:'';position:absolute;inset:0;z-index:3;pointer-events:none;background:linear-gradient(90deg,#080a0e60,transparent 62%)}

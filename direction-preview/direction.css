@@ -215,7 +215,9 @@ footer>a:last-child{width:100%;padding-top:18px;border-top:1px solid #253044;fon
 .proof-symbol {font-size:30px;color:#7d9cb8}
 .hero-proof p {font-size:10px;letter-spacing:.07em;color:#b9c9d9;line-height:1.9}
 .hero-proof b {font-size:9px;letter-spacing:.035em;font-weight:500;color:#829bb5}
-.hero-scene {position:absolute;inset:116px 2% 64px 43%;z-index:2;perspective:1300px;transform-style:preserve-3d}
+/* Flatten each animated layer before stacking: the rotating artwork must never
+   intersect the portrait in a shared 3D space. Keep perspective for parallax. */
+.hero-scene {position:absolute;inset:116px 2% 64px 43%;z-index:2;perspective:1300px;transform-style:flat;isolation:isolate}
 .portrait {position:absolute;right:-9%;left:auto;bottom:0;height:min(100%,800px);width:auto;max-width:none;z-index:3;transform-origin:55% 70%;filter:drop-shadow(-20px 0 45px #02071399);mask-image:linear-gradient(#000 77%,#000a 91%,transparent);will-change:transform;animation:portrait-in 1.6s cubic-bezier(.16,1,.3,1) both}
 .kinetic-sculpture {position:absolute;top:10%;left:-16%;width:132%;max-width:1120px;height:auto;z-index:2;opacity:.85;filter:brightness(.65) contrast(1.05) drop-shadow(0 0 35px #208dff16);will-change:transform;animation:sculpture-arrive 1.8s cubic-bezier(.16,1,.3,1) both}
 .scene-disc {position:absolute;left:13%;top:10%;width:80%;height:80%;border-radius:50%;background:radial-gradient(ellipse,#429bde16,transparent 65%)}

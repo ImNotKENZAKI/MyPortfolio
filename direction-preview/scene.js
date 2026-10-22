@@ -19,6 +19,7 @@ export async function createExperience(host,{onFrame,onLoad,onFailure}) {
   const darkMetal=new THREE.MeshStandardMaterial({color:'#24383f',roughness:.28,metalness:.9});
   const warm=new THREE.MeshBasicMaterial({color:new THREE.Color('#ffdfad').multiplyScalar(2.8)});
   const cool=new THREE.MeshBasicMaterial({color:new THREE.Color('#9bdded').multiplyScalar(2.2)});
+  const accent=new THREE.MeshBasicMaterial({color:'#77cbe8',toneMapped:false});
   function box(w,h,d,material,x=0,y=0,z=0,parent=scene) {
     const mesh=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),material);mesh.position.set(x,y,z);parent.add(mesh);return mesh;
   }
@@ -75,8 +76,8 @@ export async function createExperience(host,{onFrame,onLoad,onFailure}) {
   }
   extrude([[14,18],[35,10],[35,82],[14,90]],[chrome,sideMetal]);
   extrude([[43,45],[72,12],[95,12],[62,49],[96,84],[70,84],[43,56]],[chrome,sideMetal]);
-  extrude([[45,26],[60,10],[68,10],[53,26]],cool);
-  extrude([[4,47],[23,47],[23,50],[4,50]],cool);
+  extrude([[45,26],[60,10],[68,10],[53,26]],accent);
+  extrude([[4,47],[23,47],[23,50],[4,50]],accent);
   // Restrained airborne dust and physical light volumes create scale, not a particle wallpaper.
   const beamMat=new THREE.MeshBasicMaterial({color:'#ffe4bd',transparent:true,opacity:.018,side:THREE.DoubleSide,depthWrite:false,blending:THREE.AdditiveBlending});
   const beam=new THREE.Mesh(new THREE.ConeGeometry(6,14,48,1,true),beamMat);beam.position.set(-2,7,0);scene.add(beam);
@@ -157,9 +158,16 @@ export async function createExperience(host,{onFrame,onLoad,onFailure}) {
     kParts.forEach((part,i)=>{part.position.x=split*[-.8,1.4,.7,-1][i];part.position.z=split*[.4,-.3,.9,.6][i];part.rotation.y=split*[.05,-.12,.2,-.1][i];});
     monogram.position.y=4.9+(paused?0:Math.sin(t*.65)*.075);monogram.rotation.y=.22+(paused?0:Math.sin(t*.18)*.07)+split*.3;
     dust.rotation.y=paused?0:Math.sin(t*.02)*.01;
-    screens.forEach((s,i)=>{const active=Math.max(0,1-Math.abs(progress-(.30+i*.06))/.09);s.face.material.color.setScalar(.28+active*.72);});
+    const selected=Math.max(0,Math.min(7,Math.round((progress-.30)/.06)));
+    screens.forEach((s,i)=>{
+      // The phone camera needs more distance to frame a wide screen. Hide other
+      // exhibits there so a nearer wall cannot block the current exhibit.
+      s.group.visible=!mobile()||(progress>=.275&&progress<.79&&i===selected);
+      const active=Math.max(0,1-Math.abs(progress-(.30+i*.06))/.09);s.face.material.color.setScalar(.28+active*.72);
+    });
+    certificate.group.visible=!mobile();
     renderer.render(scene,camera);rendered++;
-    if(rendered===2)document.body.dataset.renderer='ready';
+    if(rendered===1)document.body.dataset.renderer='ready';
     if(rendered%15===0){host.dataset.camera=camera.position.toArray().map(v=>v.toFixed(2)).join(',');host.dataset.frame=String(rendered);}
     onFrame?.(progress);
     if(!paused||progress!==targetProgress)raf=requestAnimationFrame(frame);

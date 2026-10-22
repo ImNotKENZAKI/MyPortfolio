@@ -16,6 +16,7 @@ function syncPanels(progress) {
     $$('.chapter-rail a').forEach((el,i)=>el.classList.toggle('active',i===(panel==='work'?1:panel==='speaking'?2:0)));
     $('#chapter-caption').textContent=labels[panel];
     const prompt=$('#scroll-prompt');prompt.href=panel==='speaking'?'#about':panel==='work'?'#speaking':'#work';
+    $('.scroll-copy').textContent=panel==='speaking'?'MEET THE CREATOR':panel==='work'?'SCROLL THROUGH THE GALLERY':'SCROLL TO STEP INSIDE';
   }
   const index=Math.max(0,Math.min(7,Math.round((progress-.30)/.06)));
   if(index!==activeProject) {
@@ -32,7 +33,7 @@ function syncPanels(progress) {
   }
 }
 function progress(){return Math.max(0,Math.min(1,(scrollY-top)/range));}
-function measure(){top=experience.getBoundingClientRect().top+scrollY;range=Math.max(1,experience.offsetHeight-shell.offsetHeight);$('#work').style.top=chapters.work*range+'px';$('#speaking').style.top=chapters.speaking*range+'px';engine?.resize();onScroll();}
+function measure(preserve=false){const prior=progress(),inside=scrollY>=top&&scrollY<=top+range;top=experience.getBoundingClientRect().top+scrollY;range=Math.max(1,experience.offsetHeight-shell.offsetHeight);$('#work').style.top=chapters.work*range+'px';$('#speaking').style.top=chapters.speaking*range+'px';engine?.resize();if(preserve&&inside)scrollTo({top:top+range*prior,behavior:'instant'});onScroll();}
 function onScroll(){const p=progress();$('.navigation').classList.toggle('is-scrolled',scrollY>50);if(engine)engine.setProgress(p);else syncPanels(p);}
 function jumpTo(value,behavior=paused?'auto':'smooth'){scrollTo({top:top+range*value,behavior});}
 function jumpProject(index){jumpTo(.30+Math.max(0,Math.min(7,index))*.06);}
@@ -51,7 +52,7 @@ motionButton.addEventListener('click',()=>{savedPaused=!paused;paused=savedPause
 reduced.addEventListener('change',()=>{paused=reduced.matches||savedPaused;applyMotion();});
 shell.addEventListener('pointermove',event=>{if(paused||event.pointerType==='touch')return;const r=shell.getBoundingClientRect();engine?.setPointer((event.clientX-r.left)/r.width-.5,(event.clientY-r.top)/r.height-.5);},{passive:true});
 shell.addEventListener('pointerleave',()=>engine?.setPointer(0,0));
-addEventListener('scroll',onScroll,{passive:true});let resizeTimer;addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(measure,120);});
+addEventListener('scroll',onScroll,{passive:true});let resizeTimer;addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>measure(true),120);});
 if('IntersectionObserver' in window)new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;engine?.setVisible(visible);}).observe(experience);
 const updateClock=()=>$('#local-clock').textContent=new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Manila',hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date());updateClock();setInterval(updateClock,60000);
 const dialog=$('#speaking-video'),video=dialog.querySelector('video');let overflowBefore='';

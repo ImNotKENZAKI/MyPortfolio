@@ -1,16 +1,16 @@
-# KENZAKI — portfolio and V2 direction preview
+# KENZAKI — portfolio and cinematic 3D review
 
 The original portfolio is the content baseline. Its index, styles, and interaction script have been restored from commit d39a7cd. The nine original sections, twelve video projects, six system case studies, service previews, pricing packages, proof links, client feedback, and contact hub remain available.
 
 ## Review the new direction
 
-Open `/direction-preview/` on the Vercel preview. This is the first visual and motion prototype for review before applying the selected direction across the full portfolio.
+Open `/direction-preview/` on the Vercel preview. This is a cinematic 3D direction for review before applying the selected look across the full portfolio.
 
-It includes a new hero with the original portrait, original Imagegen chrome artwork, responsive parallax, custom signal trails, and a scroll-driven project stage. The portrait is bounded by the hero's height, with larger supporting text and quieter artwork. The complete existing portfolio remains at `/`.
+The preview uses an actual WebGL architectural gallery with an extruded Kinetic K sculpture, physical metal materials, generated softbox lighting, a reflective floor, and a perspective camera driven by native scrolling. The camera travels from the entrance to eight MDS/SRG website screens and a dedicated speaking scene. The speaking certificate and event video are available directly, and an editorial profile and full-portfolio index follow the experience. The complete existing portfolio remains at `/`.
 
-Kinetic K is the selected identity. The identity section shows its monogram, signature, and palette. The other original vector concepts are retained in the assets for reference.
+Kinetic K remains the selected identity. Its original vector geometry is rebuilt as beveled 3D shapes. The previous flat prototype sources and original artwork remain available for reference; they are no longer the active preview.
 
-The concept marks are in `direction-preview/assets/`. The built-in Imagegen prompt is saved alongside the optimized hero artwork as `artwork-prompt.txt`. The original generated PNG is retained for future art direction.
+Three.js 0.180.0 and its Reflector helper are vendored under `direction-preview/vendor/` with the MIT license, so the scene does not depend on a third-party script CDN. `scene.js` owns the world and camera; `cinema.js` owns navigation, project controls, accessibility, video, and fallbacks; `projects.js` contains the eight supplied website destinations. Reference videos informed the lighting, camera travel, scale, and scene transitions; no third-party reference footage is published as portfolio work.
 
 ## Next approved stage
 
@@ -20,6 +20,6 @@ After the refined visual direction is reviewed, carry the selected Kinetic ident
 
 Run `node scripts/serve.mjs`, then open `http://127.0.0.1:4173/direction-preview/`. No frontend dependency installation or build step is needed. Original server-side email code and its existing SMTP environment configuration are unchanged.
 
-Motion respects the device's reduced-motion setting and can be paused in the prototype header. The new canvas stops while the hero is out of view or the tab is hidden. Project controls work with the keyboard.
+Motion respects the device's reduced-motion setting and can be paused in the header. The renderer stops outside the experience and while the tab is hidden. A conventional image gallery is used when WebGL is unavailable. Native page scrolling, direct chapter links, keyboard project controls, and a skip-experience link remain available. The event video plays only after an explicit action.
 
 Production is not changed by this draft branch. Review the Vercel preview before merging.

@@ -1,6 +1,6 @@
 # Cinematic visual foundation
 
-This is the art-direction/resource stage requested by the user. The live architectural gallery is a spatial prototype. It does not yet implement the visual fidelity of these generated frames, and should not be described as the finished premium redesign.
+The generated frames below remain art-direction references. The October 30 implementation replaces the old gallery with a restrained real-time K sculpture and integrates the full original content, supplied websites, speaking proof and approved English ad at `/direction-preview/`. These generated frames are not screenshots of that implementation.
 
 ## Current resources
 
@@ -18,8 +18,10 @@ The fictional atelier combines graphite stone, brushed metal, smoked glass, rest
 
 ## Next production step
 
-Use `motion-and-interaction-spec.md` to prepare a short macro-to-entrance-to-project motion test. Validate visual fidelity and interaction together before expanding the full site. The new resources are intentionally not wired into the rough gallery as a superficial texture replacement.
+The October 29 plan is in [redesign-plan-2026-10-29.md](redesign-plan-2026-10-29.md), with the exact original content inventory in [content-preservation-baseline-2026-10-29.json](content-preservation-baseline-2026-10-29.json). The complete old content must be integrated into the new design; links back to the original layout do not complete that migration.
 
-The matching macro and wide entrance keyframes are prepared. Validated material detail maps and final scene geometry remain to be produced. An AI video bridge has not been generated. Runway was discovered and suggested, but its connection is unconfirmed; do not claim a video exists or switch to a paid/API route without authorization.
+Use `motion-and-interaction-spec.md` to prepare a short macro-to-entrance-to-project motion test after establishing clean desktop and phone compositions. Validate visual fidelity and interaction together before expanding the full site. The new resources are intentionally not wired into the rough gallery as a superficial texture replacement.
 
-Preserve the complete original portfolio at the site root during integration. The current preview and draft branch are review work; production has not been merged.
+The matching macro and wide entrance keyframes are prepared. Validated material detail maps and final scene geometry remain to be produced. The selected production route is local Blender rendering plus the existing Three.js interaction layer, subject to checking the available runtime and machine. No video or final matching 3D scene has been produced. The earlier Runway suggestion is not a dependency; the user requested a free alternative.
+
+The original root portfolio remains the recovery baseline. Its full content is now integrated into the redesigned review page, backed by content reconciliation. The branch preview remains review work; production has not been merged.

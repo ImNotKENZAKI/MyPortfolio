@@ -1,6 +1,6 @@
 # KENZAKI — first cinematic motion test
 
-Status: production brief and resource preparation. No AI video has been generated. The current live WebGL gallery is a spatial prototype, not an implementation of the generated art target.
+Status: production brief and resource preparation, revised October 29, 2026. No final rendered camera sequence has been produced. The current live WebGL gallery is a spatial prototype, not an implementation of the generated art target. The complete redesign and content integration are specified in `redesign-plan-2026-10-29.md`.
 
 ## One continuous visual language
 
@@ -17,9 +17,9 @@ Use the generated atelier storyboard as the visual target. Graphite stone provid
 
 Timing is an editorial starting point, not a forced playback requirement. The website should respond to the visitor and remain usable before or after any cinematic sequence.
 
-## Image-to-video generation brief
+## Local 3D production brief
 
-Input: `atelier-entrance-v1.png` as the visual identity and ending wide-shot reference. The matching `atelier-macro-v1.png` is prepared as the starting-frame candidate; the entrance is the ending wide-frame candidate. See `video-brief.json`.
+Use local Blender for scene authoring, material validation and any rendered sequence, together with the existing Three.js interaction layer. Check the available runtime and machine before choosing rendering settings. This route has no paid generation-service prerequisite. `atelier-macro-v1.png` and `atelier-entrance-v1.png` are visual references; build consistent real geometry and lighting rather than assuming stills automatically become a coherent 3D film. See `video-brief.json`.
 
 > A single restrained premium architectural product-film move inside the same fictional graphite-basalt atelier at blue hour. Begin close to the finely brushed silver K bevel and its cyan seam; glide slowly back and laterally to reveal the exact split-stem angular K sculpture and the coastal aperture. Preserve the precise K silhouette, cyan accent geometry, stone architecture, lighting direction, distant coastline, exposure, and warm/cool palette. Physically credible parallax, subtle depth of field, natural highlight travel, no morphing, new objects, text, people, pulsing light, wobble, liquid metal, flicker, excessive bloom, or impossible camera acceleration. End with a stable wide composition and quiet left-side space for HTML typography. Silent output. Use a short shot suitable for controlled scroll playback or conversion to a frame sequence.
 
@@ -36,7 +36,7 @@ No frame sequence should be presented as interactive geometry by itself. If used
 | Roughness/normal detail | Not authored as a finished PBR set | Derive or author coherent maps; validate against the generated visual target. |
 | Final 3D atelier model | Not built | Rebuild the prototype architecture to match the approved space rather than retaining the simple repeating portal room. |
 | Matching macro keyframe | Generated, saved | Review start/end continuity and stability in the video test. |
-| AI video bridge | Not generated | Add and connect a suitable generation service; Runway was suggested but connection is unconfirmed. |
+| Rendered 3D bridge | Not produced | Build the matching scene and render locally after checking runtime/hardware. A paid generation service is not required. |
 | Actual work / speaking proof | Existing supplied assets | Keep original files and verified factual details. |
 | Mobile experience | Prototype exists | Deliberate reframing and input testing; not an automatic desktop crop. |
 

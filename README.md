@@ -1,25 +1,33 @@
-# KENZAKI — portfolio and cinematic 3D review
+# KENZAKI — complete portfolio, integrated review
 
-The original portfolio is the content baseline. Its index, styles, and interaction script have been restored from commit d39a7cd. The nine original sections, twelve video projects, six system case studies, service previews, pricing packages, proof links, client feedback, and contact hub remain available.
+The active review is /direction-preview/ on the existing Vercel branch preview. It contains the complete original portfolio in one coordinated design, together with all eight supplied MDS/SRG websites, genuine cybersecurity speaking evidence and the approved English service ad. Returning to the old layout is not required to read the collections or use their actions.
 
-## Review the new direction
+The original site at / remains the recovery baseline. Its index, stylesheet and interaction script are unchanged from commit d39a7cd and match the supplied ZIP. Review work uses the existing codex/portfolio-refresh-20261022 branch and draft PR.
 
-Open `/direction-preview/` on the Vercel preview. This is a cinematic 3D direction for review before applying the selected look across the full portfolio.
+## Integrated content
 
-The preview uses an actual WebGL architectural gallery with an extruded Kinetic K sculpture, physical metal materials, generated softbox lighting, a reflective floor, and a perspective camera driven by native scrolling. The camera travels from the entrance to eight MDS/SRG website screens and a dedicated speaking scene. The speaking certificate and event video are available directly, and an editorial profile and full-portfolio index follow the experience. The complete existing portfolio remains at `/`.
+- Original identity, introduction, availability, five roles, AI/GHL/VSL capabilities, portraits, shortcuts and footer.
+- Five story stages, four complete featured cases, six system cases, twelve video records, six services with dynamic detail/tool data.
+- Six credential resources, three exact original testimonials and all eight contact/resource cards.
+- Four website packages, 46 inclusions, eleven add-ons, maintenance/payment/exclusion terms and inquiry action.
+- Eight new website screenshots, descriptions and exact live destinations.
+- Complete October 2, 2026 speaking details, recognition/community photos, certificate and actual event video.
+- Approved English ad v3 with native playback and the original captioned edit.
 
-Kinetic K remains the selected identity. Its original vector geometry is rebuilt as beveled 3D shapes. The previous flat prototype sources and original artwork remain available for reference; they are no longer the active preview.
+The preservation baseline and reconciliation report are in design/cinematic/. The audit checks original text, media IDs, tools/results, destinations, package/service data and local assets, rather than counts alone.
 
-Three.js 0.180.0 and its Reflector helper are vendored under `direction-preview/vendor/` with the MIT license, so the scene does not depend on a third-party script CDN. `scene.js` owns the world and camera; `cinema.js` owns navigation, project controls, accessibility, video, and fallbacks; `projects.js` contains the eight supplied website destinations. Reference videos informed the lighting, camera travel, scale, and scene transitions; no third-party reference footage is published as portfolio work.
+## Design and behavior
 
-## Next approved stage
+portfolio.css styles the complete experience. portfolio.js owns accessible dialogs, every original preview action, service selection, packages, website/system selection, theme/motion preferences, mobile navigation and readable collections. portfolio-page.js connects those controls to the short 3D opening. The legacy scroll controller is not layered over the new page.
 
-After the refined visual direction is reviewed, carry the selected Kinetic identity across the original story journey, featured work, Systems Stack, Reels Universe, service gallery, credentials, feedback, packages, and contact hub. Add the eight supplied MDS/SRG web projects, updated workflow skills, and the October 2 cybersecurity speaking evidence without removing original material. The source screenshots, event photos, certificate, and event video are already retained in this branch.
+cinematic-scene.js contains an actual beveled K sculpture, brushed physical metal, basalt slab, one curved wall, warm/cool lighting, contact shadows and a subdued real reflection. Native scrolling reverses the macro-to-wide camera. The scene stops moving at rest and suspends outside the viewport; the portrait occupies a separate content region. Mobile/reduced-motion layouts use a settled composition. This is real-time Three.js work, not a claim that a Blender film was rendered.
 
-## Local preview
+All text and collections remain normal HTML. The website archive hides only after successful interactive setup and returns on image failure. Unsupported WebGL keeps a visual fallback without hiding content. Media starts on user action; dialogs clean up playback on close; the service ad pauses offscreen.
 
-Run `node scripts/serve.mjs`, then open `http://127.0.0.1:4173/direction-preview/`. No frontend dependency installation or build step is needed. Original server-side email code and its existing SMTP environment configuration are unchanged.
+## Validation
 
-Motion respects the device's reduced-motion setting and can be paused in the header. The renderer stops outside the experience and while the tab is hidden. A conventional image gallery is used when WebGL is unavailable. Native page scrolling, direct chapter links, keyboard project controls, and a skip-experience link remain available. The event video plays only after an explicit action.
+Source syntax and complete-content reconciliation pass. Desktop/phone browser review is performed against the existing branch preview when local routing is unavailable. Observed results belong in design/cinematic/implementation-review.md; unverified browser behavior must not be described as tested.
 
-Production is not changed by this draft branch. Review the Vercel preview before merging.
+Run node scripts/serve.mjs for an ordinary local static preview where loopback routing is available. The original email API and SMTP configuration are unchanged. Three.js 0.180.0 and Reflector remain vendored with the MIT license.
+
+Historical flat/gallery prototypes and generated art references remain as source material. They are not the active page. Main/production has not been merged by this review update.

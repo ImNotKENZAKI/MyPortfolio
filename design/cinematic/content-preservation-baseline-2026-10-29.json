@@ -1,0 +1,2491 @@
+{
+  "schema": 1,
+  "date": "2026-10-29",
+  "status": "planning baseline; content is not yet integrated into the new design",
+  "original_commit": "d39a7cd5df112b391362d439cb273a97840c0d6b",
+  "source_files": [
+    {
+      "path": "index.html",
+      "sha256": "812b8f2138710835f79a4147abc06902b5b75fb77a7aee69fe3592b1871c5df6",
+      "matches_original_baseline": true
+    },
+    {
+      "path": "css/style.css",
+      "sha256": "51959c23226722ec797625c2571efceb3305dc09ebd609e854f7bb5830779e5e",
+      "matches_original_baseline": true
+    },
+    {
+      "path": "js/script.js",
+      "sha256": "b93725e426e4aba6b8cdca969c9d68ead9e1229a74419d42cc6c05c35f43f45a",
+      "matches_original_baseline": true
+    }
+  ],
+  "preservation_rule": "Migrate every text, data attribute, media reference, action, dynamic service detail, package term and destination. Links back to the old layout do not count as integration.",
+  "counts": {
+    "original_sections": 9,
+    "story_stages": 5,
+    "featured_cases": 4,
+    "video_records": 12,
+    "unique_video_ids": 12,
+    "systems": 6,
+    "services": 6,
+    "credential_resources": 6,
+    "testimonials": 3,
+    "packages": 4,
+    "add_ons": 11,
+    "contact_cards": 8,
+    "new_websites": 8,
+    "new_speaking_events": 1
+  },
+  "sections": [
+    {
+      "id": "home",
+      "text": "Available for freelance projects AI • Automation • Video • GHL I build videos, systems, and automation that help brands scale. I’m a Video Editor I’m John Jefferson Manalo, also known as KENZAKI — a BSIT degree holder, Video Editor, AI Content Creator, GoHighLevel Builder, and digital systems creator based in the Philippines. Hire Me Now View My Work AIvideo workflows GHLfunnels & CRM VSLads & retention Portfolio Vault OLJ Profile",
+      "attributes": {
+        "id": "home"
+      },
+      "headings": [
+        "I build videos, systems, and automation that help brands scale.",
+        "I’m a Video Editor"
+      ],
+      "paragraphs": [
+        "I’m John Jefferson Manalo, also known as KENZAKI — a BSIT degree holder, Video Editor, AI Content Creator, GoHighLevel Builder, and digital systems creator based in the Philippines."
+      ],
+      "list_items": [],
+      "actions": [
+        {
+          "text": "Hire Me Now",
+          "attributes": {
+            "href": "mailto:jjmanalo.va@gmail.com"
+          }
+        },
+        {
+          "text": "View My Work",
+          "attributes": {
+            "href": "#featured"
+          }
+        },
+        {
+          "text": "Portfolio Vault",
+          "attributes": {
+            "data-modal": "link",
+            "data-url": "https://www.dropbox.com/scl/fo/0k31nkpbyfros1q7hjl1x/AD-HnbDb7G2GePZWwaqZpzA?rlkey=vyl4l4ojvoluoxc2u4xr2m8et&st=2yst52tl&dl=0"
+          }
+        },
+        {
+          "text": "OLJ Profile",
+          "attributes": {
+            "data-modal": "link",
+            "data-url": "https://www.onlinejobs.ph/jobseekers/info/4491696"
+          }
+        }
+      ],
+      "images": [
+        {
+          "src": "images/jeff-premium-cutout.png",
+          "alt": "John Jefferson Manalo professional portrait"
+        }
+      ]
+    },
+    {
+      "id": "story",
+      "text": "My Story From editing videos to building business systems. I started with video editing, learning how pacing, captions, music, and B-roll keep people watching. Then I started working with AI content, product ads, and VSL-style videos, where every second needs to support attention and conversion. Today, I combine creative execution with technical systems: GoHighLevel, automation workflows, website/funnel design, content repurposing, and AI-assisted production. 01 / Foundation BSIT Graduate I started with a technical foundation: systems thinking, troubleshooting, web basics, and digital tools. That background helps me understand both creative work and the backend systems behind it. Technical Core 02 / Creative Execution Video Editor I moved into short-form edits, VSL-style videos, B-roll storytelling, captions, sound design, pacing, and retention-focused content built for TikTok, Reels, Shorts, and ads. Retention Editing 03 / AI Systems AI Content Creator I expanded into AI-generated visuals, character workflows, prompt engineering, voiceovers, product creatives, and fast content production using tools like Kling, Higgsfield, Flux, Gemini, and ElevenLabs. AI Workflow 04 / Business Systems Automation Builder Now I build digital systems: GoHighLevel setups, forms, calendars, funnels, lead capture, reporting trackers, and automation workflows that help businesses reduce manual work. GHL + Automation 05 / Current Direction CTO — Mary Digi Solutions Today, I combine video editing, AI content, websites, and automation as the technical lead for Mary Digi Solutions — helping turn ideas into systems, assets, and client-ready workflows. Digital Systems Creator",
+      "attributes": {
+        "id": "story"
+      },
+      "headings": [
+        "From editing videos to building business systems.",
+        "BSIT Graduate",
+        "Video Editor",
+        "AI Content Creator",
+        "Automation Builder",
+        "CTO — Mary Digi Solutions"
+      ],
+      "paragraphs": [
+        "I started with video editing, learning how pacing, captions, music, and B-roll keep people watching. Then I started working with AI content, product ads, and VSL-style videos, where every second needs to support attention and conversion.",
+        "Today, I combine creative execution with technical systems: GoHighLevel, automation workflows, website/funnel design, content repurposing, and AI-assisted production.",
+        "I started with a technical foundation: systems thinking, troubleshooting, web basics, and digital tools. That background helps me understand both creative work and the backend systems behind it.",
+        "I moved into short-form edits, VSL-style videos, B-roll storytelling, captions, sound design, pacing, and retention-focused content built for TikTok, Reels, Shorts, and ads.",
+        "I expanded into AI-generated visuals, character workflows, prompt engineering, voiceovers, product creatives, and fast content production using tools like Kling, Higgsfield, Flux, Gemini, and ElevenLabs.",
+        "Now I build digital systems: GoHighLevel setups, forms, calendars, funnels, lead capture, reporting trackers, and automation workflows that help businesses reduce manual work.",
+        "Today, I combine video editing, AI content, websites, and automation as the technical lead for Mary Digi Solutions — helping turn ideas into systems, assets, and client-ready workflows."
+      ],
+      "list_items": [],
+      "actions": [],
+      "images": [
+        {
+          "src": "images/jeff-tech-seated.png",
+          "alt": "John Jefferson Manalo professional portrait with blue background"
+        }
+      ]
+    },
+    {
+      "id": "featured",
+      "text": "Featured Work FEATUREDWORK My strongest commercial-style projects — presented as case studies, not just links. 01 / B-roll + Voiceover Chip Wilson Business-documentary style edit using voiceover, B-roll, pacing, and clean storytelling to keep viewers engaged. Storytelling pacingB-roll selectionVoiceover-driven structure Open Preview 02 / Product Ad LONA Bag AI-assisted e-commerce product creative designed to present the product clearly and feel ad-ready. Product focusAI visual workflowAd-ready finish Open Preview 03 / Healthcare Product CIC Pro / Hearing Aids Clean direct-response product video focused on benefits, trust, clarity, and conversion-focused messaging. Problem-solution structureBenefit highlightsHealthcare niche Watch in Frame 04 / Commercial VSL German Client VSL Short-form sales video with retention-focused pacing, product framing, and conversion-oriented visual flow. VSL-style editingAd structureGerman market client Watch in Frame Explore the featured case studies",
+      "attributes": {
+        "id": "featured"
+      },
+      "headings": [
+        "FEATUREDWORK",
+        "Chip Wilson",
+        "LONA Bag",
+        "CIC Pro / Hearing Aids",
+        "German Client VSL"
+      ],
+      "paragraphs": [
+        "My strongest commercial-style projects — presented as case studies, not just links.",
+        "Business-documentary style edit using voiceover, B-roll, pacing, and clean storytelling to keep viewers engaged.",
+        "AI-assisted e-commerce product creative designed to present the product clearly and feel ad-ready.",
+        "Clean direct-response product video focused on benefits, trust, clarity, and conversion-focused messaging.",
+        "Short-form sales video with retention-focused pacing, product framing, and conversion-oriented visual flow."
+      ],
+      "list_items": [
+        "Storytelling pacing",
+        "B-roll selection",
+        "Voiceover-driven structure",
+        "Product focus",
+        "AI visual workflow",
+        "Ad-ready finish",
+        "Problem-solution structure",
+        "Benefit highlights",
+        "Healthcare niche",
+        "VSL-style editing",
+        "Ad structure",
+        "German market client"
+      ],
+      "actions": [
+        {
+          "text": "01 / B-roll + Voiceover Chip Wilson Business-documentary style edit using voiceover, B-roll, pacing, and clean storytelling to keep viewers engaged. Storytelling pacingB-roll selectionVoiceover-driven structure Open Preview",
+          "attributes": {
+            "data-modal": "youtube",
+            "data-title": "Chip Wilson — B-roll + Voiceover",
+            "data-src": "QcLnIjk2Dn8"
+          }
+        },
+        {
+          "text": "02 / Product Ad LONA Bag AI-assisted e-commerce product creative designed to present the product clearly and feel ad-ready. Product focusAI visual workflowAd-ready finish Open Preview",
+          "attributes": {
+            "data-modal": "youtube",
+            "data-title": "LONA Bag Product Ad",
+            "data-src": "aTporYmDW9U"
+          }
+        },
+        {
+          "text": "03 / Healthcare Product CIC Pro / Hearing Aids Clean direct-response product video focused on benefits, trust, clarity, and conversion-focused messaging. Problem-solution structureBenefit highlightsHealthcare niche Watch in Frame",
+          "attributes": {
+            "data-modal": "youtube",
+            "data-title": "CIC Pro Hearing Aid",
+            "data-src": "R1LLIn18NC8"
+          }
+        },
+        {
+          "text": "04 / Commercial VSL German Client VSL Short-form sales video with retention-focused pacing, product framing, and conversion-oriented visual flow. VSL-style editingAd structureGerman market client Watch in Frame",
+          "attributes": {
+            "data-modal": "youtube",
+            "data-title": "German Client VSL",
+            "data-src": "WfJOJ65yrT8"
+          }
+        }
+      ],
+      "images": [
+        {
+          "src": "https://img.youtube.com/vi/QcLnIjk2Dn8/hqdefault.jpg",
+          "alt": "Chip Wilson project thumbnail"
+        },
+        {
+          "src": "https://img.youtube.com/vi/aTporYmDW9U/maxresdefault.jpg",
+          "alt": "LONA Bag ad thumbnail"
+        },
+        {
+          "src": "https://img.youtube.com/vi/R1LLIn18NC8/hqdefault.jpg",
+          "alt": "CIC Pro video thumbnail"
+        },
+        {
+          "src": "https://img.youtube.com/vi/WfJOJ65yrT8/hqdefault.jpg",
+          "alt": "German VSL thumbnail"
+        }
+      ]
+    },
+    {
+      "id": "systems",
+      "text": "Systems & Case Studies SYSTEMSSTACK Selected systems and workflows I use to support operations, content production, automation, and business growth. Interactive Case Study Stack Business systems, creative workflows, and automation assets — presented as practical proof. Click a card, use the arrows, or swipe horizontally on the active card to explore each system. Operations SystemFounder Daily Report AutomationFounder reports, opportunity updates, and Google Sheets tracking in one automated flow. CRM + FunnelGoHighLevel Funnel MapLead capture, bookings, CRM stages, and follow-up logic for client-ready funnels. AI ProductionAI Video EnginePrompting, generation, voiceover, editing, and content packaging for AI-assisted videos. Sales VideoVSL & Ads FrameworkStructured ad editing for retention, product clarity, proof, and conversion-focused messaging. Editing SystemEditing WorkflowFootage organization, captions, B-roll, sound design, transitions, and clean pacing. DistributionContent MachineLong-form assets transformed into clips, reels, captions, thumbnails, and posting-ready content.",
+      "attributes": {
+        "id": "systems"
+      },
+      "headings": [
+        "SYSTEMSSTACK",
+        "Business systems, creative workflows, and automation assets — presented as practical proof.",
+        "Founder Daily Report Automation",
+        "GoHighLevel Funnel Map",
+        "AI Video Engine",
+        "VSL & Ads Framework",
+        "Editing Workflow",
+        "Content Machine"
+      ],
+      "paragraphs": [
+        "Selected systems and workflows I use to support operations, content production, automation, and business growth.",
+        "Click a card, use the arrows, or swipe horizontally on the active card to explore each system.",
+        "Founder reports, opportunity updates, and Google Sheets tracking in one automated flow.",
+        "Lead capture, bookings, CRM stages, and follow-up logic for client-ready funnels.",
+        "Prompting, generation, voiceover, editing, and content packaging for AI-assisted videos.",
+        "Structured ad editing for retention, product clarity, proof, and conversion-focused messaging.",
+        "Footage organization, captions, B-roll, sound design, transitions, and clean pacing.",
+        "Long-form assets transformed into clips, reels, captions, thumbnails, and posting-ready content."
+      ],
+      "list_items": [],
+      "actions": [
+        {
+          "text": "Operations SystemFounder Daily Report AutomationFounder reports, opportunity updates, and Google Sheets tracking in one automated flow.",
+          "attributes": {
+            "data-stack-index": "0",
+            "data-modal": "system",
+            "data-title": "Founder Daily Report Automation",
+            "data-image": "images/founder-tracker-workflow.png",
+            "data-tools": "GoHighLevel • Google Sheets • Opportunities • Workflow Logic",
+            "data-result": "A centralized reporting system that helps founders submit updates, track status, and keep daily execution visible in one workflow."
+          }
+        },
+        {
+          "text": "CRM + FunnelGoHighLevel Funnel MapLead capture, bookings, CRM stages, and follow-up logic for client-ready funnels.",
+          "attributes": {
+            "data-stack-index": "1",
+            "data-modal": "system",
+            "data-title": "GoHighLevel Funnel Map",
+            "data-image": "images/project-ghl.jpg",
+            "data-tools": "GoHighLevel • Funnels • Forms • Booking • CRM",
+            "data-result": "A lead capture flow designed around landing pages, forms, calendars, pipeline stages, tags, and follow-up automation."
+          }
+        },
+        {
+          "text": "AI ProductionAI Video EnginePrompting, generation, voiceover, editing, and content packaging for AI-assisted videos.",
+          "attributes": {
+            "data-stack-index": "2",
+            "data-modal": "system",
+            "data-title": "AI Video Engine",
+            "data-image": "images/project-ai-video.jpg",
+            "data-tools": "AI Prompts • Image/Video Generation • Voiceover • Editing",
+            "data-result": "A repeatable AI-assisted workflow for turning ideas into generated assets, edited videos, captions, and publish-ready content."
+          }
+        },
+        {
+          "text": "Sales VideoVSL & Ads FrameworkStructured ad editing for retention, product clarity, proof, and conversion-focused messaging.",
+          "attributes": {
+            "data-stack-index": "3",
+            "data-modal": "system",
+            "data-title": "VSL & Ads Framework",
+            "data-image": "images/project-vsl.jpg",
+            "data-tools": "Hooks • Pain Points • Proof • CTA • Retention Editing",
+            "data-result": "A sales-focused editing structure built around hooks, pain points, proof, objections, benefits, and clear calls to action."
+          }
+        },
+        {
+          "text": "Editing SystemEditing WorkflowFootage organization, captions, B-roll, sound design, transitions, and clean pacing.",
+          "attributes": {
+            "data-stack-index": "4",
+            "data-modal": "system",
+            "data-title": "Editing Workflow",
+            "data-image": "images/project-filmora.jpg",
+            "data-tools": "Filmora • CapCut • Premiere • DaVinci • Captions",
+            "data-result": "A clean editing workflow for organizing footage, pacing scenes, adding captions, choosing B-roll, and polishing audio/visual details."
+          }
+        },
+        {
+          "text": "DistributionContent MachineLong-form assets transformed into clips, reels, captions, thumbnails, and posting-ready content.",
+          "attributes": {
+            "data-stack-index": "5",
+            "data-modal": "system",
+            "data-title": "Content Machine",
+            "data-image": "images/project-social.jpg",
+            "data-tools": "Repurposing • Captions • Scheduling • Shorts • Reels",
+            "data-result": "A content repurposing system that turns long-form or raw assets into short-form clips, thumbnails, captions, and distribution-ready posts."
+          }
+        },
+        {
+          "text": "",
+          "attributes": {
+            "type": "button",
+            "data-stack-prev": "",
+            "aria-label": "Previous system"
+          }
+        },
+        {
+          "text": "",
+          "attributes": {
+            "type": "button",
+            "data-stack-next": "",
+            "aria-label": "Next system"
+          }
+        }
+      ],
+      "images": [
+        {
+          "src": "images/founder-tracker-workflow.png",
+          "alt": "Founder Daily Report Automation screenshot",
+          "loading": "lazy"
+        },
+        {
+          "src": "images/project-ghl.jpg",
+          "alt": "GHL funnel map infographic",
+          "loading": "lazy"
+        },
+        {
+          "src": "images/project-ai-video.jpg",
+          "alt": "AI video engine infographic",
+          "loading": "lazy"
+        },
+        {
+          "src": "images/project-vsl.jpg",
+          "alt": "VSL framework infographic",
+          "loading": "lazy"
+        },
+        {
+          "src": "images/project-filmora.jpg",
+          "alt": "Editing workflow infographic",
+          "loading": "lazy"
+        },
+        {
+          "src": "images/project-social.jpg",
+          "alt": "Content repurposing infographic",
+          "loading": "lazy"
+        }
+      ]
+    },
+    {
+      "id": "vault",
+      "text": "Content Showcase REELSUNIVERSE A curated collection of client work, AI content, product ads, and short-form edits built for storytelling, attention, and performance. Scroll to explore Creative video work, AI campaigns, and commercial edits. Browse a collection of short-form edits, product ads, AI content experiments, and brand visuals built for attention and performance. Business Storytelling Business Storytelling Chip Wilson Documentary-style edit with voiceover, pacing, and B-roll built around a founder narrative. Play preview Product VSL Product VSL LONA Bag Conversion-focused product ad with AI-assisted visuals, rhythm, and direct-response structure. Play preview Healthcare Product Healthcare Product CIC Pro / Hearing Aids Clean product video focused on clarity, benefits, trust, and easy-to-follow messaging. Play preview AI Ad Creative AI Ad Creative AI-Powered VSL AI-generated sales video built for fast visual testing and performance-driven ad concepts. Play preview Product Ad Product Ad Fußwohl Leather Shoes Premium product showcase with polished visuals and clear commercial presentation. Play preview Agency Brand Agency Brand Mary Digi Solutions Brand video introducing digital services, automation, and agency positioning. Play preview AI Short AI Short Victoria AI Transition AI model transition content built around visual transformation and scroll-stopping style. Play preview AI Character Content AI Character Content Willow AI Cosplay Creative AI character content using stylized transformation and short-form pacing. Play preview Gaming Content Gaming Content GTA V Character Showcase Cinematic character showcase with transitions, movement, and gaming-focused visuals. Play preview Gaming Highlights Gaming Highlights Game Highlight Reel Action-focused highlight reel with fast cuts and dynamic visual energy. Play preview Travel Visuals Travel Visuals Tranquil Japan 4K Relaxing scenery video with cinematic flow, ambient pacing, and clean presentation. Play preview Travel Visuals Travel Visuals Beautiful Philippines Landscape-driven travel edit with calm storytelling and scenic composition. Play preview",
+      "attributes": {
+        "id": "vault"
+      },
+      "headings": [
+        "REELSUNIVERSE",
+        "Creative video work, AI campaigns, and commercial edits.",
+        "Chip Wilson",
+        "LONA Bag",
+        "CIC Pro / Hearing Aids",
+        "AI-Powered VSL",
+        "Fußwohl Leather Shoes",
+        "Mary Digi Solutions",
+        "Victoria AI Transition",
+        "Willow AI Cosplay",
+        "GTA V Character Showcase",
+        "Game Highlight Reel",
+        "Tranquil Japan 4K",
+        "Beautiful Philippines"
+      ],
+      "paragraphs": [
+        "A curated collection of client work, AI content, product ads, and short-form edits built for storytelling, attention, and performance.",
+        "Browse a collection of short-form edits, product ads, AI content experiments, and brand visuals built for attention and performance.",
+        "Documentary-style edit with voiceover, pacing, and B-roll built around a founder narrative.",
+        "Conversion-focused product ad with AI-assisted visuals, rhythm, and direct-response structure.",
+        "Clean product video focused on clarity, benefits, trust, and easy-to-follow messaging.",
+        "AI-generated sales video built for fast visual testing and performance-driven ad concepts.",
+        "Premium product showcase with polished visuals and clear commercial presentation.",
+        "Brand video introducing digital services, automation, and agency positioning.",
+        "AI model transition content built around visual transformation and scroll-stopping style.",
+        "Creative AI character content using stylized transformation and short-form pacing.",
+        "Cinematic character showcase with transitions, movement, and gaming-focused visuals.",
+        "Action-focused highlight reel with fast cuts and dynamic visual energy.",
+        "Relaxing scenery video with cinematic flow, ambient pacing, and clean presentation.",
+        "Landscape-driven travel edit with calm storytelling and scenic composition."
+      ],
+      "list_items": [],
+      "actions": [
+        {
+          "text": "Business Storytelling Business Storytelling Chip Wilson Documentary-style edit with voiceover, pacing, and B-roll built around a founder narrative. Play preview",
+          "attributes": {
+            "data-orbit-card": "",
+            "data-index": "0",
+            "data-modal": "youtube",
+            "data-title": "Chip Wilson",
+            "data-src": "QcLnIjk2Dn8"
+          }
+        },
+        {
+          "text": "Product VSL Product VSL LONA Bag Conversion-focused product ad with AI-assisted visuals, rhythm, and direct-response structure. Play preview",
+          "attributes": {
+            "data-orbit-card": "",
+            "data-index": "1",
+            "data-modal": "youtube",
+            "data-title": "LONA Bag",
+            "data-src": "aTporYmDW9U"
+          }
+        },
+        {
+          "text": "Healthcare Product Healthcare Product CIC Pro / Hearing Aids Clean product video focused on clarity, benefits, trust, and easy-to-follow messaging. Play preview",
+          "attributes": {
+            "data-orbit-card": "",
+            "data-index": "2",
+            "data-modal": "youtube",
+            "data-title": "CIC Pro / Hearing Aids",
+            "data-src": "R1LLIn18NC8"
+          }
+        },
+        {
+          "text": "AI Ad Creative AI Ad Creative AI-Powered VSL AI-generated sales video built for fast visual testing and performance-driven ad concepts. Play preview",
+          "attributes": {
+            "data-orbit-card": "",
+            "data-index": "3",
+            "data-modal": "youtube",
+            "data-title": "AI-Powered VSL",
+            "data-src": "W-hJTS_-Ztc"
+          }
+        },
+        {
+          "text": "Product Ad Product Ad Fußwohl Leather Shoes Premium product showcase with polished visuals and clear commercial presentation. Play preview",
+          "attributes": {
+            "data-orbit-card": "",
+            "data-index": "4",
+            "data-modal": "youtube",
+            "data-title": "Fußwohl Leather Shoes",
+            "data-src": "WfJOJ65yrT8"
+          }
+        },
+        {
+          "text": "Agency Brand Agency Brand Mary Digi Solutions Brand video introducing digital services, automation, and agency positioning. Play preview",
+          "attributes": {
+            "data-orbit-card": "",
+            "data-index": "5",
+            "data-modal": "youtube",
+            "data-title": "Mary Digi Solutions",
+            "data-src": "Lv1jWaATdIY"
+          }
+        },
+        {
+          "text": "AI Short AI Short Victoria AI Transition AI model transition content built around visual transformation and scroll-stopping style. Play preview",
+          "attributes": {
+            "data-orbit-card": "",
+            "data-index": "6",
+            "data-modal": "youtube",
+            "data-title": "Victoria AI Transition",
+            "data-src": "5h0JCng6r0s"
+          }
+        },
+        {
+          "text": "AI Character Content AI Character Content Willow AI Cosplay Creative AI character content using stylized transformation and short-form pacing. Play preview",
+          "attributes": {
+            "data-orbit-card": "",
+            "data-index": "7",
+            "data-modal": "youtube",
+            "data-title": "Willow AI Cosplay",
+            "data-src": "IDkR2tnQ6Ds"
+          }
+        },
+        {
+          "text": "Gaming Content Gaming Content GTA V Character Showcase Cinematic character showcase with transitions, movement, and gaming-focused visuals. Play preview",
+          "attributes": {
+            "data-orbit-card": "",
+            "data-index": "8",
+            "data-modal": "youtube",
+            "data-title": "GTA V Character Showcase",
+            "data-src": "pA5lpp6oPe4"
+          }
+        },
+        {
+          "text": "Gaming Highlights Gaming Highlights Game Highlight Reel Action-focused highlight reel with fast cuts and dynamic visual energy. Play preview",
+          "attributes": {
+            "data-orbit-card": "",
+            "data-index": "9",
+            "data-modal": "youtube",
+            "data-title": "Game Highlight Reel",
+            "data-src": "AXy5y6aLhsw"
+          }
+        },
+        {
+          "text": "Travel Visuals Travel Visuals Tranquil Japan 4K Relaxing scenery video with cinematic flow, ambient pacing, and clean presentation. Play preview",
+          "attributes": {
+            "data-orbit-card": "",
+            "data-index": "10",
+            "data-modal": "youtube",
+            "data-title": "Tranquil Japan 4K",
+            "data-src": "8WpufLL-5Wo"
+          }
+        },
+        {
+          "text": "Travel Visuals Travel Visuals Beautiful Philippines Landscape-driven travel edit with calm storytelling and scenic composition. Play preview",
+          "attributes": {
+            "data-orbit-card": "",
+            "data-index": "11",
+            "data-modal": "youtube",
+            "data-title": "Beautiful Philippines",
+            "data-src": "lknvpxGdW_0"
+          }
+        }
+      ],
+      "images": [
+        {
+          "src": "https://img.youtube.com/vi/QcLnIjk2Dn8/hqdefault.jpg",
+          "alt": "Chip Wilson thumbnail",
+          "loading": "lazy"
+        },
+        {
+          "src": "https://img.youtube.com/vi/aTporYmDW9U/hqdefault.jpg",
+          "alt": "LONA Bag thumbnail",
+          "loading": "lazy"
+        },
+        {
+          "src": "https://img.youtube.com/vi/R1LLIn18NC8/hqdefault.jpg",
+          "alt": "CIC Pro / Hearing Aids thumbnail",
+          "loading": "lazy"
+        },
+        {
+          "src": "https://img.youtube.com/vi/W-hJTS_-Ztc/hqdefault.jpg",
+          "alt": "AI-Powered VSL thumbnail",
+          "loading": "lazy"
+        },
+        {
+          "src": "https://img.youtube.com/vi/WfJOJ65yrT8/hqdefault.jpg",
+          "alt": "Fußwohl Leather Shoes thumbnail",
+          "loading": "lazy"
+        },
+        {
+          "src": "https://img.youtube.com/vi/Lv1jWaATdIY/hqdefault.jpg",
+          "alt": "Mary Digi Solutions thumbnail",
+          "loading": "lazy"
+        },
+        {
+          "src": "https://img.youtube.com/vi/5h0JCng6r0s/hqdefault.jpg",
+          "alt": "Victoria AI Transition thumbnail",
+          "loading": "lazy"
+        },
+        {
+          "src": "https://img.youtube.com/vi/IDkR2tnQ6Ds/hqdefault.jpg",
+          "alt": "Willow AI Cosplay thumbnail",
+          "loading": "lazy"
+        },
+        {
+          "src": "https://img.youtube.com/vi/pA5lpp6oPe4/hqdefault.jpg",
+          "alt": "GTA V Character Showcase thumbnail",
+          "loading": "lazy"
+        },
+        {
+          "src": "https://img.youtube.com/vi/AXy5y6aLhsw/hqdefault.jpg",
+          "alt": "Game Highlight Reel thumbnail",
+          "loading": "lazy"
+        },
+        {
+          "src": "https://img.youtube.com/vi/8WpufLL-5Wo/hqdefault.jpg",
+          "alt": "Tranquil Japan 4K thumbnail",
+          "loading": "lazy"
+        },
+        {
+          "src": "https://img.youtube.com/vi/lknvpxGdW_0/hqdefault.jpg",
+          "alt": "Beautiful Philippines thumbnail",
+          "loading": "lazy"
+        }
+      ]
+    },
+    {
+      "id": "services",
+      "text": "What I Build SYSTEMSTHAT SCALE A focused showcase of the digital systems I build — from high-retention videos and AI content workflows to GoHighLevel funnels, automation, and business operations support. 01 Video Editing Retention-based edits for ads, reels, talking-head videos, B-roll, VSLs, and podcast clips. Hooks • pacing • captions 02 AI Content Creation AI-generated visuals, avatars, voiceovers, prompt workflows, and creative variations for ad testing. Kling • Higgsfield • ElevenLabs 03 GoHighLevel Setup Funnels, forms, calendars, pipelines, opportunities, tags, CRM setup, and client-ready workflows. GHL • CRM • pipelines Editing System 01 / Creative Execution Video Editing I turn raw footage into polished, high-retention videos with strong hooks, captions, pacing, sound design, B-roll, and clear storytelling. FilmoraCapCutPremiere ProDaVinci Resolve 04 AI Automation Workflow logic, reporting systems, SOP support, task tracking, and AI-assisted operations. Make • n8n • workflows 05 Web & Funnel Design Modern landing pages, portfolio pages, service pages, lead capture forms, and CTA-focused layouts. Websites • funnels • forms View packages → 06 Content Systems Content repurposing, posting workflows, social scheduling, asset organization, and performance iteration. Repurpose • schedule • publish",
+      "attributes": {
+        "id": "services"
+      },
+      "headings": [
+        "SYSTEMSTHAT SCALE",
+        "Video Editing",
+        "AI Content Creation",
+        "GoHighLevel Setup",
+        "Video Editing",
+        "AI Automation",
+        "Web & Funnel Design",
+        "Content Systems"
+      ],
+      "paragraphs": [
+        "A focused showcase of the digital systems I build — from high-retention videos and AI content workflows to GoHighLevel funnels, automation, and business operations support.",
+        "Retention-based edits for ads, reels, talking-head videos, B-roll, VSLs, and podcast clips.",
+        "AI-generated visuals, avatars, voiceovers, prompt workflows, and creative variations for ad testing.",
+        "Funnels, forms, calendars, pipelines, opportunities, tags, CRM setup, and client-ready workflows.",
+        "I turn raw footage into polished, high-retention videos with strong hooks, captions, pacing, sound design, B-roll, and clear storytelling.",
+        "Workflow logic, reporting systems, SOP support, task tracking, and AI-assisted operations.",
+        "Modern landing pages, portfolio pages, service pages, lead capture forms, and CTA-focused layouts.",
+        "Content repurposing, posting workflows, social scheduling, asset organization, and performance iteration."
+      ],
+      "list_items": [],
+      "actions": [
+        {
+          "text": "05 Web & Funnel Design Modern landing pages, portfolio pages, service pages, lead capture forms, and CTA-focused layouts. Websites • funnels • forms View packages →",
+          "attributes": {
+            "data-build": "4",
+            "data-modal": "webdesign"
+          }
+        }
+      ],
+      "images": [
+        {
+          "id": "buildPreviewImage",
+          "src": "images/project-vsl.jpg",
+          "alt": "Video Editing service preview"
+        }
+      ]
+    },
+    {
+      "id": "credentials",
+      "text": "Credentials Vault Certificates, profiles, and proof links in premium cards. Work Portfolio VaultComplete Dropbox folder for sample works and client projects.Open Vault → Certificates VaultCanva, Data Entry, Graphics Design, Lead Generation, Facebook Ads, and SMM certificates.Preview → Web Design SamplesWebsite layouts, creative pages, and design/development samples.Open Samples → Graphic Design SamplesBrand visuals, social graphics, and design-related work.Open Samples → SMM SamplesSocial media management, post samples, and content support assets.Open Folder → Resume / CVUpdated professional CV for video editing, AI content, VA, and automation roles.View Resume →",
+      "attributes": {
+        "id": "credentials"
+      },
+      "headings": [
+        "Certificates, profiles, and proof links in premium cards.",
+        "Work Portfolio Vault",
+        "Certificates Vault",
+        "Web Design Samples",
+        "Graphic Design Samples",
+        "SMM Samples",
+        "Resume / CV"
+      ],
+      "paragraphs": [
+        "Complete Dropbox folder for sample works and client projects.",
+        "Canva, Data Entry, Graphics Design, Lead Generation, Facebook Ads, and SMM certificates.",
+        "Website layouts, creative pages, and design/development samples.",
+        "Brand visuals, social graphics, and design-related work.",
+        "Social media management, post samples, and content support assets.",
+        "Updated professional CV for video editing, AI content, VA, and automation roles."
+      ],
+      "list_items": [],
+      "actions": [
+        {
+          "text": "Work Portfolio VaultComplete Dropbox folder for sample works and client projects.Open Vault →",
+          "attributes": {
+            "data-glow-card": "",
+            "data-glow-color": "blue",
+            "data-modal": "link",
+            "data-title": "Portfolio Vault",
+            "data-url": "https://www.dropbox.com/scl/fo/0k31nkpbyfros1q7hjl1x/AD-HnbDb7G2GePZWwaqZpzA?rlkey=vyl4l4ojvoluoxc2u4xr2m8et&st=2yst52tl&dl=0"
+          }
+        },
+        {
+          "text": "Certificates VaultCanva, Data Entry, Graphics Design, Lead Generation, Facebook Ads, and SMM certificates.Preview →",
+          "attributes": {
+            "data-glow-card": "",
+            "data-glow-color": "purple",
+            "data-modal": "link",
+            "data-title": "Certificates Vault",
+            "data-url": "https://www.dropbox.com/scl/fo/teo39x0l0b1i9g0g5n2so/AHooXzBnkKXyjXPoZcJQRkw?rlkey=vmwi95gkurhvh11pqv3jprfmj&st=0bsf1334&dl=0"
+          }
+        },
+        {
+          "text": "Web Design SamplesWebsite layouts, creative pages, and design/development samples.Open Samples →",
+          "attributes": {
+            "data-glow-card": "",
+            "data-glow-color": "green",
+            "data-modal": "link",
+            "data-title": "Web Design Samples",
+            "data-url": "https://www.dropbox.com/scl/fo/k3zajg1j5cdvp12mr9unz/ABYmenie1V1FP0QixSvS8Jk?rlkey=8exk7aibap8vqo1clp3scqpyd&st=m4058rhj&dl=0"
+          }
+        },
+        {
+          "text": "Graphic Design SamplesBrand visuals, social graphics, and design-related work.Open Samples →",
+          "attributes": {
+            "data-glow-card": "",
+            "data-glow-color": "orange",
+            "data-modal": "link",
+            "data-title": "Graphic Design Samples",
+            "data-url": "https://www.dropbox.com/scl/fo/him8j9u4j0vaqz25kcsdg/AAzEPdoI1I5zLnpQQn3zRdU?rlkey=a66tapptqwlrdxzy3ofe70ks7&st=hoeq6neu&dl=0"
+          }
+        },
+        {
+          "text": "SMM SamplesSocial media management, post samples, and content support assets.Open Folder →",
+          "attributes": {
+            "data-glow-card": "",
+            "data-glow-color": "purple",
+            "data-modal": "link",
+            "data-title": "Social Media Management",
+            "data-url": "https://www.dropbox.com/scl/fo/2nf6qx65xwtkmioiy948r/ANBkmR__BBUACfRFW0-hlBg?rlkey=uar63gpkknnz7salu5fa3ah2k&st=bafsslsd&dl=0"
+          }
+        },
+        {
+          "text": "Resume / CVUpdated professional CV for video editing, AI content, VA, and automation roles.View Resume →",
+          "attributes": {
+            "data-glow-card": "",
+            "data-glow-color": "blue",
+            "data-modal": "link",
+            "data-title": "Resume PDF",
+            "data-url": "resume.pdf"
+          }
+        }
+      ],
+      "images": []
+    },
+    {
+      "id": "testimonials",
+      "text": "Client Feedback Feedback from clients and collaborators. A quick look at collaboration feedback from editing, content, and digital project work. “ Jefferson delivered exceptional video editing work for our German market campaign. His attention to detail and ability to understand our brand vision was outstanding. 🇩🇪Klaus WeberMarketing Director, Germany “ Working with Jefferson has been a game-changer for our content creation. His motion graphics and video editing skills are top-notch, and he always delivers on time. 🎬Sarah JohnsonContent Creator, USA “ Jefferson's graphic design work helped elevate our brand identity. He took our vision and created stunning visuals that perfectly captured our message. 🎨Maria SantosBusiness Owner, Philippines",
+      "attributes": {
+        "id": "testimonials"
+      },
+      "headings": [
+        "Feedback from clients and collaborators.",
+        "Klaus Weber",
+        "Sarah Johnson",
+        "Maria Santos"
+      ],
+      "paragraphs": [
+        "A quick look at collaboration feedback from editing, content, and digital project work.",
+        "Jefferson delivered exceptional video editing work for our German market campaign. His attention to detail and ability to understand our brand vision was outstanding.",
+        "Working with Jefferson has been a game-changer for our content creation. His motion graphics and video editing skills are top-notch, and he always delivers on time.",
+        "Jefferson's graphic design work helped elevate our brand identity. He took our vision and created stunning visuals that perfectly captured our message."
+      ],
+      "list_items": [],
+      "actions": [
+        {
+          "text": "",
+          "attributes": {
+            "type": "button",
+            "aria-label": "Previous testimonial"
+          }
+        },
+        {
+          "text": "",
+          "attributes": {
+            "type": "button",
+            "aria-label": "Next testimonial"
+          }
+        }
+      ],
+      "images": []
+    },
+    {
+      "id": "contact",
+      "text": "Contact Hub LET'SBUILD. Need a video editor, AI content creator, GoHighLevel builder, or automation support? Choose the channel that fits your workflow and message me directly. Available for remote work, part-time, and project-based roles Email Me View Resume Emailjjmanalo.va@gmail.comSend message → WhatsApp0927 645 5260Chat now → Discordkenzaki5885Connect → LinkedInProfessional ProfileView profile → OnlineJobs.phOLJ ProfileOpen profile → UpworkFreelancer ProfileOpen Upwork → ResumeUpdated CVDownload → CertificatesCredentials VaultView proof →",
+      "attributes": {
+        "id": "contact"
+      },
+      "headings": [
+        "LET'SBUILD."
+      ],
+      "paragraphs": [
+        "Need a video editor, AI content creator, GoHighLevel builder, or automation support? Choose the channel that fits your workflow and message me directly."
+      ],
+      "list_items": [],
+      "actions": [
+        {
+          "text": "Email Me",
+          "attributes": {
+            "href": "mailto:jjmanalo.va@gmail.com"
+          }
+        },
+        {
+          "text": "View Resume",
+          "attributes": {
+            "href": "resume.pdf",
+            "target": "_blank"
+          }
+        },
+        {
+          "text": "Emailjjmanalo.va@gmail.comSend message →",
+          "attributes": {
+            "href": "mailto:jjmanalo.va@gmail.com"
+          }
+        },
+        {
+          "text": "WhatsApp0927 645 5260Chat now →",
+          "attributes": {
+            "href": "https://wa.me/639276455260",
+            "target": "_blank"
+          }
+        },
+        {
+          "text": "Discordkenzaki5885Connect →",
+          "attributes": {
+            "href": "https://discord.com/",
+            "target": "_blank"
+          }
+        },
+        {
+          "text": "LinkedInProfessional ProfileView profile →",
+          "attributes": {
+            "href": "https://www.linkedin.com/in/john-jefferson-manalo-117322380/",
+            "target": "_blank"
+          }
+        },
+        {
+          "text": "OnlineJobs.phOLJ ProfileOpen profile →",
+          "attributes": {
+            "href": "https://www.onlinejobs.ph/jobseekers/info/4491696",
+            "target": "_blank"
+          }
+        },
+        {
+          "text": "UpworkFreelancer ProfileOpen Upwork →",
+          "attributes": {
+            "href": "https://www.upwork.com/freelancers/~01b859ac91bdf7ade3?mp_source=share",
+            "target": "_blank"
+          }
+        },
+        {
+          "text": "ResumeUpdated CVDownload →",
+          "attributes": {
+            "href": "resume.pdf",
+            "target": "_blank"
+          }
+        },
+        {
+          "text": "CertificatesCredentials VaultView proof →",
+          "attributes": {
+            "href": "https://www.dropbox.com/scl/fo/teo39x0l0b1i9g0g5n2so/AHooXzBnkKXyjXPoZcJQRkw?rlkey=vmwi95gkurhvh11pqv3jprfmj&st=0bsf1334&dl=0",
+            "target": "_blank"
+          }
+        }
+      ],
+      "images": [
+        {
+          "src": "images/kenzaki-icon.svg",
+          "alt": "KENZAKI icon"
+        }
+      ]
+    }
+  ],
+  "collections": {
+    "story": [
+      {
+        "text": "01 / Foundation BSIT Graduate I started with a technical foundation: systems thinking, troubleshooting, web basics, and digital tools. That background helps me understand both creative work and the backend systems behind it. Technical Core",
+        "attributes": {
+          "data-flow-section": "",
+          "aria-label": "BSIT Foundation"
+        },
+        "headings": [
+          "BSIT Graduate"
+        ],
+        "paragraphs": [
+          "I started with a technical foundation: systems thinking, troubleshooting, web basics, and digital tools. That background helps me understand both creative work and the backend systems behind it."
+        ],
+        "list_items": [],
+        "actions": [],
+        "images": []
+      },
+      {
+        "text": "02 / Creative Execution Video Editor I moved into short-form edits, VSL-style videos, B-roll storytelling, captions, sound design, pacing, and retention-focused content built for TikTok, Reels, Shorts, and ads. Retention Editing",
+        "attributes": {
+          "data-flow-section": "",
+          "aria-label": "Video Editing"
+        },
+        "headings": [
+          "Video Editor"
+        ],
+        "paragraphs": [
+          "I moved into short-form edits, VSL-style videos, B-roll storytelling, captions, sound design, pacing, and retention-focused content built for TikTok, Reels, Shorts, and ads."
+        ],
+        "list_items": [],
+        "actions": [],
+        "images": []
+      },
+      {
+        "text": "03 / AI Systems AI Content Creator I expanded into AI-generated visuals, character workflows, prompt engineering, voiceovers, product creatives, and fast content production using tools like Kling, Higgsfield, Flux, Gemini, and ElevenLabs. AI Workflow",
+        "attributes": {
+          "data-flow-section": "",
+          "aria-label": "AI Content Creation"
+        },
+        "headings": [
+          "AI Content Creator"
+        ],
+        "paragraphs": [
+          "I expanded into AI-generated visuals, character workflows, prompt engineering, voiceovers, product creatives, and fast content production using tools like Kling, Higgsfield, Flux, Gemini, and ElevenLabs."
+        ],
+        "list_items": [],
+        "actions": [],
+        "images": []
+      },
+      {
+        "text": "04 / Business Systems Automation Builder Now I build digital systems: GoHighLevel setups, forms, calendars, funnels, lead capture, reporting trackers, and automation workflows that help businesses reduce manual work. GHL + Automation",
+        "attributes": {
+          "data-flow-section": "",
+          "aria-label": "Automation Builder"
+        },
+        "headings": [
+          "Automation Builder"
+        ],
+        "paragraphs": [
+          "Now I build digital systems: GoHighLevel setups, forms, calendars, funnels, lead capture, reporting trackers, and automation workflows that help businesses reduce manual work."
+        ],
+        "list_items": [],
+        "actions": [],
+        "images": []
+      },
+      {
+        "text": "05 / Current Direction CTO — Mary Digi Solutions Today, I combine video editing, AI content, websites, and automation as the technical lead for Mary Digi Solutions — helping turn ideas into systems, assets, and client-ready workflows. Digital Systems Creator",
+        "attributes": {
+          "data-flow-section": "",
+          "aria-label": "CTO Mary Digi Solutions"
+        },
+        "headings": [
+          "CTO — Mary Digi Solutions"
+        ],
+        "paragraphs": [
+          "Today, I combine video editing, AI content, websites, and automation as the technical lead for Mary Digi Solutions — helping turn ideas into systems, assets, and client-ready workflows."
+        ],
+        "list_items": [],
+        "actions": [],
+        "images": []
+      }
+    ],
+    "featured": [
+      {
+        "text": "01 / B-roll + Voiceover Chip Wilson Business-documentary style edit using voiceover, B-roll, pacing, and clean storytelling to keep viewers engaged. Storytelling pacingB-roll selectionVoiceover-driven structure Open Preview",
+        "attributes": {
+          "data-modal": "youtube",
+          "data-title": "Chip Wilson — B-roll + Voiceover",
+          "data-src": "QcLnIjk2Dn8"
+        },
+        "headings": [
+          "Chip Wilson"
+        ],
+        "paragraphs": [
+          "Business-documentary style edit using voiceover, B-roll, pacing, and clean storytelling to keep viewers engaged."
+        ],
+        "list_items": [
+          "Storytelling pacing",
+          "B-roll selection",
+          "Voiceover-driven structure"
+        ],
+        "actions": [],
+        "images": [
+          {
+            "src": "https://img.youtube.com/vi/QcLnIjk2Dn8/hqdefault.jpg",
+            "alt": "Chip Wilson project thumbnail"
+          }
+        ]
+      },
+      {
+        "text": "02 / Product Ad LONA Bag AI-assisted e-commerce product creative designed to present the product clearly and feel ad-ready. Product focusAI visual workflowAd-ready finish Open Preview",
+        "attributes": {
+          "data-modal": "youtube",
+          "data-title": "LONA Bag Product Ad",
+          "data-src": "aTporYmDW9U"
+        },
+        "headings": [
+          "LONA Bag"
+        ],
+        "paragraphs": [
+          "AI-assisted e-commerce product creative designed to present the product clearly and feel ad-ready."
+        ],
+        "list_items": [
+          "Product focus",
+          "AI visual workflow",
+          "Ad-ready finish"
+        ],
+        "actions": [],
+        "images": [
+          {
+            "src": "https://img.youtube.com/vi/aTporYmDW9U/maxresdefault.jpg",
+            "alt": "LONA Bag ad thumbnail"
+          }
+        ]
+      },
+      {
+        "text": "03 / Healthcare Product CIC Pro / Hearing Aids Clean direct-response product video focused on benefits, trust, clarity, and conversion-focused messaging. Problem-solution structureBenefit highlightsHealthcare niche Watch in Frame",
+        "attributes": {
+          "data-modal": "youtube",
+          "data-title": "CIC Pro Hearing Aid",
+          "data-src": "R1LLIn18NC8"
+        },
+        "headings": [
+          "CIC Pro / Hearing Aids"
+        ],
+        "paragraphs": [
+          "Clean direct-response product video focused on benefits, trust, clarity, and conversion-focused messaging."
+        ],
+        "list_items": [
+          "Problem-solution structure",
+          "Benefit highlights",
+          "Healthcare niche"
+        ],
+        "actions": [],
+        "images": [
+          {
+            "src": "https://img.youtube.com/vi/R1LLIn18NC8/hqdefault.jpg",
+            "alt": "CIC Pro video thumbnail"
+          }
+        ]
+      },
+      {
+        "text": "04 / Commercial VSL German Client VSL Short-form sales video with retention-focused pacing, product framing, and conversion-oriented visual flow. VSL-style editingAd structureGerman market client Watch in Frame",
+        "attributes": {
+          "data-modal": "youtube",
+          "data-title": "German Client VSL",
+          "data-src": "WfJOJ65yrT8"
+        },
+        "headings": [
+          "German Client VSL"
+        ],
+        "paragraphs": [
+          "Short-form sales video with retention-focused pacing, product framing, and conversion-oriented visual flow."
+        ],
+        "list_items": [
+          "VSL-style editing",
+          "Ad structure",
+          "German market client"
+        ],
+        "actions": [],
+        "images": [
+          {
+            "src": "https://img.youtube.com/vi/WfJOJ65yrT8/hqdefault.jpg",
+            "alt": "German VSL thumbnail"
+          }
+        ]
+      }
+    ],
+    "systems": [
+      {
+        "text": "Operations SystemFounder Daily Report AutomationFounder reports, opportunity updates, and Google Sheets tracking in one automated flow.",
+        "attributes": {
+          "data-stack-index": "0",
+          "data-modal": "system",
+          "data-title": "Founder Daily Report Automation",
+          "data-image": "images/founder-tracker-workflow.png",
+          "data-tools": "GoHighLevel • Google Sheets • Opportunities • Workflow Logic",
+          "data-result": "A centralized reporting system that helps founders submit updates, track status, and keep daily execution visible in one workflow."
+        },
+        "headings": [
+          "Founder Daily Report Automation"
+        ],
+        "paragraphs": [
+          "Founder reports, opportunity updates, and Google Sheets tracking in one automated flow."
+        ],
+        "list_items": [],
+        "actions": [],
+        "images": [
+          {
+            "src": "images/founder-tracker-workflow.png",
+            "alt": "Founder Daily Report Automation screenshot",
+            "loading": "lazy"
+          }
+        ]
+      },
+      {
+        "text": "CRM + FunnelGoHighLevel Funnel MapLead capture, bookings, CRM stages, and follow-up logic for client-ready funnels.",
+        "attributes": {
+          "data-stack-index": "1",
+          "data-modal": "system",
+          "data-title": "GoHighLevel Funnel Map",
+          "data-image": "images/project-ghl.jpg",
+          "data-tools": "GoHighLevel • Funnels • Forms • Booking • CRM",
+          "data-result": "A lead capture flow designed around landing pages, forms, calendars, pipeline stages, tags, and follow-up automation."
+        },
+        "headings": [
+          "GoHighLevel Funnel Map"
+        ],
+        "paragraphs": [
+          "Lead capture, bookings, CRM stages, and follow-up logic for client-ready funnels."
+        ],
+        "list_items": [],
+        "actions": [],
+        "images": [
+          {
+            "src": "images/project-ghl.jpg",
+            "alt": "GHL funnel map infographic",
+            "loading": "lazy"
+          }
+        ]
+      },
+      {
+        "text": "AI ProductionAI Video EnginePrompting, generation, voiceover, editing, and content packaging for AI-assisted videos.",
+        "attributes": {
+          "data-stack-index": "2",
+          "data-modal": "system",
+          "data-title": "AI Video Engine",
+          "data-image": "images/project-ai-video.jpg",
+          "data-tools": "AI Prompts • Image/Video Generation • Voiceover • Editing",
+          "data-result": "A repeatable AI-assisted workflow for turning ideas into generated assets, edited videos, captions, and publish-ready content."
+        },
+        "headings": [
+          "AI Video Engine"
+        ],
+        "paragraphs": [
+          "Prompting, generation, voiceover, editing, and content packaging for AI-assisted videos."
+        ],
+        "list_items": [],
+        "actions": [],
+        "images": [
+          {
+            "src": "images/project-ai-video.jpg",
+            "alt": "AI video engine infographic",
+            "loading": "lazy"
+          }
+        ]
+      },
+      {
+        "text": "Sales VideoVSL & Ads FrameworkStructured ad editing for retention, product clarity, proof, and conversion-focused messaging.",
+        "attributes": {
+          "data-stack-index": "3",
+          "data-modal": "system",
+          "data-title": "VSL & Ads Framework",
+          "data-image": "images/project-vsl.jpg",
+          "data-tools": "Hooks • Pain Points • Proof • CTA • Retention Editing",
+          "data-result": "A sales-focused editing structure built around hooks, pain points, proof, objections, benefits, and clear calls to action."
+        },
+        "headings": [
+          "VSL & Ads Framework"
+        ],
+        "paragraphs": [
+          "Structured ad editing for retention, product clarity, proof, and conversion-focused messaging."
+        ],
+        "list_items": [],
+        "actions": [],
+        "images": [
+          {
+            "src": "images/project-vsl.jpg",
+            "alt": "VSL framework infographic",
+            "loading": "lazy"
+          }
+        ]
+      },
+      {
+        "text": "Editing SystemEditing WorkflowFootage organization, captions, B-roll, sound design, transitions, and clean pacing.",
+        "attributes": {
+          "data-stack-index": "4",
+          "data-modal": "system",
+          "data-title": "Editing Workflow",
+          "data-image": "images/project-filmora.jpg",
+          "data-tools": "Filmora • CapCut • Premiere • DaVinci • Captions",
+          "data-result": "A clean editing workflow for organizing footage, pacing scenes, adding captions, choosing B-roll, and polishing audio/visual details."
+        },
+        "headings": [
+          "Editing Workflow"
+        ],
+        "paragraphs": [
+          "Footage organization, captions, B-roll, sound design, transitions, and clean pacing."
+        ],
+        "list_items": [],
+        "actions": [],
+        "images": [
+          {
+            "src": "images/project-filmora.jpg",
+            "alt": "Editing workflow infographic",
+            "loading": "lazy"
+          }
+        ]
+      },
+      {
+        "text": "DistributionContent MachineLong-form assets transformed into clips, reels, captions, thumbnails, and posting-ready content.",
+        "attributes": {
+          "data-stack-index": "5",
+          "data-modal": "system",
+          "data-title": "Content Machine",
+          "data-image": "images/project-social.jpg",
+          "data-tools": "Repurposing • Captions • Scheduling • Shorts • Reels",
+          "data-result": "A content repurposing system that turns long-form or raw assets into short-form clips, thumbnails, captions, and distribution-ready posts."
+        },
+        "headings": [
+          "Content Machine"
+        ],
+        "paragraphs": [
+          "Long-form assets transformed into clips, reels, captions, thumbnails, and posting-ready content."
+        ],
+        "list_items": [],
+        "actions": [],
+        "images": [
+          {
+            "src": "images/project-social.jpg",
+            "alt": "Content repurposing infographic",
+            "loading": "lazy"
+          }
+        ]
+      }
+    ],
+    "videos": [
+      {
+        "text": "Business Storytelling Business Storytelling Chip Wilson Documentary-style edit with voiceover, pacing, and B-roll built around a founder narrative. Play preview",
+        "attributes": {
+          "data-orbit-card": "",
+          "data-index": "0",
+          "data-modal": "youtube",
+          "data-title": "Chip Wilson",
+          "data-src": "QcLnIjk2Dn8"
+        },
+        "headings": [
+          "Chip Wilson"
+        ],
+        "paragraphs": [
+          "Documentary-style edit with voiceover, pacing, and B-roll built around a founder narrative."
+        ],
+        "list_items": [],
+        "actions": [],
+        "images": [
+          {
+            "src": "https://img.youtube.com/vi/QcLnIjk2Dn8/hqdefault.jpg",
+            "alt": "Chip Wilson thumbnail",
+            "loading": "lazy"
+          }
+        ]
+      },
+      {
+        "text": "Product VSL Product VSL LONA Bag Conversion-focused product ad with AI-assisted visuals, rhythm, and direct-response structure. Play preview",
+        "attributes": {
+          "data-orbit-card": "",
+          "data-index": "1",
+          "data-modal": "youtube",
+          "data-title": "LONA Bag",
+          "data-src": "aTporYmDW9U"
+        },
+        "headings": [
+          "LONA Bag"
+        ],
+        "paragraphs": [
+          "Conversion-focused product ad with AI-assisted visuals, rhythm, and direct-response structure."
+        ],
+        "list_items": [],
+        "actions": [],
+        "images": [
+          {
+            "src": "https://img.youtube.com/vi/aTporYmDW9U/hqdefault.jpg",
+            "alt": "LONA Bag thumbnail",
+            "loading": "lazy"
+          }
+        ]
+      },
+      {
+        "text": "Healthcare Product Healthcare Product CIC Pro / Hearing Aids Clean product video focused on clarity, benefits, trust, and easy-to-follow messaging. Play preview",
+        "attributes": {
+          "data-orbit-card": "",
+          "data-index": "2",
+          "data-modal": "youtube",
+          "data-title": "CIC Pro / Hearing Aids",
+          "data-src": "R1LLIn18NC8"
+        },
+        "headings": [
+          "CIC Pro / Hearing Aids"
+        ],
+        "paragraphs": [
+          "Clean product video focused on clarity, benefits, trust, and easy-to-follow messaging."
+        ],
+        "list_items": [],
+        "actions": [],
+        "images": [
+          {
+            "src": "https://img.youtube.com/vi/R1LLIn18NC8/hqdefault.jpg",
+            "alt": "CIC Pro / Hearing Aids thumbnail",
+            "loading": "lazy"
+          }
+        ]
+      },
+      {
+        "text": "AI Ad Creative AI Ad Creative AI-Powered VSL AI-generated sales video built for fast visual testing and performance-driven ad concepts. Play preview",
+        "attributes": {
+          "data-orbit-card": "",
+          "data-index": "3",
+          "data-modal": "youtube",
+          "data-title": "AI-Powered VSL",
+          "data-src": "W-hJTS_-Ztc"
+        },
+        "headings": [
+          "AI-Powered VSL"
+        ],
+        "paragraphs": [
+          "AI-generated sales video built for fast visual testing and performance-driven ad concepts."
+        ],
+        "list_items": [],
+        "actions": [],
+        "images": [
+          {
+            "src": "https://img.youtube.com/vi/W-hJTS_-Ztc/hqdefault.jpg",
+            "alt": "AI-Powered VSL thumbnail",
+            "loading": "lazy"
+          }
+        ]
+      },
+      {
+        "text": "Product Ad Product Ad Fußwohl Leather Shoes Premium product showcase with polished visuals and clear commercial presentation. Play preview",
+        "attributes": {
+          "data-orbit-card": "",
+          "data-index": "4",
+          "data-modal": "youtube",
+          "data-title": "Fußwohl Leather Shoes",
+          "data-src": "WfJOJ65yrT8"
+        },
+        "headings": [
+          "Fußwohl Leather Shoes"
+        ],
+        "paragraphs": [
+          "Premium product showcase with polished visuals and clear commercial presentation."
+        ],
+        "list_items": [],
+        "actions": [],
+        "images": [
+          {
+            "src": "https://img.youtube.com/vi/WfJOJ65yrT8/hqdefault.jpg",
+            "alt": "Fußwohl Leather Shoes thumbnail",
+            "loading": "lazy"
+          }
+        ]
+      },
+      {
+        "text": "Agency Brand Agency Brand Mary Digi Solutions Brand video introducing digital services, automation, and agency positioning. Play preview",
+        "attributes": {
+          "data-orbit-card": "",
+          "data-index": "5",
+          "data-modal": "youtube",
+          "data-title": "Mary Digi Solutions",
+          "data-src": "Lv1jWaATdIY"
+        },
+        "headings": [
+          "Mary Digi Solutions"
+        ],
+        "paragraphs": [
+          "Brand video introducing digital services, automation, and agency positioning."
+        ],
+        "list_items": [],
+        "actions": [],
+        "images": [
+          {
+            "src": "https://img.youtube.com/vi/Lv1jWaATdIY/hqdefault.jpg",
+            "alt": "Mary Digi Solutions thumbnail",
+            "loading": "lazy"
+          }
+        ]
+      },
+      {
+        "text": "AI Short AI Short Victoria AI Transition AI model transition content built around visual transformation and scroll-stopping style. Play preview",
+        "attributes": {
+          "data-orbit-card": "",
+          "data-index": "6",
+          "data-modal": "youtube",
+          "data-title": "Victoria AI Transition",
+          "data-src": "5h0JCng6r0s"
+        },
+        "headings": [
+          "Victoria AI Transition"
+        ],
+        "paragraphs": [
+          "AI model transition content built around visual transformation and scroll-stopping style."
+        ],
+        "list_items": [],
+        "actions": [],
+        "images": [
+          {
+            "src": "https://img.youtube.com/vi/5h0JCng6r0s/hqdefault.jpg",
+            "alt": "Victoria AI Transition thumbnail",
+            "loading": "lazy"
+          }
+        ]
+      },
+      {
+        "text": "AI Character Content AI Character Content Willow AI Cosplay Creative AI character content using stylized transformation and short-form pacing. Play preview",
+        "attributes": {
+          "data-orbit-card": "",
+          "data-index": "7",
+          "data-modal": "youtube",
+          "data-title": "Willow AI Cosplay",
+          "data-src": "IDkR2tnQ6Ds"
+        },
+        "headings": [
+          "Willow AI Cosplay"
+        ],
+        "paragraphs": [
+          "Creative AI character content using stylized transformation and short-form pacing."
+        ],
+        "list_items": [],
+        "actions": [],
+        "images": [
+          {
+            "src": "https://img.youtube.com/vi/IDkR2tnQ6Ds/hqdefault.jpg",
+            "alt": "Willow AI Cosplay thumbnail",
+            "loading": "lazy"
+          }
+        ]
+      },
+      {
+        "text": "Gaming Content Gaming Content GTA V Character Showcase Cinematic character showcase with transitions, movement, and gaming-focused visuals. Play preview",
+        "attributes": {
+          "data-orbit-card": "",
+          "data-index": "8",
+          "data-modal": "youtube",
+          "data-title": "GTA V Character Showcase",
+          "data-src": "pA5lpp6oPe4"
+        },
+        "headings": [
+          "GTA V Character Showcase"
+        ],
+        "paragraphs": [
+          "Cinematic character showcase with transitions, movement, and gaming-focused visuals."
+        ],
+        "list_items": [],
+        "actions": [],
+        "images": [
+          {
+            "src": "https://img.youtube.com/vi/pA5lpp6oPe4/hqdefault.jpg",
+            "alt": "GTA V Character Showcase thumbnail",
+            "loading": "lazy"
+          }
+        ]
+      },
+      {
+        "text": "Gaming Highlights Gaming Highlights Game Highlight Reel Action-focused highlight reel with fast cuts and dynamic visual energy. Play preview",
+        "attributes": {
+          "data-orbit-card": "",
+          "data-index": "9",
+          "data-modal": "youtube",
+          "data-title": "Game Highlight Reel",
+          "data-src": "AXy5y6aLhsw"
+        },
+        "headings": [
+          "Game Highlight Reel"
+        ],
+        "paragraphs": [
+          "Action-focused highlight reel with fast cuts and dynamic visual energy."
+        ],
+        "list_items": [],
+        "actions": [],
+        "images": [
+          {
+            "src": "https://img.youtube.com/vi/AXy5y6aLhsw/hqdefault.jpg",
+            "alt": "Game Highlight Reel thumbnail",
+            "loading": "lazy"
+          }
+        ]
+      },
+      {
+        "text": "Travel Visuals Travel Visuals Tranquil Japan 4K Relaxing scenery video with cinematic flow, ambient pacing, and clean presentation. Play preview",
+        "attributes": {
+          "data-orbit-card": "",
+          "data-index": "10",
+          "data-modal": "youtube",
+          "data-title": "Tranquil Japan 4K",
+          "data-src": "8WpufLL-5Wo"
+        },
+        "headings": [
+          "Tranquil Japan 4K"
+        ],
+        "paragraphs": [
+          "Relaxing scenery video with cinematic flow, ambient pacing, and clean presentation."
+        ],
+        "list_items": [],
+        "actions": [],
+        "images": [
+          {
+            "src": "https://img.youtube.com/vi/8WpufLL-5Wo/hqdefault.jpg",
+            "alt": "Tranquil Japan 4K thumbnail",
+            "loading": "lazy"
+          }
+        ]
+      },
+      {
+        "text": "Travel Visuals Travel Visuals Beautiful Philippines Landscape-driven travel edit with calm storytelling and scenic composition. Play preview",
+        "attributes": {
+          "data-orbit-card": "",
+          "data-index": "11",
+          "data-modal": "youtube",
+          "data-title": "Beautiful Philippines",
+          "data-src": "lknvpxGdW_0"
+        },
+        "headings": [
+          "Beautiful Philippines"
+        ],
+        "paragraphs": [
+          "Landscape-driven travel edit with calm storytelling and scenic composition."
+        ],
+        "list_items": [],
+        "actions": [],
+        "images": [
+          {
+            "src": "https://img.youtube.com/vi/lknvpxGdW_0/hqdefault.jpg",
+            "alt": "Beautiful Philippines thumbnail",
+            "loading": "lazy"
+          }
+        ]
+      }
+    ],
+    "services": [
+      {
+        "text": "01 Video Editing Retention-based edits for ads, reels, talking-head videos, B-roll, VSLs, and podcast clips. Hooks • pacing • captions",
+        "attributes": {
+          "data-build": "0"
+        },
+        "headings": [
+          "Video Editing"
+        ],
+        "paragraphs": [
+          "Retention-based edits for ads, reels, talking-head videos, B-roll, VSLs, and podcast clips."
+        ],
+        "list_items": [],
+        "actions": [],
+        "images": []
+      },
+      {
+        "text": "02 AI Content Creation AI-generated visuals, avatars, voiceovers, prompt workflows, and creative variations for ad testing. Kling • Higgsfield • ElevenLabs",
+        "attributes": {
+          "data-build": "1"
+        },
+        "headings": [
+          "AI Content Creation"
+        ],
+        "paragraphs": [
+          "AI-generated visuals, avatars, voiceovers, prompt workflows, and creative variations for ad testing."
+        ],
+        "list_items": [],
+        "actions": [],
+        "images": []
+      },
+      {
+        "text": "03 GoHighLevel Setup Funnels, forms, calendars, pipelines, opportunities, tags, CRM setup, and client-ready workflows. GHL • CRM • pipelines",
+        "attributes": {
+          "data-build": "2"
+        },
+        "headings": [
+          "GoHighLevel Setup"
+        ],
+        "paragraphs": [
+          "Funnels, forms, calendars, pipelines, opportunities, tags, CRM setup, and client-ready workflows."
+        ],
+        "list_items": [],
+        "actions": [],
+        "images": []
+      },
+      {
+        "text": "04 AI Automation Workflow logic, reporting systems, SOP support, task tracking, and AI-assisted operations. Make • n8n • workflows",
+        "attributes": {
+          "data-build": "3"
+        },
+        "headings": [
+          "AI Automation"
+        ],
+        "paragraphs": [
+          "Workflow logic, reporting systems, SOP support, task tracking, and AI-assisted operations."
+        ],
+        "list_items": [],
+        "actions": [],
+        "images": []
+      },
+      {
+        "text": "05 Web & Funnel Design Modern landing pages, portfolio pages, service pages, lead capture forms, and CTA-focused layouts. Websites • funnels • forms View packages →",
+        "attributes": {
+          "data-build": "4",
+          "data-modal": "webdesign"
+        },
+        "headings": [
+          "Web & Funnel Design"
+        ],
+        "paragraphs": [
+          "Modern landing pages, portfolio pages, service pages, lead capture forms, and CTA-focused layouts."
+        ],
+        "list_items": [],
+        "actions": [],
+        "images": []
+      },
+      {
+        "text": "06 Content Systems Content repurposing, posting workflows, social scheduling, asset organization, and performance iteration. Repurpose • schedule • publish",
+        "attributes": {
+          "data-build": "5"
+        },
+        "headings": [
+          "Content Systems"
+        ],
+        "paragraphs": [
+          "Content repurposing, posting workflows, social scheduling, asset organization, and performance iteration."
+        ],
+        "list_items": [],
+        "actions": [],
+        "images": []
+      }
+    ],
+    "initial_service_preview": {
+      "text": "Editing System 01 / Creative Execution Video Editing I turn raw footage into polished, high-retention videos with strong hooks, captions, pacing, sound design, B-roll, and clear storytelling. FilmoraCapCutPremiere ProDaVinci Resolve",
+      "attributes": {},
+      "headings": [
+        "Video Editing"
+      ],
+      "paragraphs": [
+        "I turn raw footage into polished, high-retention videos with strong hooks, captions, pacing, sound design, B-roll, and clear storytelling."
+      ],
+      "list_items": [],
+      "actions": [],
+      "images": [
+        {
+          "id": "buildPreviewImage",
+          "src": "images/project-vsl.jpg",
+          "alt": "Video Editing service preview"
+        }
+      ]
+    },
+    "credentials": [
+      {
+        "text": "Work Portfolio VaultComplete Dropbox folder for sample works and client projects.Open Vault →",
+        "attributes": {
+          "data-glow-card": "",
+          "data-glow-color": "blue",
+          "data-modal": "link",
+          "data-title": "Portfolio Vault",
+          "data-url": "https://www.dropbox.com/scl/fo/0k31nkpbyfros1q7hjl1x/AD-HnbDb7G2GePZWwaqZpzA?rlkey=vyl4l4ojvoluoxc2u4xr2m8et&st=2yst52tl&dl=0"
+        },
+        "headings": [
+          "Work Portfolio Vault"
+        ],
+        "paragraphs": [
+          "Complete Dropbox folder for sample works and client projects."
+        ],
+        "list_items": [],
+        "actions": [],
+        "images": []
+      },
+      {
+        "text": "Certificates VaultCanva, Data Entry, Graphics Design, Lead Generation, Facebook Ads, and SMM certificates.Preview →",
+        "attributes": {
+          "data-glow-card": "",
+          "data-glow-color": "purple",
+          "data-modal": "link",
+          "data-title": "Certificates Vault",
+          "data-url": "https://www.dropbox.com/scl/fo/teo39x0l0b1i9g0g5n2so/AHooXzBnkKXyjXPoZcJQRkw?rlkey=vmwi95gkurhvh11pqv3jprfmj&st=0bsf1334&dl=0"
+        },
+        "headings": [
+          "Certificates Vault"
+        ],
+        "paragraphs": [
+          "Canva, Data Entry, Graphics Design, Lead Generation, Facebook Ads, and SMM certificates."
+        ],
+        "list_items": [],
+        "actions": [],
+        "images": []
+      },
+      {
+        "text": "Web Design SamplesWebsite layouts, creative pages, and design/development samples.Open Samples →",
+        "attributes": {
+          "data-glow-card": "",
+          "data-glow-color": "green",
+          "data-modal": "link",
+          "data-title": "Web Design Samples",
+          "data-url": "https://www.dropbox.com/scl/fo/k3zajg1j5cdvp12mr9unz/ABYmenie1V1FP0QixSvS8Jk?rlkey=8exk7aibap8vqo1clp3scqpyd&st=m4058rhj&dl=0"
+        },
+        "headings": [
+          "Web Design Samples"
+        ],
+        "paragraphs": [
+          "Website layouts, creative pages, and design/development samples."
+        ],
+        "list_items": [],
+        "actions": [],
+        "images": []
+      },
+      {
+        "text": "Graphic Design SamplesBrand visuals, social graphics, and design-related work.Open Samples →",
+        "attributes": {
+          "data-glow-card": "",
+          "data-glow-color": "orange",
+          "data-modal": "link",
+          "data-title": "Graphic Design Samples",
+          "data-url": "https://www.dropbox.com/scl/fo/him8j9u4j0vaqz25kcsdg/AAzEPdoI1I5zLnpQQn3zRdU?rlkey=a66tapptqwlrdxzy3ofe70ks7&st=hoeq6neu&dl=0"
+        },
+        "headings": [
+          "Graphic Design Samples"
+        ],
+        "paragraphs": [
+          "Brand visuals, social graphics, and design-related work."
+        ],
+        "list_items": [],
+        "actions": [],
+        "images": []
+      },
+      {
+        "text": "SMM SamplesSocial media management, post samples, and content support assets.Open Folder →",
+        "attributes": {
+          "data-glow-card": "",
+          "data-glow-color": "purple",
+          "data-modal": "link",
+          "data-title": "Social Media Management",
+          "data-url": "https://www.dropbox.com/scl/fo/2nf6qx65xwtkmioiy948r/ANBkmR__BBUACfRFW0-hlBg?rlkey=uar63gpkknnz7salu5fa3ah2k&st=bafsslsd&dl=0"
+        },
+        "headings": [
+          "SMM Samples"
+        ],
+        "paragraphs": [
+          "Social media management, post samples, and content support assets."
+        ],
+        "list_items": [],
+        "actions": [],
+        "images": []
+      },
+      {
+        "text": "Resume / CVUpdated professional CV for video editing, AI content, VA, and automation roles.View Resume →",
+        "attributes": {
+          "data-glow-card": "",
+          "data-glow-color": "blue",
+          "data-modal": "link",
+          "data-title": "Resume PDF",
+          "data-url": "resume.pdf"
+        },
+        "headings": [
+          "Resume / CV"
+        ],
+        "paragraphs": [
+          "Updated professional CV for video editing, AI content, VA, and automation roles."
+        ],
+        "list_items": [],
+        "actions": [],
+        "images": []
+      }
+    ],
+    "testimonials": [
+      {
+        "text": "“ Jefferson delivered exceptional video editing work for our German market campaign. His attention to detail and ability to understand our brand vision was outstanding. 🇩🇪Klaus WeberMarketing Director, Germany",
+        "attributes": {
+          "data-index": "0"
+        },
+        "headings": [
+          "Klaus Weber"
+        ],
+        "paragraphs": [
+          "Jefferson delivered exceptional video editing work for our German market campaign. His attention to detail and ability to understand our brand vision was outstanding."
+        ],
+        "list_items": [],
+        "actions": [],
+        "images": []
+      },
+      {
+        "text": "“ Working with Jefferson has been a game-changer for our content creation. His motion graphics and video editing skills are top-notch, and he always delivers on time. 🎬Sarah JohnsonContent Creator, USA",
+        "attributes": {
+          "data-index": "1"
+        },
+        "headings": [
+          "Sarah Johnson"
+        ],
+        "paragraphs": [
+          "Working with Jefferson has been a game-changer for our content creation. His motion graphics and video editing skills are top-notch, and he always delivers on time."
+        ],
+        "list_items": [],
+        "actions": [],
+        "images": []
+      },
+      {
+        "text": "“ Jefferson's graphic design work helped elevate our brand identity. He took our vision and created stunning visuals that perfectly captured our message. 🎨Maria SantosBusiness Owner, Philippines",
+        "attributes": {
+          "data-index": "2"
+        },
+        "headings": [
+          "Maria Santos"
+        ],
+        "paragraphs": [
+          "Jefferson's graphic design work helped elevate our brand identity. He took our vision and created stunning visuals that perfectly captured our message."
+        ],
+        "list_items": [],
+        "actions": [],
+        "images": []
+      }
+    ],
+    "contact": [
+      {
+        "text": "Emailjjmanalo.va@gmail.comSend message →",
+        "attributes": {
+          "href": "mailto:jjmanalo.va@gmail.com"
+        },
+        "headings": [],
+        "paragraphs": [],
+        "list_items": [],
+        "actions": [],
+        "images": []
+      },
+      {
+        "text": "WhatsApp0927 645 5260Chat now →",
+        "attributes": {
+          "href": "https://wa.me/639276455260",
+          "target": "_blank"
+        },
+        "headings": [],
+        "paragraphs": [],
+        "list_items": [],
+        "actions": [],
+        "images": []
+      },
+      {
+        "text": "Discordkenzaki5885Connect →",
+        "attributes": {
+          "href": "https://discord.com/",
+          "target": "_blank"
+        },
+        "headings": [],
+        "paragraphs": [],
+        "list_items": [],
+        "actions": [],
+        "images": []
+      },
+      {
+        "text": "LinkedInProfessional ProfileView profile →",
+        "attributes": {
+          "href": "https://www.linkedin.com/in/john-jefferson-manalo-117322380/",
+          "target": "_blank"
+        },
+        "headings": [],
+        "paragraphs": [],
+        "list_items": [],
+        "actions": [],
+        "images": []
+      },
+      {
+        "text": "OnlineJobs.phOLJ ProfileOpen profile →",
+        "attributes": {
+          "href": "https://www.onlinejobs.ph/jobseekers/info/4491696",
+          "target": "_blank"
+        },
+        "headings": [],
+        "paragraphs": [],
+        "list_items": [],
+        "actions": [],
+        "images": []
+      },
+      {
+        "text": "UpworkFreelancer ProfileOpen Upwork →",
+        "attributes": {
+          "href": "https://www.upwork.com/freelancers/~01b859ac91bdf7ade3?mp_source=share",
+          "target": "_blank"
+        },
+        "headings": [],
+        "paragraphs": [],
+        "list_items": [],
+        "actions": [],
+        "images": []
+      },
+      {
+        "text": "ResumeUpdated CVDownload →",
+        "attributes": {
+          "href": "resume.pdf",
+          "target": "_blank"
+        },
+        "headings": [],
+        "paragraphs": [],
+        "list_items": [],
+        "actions": [],
+        "images": []
+      },
+      {
+        "text": "CertificatesCredentials VaultView proof →",
+        "attributes": {
+          "href": "https://www.dropbox.com/scl/fo/teo39x0l0b1i9g0g5n2so/AHooXzBnkKXyjXPoZcJQRkw?rlkey=vmwi95gkurhvh11pqv3jprfmj&st=0bsf1334&dl=0",
+          "target": "_blank"
+        },
+        "headings": [],
+        "paragraphs": [],
+        "list_items": [],
+        "actions": [],
+        "images": []
+      }
+    ]
+  },
+  "dynamic_source": {
+    "roles": "const titles = ['Video Editor', 'AI Content Creator', 'GHL Automation Builder', 'Digital Systems Creator', 'VSL & Ads Editor'];",
+    "service_details": "  const data = [\n    {\n      image:'images/project-vsl.jpg', tag:'Editing System', kicker:'01 / Creative Execution', title:'Video Editing',\n      text:'I build retention-focused editing systems for ads, reels, talking-head videos, B-roll edits, VSLs, and podcast clips — designed to hold attention and make the message easier to understand.',\n      tools:['Filmora','CapCut','Premiere Pro','DaVinci Resolve']\n    },\n    {\n      image:'images/project-ai-video.jpg', tag:'AI Creative Engine', kicker:'02 / AI Production', title:'AI Content Creation',\n      text:'I create AI-assisted content workflows for visuals, avatars, voiceovers, transitions, and creative variations that help brands test more ideas faster.',\n      tools:['Kling','Higgsfield','Flux','Gemini','ElevenLabs']\n    },\n    {\n      image:'images/project-ghl.jpg', tag:'GHL System', kicker:'03 / CRM + Funnel Build', title:'GoHighLevel Setup',\n      text:'I set up client-ready GoHighLevel systems with funnels, forms, calendars, pipelines, tags, opportunities, and CRM structures that support lead capture and follow-up.',\n      tools:['GoHighLevel','Funnels','Pipelines','Forms','Calendars']\n    },\n    {\n      image:'images/founder-tracker-workflow.png', tag:'Operations System', kicker:'04 / Business Operations', title:'Automation Workflows',\n      text:'I design automation workflows, reporting trackers, lead-routing logic, and SOP support systems that reduce repetitive tasks and improve operational visibility.',\n      tools:['Make','n8n','Google Sheets','Automation','SOPs']\n    },\n    {\n      image:'images/project-web.jpg', tag:'Website + Funnel', kicker:'05 / Digital Experience', title:'Web & Funnel Design',\n      text:'I build modern website and funnel pages focused on trust, clean presentation, lead capture, responsive design, and clear calls-to-action.',\n      tools:['HTML','CSS','JavaScript','GHL Pages','Responsive Design']\n    },\n    {\n      image:'images/project-social.jpg', tag:'Publishing System', kicker:'06 / Distribution System', title:'Content Operations',\n      text:'I help organize content machines for repurposing, scheduling, asset management, posting workflows, and performance-based content iteration.',\n      tools:['Content Calendar','Reels','Shorts','Posting Workflow','Analytics']\n    }\n  ];",
+    "packages": "  const WD_PACKAGES = [\n    {\n      tier: 'Basic Website',\n      price: '₱5,000 – ₱8,000',\n      tag: 'Personal & Portfolio',\n      icon: '🌱',\n      desc: 'Best for simple personal websites, portfolios, freelancers, and small service pages.',\n      includes: [\n        '1-page responsive website',\n        'Home / introduction section',\n        'About section',\n        'Services, skills, or business info section',\n        'Portfolio / works / showcase section',\n        'Contact information section',\n        'Social media links',\n        'Mobile-friendly layout',\n        'Clean professional design',\n        '1 round of revision',\n      ]\n    },\n    {\n      tier: 'Standard Website',\n      price: '₱8,000 – ₱15,000',\n      tag: 'Small Business & Freelancers',\n      icon: '🚀',\n      desc: 'Best for small businesses, freelancers, professionals, and service providers.',\n      includes: [\n        'Multi-section website or up to 3 pages',\n        'Home page',\n        'About page or section',\n        'Services section',\n        'Portfolio / projects / business showcase',\n        'Contact section',\n        'Social media links',\n        'Mobile and tablet responsive design',\n        'Custom styling based on your brand',\n        'Basic SEO setup',\n        '2 rounds of revisions',\n      ]\n    },\n    {\n      tier: 'Premium Website',\n      price: '₱15,000 – ₱25,000',\n      tag: 'Modern & Premium',\n      icon: '💎',\n      desc: 'Best for businesses and professionals who want a more premium and modern website.',\n      includes: [\n        'Custom premium website design',\n        'Up to 5 pages',\n        'Strong hero section',\n        'About / company profile section',\n        'Services page or section',\n        'Portfolio / project / case study section',\n        'Testimonials or achievements section',\n        'Contact form or inquiry section',\n        'Basic animations and smooth scrolling',\n        'Mobile, tablet, and desktop responsive design',\n        'Basic SEO optimization',\n        'Deployment support',\n        '2 rounds of revisions',\n      ]\n    },\n    {\n      tier: 'Business / Pro Website',\n      price: '₱25,000+',\n      tag: 'Full Business Solution',\n      icon: '⚡',\n      desc: 'Best for businesses, agencies, consultants, coaches, and service providers who need advanced features.',\n      includes: [\n        'Premium custom website design',\n        'Multiple pages depending on business needs',\n        'Service pages',\n        'Landing page or lead generation structure',\n        'Contact form / lead inquiry form',\n        'Booking or appointment section',\n        'Analytics setup',\n        'Basic automation or integration support',\n        'SEO-ready structure',\n        'Mobile, tablet, and desktop optimization',\n        'Deployment support',\n        '2 to 3 rounds of revisions',\n      ]\n    }\n  ];",
+    "add_ons": "  const ADDONS = [\n    'Domain and hosting setup', 'Website maintenance', 'Additional pages',\n    'Copywriting assistance', 'Logo or branding support', 'Booking calendar setup',\n    'Contact form automation', 'Google Analytics setup', 'Monthly website updates',\n    'Business email setup', 'Website redesign',\n  ];"
+  },
+  "package_summary": [
+    {
+      "name": "Basic Website",
+      "price": "₱5,000 – ₱8,000",
+      "inclusion_count": 10
+    },
+    {
+      "name": "Standard Website",
+      "price": "₱8,000 – ₱15,000",
+      "inclusion_count": 11
+    },
+    {
+      "name": "Premium Website",
+      "price": "₱15,000 – ₱25,000",
+      "inclusion_count": 13
+    },
+    {
+      "name": "Business / Pro Website",
+      "price": "₱25,000+",
+      "inclusion_count": 12
+    }
+  ],
+  "global_actions": [
+    {
+      "text": "KENZAKI",
+      "attributes": {
+        "href": "#home",
+        "aria-label": "KENZAKI home"
+      }
+    },
+    {
+      "text": "",
+      "attributes": {
+        "id": "navToggle",
+        "aria-label": "Open navigation",
+        "aria-expanded": "false"
+      }
+    },
+    {
+      "text": "Home",
+      "attributes": {
+        "href": "#home",
+        "data-icon": "🏠"
+      }
+    },
+    {
+      "text": "Story",
+      "attributes": {
+        "href": "#story",
+        "data-icon": "📖"
+      }
+    },
+    {
+      "text": "Work",
+      "attributes": {
+        "href": "#featured",
+        "data-icon": "🎬"
+      }
+    },
+    {
+      "text": "Services",
+      "attributes": {
+        "href": "#services",
+        "data-icon": "⚙️"
+      }
+    },
+    {
+      "text": "Vault",
+      "attributes": {
+        "href": "#vault",
+        "data-icon": "🧩"
+      }
+    },
+    {
+      "text": "Credentials",
+      "attributes": {
+        "href": "#credentials",
+        "data-icon": "🏆"
+      }
+    },
+    {
+      "text": "Contact",
+      "attributes": {
+        "href": "#contact",
+        "data-icon": "💬"
+      }
+    },
+    {
+      "text": "☾",
+      "attributes": {
+        "id": "themeToggle",
+        "aria-label": "Toggle dark and light mode"
+      }
+    },
+    {
+      "text": "Hire Me Now",
+      "attributes": {
+        "href": "mailto:jjmanalo.va@gmail.com"
+      }
+    },
+    {
+      "text": "View My Work",
+      "attributes": {
+        "href": "#featured"
+      }
+    },
+    {
+      "text": "Portfolio Vault",
+      "attributes": {
+        "data-modal": "link",
+        "data-url": "https://www.dropbox.com/scl/fo/0k31nkpbyfros1q7hjl1x/AD-HnbDb7G2GePZWwaqZpzA?rlkey=vyl4l4ojvoluoxc2u4xr2m8et&st=2yst52tl&dl=0"
+      }
+    },
+    {
+      "text": "OLJ Profile",
+      "attributes": {
+        "data-modal": "link",
+        "data-url": "https://www.onlinejobs.ph/jobseekers/info/4491696"
+      }
+    },
+    {
+      "text": "01 / B-roll + Voiceover Chip Wilson Business-documentary style edit using voiceover, B-roll, pacing, and clean storytelling to keep viewers engaged. Storytelling pacingB-roll selectionVoiceover-driven structure Open Preview",
+      "attributes": {
+        "data-modal": "youtube",
+        "data-title": "Chip Wilson — B-roll + Voiceover",
+        "data-src": "QcLnIjk2Dn8"
+      }
+    },
+    {
+      "text": "02 / Product Ad LONA Bag AI-assisted e-commerce product creative designed to present the product clearly and feel ad-ready. Product focusAI visual workflowAd-ready finish Open Preview",
+      "attributes": {
+        "data-modal": "youtube",
+        "data-title": "LONA Bag Product Ad",
+        "data-src": "aTporYmDW9U"
+      }
+    },
+    {
+      "text": "03 / Healthcare Product CIC Pro / Hearing Aids Clean direct-response product video focused on benefits, trust, clarity, and conversion-focused messaging. Problem-solution structureBenefit highlightsHealthcare niche Watch in Frame",
+      "attributes": {
+        "data-modal": "youtube",
+        "data-title": "CIC Pro Hearing Aid",
+        "data-src": "R1LLIn18NC8"
+      }
+    },
+    {
+      "text": "04 / Commercial VSL German Client VSL Short-form sales video with retention-focused pacing, product framing, and conversion-oriented visual flow. VSL-style editingAd structureGerman market client Watch in Frame",
+      "attributes": {
+        "data-modal": "youtube",
+        "data-title": "German Client VSL",
+        "data-src": "WfJOJ65yrT8"
+      }
+    },
+    {
+      "text": "Operations SystemFounder Daily Report AutomationFounder reports, opportunity updates, and Google Sheets tracking in one automated flow.",
+      "attributes": {
+        "data-stack-index": "0",
+        "data-modal": "system",
+        "data-title": "Founder Daily Report Automation",
+        "data-image": "images/founder-tracker-workflow.png",
+        "data-tools": "GoHighLevel • Google Sheets • Opportunities • Workflow Logic",
+        "data-result": "A centralized reporting system that helps founders submit updates, track status, and keep daily execution visible in one workflow."
+      }
+    },
+    {
+      "text": "CRM + FunnelGoHighLevel Funnel MapLead capture, bookings, CRM stages, and follow-up logic for client-ready funnels.",
+      "attributes": {
+        "data-stack-index": "1",
+        "data-modal": "system",
+        "data-title": "GoHighLevel Funnel Map",
+        "data-image": "images/project-ghl.jpg",
+        "data-tools": "GoHighLevel • Funnels • Forms • Booking • CRM",
+        "data-result": "A lead capture flow designed around landing pages, forms, calendars, pipeline stages, tags, and follow-up automation."
+      }
+    },
+    {
+      "text": "AI ProductionAI Video EnginePrompting, generation, voiceover, editing, and content packaging for AI-assisted videos.",
+      "attributes": {
+        "data-stack-index": "2",
+        "data-modal": "system",
+        "data-title": "AI Video Engine",
+        "data-image": "images/project-ai-video.jpg",
+        "data-tools": "AI Prompts • Image/Video Generation • Voiceover • Editing",
+        "data-result": "A repeatable AI-assisted workflow for turning ideas into generated assets, edited videos, captions, and publish-ready content."
+      }
+    },
+    {
+      "text": "Sales VideoVSL & Ads FrameworkStructured ad editing for retention, product clarity, proof, and conversion-focused messaging.",
+      "attributes": {
+        "data-stack-index": "3",
+        "data-modal": "system",
+        "data-title": "VSL & Ads Framework",
+        "data-image": "images/project-vsl.jpg",
+        "data-tools": "Hooks • Pain Points • Proof • CTA • Retention Editing",
+        "data-result": "A sales-focused editing structure built around hooks, pain points, proof, objections, benefits, and clear calls to action."
+      }
+    },
+    {
+      "text": "Editing SystemEditing WorkflowFootage organization, captions, B-roll, sound design, transitions, and clean pacing.",
+      "attributes": {
+        "data-stack-index": "4",
+        "data-modal": "system",
+        "data-title": "Editing Workflow",
+        "data-image": "images/project-filmora.jpg",
+        "data-tools": "Filmora • CapCut • Premiere • DaVinci • Captions",
+        "data-result": "A clean editing workflow for organizing footage, pacing scenes, adding captions, choosing B-roll, and polishing audio/visual details."
+      }
+    },
+    {
+      "text": "DistributionContent MachineLong-form assets transformed into clips, reels, captions, thumbnails, and posting-ready content.",
+      "attributes": {
+        "data-stack-index": "5",
+        "data-modal": "system",
+        "data-title": "Content Machine",
+        "data-image": "images/project-social.jpg",
+        "data-tools": "Repurposing • Captions • Scheduling • Shorts • Reels",
+        "data-result": "A content repurposing system that turns long-form or raw assets into short-form clips, thumbnails, captions, and distribution-ready posts."
+      }
+    },
+    {
+      "text": "",
+      "attributes": {
+        "type": "button",
+        "data-stack-prev": "",
+        "aria-label": "Previous system"
+      }
+    },
+    {
+      "text": "",
+      "attributes": {
+        "type": "button",
+        "data-stack-next": "",
+        "aria-label": "Next system"
+      }
+    },
+    {
+      "text": "Business Storytelling Business Storytelling Chip Wilson Documentary-style edit with voiceover, pacing, and B-roll built around a founder narrative. Play preview",
+      "attributes": {
+        "data-orbit-card": "",
+        "data-index": "0",
+        "data-modal": "youtube",
+        "data-title": "Chip Wilson",
+        "data-src": "QcLnIjk2Dn8"
+      }
+    },
+    {
+      "text": "Product VSL Product VSL LONA Bag Conversion-focused product ad with AI-assisted visuals, rhythm, and direct-response structure. Play preview",
+      "attributes": {
+        "data-orbit-card": "",
+        "data-index": "1",
+        "data-modal": "youtube",
+        "data-title": "LONA Bag",
+        "data-src": "aTporYmDW9U"
+      }
+    },
+    {
+      "text": "Healthcare Product Healthcare Product CIC Pro / Hearing Aids Clean product video focused on clarity, benefits, trust, and easy-to-follow messaging. Play preview",
+      "attributes": {
+        "data-orbit-card": "",
+        "data-index": "2",
+        "data-modal": "youtube",
+        "data-title": "CIC Pro / Hearing Aids",
+        "data-src": "R1LLIn18NC8"
+      }
+    },
+    {
+      "text": "AI Ad Creative AI Ad Creative AI-Powered VSL AI-generated sales video built for fast visual testing and performance-driven ad concepts. Play preview",
+      "attributes": {
+        "data-orbit-card": "",
+        "data-index": "3",
+        "data-modal": "youtube",
+        "data-title": "AI-Powered VSL",
+        "data-src": "W-hJTS_-Ztc"
+      }
+    },
+    {
+      "text": "Product Ad Product Ad Fußwohl Leather Shoes Premium product showcase with polished visuals and clear commercial presentation. Play preview",
+      "attributes": {
+        "data-orbit-card": "",
+        "data-index": "4",
+        "data-modal": "youtube",
+        "data-title": "Fußwohl Leather Shoes",
+        "data-src": "WfJOJ65yrT8"
+      }
+    },
+    {
+      "text": "Agency Brand Agency Brand Mary Digi Solutions Brand video introducing digital services, automation, and agency positioning. Play preview",
+      "attributes": {
+        "data-orbit-card": "",
+        "data-index": "5",
+        "data-modal": "youtube",
+        "data-title": "Mary Digi Solutions",
+        "data-src": "Lv1jWaATdIY"
+      }
+    },
+    {
+      "text": "AI Short AI Short Victoria AI Transition AI model transition content built around visual transformation and scroll-stopping style. Play preview",
+      "attributes": {
+        "data-orbit-card": "",
+        "data-index": "6",
+        "data-modal": "youtube",
+        "data-title": "Victoria AI Transition",
+        "data-src": "5h0JCng6r0s"
+      }
+    },
+    {
+      "text": "AI Character Content AI Character Content Willow AI Cosplay Creative AI character content using stylized transformation and short-form pacing. Play preview",
+      "attributes": {
+        "data-orbit-card": "",
+        "data-index": "7",
+        "data-modal": "youtube",
+        "data-title": "Willow AI Cosplay",
+        "data-src": "IDkR2tnQ6Ds"
+      }
+    },
+    {
+      "text": "Gaming Content Gaming Content GTA V Character Showcase Cinematic character showcase with transitions, movement, and gaming-focused visuals. Play preview",
+      "attributes": {
+        "data-orbit-card": "",
+        "data-index": "8",
+        "data-modal": "youtube",
+        "data-title": "GTA V Character Showcase",
+        "data-src": "pA5lpp6oPe4"
+      }
+    },
+    {
+      "text": "Gaming Highlights Gaming Highlights Game Highlight Reel Action-focused highlight reel with fast cuts and dynamic visual energy. Play preview",
+      "attributes": {
+        "data-orbit-card": "",
+        "data-index": "9",
+        "data-modal": "youtube",
+        "data-title": "Game Highlight Reel",
+        "data-src": "AXy5y6aLhsw"
+      }
+    },
+    {
+      "text": "Travel Visuals Travel Visuals Tranquil Japan 4K Relaxing scenery video with cinematic flow, ambient pacing, and clean presentation. Play preview",
+      "attributes": {
+        "data-orbit-card": "",
+        "data-index": "10",
+        "data-modal": "youtube",
+        "data-title": "Tranquil Japan 4K",
+        "data-src": "8WpufLL-5Wo"
+      }
+    },
+    {
+      "text": "Travel Visuals Travel Visuals Beautiful Philippines Landscape-driven travel edit with calm storytelling and scenic composition. Play preview",
+      "attributes": {
+        "data-orbit-card": "",
+        "data-index": "11",
+        "data-modal": "youtube",
+        "data-title": "Beautiful Philippines",
+        "data-src": "lknvpxGdW_0"
+      }
+    },
+    {
+      "text": "05 Web & Funnel Design Modern landing pages, portfolio pages, service pages, lead capture forms, and CTA-focused layouts. Websites • funnels • forms View packages →",
+      "attributes": {
+        "data-build": "4",
+        "data-modal": "webdesign"
+      }
+    },
+    {
+      "text": "Work Portfolio VaultComplete Dropbox folder for sample works and client projects.Open Vault →",
+      "attributes": {
+        "data-glow-card": "",
+        "data-glow-color": "blue",
+        "data-modal": "link",
+        "data-title": "Portfolio Vault",
+        "data-url": "https://www.dropbox.com/scl/fo/0k31nkpbyfros1q7hjl1x/AD-HnbDb7G2GePZWwaqZpzA?rlkey=vyl4l4ojvoluoxc2u4xr2m8et&st=2yst52tl&dl=0"
+      }
+    },
+    {
+      "text": "Certificates VaultCanva, Data Entry, Graphics Design, Lead Generation, Facebook Ads, and SMM certificates.Preview →",
+      "attributes": {
+        "data-glow-card": "",
+        "data-glow-color": "purple",
+        "data-modal": "link",
+        "data-title": "Certificates Vault",
+        "data-url": "https://www.dropbox.com/scl/fo/teo39x0l0b1i9g0g5n2so/AHooXzBnkKXyjXPoZcJQRkw?rlkey=vmwi95gkurhvh11pqv3jprfmj&st=0bsf1334&dl=0"
+      }
+    },
+    {
+      "text": "Web Design SamplesWebsite layouts, creative pages, and design/development samples.Open Samples →",
+      "attributes": {
+        "data-glow-card": "",
+        "data-glow-color": "green",
+        "data-modal": "link",
+        "data-title": "Web Design Samples",
+        "data-url": "https://www.dropbox.com/scl/fo/k3zajg1j5cdvp12mr9unz/ABYmenie1V1FP0QixSvS8Jk?rlkey=8exk7aibap8vqo1clp3scqpyd&st=m4058rhj&dl=0"
+      }
+    },
+    {
+      "text": "Graphic Design SamplesBrand visuals, social graphics, and design-related work.Open Samples →",
+      "attributes": {
+        "data-glow-card": "",
+        "data-glow-color": "orange",
+        "data-modal": "link",
+        "data-title": "Graphic Design Samples",
+        "data-url": "https://www.dropbox.com/scl/fo/him8j9u4j0vaqz25kcsdg/AAzEPdoI1I5zLnpQQn3zRdU?rlkey=a66tapptqwlrdxzy3ofe70ks7&st=hoeq6neu&dl=0"
+      }
+    },
+    {
+      "text": "SMM SamplesSocial media management, post samples, and content support assets.Open Folder →",
+      "attributes": {
+        "data-glow-card": "",
+        "data-glow-color": "purple",
+        "data-modal": "link",
+        "data-title": "Social Media Management",
+        "data-url": "https://www.dropbox.com/scl/fo/2nf6qx65xwtkmioiy948r/ANBkmR__BBUACfRFW0-hlBg?rlkey=uar63gpkknnz7salu5fa3ah2k&st=bafsslsd&dl=0"
+      }
+    },
+    {
+      "text": "Resume / CVUpdated professional CV for video editing, AI content, VA, and automation roles.View Resume →",
+      "attributes": {
+        "data-glow-card": "",
+        "data-glow-color": "blue",
+        "data-modal": "link",
+        "data-title": "Resume PDF",
+        "data-url": "resume.pdf"
+      }
+    },
+    {
+      "text": "",
+      "attributes": {
+        "type": "button",
+        "aria-label": "Previous testimonial"
+      }
+    },
+    {
+      "text": "",
+      "attributes": {
+        "type": "button",
+        "aria-label": "Next testimonial"
+      }
+    },
+    {
+      "text": "Email Me",
+      "attributes": {
+        "href": "mailto:jjmanalo.va@gmail.com"
+      }
+    },
+    {
+      "text": "View Resume",
+      "attributes": {
+        "href": "resume.pdf",
+        "target": "_blank"
+      }
+    },
+    {
+      "text": "Emailjjmanalo.va@gmail.comSend message →",
+      "attributes": {
+        "href": "mailto:jjmanalo.va@gmail.com"
+      }
+    },
+    {
+      "text": "WhatsApp0927 645 5260Chat now →",
+      "attributes": {
+        "href": "https://wa.me/639276455260",
+        "target": "_blank"
+      }
+    },
+    {
+      "text": "Discordkenzaki5885Connect →",
+      "attributes": {
+        "href": "https://discord.com/",
+        "target": "_blank"
+      }
+    },
+    {
+      "text": "LinkedInProfessional ProfileView profile →",
+      "attributes": {
+        "href": "https://www.linkedin.com/in/john-jefferson-manalo-117322380/",
+        "target": "_blank"
+      }
+    },
+    {
+      "text": "OnlineJobs.phOLJ ProfileOpen profile →",
+      "attributes": {
+        "href": "https://www.onlinejobs.ph/jobseekers/info/4491696",
+        "target": "_blank"
+      }
+    },
+    {
+      "text": "UpworkFreelancer ProfileOpen Upwork →",
+      "attributes": {
+        "href": "https://www.upwork.com/freelancers/~01b859ac91bdf7ade3?mp_source=share",
+        "target": "_blank"
+      }
+    },
+    {
+      "text": "ResumeUpdated CVDownload →",
+      "attributes": {
+        "href": "resume.pdf",
+        "target": "_blank"
+      }
+    },
+    {
+      "text": "CertificatesCredentials VaultView proof →",
+      "attributes": {
+        "href": "https://www.dropbox.com/scl/fo/teo39x0l0b1i9g0g5n2so/AHooXzBnkKXyjXPoZcJQRkw?rlkey=vmwi95gkurhvh11pqv3jprfmj&st=0bsf1334&dl=0",
+        "target": "_blank"
+      }
+    },
+    {
+      "text": "×",
+      "attributes": {
+        "data-close-modal": "",
+        "aria-label": "Close preview"
+      }
+    }
+  ],
+  "footer": {
+    "text": "KENZAKIVideo Editing • AI Content • GHL Automation • Digital Systems © 2026 John Jefferson Manalo. Built to tell the story of content, automation, and digital execution.",
+    "attributes": {},
+    "headings": [],
+    "paragraphs": [
+      "© 2026 John Jefferson Manalo. Built to tell the story of content, automation, and digital execution."
+    ],
+    "list_items": [],
+    "actions": [],
+    "images": []
+  },
+  "new_additions": {
+    "websites": [
+      {
+        "name": "Mary Digi Solutions",
+        "title": [
+          "Mary Digi",
+          "Solutions."
+        ],
+        "type": "WEBSITE DEVELOPMENT",
+        "description": "A connected home for the brand, its services, and the businesses it supports.",
+        "image": "../images/mds-website.jpg",
+        "url": "https://marydigisolutions.com/"
+      },
+      {
+        "name": "SRG Advisors / Review",
+        "title": [
+          "A clearer",
+          "financial picture."
+        ],
+        "type": "ADVISORY LANDING PAGE",
+        "description": "A focused introduction to the advisory review and the next step in the client journey.",
+        "image": "../images/srg-review.jpg",
+        "url": "https://review.srgadvisors.com/"
+      },
+      {
+        "name": "SRG / STR Advisory",
+        "title": [
+          "Strategy,",
+          "in focus."
+        ],
+        "type": "STR ADVISORY LANDING PAGE",
+        "description": "An advisory experience shaped around a specific service and a clear path to connect.",
+        "image": "../images/srg-str.jpg",
+        "url": "https://review.srgadvisors.com/str-advisory-review.html"
+      },
+      {
+        "name": "SRG / Second Opinion",
+        "title": [
+          "Another",
+          "perspective."
+        ],
+        "type": "SECOND OPINION LANDING PAGE",
+        "description": "A dedicated destination for visitors exploring a second financial opinion.",
+        "image": "../images/srg-second-opinion.jpg",
+        "url": "https://review.srgadvisors.com/second-opinion.html"
+      },
+      {
+        "name": "SRG / Strategy",
+        "title": [
+          "The next",
+          "move."
+        ],
+        "type": "STRATEGY LANDING PAGE",
+        "description": "A focused strategy page that connects the message, the offer, and the next conversation.",
+        "image": "../images/srg-strategy.jpg",
+        "url": "https://review.srgadvisors.com/strategy"
+      },
+      {
+        "name": "MDS / Insurance & CPA",
+        "title": [
+          "Built for",
+          "professionals."
+        ],
+        "type": "INSURANCE & CPA LANDING PAGE",
+        "description": "An industry-specific landing page for insurance and accounting businesses.",
+        "image": "../images/cpa-landing.jpg",
+        "url": "https://cpa.marydigisolutions.com/"
+      },
+      {
+        "name": "MDS / Real Estate",
+        "title": [
+          "Space for",
+          "opportunity."
+        ],
+        "type": "REAL ESTATE LANDING PAGE",
+        "description": "A dedicated landing experience for real estate businesses and their digital needs.",
+        "image": "../images/realestate-landing.jpg",
+        "url": "https://realestate.marydigisolutions.com/"
+      },
+      {
+        "name": "MDS / Healthcare",
+        "title": [
+          "A more",
+          "connected practice."
+        ],
+        "type": "HEALTHCARE LANDING PAGE",
+        "description": "A healthcare-focused landing page connecting services, communication, and a clear next step.",
+        "image": "../images/healthcare-landing.jpg",
+        "url": "https://healthcare.marydigisolutions.com/"
+      }
+    ],
+    "speaking": {
+      "title": "Training on Cashless Society and Cybersecurity Awareness",
+      "date": "2026-10-02",
+      "organizer": "DTI / Negosyo Center Roxas-LGU",
+      "venue": "Vi-King Grill and Resto Bar, Brgy. Bagumbayan, Roxas, Oriental Mindoro",
+      "images": [
+        "images/speaking-community.webp",
+        "images/speaking-recognition.webp",
+        "images/speaking-certificate.webp"
+      ],
+      "video": "media/cybersecurity-speaking-oct-2026.mp4"
+    }
+  }
+}

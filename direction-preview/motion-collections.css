@@ -1,0 +1,62 @@
+/* Load after portfolio.css. Ordinary cards remain the fallback everywhere. */
+.motion-reel-index{display:none}
+.motion-collections-ready:not(.motion-collections-on) #systems.has-systems-controls .system-stack-card{display:block}
+.motion-collections-ready:not(.motion-collections-on) #systems .systems-card-stage{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;perspective:none}
+.motion-collections-ready:not(.motion-collections-on) #systems .system-stack-card{margin:0;transform:none}
+.motion-collections-ready:not(.motion-collections-on) #vault .orbit-card-inner{transform:none}
+@media(min-width:981px){
+  .motion-collections-on #systems.systems-motion-ready{overflow:clip}
+  .motion-collections-on #systems .systems-stack-wrap{display:block}
+  .motion-collections-on #systems .stack-copy{display:grid;grid-template-columns:1fr 1fr;gap:18px 65px;max-width:1000px}
+  .motion-collections-on #systems .stack-copy>span{grid-column:1/-1}
+  .motion-collections-on #systems .stack-copy h3{font-size:28px;margin:0}
+  .motion-collections-on #systems .stack-copy>p{padding-top:3px;max-width:420px}
+  .motion-collections-on #systems .systems-card-stage{height:520px;display:block;perspective:1300px;isolation:isolate;touch-action:pan-y}
+  .motion-collections-on #systems .system-stack-card,
+  .motion-collections-on #systems.has-systems-controls .system-stack-card:not(.active){display:block;position:absolute;left:50%;bottom:30px;width:min(500px,43vw);height:390px;margin:0;border-radius:23px;transform-origin:50% 100%;transform:translateX(-50%) translate3d(var(--fan-x),var(--fan-y),var(--fan-z)) rotateZ(var(--fan-rotate)) rotateX(var(--fan-tilt)) scale(var(--fan-scale));opacity:var(--fan-opacity,1);z-index:var(--fan-order,1);transition:transform .75s cubic-bezier(.2,.75,.2,1),opacity .6s,border-color .4s,box-shadow .4s;will-change:transform,opacity;background:var(--surface);box-shadow:0 25px 65px #0008}
+  .motion-collections-on #systems .system-stack-card:before{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,#06111a00 20%,#06111a4d 48%,#06111af5);pointer-events:none}
+  .motion-collections-on #systems .system-stack-card>img{position:absolute;inset:0;width:100%;height:100%;padding:0;object-fit:cover;filter:brightness(.8) saturate(.9);transition:filter .6s,transform .8s}
+  .motion-collections-on #systems .system-stack-card.active{border-color:#98e7ffad;box-shadow:0 35px 85px #0009,0 0 35px #85ddfa14}
+  .motion-collections-on #systems .system-stack-card.active>img{filter:brightness(.95) saturate(1.04)}
+  .motion-collections-on #systems .stack-card-copy{position:absolute;bottom:0;left:0;right:0;z-index:2;padding:25px 29px;color:#edf8ff;background:linear-gradient(180deg,transparent,#06111ae8 45%)}
+  .motion-collections-on #systems .stack-card-copy h3{font-size:30px;color:#edf8ff;margin:10px 0}
+  .motion-collections-on #systems .stack-card-copy p{font-size:12px;line-height:1.7;color:#bfd4e2}
+  .motion-collections-on #systems .stack-card-copy>span{color:#a2e8fa;font-size:9px}
+  .motion-collections-on #systems .stack-controls{position:relative;z-index:105;margin-top:15px}
+  .motion-collections-on #systems .system-stack-card:focus-visible{outline-offset:5px}
+  .motion-collections-on #vault.reels-motion-ready{max-width:none;padding-inline:0;overflow:clip;overflow-clip-margin:0}
+  .motion-collections-on #vault>.section-head{max-width:1600px;margin-inline:auto;padding-inline:var(--gutter)}
+  .motion-collections-on #vault .orbit-showcase{height:250svh;position:relative;width:100%;border-block:1px solid var(--line)}
+  .motion-collections-on #vault .orbit-sticky{position:sticky;top:80px;height:calc(100svh - 80px);min-height:620px;max-height:1000px;overflow:clip;isolation:isolate;background:radial-gradient(ellipse at 50% 80%,#468dbb12,transparent 65%)}
+  .motion-collections-on #vault .orbit-sticky:before{content:'';position:absolute;inset:110px 0 70px;pointer-events:none;background:linear-gradient(#6ac6ee08 1px,transparent 1px),linear-gradient(90deg,#6ac6ee08 1px,transparent 1px);background-size:65px 65px;mask-image:radial-gradient(ellipse,#000,transparent 72%)}
+  .motion-collections-on #vault .orbit-copy{position:absolute;z-index:400;top:25px;left:max(var(--gutter),calc((100vw - 1416px)/2));right:var(--gutter);display:grid;grid-template-columns:1fr 1fr;gap:8px 50px;pointer-events:none;margin:0}
+  .motion-collections-on #vault .orbit-copy>span{font-size:9px;grid-column:1/-1}
+  .motion-collections-on #vault .orbit-copy h3{font-size:22px;max-width:410px}
+  .motion-collections-on #vault .orbit-copy p{font-size:11px;line-height:1.8;max-width:390px}
+  .motion-collections-on #vault .orbit-stage{display:block;position:absolute;inset:145px 0 80px;width:100%;height:auto;perspective:1200px;isolation:isolate}
+  .motion-collections-on #vault .orbit-card{position:absolute;top:50%;left:50%;width:clamp(170px,13.4vw,212px);height:clamp(235px,18.4vw,290px);overflow:visible;border:0;border-radius:15px;background:transparent;opacity:var(--reel-opacity,1);z-index:var(--reel-order,1);transform:translate(-50%,-50%) translate3d(var(--reel-x,0px),var(--reel-y,0px),0) rotate(var(--reel-rotate,0deg)) scale(var(--reel-scale,.8));transition:none;will-change:transform,opacity}
+  .motion-collections-on #vault .orbit-card-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .62s cubic-bezier(.2,.75,.2,1);border-radius:15px;box-shadow:0 15px 45px #0007}
+  .motion-collections-on #vault .orbit-face{position:absolute;inset:0;overflow:hidden;border:1px solid #9adff747;border-radius:15px;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+  .motion-collections-on #vault .orbit-front{transform:rotateY(0deg);background:#0b1b25}
+  .motion-collections-on #vault .orbit-front img{width:100%;height:100%;aspect-ratio:auto;object-fit:cover}
+  .motion-collections-on #vault .orbit-front:after{content:'';position:absolute;inset:45% 0 0;background:linear-gradient(transparent,#06131de6);pointer-events:none}
+  .motion-collections-on #vault .orbit-front em{z-index:1;left:13px;right:13px;bottom:14px;padding:0;border:0;background:none;font-size:9px;font-weight:700;letter-spacing:.04em;white-space:normal}
+  .motion-collections-on #vault .orbit-play{font-size:35px}
+  .motion-collections-on #vault .orbit-back{transform:rotateY(180deg);display:flex;flex-direction:column;justify-content:center;padding:20px;background:linear-gradient(145deg,#132c3d,#081721);color:#eef9ff}
+  .motion-collections-on #vault .orbit-back>span{display:block;font-size:8px;text-transform:uppercase;letter-spacing:.08em;color:#94dff5;margin-bottom:10px}
+  .motion-collections-on #vault .orbit-back h3{font-size:20px;line-height:1.05;color:#eef9ff;margin-bottom:13px}
+  .motion-collections-on #vault .orbit-back p{font-size:10px;line-height:1.7;color:#b7cfdd;min-height:0}
+  .motion-collections-on #vault .orbit-back b{font-size:9px;margin-top:15px;color:#a2e8fa}
+  .motion-collections-on #vault .orbit-card:hover,
+  .motion-collections-on #vault .orbit-card:focus-within{z-index:1000!important;opacity:1!important;transform:translate(-50%,-50%) translate3d(var(--reel-x),var(--reel-y),60px) rotate(0deg) scale(calc(var(--reel-scale)*1.14))}
+  .motion-collections-on #vault .orbit-card:hover .orbit-card-inner,
+  .motion-collections-on #vault .orbit-card:focus-within .orbit-card-inner{transform:rotateY(180deg)}
+  .motion-collections-on #vault .motion-reel-index{display:flex;position:absolute;z-index:1200;bottom:22px;left:var(--gutter);right:var(--gutter);max-width:1380px;margin:auto;gap:8px;overflow-x:auto;padding:7px 4px 12px;scrollbar-width:thin;scrollbar-color:var(--accent) transparent}
+  .motion-collections-on #vault .motion-reel-index button{flex:none;border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:5px;padding:9px 13px;font-size:10px;line-height:1.5;min-height:38px}
+  .motion-collections-on #vault .motion-reel-index button:hover,
+  .motion-collections-on #vault .motion-reel-index button[aria-pressed=true]{color:var(--accent);border-color:var(--accent)}
+  .motion-collections-on #vault .orbit-progress{display:block;position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--line);z-index:1001}
+  .motion-collections-on #vault .orbit-progress span{display:block;height:100%;background:var(--accent)}
+}
+@media(max-width:700px){.motion-collections-ready:not(.motion-collections-on) #systems .systems-card-stage{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.motion-collections-ready #systems.has-systems-controls .system-stack-card{display:block;transition:none}}

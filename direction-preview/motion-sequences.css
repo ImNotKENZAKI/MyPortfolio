@@ -1,0 +1,28 @@
+/* Progressive motion enhancement. No content is hidden by this stylesheet. */
+.motion-featured-range{min-width:0;width:100%}
+.motion-sequences-on .motion-word{display:inline-block;vertical-align:baseline;transform-origin:50% 100%}
+.motion-sequences-on [data-ms-revealed=true] .motion-word{animation:ms-word-arrive .72s cubic-bezier(.19,1,.22,1) calc(var(--ms-word-index,0)*35ms) both}
+.motion-sequences-on .section-head:has([data-ms-words]).is-visible{animation:none}
+@keyframes ms-word-arrive{from{opacity:0;transform:translateY(.48em) rotateX(-16deg);filter:blur(4px)}to{opacity:1;transform:translateY(0) rotateX(0);filter:blur(0)}}
+.motion-pointer-glow{position:fixed;left:-240px;top:-240px;width:480px;height:480px;pointer-events:none;z-index:75;border-radius:50%;background:radial-gradient(circle,rgba(90,204,255,.07),rgba(90,204,255,.025) 38%,transparent 68%);mix-blend-mode:screen;opacity:0;transition:opacity .3s;contain:strict;will-change:transform}
+.motion-sequences-on [data-ms-magnet]{translate:var(--ms-magnet-x,0px) var(--ms-magnet-y,0px);transition:translate .2s cubic-bezier(.2,.7,.2,1),transform .25s,background .25s,border-color .25s}
+
+@media(min-width:1000px) and (min-height:700px){
+  .motion-sequences-on [data-ms-stack=on]{display:block;margin-top:68px;border:0;isolation:isolate}
+  .motion-sequences-on [data-ms-stack=on]>.flow-section{position:sticky;top:var(--ms-stack-top,112px);height:var(--ms-story-height,480px);min-height:0;max-height:480px;margin:0;padding:0;border:0;z-index:var(--ms-story-layer,1);perspective:1200px}
+  .motion-sequences-on [data-ms-stack=on]>.flow-section:before{display:none}
+  .motion-sequences-on [data-ms-stack=on] .flow-art-container{height:100%;min-height:0;max-height:480px;padding:clamp(32px,4vw,60px);display:grid;grid-template-columns:1fr auto;grid-template-rows:auto 1fr;gap:25px 40px;align-items:center;border:1px solid var(--line);border-radius:24px;background:radial-gradient(ellipse at 90% 15%,rgba(55,132,181,.16),transparent 57%),var(--surface,#101c26);box-shadow:0 30px 70px #0005;transform-origin:bottom left;transform:translateY(calc(var(--ms-flow-enter,0)*35px)) rotate(calc(var(--ms-flow-enter,0)*6deg));backface-visibility:hidden}
+  .motion-sequences-on [data-ms-stack=on] .flow-kicker{grid-column:1/-1;font-size:12px;margin:0;color:var(--accent)}
+  .motion-sequences-on [data-ms-stack=on] .flow-copy{max-width:850px}
+  .motion-sequences-on [data-ms-stack=on] .flow-copy h3{font-size:clamp(38px,4.3vw,66px);margin-bottom:22px;line-height:1.06;letter-spacing:-.05em}
+  .motion-sequences-on [data-ms-stack=on] .flow-copy p{font-size:clamp(14px,1.15vw,17px);max-width:720px;line-height:1.9}
+  .motion-sequences-on [data-ms-stack=on] .flow-badge{display:flex;flex-direction:column;justify-content:center;gap:15px;width:clamp(150px,16vw,230px);height:clamp(150px,16vw,230px);padding:25px;border-radius:28px;border:1px solid var(--line);background:linear-gradient(140deg,rgba(143,224,255,.12),rgba(14,31,48,.05));font-size:12px;text-align:center;margin:0;color:var(--accent);box-shadow:inset 0 1px 0 #ffffff0b}
+  .motion-sequences-on [data-ms-stack=on] .flow-badge i{font-size:60px}
+  .motion-sequences-on .motion-featured-range[data-ms-featured=on]>.featured-pin{position:sticky;top:var(--ms-pin-top,112px);margin:0;min-width:0}
+  .motion-sequences-on .motion-featured-range[data-ms-featured=on] .featured-track{scroll-snap-type:none;scroll-behavior:auto;overscroll-behavior-x:contain}
+  .motion-sequences-on .motion-featured-range[data-ms-featured=on] .case-card{min-height:420px}
+  .motion-sequences-on .motion-featured-range[data-ms-featured=on] .case-media>img{max-height:420px}
+  .motion-sequences-on .motion-featured-range[data-ms-featured=on] .featured-controls{margin-top:16px}
+}
+@media(max-width:999px),(hover:none),(pointer:coarse){.motion-pointer-glow{display:none}.motion-sequences-on [data-ms-magnet]{translate:none}}
+@media(prefers-reduced-motion:reduce){.motion-word{animation:none!important;transform:none!important;filter:none!important;opacity:1!important}.motion-pointer-glow{display:none}.motion-sequences-on [data-ms-magnet]{translate:none;transition:none}}

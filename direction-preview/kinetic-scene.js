@@ -1,0 +1,118 @@
+import * as THREE from './vendor/three.module.min.js';
+
+// Two genuinely volumetric, open metal ribbons. The portrait stays in the DOM above this canvas.
+export async function createKineticScene(host,{onReady,onFailure,paused=false}={}) {
+  if(!host)return null;
+  const reduced=matchMedia('(prefers-reduced-motion: reduce)');
+  const geometries=new Set(),materials=new Set(),textures=new Set();
+  let renderer,environmentTarget,observer,intersection,raf=0,disposed=false,failed=false,ready=false;
+  let visible=true,intersecting=true,phone=false,width=1,height=1,goal=0,progress=0,last=0,elapsed=0;
+  let pause=Boolean(paused),pointer={x:0,y:0},eased={x:0,y:0},centerX=0,centerY=0,distance=17;
+  const scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(36,1,.1,90),ribbons=new THREE.Group();
+  scene.add(ribbons);
+  const geometry=g=>(geometries.add(g),g),material=m=>(materials.add(m),m);
+  const staticMotion=()=>pause||reduced.matches;
+  function fail(error){if(disposed||failed)return;failed=true;cancelAnimationFrame(raf);raf=0;if(renderer)renderer.domElement.hidden=true;host.dataset.renderer='fallback';onFailure?.(error);}
+  try {
+    renderer=new THREE.WebGLRenderer({alpha:true,antialias:true,powerPreference:'high-performance'});
+    renderer.setClearColor(0x000000,0);renderer.outputColorSpace=THREE.SRGBColorSpace;
+    renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.06;
+    renderer.domElement.setAttribute('aria-hidden','true');renderer.domElement.tabIndex=-1;
+    Object.assign(renderer.domElement.style,{position:'absolute',inset:'0',width:'100%',height:'100%',display:'block',pointerEvents:'none'});
+    host.append(renderer.domElement);
+    const canvas=document.createElement('canvas');canvas.width=canvas.height=256;
+    const ctx=canvas.getContext('2d'),pixels=ctx.createImageData(256,256);let seed=77431;
+    for(let y=0;y<256;y++)for(let x=0;x<256;x++){
+      seed=(Math.imul(seed,1664525)+1013904223)>>>0;
+      const value=167+Math.sin((x+y*.19)*1.7)*14+(seed/4294967296-.5)*13,i=(y*256+x)*4;
+      pixels.data[i]=pixels.data[i+1]=pixels.data[i+2]=value;pixels.data[i+3]=255;
+    }
+    ctx.putImageData(pixels,0,0);
+    const brush=new THREE.CanvasTexture(canvas);brush.wrapS=brush.wrapT=THREE.RepeatWrapping;brush.repeat.set(3,1);textures.add(brush);
+    const chrome=material(new THREE.MeshPhysicalMaterial({color:'#d3dce1',metalness:1,roughness:.32,roughnessMap:brush,bumpMap:brush,bumpScale:.009,clearcoat:.65,clearcoatRoughness:.16,envMapIntensity:1.25}));
+    const underside=material(new THREE.MeshPhysicalMaterial({color:'#7894a4',metalness:1,roughness:.26,roughnessMap:brush,bumpMap:brush,bumpScale:.007,clearcoat:.45,envMapIntensity:1.15}));
+    const seam=material(new THREE.MeshPhysicalMaterial({color:'#75d9f2',metalness:.7,roughness:.21,emissive:'#168db0',emissiveIntensity:.45,envMapIntensity:1.1}));
+    const environment=new THREE.Scene();environment.background=new THREE.Color('#111b27');
+    const roomGeometry=new THREE.BoxGeometry(45,35,45),roomMaterial=new THREE.MeshBasicMaterial({color:'#111b27',side:THREE.BackSide});
+    environment.add(new THREE.Mesh(roomGeometry,roomMaterial));const lights=[];
+    function softbox(w,h,x,y,z,color,intensity){
+      const g=new THREE.PlaneGeometry(w,h),m=new THREE.MeshBasicMaterial({color:new THREE.Color(color).multiplyScalar(intensity),side:THREE.DoubleSide});
+      const panel=new THREE.Mesh(g,m);panel.position.set(x,y,z);panel.lookAt(0,0,0);environment.add(panel);lights.push([g,m]);
+    }
+    softbox(13,5,-5,9,6,'#fff5e9',5);softbox(3,16,10,1,5,'#edf8ff',4);
+    softbox(9,3,-7,-5,6,'#dceaff',2.4);softbox(2,13,4,3,-8,'#76cdf4',4);
+    softbox(1.6,12,-10,1,-4,'#c0ebff',2);softbox(8,2,1,-8,-6,'#496b85',1.7);
+    const pmrem=new THREE.PMREMGenerator(renderer);environmentTarget=pmrem.fromScene(environment,.025,.1,100);scene.environment=environmentTarget.texture;
+    pmrem.dispose();roomGeometry.dispose();roomMaterial.dispose();lights.forEach(([g,m])=>{g.dispose();m.dispose();});
+    scene.add(new THREE.HemisphereLight('#e1f2ff','#17283d',1.2));
+    const key=new THREE.DirectionalLight('#ffeddd',2.4);key.position.set(-5,7,10);scene.add(key);
+    const rim=new THREE.DirectionalLight('#75c4ed',1.2);rim.position.set(8,2,-4);scene.add(rim);
+    function foldedRibbon(points,maximumWidth,phase){
+      const curve=new THREE.CatmullRomCurve3(points.map(p=>new THREE.Vector3(...p)),false,'centripetal');
+      const count=160,sides=12,positions=[],uvs=[],surface=[[],[]],edge=[];
+      const frames=curve.computeFrenetFrames(count,false);
+      for(let i=0;i<=count;i++){
+        const u=i/count,p=curve.getPointAt(u),twist=phase+u*Math.PI*1.65+Math.sin(u*Math.PI*2)*.25;
+        const n=frames.normals[i].clone().multiplyScalar(Math.cos(twist)).addScaledVector(frames.binormals[i],Math.sin(twist));
+        const b=new THREE.Vector3().crossVectors(frames.tangents[i],n).normalize();
+        const bladeWidth=maximumWidth*(.065+Math.pow(Math.sin(Math.PI*u),.55)*.935),thickness=.075+bladeWidth*.025;
+        for(let j=0;j<sides;j++){
+          const angle=j/sides*Math.PI*2,v=p.clone().addScaledVector(n,Math.cos(angle)*bladeWidth*.5).addScaledVector(b,Math.sin(angle)*thickness*.5);
+          positions.push(v.x,v.y,v.z);uvs.push(u*4,j/sides);
+        }
+        edge.push(p.clone().addScaledVector(n,bladeWidth*.5).addScaledVector(b,.012));
+      }
+      const g=geometry(new THREE.BufferGeometry());
+      for(let i=0;i<count;i++)for(let j=0;j<sides;j++){
+        const a=i*sides+j,b=i*sides+(j+1)%sides,c=(i+1)*sides+j,d=(i+1)*sides+(j+1)%sides;
+        surface[j<sides/2?0:1].push(a,b,c,b,d,c);
+      }
+      // Closed tips retain a physical silhouette even at grazing camera angles.
+      for(let j=1;j<sides-1;j++)surface[1].push(0,j+1,j,count*sides,count*sides+j,count*sides+j+1);
+      g.addGroup(0,surface[0].length,0);g.addGroup(surface[0].length,surface[1].length,1);
+      g.setAttribute('position',new THREE.Float32BufferAttribute(positions,3));g.setAttribute('uv',new THREE.Float32BufferAttribute(uvs,2));g.setIndex([...surface[0],...surface[1]]);g.computeVertexNormals();
+      const body=new THREE.Mesh(g,[chrome,underside]);ribbons.add(body);
+      const edgeCurve=new THREE.CatmullRomCurve3(edge,false,'centripetal');
+      ribbons.add(new THREE.Mesh(geometry(new THREE.TubeGeometry(edgeCurve,160,.012,5,false)),seam));
+    }
+    foldedRibbon([[-5,-1.4,-.4],[-4.2,.1,.3],[-2.3,1.15,-.6],[.25,1.05,-1.35],[2.5,.2,-.2],[3.3,-1.1,.9],[1.75,-2.15,1.15],[-.6,-2.35,.1],[-2.3,-1.85,-.55]],1.6,-.58);
+    foldedRibbon([[.7,-2.8,-.75],[2.5,-2,-.65],[3.5,-.6,.15],[3.05,1.25,.6],[1.8,2.9,-.55],[2.5,3.9,-1.65]],1.4,.65);
+  } catch(error){fail(error);renderer?.dispose();renderer?.domElement.remove();geometries.forEach(g=>g.dispose());materials.forEach(m=>m.dispose());textures.forEach(t=>t.dispose());environmentTarget?.dispose();return null;}
+  function resize(){
+    if(disposed||failed)return;const rect=host.getBoundingClientRect();width=Math.max(1,Math.round(rect.width));height=Math.max(1,Math.round(rect.height));
+    phone=innerWidth<=700;const dpr=Math.min(devicePixelRatio||1,phone?1.2:1.4,Math.sqrt(2200000/(width*height)));
+    renderer.setPixelRatio(dpr);renderer.setSize(width,height,false);camera.aspect=width/height;camera.fov=phone?38:36;camera.updateProjectionMatrix();
+    distance=phone?Math.max(15.6,10/(2*Math.tan(THREE.MathUtils.degToRad(camera.fov/2))*camera.aspect*.91)):17.2;
+    const visibleHeight=2*Math.tan(THREE.MathUtils.degToRad(camera.fov/2))*distance;
+    centerX=phone?0:visibleHeight*camera.aspect*.205;centerY=phone?-.25:-visibleHeight*.035;
+    request();
+  }
+  function render(now){
+    raf=0;if(disposed||failed||!visible||!intersecting||document.hidden)return;
+    const interval=phone?1000/30:1000/45,delta=last?now-last:interval;
+    if(last&&delta<interval-1){raf=requestAnimationFrame(render);return;}last=now;
+    const stopped=staticMotion(),dt=Math.min(delta,80)*.001;if(!stopped)elapsed+=dt;
+    const weight=1-Math.exp(-dt*6);progress+=(goal-progress)*weight;
+    eased.x+=(pointer.x-eased.x)*weight;eased.y+=(pointer.y-eased.y)*weight;
+    const px=stopped?0:eased.x,py=stopped?0:eased.y,t=stopped?0:elapsed;
+    ribbons.position.set(centerX-progress*1.2,centerY+progress*.35,0);
+    ribbons.rotation.set(-.12+py*.035+Math.sin(t*.21)*.012,-.20+px*.09+progress*.14,-.16-progress*.11+Math.sin(t*.17)*.018);
+    camera.position.set(px*.24,py*.13,distance-progress*.45);camera.lookAt(0,0,0);
+    try{renderer.render(scene,camera);if(!ready){ready=true;host.dataset.renderer='ready';onReady?.({renderer:'webgl',scene:'folded-chrome-ribbons'});}}catch(error){fail(error);return;}
+    if(!stopped||Math.abs(goal-progress)>.0003)raf=requestAnimationFrame(render);
+  }
+  function request(){if(!raf&&!disposed&&!failed&&visible&&intersecting&&!document.hidden)raf=requestAnimationFrame(render);}
+  function setPaused(value){pause=Boolean(value);last=0;if(staticMotion()){eased.x=eased.y=0;progress=goal;}request();}
+  function setPointer(x,y){if(!staticMotion()){pointer.x=THREE.MathUtils.clamp(x,-1,1);pointer.y=THREE.MathUtils.clamp(y,-1,1);request();}}
+  function visibility(){last=0;if(document.hidden){cancelAnimationFrame(raf);raf=0;}else request();}
+  function lost(event){event.preventDefault();fail(new Error('The 3D context was lost.'));}
+  function motionChanged(){last=0;if(staticMotion()){eased.x=eased.y=0;progress=goal;}request();}
+  renderer.domElement.addEventListener('webglcontextlost',lost);document.addEventListener('visibilitychange',visibility);reduced.addEventListener('change',motionChanged);
+  observer=new ResizeObserver(resize);observer.observe(host);
+  if('IntersectionObserver'in window){intersection=new IntersectionObserver(entries=>{intersecting=entries[0].isIntersecting;last=0;if(!intersecting){cancelAnimationFrame(raf);raf=0;}else request();},{rootMargin:'100px'});intersection.observe(host);}resize();
+  return {
+    setProgress(value){goal=THREE.MathUtils.clamp(Number(value)||0,0,1);if(staticMotion())progress=goal;request();},setPaused,setPointer,resize,
+    setVisible(value){visible=Boolean(value);last=0;if(!visible){cancelAnimationFrame(raf);raf=0;}else request();},
+    dispose(){if(disposed)return;disposed=true;cancelAnimationFrame(raf);observer?.disconnect();intersection?.disconnect();document.removeEventListener('visibilitychange',visibility);reduced.removeEventListener('change',motionChanged);renderer.domElement.removeEventListener('webglcontextlost',lost);geometries.forEach(g=>g.dispose());materials.forEach(m=>m.dispose());textures.forEach(t=>t.dispose());environmentTarget?.dispose();renderer.dispose();renderer.domElement.remove();}
+  };
+}

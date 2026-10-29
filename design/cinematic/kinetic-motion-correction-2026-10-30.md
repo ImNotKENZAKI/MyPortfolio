@@ -96,7 +96,9 @@ The owning browser session inspected the deployed `a7809f5` correction. Genuine 
 | Reels Universe | All 12 named selector buttons were present; native Page Down advanced the ring into a scroll arc at 13% progress; selecting Mary Digi Solutions set its pressed state and focused the card with the observed 180-degree flip; screenshot inspected |
 | Navigation anchors | Brand and chapter actions settled at their matching destination hashes |
 | Featured next action | Advanced the horizontal track from 0 to 1251 px and document-linked progress from 0 to 0.3389 |
+| Featured reverse action | Previous moved the track from 3688 to 2499 px and linked progress from 0.9995 to 0.6773 |
 | Manual pause | Removed both motion enhancement classes and restored normal collection layouts; the hero remained visible and the home action returned to the top |
+| Desktop service progression | Native Page Down changed the original selected detail from Video Editing to Automation Workflows (index 3), then Content Operations (index 5); the exact service records remain unchanged |
 
 An earlier initial 1728×1080 inspection caught headline clipping, which was corrected. That initial frame is not recorded as a passing layout result, and this record does not claim a new final 1728×1080 pass.
 
@@ -104,7 +106,7 @@ These observations establish the stated behavior in the inspected session, not u
 
 ## Remaining checks and limits
 
-- Featured reverse action and desktop service scroll synchronization receive their final regression check with the last source adjustment.
+- The current source, `0814a7e`, deployed successfully on the existing Vercel review. The final service-sequencing adjustment was inspected in that deployed version.
 - Complete forward/reverse traversal of every motion sequence, every Systems/Reels selection, service scroll synchronization, and resize/deep-link behavior are not established solely by the observed subset above.
 - Dialog and media cleanup results from the earlier implementation remain historical; fresh regression results should be added only when observed.
 - No new frame-rate benchmark, forced WebGL-failure test, OS reduced-motion test, or JavaScript-disabled browser result is claimed. Browser-back behavior is not established here.

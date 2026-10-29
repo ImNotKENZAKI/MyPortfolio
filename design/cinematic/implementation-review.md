@@ -1,5 +1,7 @@
 # Integrated portfolio implementation review
 
+Historical record: this review applies to `eec414b` and the earlier K-sculpture implementation. The subsequent portrait-led hero and restored collection animation are described in [the October 30 Kinetic motion correction](kinetic-motion-correction-2026-10-30.md). The observations below must not be treated as fresh browser QA of that correction.
+
 Review date: October 30, 2026 (Asia/Manila). Review branch: `codex/portfolio-refresh-20261022`. Current reviewed source: `eec414b`, following the complete integration in `76d9671`.
 
 The complete original portfolio and the supplied additions are integrated at `/direction-preview/` on the existing Vercel branch preview. Vercel reports a successful deployment for the current source. The original root portfolio remains unchanged from baseline `d39a7cd`; this review does not claim a production merge.

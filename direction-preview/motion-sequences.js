@@ -113,8 +113,11 @@ export function initMotionSequences() {
       const bounds = services.getBoundingClientRect();
       if (bounds.top < innerHeight * .7 && bounds.bottom > innerHeight * .3) {
         const readingLine = innerHeight * .43;
-        let current = tiles[0];
-        for (const tile of tiles) if (tile.getBoundingClientRect().top <= readingLine) current = tile;
+        let current = tiles[0], closestTop = -Infinity;
+        for (const tile of tiles) {
+          const top = tile.getBoundingClientRect().top;
+          if (top <= readingLine && top > closestTop) {current = tile;closestTop = top;}
+        }
         if (!current.classList.contains('active')) {
           // portfolio.js owns the service data and listens to this existing
           // mouse pointer entry. Do not move keyboard focus or open a dialog.

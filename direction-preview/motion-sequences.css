@@ -8,6 +8,7 @@
 .motion-sequences-on [data-ms-magnet]{translate:var(--ms-magnet-x,0px) var(--ms-magnet-y,0px);transition:translate .2s cubic-bezier(.2,.7,.2,1),transform .25s,background .25s,border-color .25s}
 
 @media(min-width:1000px) and (min-height:700px){
+  .motion-sequences-on #services .build-right{padding-top:85px}
   .motion-sequences-on [data-ms-stack=on]{display:block;margin-top:68px;border:0;isolation:isolate}
   .motion-sequences-on [data-ms-stack=on]>.flow-section{position:sticky;top:var(--ms-stack-top,112px);height:var(--ms-story-height,480px);min-height:0;max-height:480px;margin:0;padding:0;border:0;z-index:var(--ms-story-layer,1);perspective:1200px}
   .motion-sequences-on [data-ms-stack=on]>.flow-section:before{display:none}

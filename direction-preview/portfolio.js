@@ -1,4 +1,3 @@
-import {projects} from './projects.js';
 
 // These three records are copied from the original portfolio, including terms.
 const serviceDetails = [
@@ -297,36 +296,6 @@ function initializePortfolio(){
     serviceAnimation?.cancel();const preview=$('.build-preview-card');if(preview&&!motionPaused&&typeof preview.animate==='function')serviceAnimation=preview.animate([{opacity:.45,transform:'translateY(10px)'},{opacity:1,transform:'translateY(0)'}],{duration:380,easing:'cubic-bezier(.2,.7,.2,1)'});
   }
   buildTiles.forEach(tile=>{makeActivatable(tile,'Show '+($('h3',tile)?.textContent||'service'));tile.addEventListener('click',()=>selectService(Number(tile.dataset.build)));tile.addEventListener('focus',()=>selectService(Number(tile.dataset.build)));tile.addEventListener('pointerenter',event=>{if(event.pointerType==='mouse')selectService(Number(tile.dataset.build));});});
-
-  // Direct selection keeps case captions, screenshot and live action synchronized.
-  const webButtons=$$('.web-project[data-project]'),webStage=$('#web-stage');let webIndex=0,webRequest=0;
-  const webStatus=$('#web-status')||(()=>{if(!webStage)return null;const node=element('p','sr-only');node.id='web-status';node.setAttribute('aria-live','polite');webStage.append(node);return node;})();
-  function commitProject(index,imageAvailable=true,initial=false){
-    const project=projects[index];if(!project)return;webIndex=index;
-    webButtons.forEach((button,i)=>{const active=i===index;button.classList.toggle('active',active);button.setAttribute('aria-pressed',String(active));button.classList.remove('is-pending');});
-    for(const [selector,value]of [['#web-title',project.name],['#web-description',project.description],['#web-type',project.type],['#web-count',String(index+1).padStart(2,'0')+' / '+String(projects.length).padStart(2,'0')]]){const node=$(selector);if(node)node.textContent=value;}
-    const img=$('#web-image');if(img){img.hidden=!imageAvailable;if(imageAvailable){img.src=project.image;img.alt=project.name+' website screenshot';}}
-    const action=$('#web-link');if(action){action.href=project.url;action.setAttribute('aria-label','Open '+project.name+' live website');action.target='_blank';action.rel='noopener noreferrer';}
-    if(webStage){webStage.dataset.project=String(index);webStage.classList.remove('is-loading');webStage.setAttribute('aria-busy','false');if(!initial)animateSelection(webStage);}
-    const webSection=$('#web-projects');
-    webSection?.classList.toggle('has-web-controls',Boolean(imageAvailable&&webButtons.length===projects.length&&webStage&&$('#web-title')&&$('#web-description')&&$('#web-link')&&$('#web-image')));
-    if(webStatus)webStatus.textContent=imageAvailable?'Showing '+project.name:'Screenshot unavailable. Open the live '+project.name+' project.';
-    window.dispatchEvent(new CustomEvent('portfolio:project',{detail:{index,project}}));
-  }
-  async function selectProject(index,{initial=false}={}){
-    if(!Number.isInteger(index)||index<0||index>=projects.length)return;
-    const request=++webRequest;webStage?.classList.add('is-loading');webStage?.setAttribute('aria-busy','true');webButtons[index]?.classList.add('is-pending');if(webStatus)webStatus.textContent='Loading '+projects[index].name;
-    let loaded=true;
-    if($('#web-image')){try{const probe=new Image();probe.decoding='async';await new Promise((resolve,reject)=>{probe.onload=resolve;probe.onerror=reject;probe.src=projects[index].image;if(probe.complete&&probe.naturalWidth)resolve();});}catch{loaded=false;}}
-    if(request!==webRequest)return;commitProject(index,loaded,initial);
-  }
-  webButtons.forEach((button,index)=>{
-    makeActivatable(button,'Show '+(projects[index]?.name||'project'));button.addEventListener('click',()=>selectProject(index));
-    button.addEventListener('keydown',event=>{let next=index;if(['ArrowRight','ArrowDown'].includes(event.key))next=Math.min(projects.length-1,index+1);else if(['ArrowLeft','ArrowUp'].includes(event.key))next=Math.max(0,index-1);else if(event.key==='Home')next=0;else if(event.key==='End')next=projects.length-1;else return;event.preventDefault();webButtons[next]?.focus();selectProject(next);});
-  });
-  $('[data-web-prev]')?.addEventListener('click',()=>selectProject(Math.max(0,webIndex-1)));
-  $('[data-web-next]')?.addEventListener('click',()=>selectProject(Math.min(projects.length-1,webIndex+1)));
-  if(webButtons.length)selectProject(0,{initial:true});
 
   const systems=$('#systems'),systemCards=$$('.system-stack-card'),systemDots=$('#systemsStackDots');let systemIndex=0;
   function selectSystem(index){

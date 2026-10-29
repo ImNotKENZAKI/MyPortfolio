@@ -3,7 +3,7 @@
 .motion-word{display:inline-block;vertical-align:baseline;transform-origin:50% 100%}
 .motion-sequences-on [data-ms-revealed=true] .motion-word{animation:ms-word-arrive .72s cubic-bezier(.19,1,.22,1) calc(var(--ms-word-index,0)*35ms) both}
 .motion-sequences-on .section-head:has([data-ms-words]).is-visible{animation:none}
-@keyframes ms-word-arrive{from{opacity:0;transform:translateY(.48em) rotateX(-16deg);filter:blur(4px)}to{opacity:1;transform:translateY(0) rotateX(0);filter:blur(0)}}
+@keyframes ms-word-arrive{from{opacity:0;transform:translateY(.48em) rotateX(-16deg)}to{opacity:1;transform:translateY(0) rotateX(0)}}
 .motion-pointer-glow{position:fixed;left:-240px;top:-240px;width:480px;height:480px;pointer-events:none;z-index:75;border-radius:50%;background:radial-gradient(circle,rgba(90,204,255,.07),rgba(90,204,255,.025) 38%,transparent 68%);mix-blend-mode:screen;opacity:0;transition:opacity .3s;contain:strict;will-change:transform}
 .motion-sequences-on [data-ms-magnet]{translate:var(--ms-magnet-x,0px) var(--ms-magnet-y,0px);transition:translate .2s cubic-bezier(.2,.7,.2,1),transform .25s,background .25s,border-color .25s}
 

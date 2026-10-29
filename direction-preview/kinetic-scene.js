@@ -6,7 +6,8 @@ export async function createKineticScene(host,{onReady,onFailure,paused=false}={
   const reduced=matchMedia('(prefers-reduced-motion: reduce)');
   const geometries=new Set(),materials=new Set(),textures=new Set();
   let renderer,environmentTarget,observer,intersection,raf=0,disposed=false,failed=false,ready=false;
-  let visible=true,intersecting=true,phone=false,width=1,height=1,goal=0,progress=0,last=0,elapsed=0,assemblyTime=0,frameCount=0;
+  let visible=true,intersecting=true,phone=false,width=1,height=1,goal=0,progress=0,last=0,assemblyTime=0,frameCount=0,lastDiagnostic=-Infinity;
+  let bufferWidth=0,bufferHeight=0,pixelRatio=0;
   let pause=Boolean(paused),pointer={x:0,y:0},eased={x:0,y:0},centerX=0,centerY=0,distance=17;
   const scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(36,1,.1,90),ribbons=new THREE.Group();
   const revealUniform={value:-.08},viewDirection=new THREE.Vector3(),viewRight=new THREE.Vector3(),viewUp=new THREE.Vector3(),lookTarget=new THREE.Vector3();
@@ -99,43 +100,58 @@ export async function createKineticScene(host,{onReady,onFailure,paused=false}={
   } catch(error){fail(error);renderer?.dispose();renderer?.domElement.remove();geometries.forEach(g=>g.dispose());materials.forEach(m=>m.dispose());textures.forEach(t=>t.dispose());environmentTarget?.dispose();return null;}
   function resize(){
     if(disposed||failed)return;const rect=host.getBoundingClientRect();width=Math.max(1,Math.round(rect.width));height=Math.max(1,Math.round(rect.height));
-    phone=innerWidth<=700;const dpr=Math.min(devicePixelRatio||1,phone?1.2:1.4,Math.sqrt(2200000/(width*height)));
-    renderer.setPixelRatio(dpr);renderer.setSize(width,height,false);camera.aspect=width/height;camera.fov=phone?38:36;camera.updateProjectionMatrix();
+    const previousPhone=phone;phone=innerWidth<=700;const dpr=Math.min(devicePixelRatio||1,phone?1:1.25,Math.sqrt((phone?1000000:1600000)/(width*height)));
+    if(bufferWidth===width&&bufferHeight===height&&pixelRatio===dpr&&previousPhone===phone)return;
+    bufferWidth=width;bufferHeight=height;pixelRatio=dpr;renderer.setDrawingBufferSize(width,height,dpr);
+    camera.aspect=width/height;camera.fov=phone?38:36;camera.updateProjectionMatrix();
     distance=phone?Math.max(15.6,10/(2*Math.tan(THREE.MathUtils.degToRad(camera.fov/2))*camera.aspect*.91)):17.2;
     const visibleHeight=2*Math.tan(THREE.MathUtils.degToRad(camera.fov/2))*distance;
     centerX=phone?0:visibleHeight*camera.aspect*.205;centerY=phone?-.25:-visibleHeight*.035;
     request();
   }
+  function diagnostic(key,value){if(host.dataset[key]!==value)host.dataset[key]=value;}
+  function report(now,assembly,settled,force=false){
+    if(!settled&&!force&&now-lastDiagnostic<200)return;lastDiagnostic=now;
+    diagnostic('reveal',assembly.toFixed(3));diagnostic('progress',progress.toFixed(3));diagnostic('frame',String(frameCount));
+    diagnostic('camera',camera.position.x.toFixed(3)+','+camera.position.y.toFixed(3)+','+camera.position.z.toFixed(3));
+    diagnostic('cameraRotation',camera.rotation.x.toFixed(3)+','+camera.rotation.y.toFixed(3)+','+camera.rotation.z.toFixed(3));
+    diagnostic('drawCalls',String(renderer.info.render.calls));diagnostic('phase',assembly<1?'assembling':staticMotion()?'paused':settled?'settled':'moving');
+    diagnostic('loop',settled?'sleeping':'active');diagnostic('pixelRatio',pixelRatio.toFixed(3));
+  }
   function render(now){
     raf=0;if(disposed||failed||!visible||!intersecting||document.hidden)return;
     const interval=phone?1000/30:1000/60,delta=last?now-last:interval;
     if(last&&delta<interval-1){raf=requestAnimationFrame(render);return;}last=now;
-    const stopped=staticMotion(),dt=Math.min(delta,80)*.001;if(!stopped){elapsed+=dt;if(ready)assemblyTime=Math.min(1.45,assemblyTime+dt);}else assemblyTime=1.45;
+    const stopped=staticMotion(),dt=Math.min(delta,80)*.001;if(!stopped){if(ready)assemblyTime=Math.min(1.45,assemblyTime+dt);}else assemblyTime=1.45;
     const assembly=assemblyTime/1.45,entrance=1-Math.pow(1-assembly,3);revealUniform.value=-.08+assembly*1.16;
-    const weight=1-Math.exp(-dt*6);progress+=(goal-progress)*weight;
+    const weight=1-Math.exp(-dt*8);progress+=(goal-progress)*weight;
     eased.x+=(pointer.x-eased.x)*weight;eased.y+=(pointer.y-eased.y)*weight;
-    const px=stopped?0:eased.x,py=stopped?0:eased.y,t=stopped?0:elapsed;
+    if(Math.abs(goal-progress)<.00035)progress=goal;if(Math.abs(pointer.x-eased.x)<.0008)eased.x=pointer.x;if(Math.abs(pointer.y-eased.y)<.0008)eased.y=pointer.y;
+    const px=stopped?0:eased.x,py=stopped?0:eased.y;
     const travel=progress*progress*(3-2*progress),yaw=-.035+travel*.40+px*.025-(1-entrance)*.09,pitch=-.015+travel*.10+py*.018;
     ribbons.position.set(0,0,0);ribbons.scale.setScalar(1+travel*.035);
-    ribbons.rotation.set(-.12+py*.035+travel*.12+Math.sin(t*.21)*.012,-.20+px*.065-travel*.12,-.16+travel*.12+Math.sin(t*.17)*.018);
+    ribbons.rotation.set(-.12+py*.035+travel*.12,-.20+px*.065-travel*.12,-.16+travel*.12);
     viewDirection.set(Math.sin(yaw)*Math.cos(pitch),Math.sin(pitch),Math.cos(yaw)*Math.cos(pitch));viewRight.set(Math.cos(yaw),0,-Math.sin(yaw));viewUp.crossVectors(viewDirection,viewRight);
     lookTarget.copy(viewRight).multiplyScalar(-centerX+(phone?0:.65)*travel).addScaledVector(viewUp,-centerY-travel*.22);
     camera.position.copy(lookTarget).addScaledVector(viewDirection,distance-travel*1.05+(1-entrance)*.6);camera.lookAt(lookTarget);camera.rotateZ(-travel*.055+px*.006);
-    try{renderer.render(scene,camera);if(failed)return;host.dataset.reveal=assembly.toFixed(3);host.dataset.progress=progress.toFixed(3);host.dataset.frame=String(++frameCount);host.dataset.camera=camera.position.toArray().map(v=>v.toFixed(3)).join(',');host.dataset.cameraRotation=camera.rotation.toArray().slice(0,3).map(v=>v.toFixed(3)).join(',');host.dataset.drawCalls=String(renderer.info.render.calls);host.dataset.phase=assembly<1?'assembling':'settled';if(!ready){ready=true;host.dataset.renderer='ready';onReady?.({renderer:'webgl',scene:'folded-chrome-ribbons'});}}catch(error){fail(error);return;}
-    if(!stopped||Math.abs(goal-progress)>.0003)raf=requestAnimationFrame(render);
+    const settling=progress!==goal||(!stopped&&(eased.x!==pointer.x||eased.y!==pointer.y)),pending=assembly<1||settling;
+    try{renderer.render(scene,camera);if(failed)return;frameCount++;report(now,assembly,!pending);if(!ready){ready=true;host.dataset.renderer='ready';onReady?.({renderer:'webgl',scene:'folded-chrome-ribbons'});}}catch(error){fail(error);return;}
+    if(pending)raf=requestAnimationFrame(render);else last=0;
   }
-  function request(){if(!raf&&!disposed&&!failed&&visible&&intersecting&&!document.hidden)raf=requestAnimationFrame(render);}
-  function setPaused(value){pause=Boolean(value);last=0;if(staticMotion()){eased.x=eased.y=0;progress=goal;}request();}
-  function setPointer(x,y){if(!staticMotion()){pointer.x=THREE.MathUtils.clamp(x,-1,1);pointer.y=THREE.MathUtils.clamp(y,-1,1);request();}}
-  function visibility(){last=0;if(document.hidden){cancelAnimationFrame(raf);raf=0;}else request();}
+  function request(){if(!raf&&!disposed&&!failed&&visible&&intersecting&&!document.hidden){last=0;raf=requestAnimationFrame(render);}}
+  function suspend(){cancelAnimationFrame(raf);raf=0;last=0;if(ready){const settled=assemblyTime>=1.45&&progress===goal&&(staticMotion()||(eased.x===pointer.x&&eased.y===pointer.y));report(performance.now(),assemblyTime/1.45,settled,true);diagnostic('loop','suspended');}}
+  function resetPointer(){pointer.x=pointer.y=eased.x=eased.y=0;}
+  function setPaused(value){value=Boolean(value);if(value===pause)return;pause=value;last=0;if(staticMotion()){resetPointer();progress=goal;assemblyTime=1.45;}request();}
+  function setPointer(x,y){if(!staticMotion()){const nextX=THREE.MathUtils.clamp(Number(x)||0,-1,1),nextY=THREE.MathUtils.clamp(Number(y)||0,-1,1);if(Math.abs(nextX-pointer.x)<.0001&&Math.abs(nextY-pointer.y)<.0001)return;pointer.x=nextX;pointer.y=nextY;request();}}
+  function visibility(){last=0;if(document.hidden)suspend();else request();}
   function lost(event){event.preventDefault();fail(new Error('The 3D context was lost.'));}
-  function motionChanged(){last=0;if(staticMotion()){eased.x=eased.y=0;progress=goal;}request();}
+  function motionChanged(){last=0;if(staticMotion()){resetPointer();progress=goal;assemblyTime=1.45;}request();}
   renderer.domElement.addEventListener('webglcontextlost',lost);document.addEventListener('visibilitychange',visibility);reduced.addEventListener('change',motionChanged);
   observer=new ResizeObserver(resize);observer.observe(host);
-  if('IntersectionObserver'in window){intersection=new IntersectionObserver(entries=>{intersecting=entries[0].isIntersecting;last=0;if(!intersecting){cancelAnimationFrame(raf);raf=0;}else request();},{rootMargin:'100px'});intersection.observe(host);}resize();
+  if('IntersectionObserver'in window){intersection=new IntersectionObserver(entries=>{intersecting=entries[0].isIntersecting;last=0;if(!intersecting)suspend();else request();},{rootMargin:'100px'});intersection.observe(host);}resize();
   return {
-    setProgress(value){goal=THREE.MathUtils.clamp(Number(value)||0,0,1);if(staticMotion())progress=goal;request();},setPaused,setPointer,resize,
-    setVisible(value){visible=Boolean(value);last=0;if(!visible){cancelAnimationFrame(raf);raf=0;}else request();},
+    setProgress(value){const next=THREE.MathUtils.clamp(Number(value)||0,0,1);if(next===goal)return;goal=next;if(staticMotion())progress=goal;request();},setPaused,setPointer,resize,
+    setVisible(value){value=Boolean(value);if(visible===value)return;visible=value;last=0;if(!visible)suspend();else request();},
     dispose(){if(disposed)return;disposed=true;cancelAnimationFrame(raf);observer?.disconnect();intersection?.disconnect();document.removeEventListener('visibilitychange',visibility);reduced.removeEventListener('change',motionChanged);renderer.domElement.removeEventListener('webglcontextlost',lost);geometries.forEach(g=>g.dispose());materials.forEach(m=>m.dispose());textures.forEach(t=>t.dispose());environmentTarget?.dispose();renderer.dispose();renderer.domElement.remove();}
   };
 }

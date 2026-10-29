@@ -197,8 +197,8 @@ function initializePortfolio(){
   if(roleList&&!roleList.textContent.trim())roleTitles.forEach(role=>roleList.append(element(roleList.matches('ul,ol')?'li':'span','',role)));
 
   const navToggle=$('#nav-toggle'),nav=$('#main-nav'),backdrop=$('[data-nav-backdrop]');
-  function closeMenu(){nav?.classList.remove('open');navToggle?.setAttribute('aria-expanded','false');body.classList.remove('nav-open');backdrop?.classList.remove('visible');}
-  function toggleMenu(){const open=!nav?.classList.contains('open');nav?.classList.toggle('open',open);navToggle?.setAttribute('aria-expanded',String(open));body.classList.toggle('nav-open',open);backdrop?.classList.toggle('visible',open);}
+  function closeMenu(){nav?.classList.remove('open');navToggle?.setAttribute('aria-expanded','false');navToggle?.setAttribute('aria-label','Open navigation');body.classList.remove('nav-open');backdrop?.classList.remove('visible');}
+  function toggleMenu(){const open=!nav?.classList.contains('open');nav?.classList.toggle('open',open);navToggle?.setAttribute('aria-expanded',String(open));navToggle?.setAttribute('aria-label',open?'Close navigation':'Open navigation');body.classList.toggle('nav-open',open);backdrop?.classList.toggle('visible',open);}
   navToggle?.addEventListener('click',toggleMenu);backdrop?.addEventListener('click',closeMenu);
   nav?.addEventListener('click',event=>{if(event.target.closest('a[href]'))closeMenu();});
   addEventListener('resize',()=>{if(innerWidth>980)closeMenu();},{passive:true});
@@ -289,6 +289,7 @@ function initializePortfolio(){
   const buildTiles=$$('.build-tile[data-build]');let serviceAnimation=null;
   function selectService(index){
     const item=serviceDetails[index];if(!item)return;
+    $('.build-preview-wrap')?.style.setProperty('--service-order',String(index*2+1));
     buildTiles.forEach(tile=>{const active=Number(tile.dataset.build)===index;tile.classList.toggle('active',active);tile.setAttribute('aria-pressed',String(active));});
     const img=$('#buildPreviewImage');if(img){img.src=assetPath(item.image);img.alt=item.title+' preview';}
     for(const [selector,value]of [['#buildPreviewTag',item.tag],['#buildPreviewKicker',item.kicker],['#buildPreviewTitle',item.title],['#buildPreviewText',item.text]]){const node=$(selector);if(node)node.textContent=value;}

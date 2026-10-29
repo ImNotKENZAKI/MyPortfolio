@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 220" fill="none" role="img" aria-labelledby="connected-work-title connected-work-desc">
+  <title id="connected-work-title">Creative work connected to a working system</title>
+  <desc id="connected-work-desc">A film frame and editing timeline connect to a website offer and call to action, then to an organized follow-up workflow. Three technical illustrations share one cyan connecting rail.</desc>
+  <defs>
+    <linearGradient id="connected-work-screen" x1="287" y1="68" x2="349" y2="140" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8FDEF5" stop-opacity=".14"/>
+      <stop offset="1" stop-color="#8FDEF5" stop-opacity=".015"/>
+    </linearGradient>
+    <pattern id="connected-work-hatch" width="7" height="7" patternUnits="userSpaceOnUse">
+      <path d="m-1 1 3-3M0 7l7-7M5 9l4-4" stroke="#B5C9D4" stroke-opacity=".075" stroke-width=".65"/>
+    </pattern>
+  </defs>
+
+  <!-- Registration marks are shared by all three drawings. -->
+  <g stroke="#A5BAC7" stroke-opacity=".23" stroke-width="1" stroke-linecap="square">
+    <path d="M24 31v-9h9M208 31v-9h-9M268 24v-8h9M452 24v-8h-9M519 36v-9h9M696 36v-9h-9"/>
+    <path d="M25 209h14m-7-4v9M352 207h16m-8-4v8M683 198h14m-7-4v8"/>
+  </g>
+
+  <!-- One continuous route carries the eye through the offer and follow-up. -->
+  <path class="flow-connector" pathLength="1" d="M199 108h32q15 0 15 15v53q0 16 16 16h196q16 0 16-16v-53q0-15 15-15h34" stroke="#8FDEF5" stroke-opacity=".65" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+  <path class="flow-pulse" d="M360 192v-18M221 104l5 4-5 4M502 104l5 4-5 4" stroke="#B6EDFA" stroke-opacity=".85" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="360" cy="192" r="3.5" fill="#0B1720" stroke="#8FDEF5" stroke-width="1.4"/>
+
+  <!-- Video: the film gate, crop guides, transport mark and layered timeline. -->
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <path d="M29 48v-8h15m145 0h14v8M29 129v9h15m145 0h14v-9" stroke="#A5BAC7" stroke-opacity=".45" stroke-width="1.1"/>
+    <rect x="42" y="50" width="145" height="89" rx="4" fill="#0B1720" fill-opacity=".6" stroke="#DFE9EE" stroke-opacity=".68" stroke-width="1.5"/>
+    <rect x="49" y="57" width="131" height="75" rx="1.5" fill="url(#connected-work-hatch)" stroke="#8FDEF5" stroke-opacity=".23"/>
+    <path d="M93 57v75m43-75v75M49 82h131M49 107h131" stroke="#A5BAC7" stroke-opacity=".12" stroke-width=".8"/>
+    <path d="m105 76 29 18.5-29 18.5Z" fill="#8FDEF5" fill-opacity=".08" stroke="#C1EEF9" stroke-width="1.8"/>
+    <g stroke="#A5BAC7" stroke-opacity=".42" stroke-width="1">
+      <rect x="31" y="57" width="5" height="8" rx="1"/><rect x="31" y="76" width="5" height="8" rx="1"/>
+      <rect x="31" y="95" width="5" height="8" rx="1"/><rect x="31" y="114" width="5" height="8" rx="1"/>
+      <rect x="193" y="57" width="5" height="8" rx="1"/><rect x="193" y="76" width="5" height="8" rx="1"/>
+      <rect x="193" y="95" width="5" height="8" rx="1"/><rect x="193" y="114" width="5" height="8" rx="1"/>
+    </g>
+    <path d="M29 156h175M29 181h175" stroke="#A5BAC7" stroke-opacity=".24" stroke-width="1"/>
+    <rect x="39" y="164" width="37" height="11" rx="2" fill="#DFE9EE" fill-opacity=".07" stroke="#DFE9EE" stroke-opacity=".45"/>
+    <rect x="81" y="164" width="60" height="11" rx="2" fill="#8FDEF5" fill-opacity=".14" stroke="#8FDEF5" stroke-opacity=".8"/>
+    <rect x="146" y="164" width="48" height="11" rx="2" stroke="#DFE9EE" stroke-opacity=".45"/>
+    <path d="M40 190h10l4-3 4 6 4-5 5 2h18m6 0h7l4-4 4 8 4-6 4 3 4-1h18m6 0h10l4-3 4 6 4-4 4 1h16" stroke="#8FDEF5" stroke-opacity=".4" stroke-width="1.1"/>
+    <path class="flow-pulse" d="M109 153v45" stroke="#9BE6FA" stroke-width="1.5"/>
+    <path d="m105 150 4 5 4-5Z" fill="#B6EDFA"/>
+  </g>
+
+  <!-- Website: a composed offer, visual hierarchy, and deliberate next action. -->
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <rect x="272" y="36" width="176" height="136" rx="5" fill="#0B1720" fill-opacity=".45" stroke="#DFE9EE" stroke-opacity=".68" stroke-width="1.5"/>
+    <path d="M272 58h176" stroke="#A5BAC7" stroke-opacity=".35" stroke-width="1"/>
+    <circle cx="284" cy="47" r="1.5" fill="#8FDEF5" fill-opacity=".9"/>
+    <circle cx="291" cy="47" r="1.5" fill="#A5BAC7" fill-opacity=".5"/>
+    <rect x="310" y="43" width="86" height="8" rx="3" stroke="#A5BAC7" stroke-opacity=".28" stroke-width=".8"/>
+    <path d="m431 44 3 3-3 3" stroke="#8FDEF5" stroke-opacity=".65" stroke-width="1.1"/>
+    <rect x="286" y="73" width="65" height="72" rx="2" fill="url(#connected-work-screen)" stroke="#8FDEF5" stroke-opacity=".4" stroke-width="1.1"/>
+    <path d="m295 128 21-43 25 43Zm12-24 21 24m-25-8h33" stroke="#C3E7F1" stroke-opacity=".8" stroke-width="1.4"/>
+    <path d="M365 80h58m-58 9h45" stroke="#E5EEF2" stroke-opacity=".8" stroke-width="3"/>
+    <path d="M365 104h67m-67 7h52" stroke="#A5BAC7" stroke-opacity=".48" stroke-width="1.5"/>
+    <rect x="365" y="124" width="67" height="20" rx="2" fill="#8FDEF5" fill-opacity=".13" stroke="#9BE6FA" stroke-width="1.3"/>
+    <path d="M381 134h26m-4-4 4 4-4 4" stroke="#D5F4FC" stroke-width="1.5"/>
+    <path d="m414 139 2 20 5-6 7-2Z" fill="#0B1720" stroke="#E5EEF2" stroke-width="1.4"/>
+    <path d="M287 158h28m7 0h15" stroke="#A5BAC7" stroke-opacity=".3" stroke-width="1.1"/>
+  </g>
+
+  <!-- CRM: one intake becomes an orderly, connected follow-up structure. -->
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <path d="M553 108h24m0-40v81m0-81h31m-31 40h31m-31 41h31" stroke="#8FDEF5" stroke-opacity=".65" stroke-width="1.5"/>
+    <circle cx="539" cy="108" r="15" fill="#0B1720" stroke="#D6E8F0" stroke-opacity=".75" stroke-width="1.5"/>
+    <path d="M532 103h14l-5 6v5l-4 2v-7Z" stroke="#B1E9F8" stroke-width="1.4"/>
+    <circle cx="577" cy="108" r="3" fill="#B6EDFA"/>
+    <g stroke="#D6E8F0" stroke-opacity=".55" stroke-width="1.2">
+      <rect x="609" y="53" width="77" height="30" rx="4"/>
+      <rect x="609" y="93" width="77" height="30" rx="4"/>
+      <rect x="609" y="134" width="77" height="30" rx="4"/>
+    </g>
+    <circle cx="625" cy="68" r="5.5" stroke="#8FDEF5" stroke-opacity=".9" stroke-width="1.3"/>
+    <path d="m622 68 2 2 4-4" stroke="#C3F1FB" stroke-width="1.3"/>
+    <path d="M640 65h31m-31 6h21" stroke="#D6E8F0" stroke-opacity=".48" stroke-width="1.2"/>
+    <path d="M620 104h11v8h-11Zm0 0 5.5 4 5.5-4" stroke="#B1E9F8" stroke-width="1.2"/>
+    <path d="M640 105h31m-31 6h18" stroke="#D6E8F0" stroke-opacity=".48" stroke-width="1.2"/>
+    <path d="M620 145h11v9h-11m0-6h11m-8-5v4m5-4v4" stroke="#B1E9F8" stroke-width="1.2"/>
+    <path d="M640 147h31m-31 6h25" stroke="#D6E8F0" stroke-opacity=".48" stroke-width="1.2"/>
+    <path d="M617 180h60m-51 5h42" stroke="#A5BAC7" stroke-opacity=".2" stroke-width="1"/>
+  </g>
+</svg>

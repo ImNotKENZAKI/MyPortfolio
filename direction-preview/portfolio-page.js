@@ -3,12 +3,13 @@ import {initMotionSequences} from './motion-sequences.js';
 import {initMotionCollections} from './motion-collections.js';
 import {initPremiumDetails} from './premium-details.js';
 
-const host=document.querySelector('#hero-scene'),hero=document.querySelector('.hero-sticky'),art=document.querySelector('.hero-art');
+const host=document.querySelector('#hero-scene'),hero=document.querySelector('.hero-sticky'),art=document.querySelector('.hero-art'),heroScroll=document.querySelector('.hero-scroll'),filmFrame=document.querySelector('.showreel-player');
 let engine=null,visible=true,scheduled=0,roleTimer=0,roleIndex=0;
-const reduced=matchMedia('(prefers-reduced-motion: reduce)'),phone=matchMedia('(max-width:700px)');
+let filmVisible=false;
+const reduced=matchMedia('(prefers-reduced-motion: reduce)'),cinematic=matchMedia('(min-width:1000px) and (min-height:650px)');
 const paused=()=>{const value=getMotionState();return reduced.matches||(typeof value==='boolean'?value:Boolean(value?.paused));};
 const clamp=value=>Math.min(1,Math.max(0,value));
-function update(){scheduled=0;const rect=hero.getBoundingClientRect();const progress=clamp(-rect.top/Math.max(1,hero.offsetHeight*.8));engine?.setProgress(phone.matches?0:progress);const range=document.documentElement.scrollHeight-innerHeight;document.querySelector('.page-progress').style.width=(range>0?clamp(scrollY/range)*100:0)+'%';document.querySelector('.site-nav')?.classList.toggle('is-scrolled',scrollY>30);}
+function update(){scheduled=0;const travelRange=Math.max(1,heroScroll.offsetHeight-hero.offsetHeight);const progress=cinematic.matches&&!paused()?clamp(-heroScroll.getBoundingClientRect().top/travelRange):0;engine?.setProgress(progress);hero.style.setProperty('--hero-travel',progress.toFixed(4));if(filmFrame&&filmVisible){const top=filmFrame.getBoundingClientRect().top;filmFrame.style.setProperty('--video-approach',paused()?1:clamp((innerHeight*.92-top)/(innerHeight*.84)));}const range=document.documentElement.scrollHeight-innerHeight;document.querySelector('.page-progress').style.width=(range>0?clamp(scrollY/range)*100:0)+'%';document.querySelector('.site-nav')?.classList.toggle('is-scrolled',scrollY>30);}
 function request(){if(!scheduled)scheduled=requestAnimationFrame(update);}
 function roles(){clearInterval(roleTimer);roleTimer=0;if(paused()||!visible||document.hidden)return;roleTimer=setInterval(()=>{const node=document.querySelector('#rotatingTitle');if(!node)return;roleIndex=(roleIndex+1)%roleTitles.length;const animation=node.animate([{opacity:1,transform:'translateY(0)'},{opacity:0,transform:'translateY(-8px)'}],{duration:180,easing:'ease-in'});animation.finished.then(()=>{if(node.previousSibling?.nodeType===Node.TEXT_NODE)node.previousSibling.textContent=roleTitles[roleIndex].startsWith('AI ')?'I’m an ':'I’m a ';node.textContent=roleTitles[roleIndex];node.animate([{opacity:0,transform:'translateY(8px)'},{opacity:1,transform:'translateY(0)'}],{duration:360,easing:'cubic-bezier(.2,.7,.2,1)'});}).catch(()=>{});},3200);}
 function initialize(){initMotionSequences();initMotionCollections();initPremiumDetails();roles();if(!paused()){
@@ -25,5 +26,5 @@ if(host){
 addEventListener('scroll',request,{passive:true});addEventListener('resize',request,{passive:true});
 addEventListener('portfolio:motion',()=>{engine?.setPaused(paused());if(paused())document.getAnimations().filter(animation=>animation.effect?.target?.closest?.('#home')).forEach(animation=>{try{animation.finish();}catch{}});roles();request();});
 document.addEventListener('visibilitychange',roles);reduced.addEventListener('change',roles);
-const showreel=document.querySelector('#portfolio-showreel');if(showreel)new IntersectionObserver(entries=>{if(!entries[0].isIntersecting&&document.pictureInPictureElement!==showreel)showreel.pause();},{threshold:.05}).observe(showreel);
+const showreel=document.querySelector('#portfolio-showreel');if(showreel){new IntersectionObserver(entries=>{filmVisible=entries[0].isIntersecting;request();},{threshold:.02,rootMargin:'80px'}).observe(filmFrame||showreel);new IntersectionObserver(entries=>{if(!entries[0].isIntersecting&&document.pictureInPictureElement!==showreel)showreel.pause();},{threshold:.05}).observe(showreel);showreel.addEventListener('play',()=>filmFrame?.classList.add('is-playing'));showreel.addEventListener('pause',()=>filmFrame?.classList.remove('is-playing'));showreel.addEventListener('ended',()=>filmFrame?.classList.remove('is-playing'));}
 request();

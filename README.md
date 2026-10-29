@@ -26,7 +26,7 @@ All text and collections remain normal HTML. The website archive hides only afte
 
 ## Validation
 
-Source syntax and complete-content reconciliation pass. Desktop/phone browser review is performed against the existing branch preview when local routing is unavailable. Observed results belong in design/cinematic/implementation-review.md; unverified browser behavior must not be described as tested.
+Source syntax and complete-content reconciliation pass. Desktop/phone browser review is performed against the existing branch preview when local routing is unavailable. The [implementation review](design/cinematic/implementation-review.md) records observed browser results, the current source, pending checks and practical limits; unverified browser behavior is not described as tested.
 
 Run node scripts/serve.mjs for an ordinary local static preview where loopback routing is available. The original email API and SMTP configuration are unchanged. Three.js 0.180.0 and Reflector remain vendored with the MIT license.
 

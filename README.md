@@ -28,6 +28,10 @@ All text and collections remain normal HTML. The website archive hides only afte
 
 ## Validation
 
+The latest refinement adds stable heading wrapping in paused motion, a shared responsive type scale, project film wipes, an interactive service illustration, editorial speaking proof, a credential resource ledger and a quotation transition. The [responsive/detail review](design/cinematic/premium-detail-review-2026-10-30.md) records its changes and browser evidence. All original records remain reconciled; the one cosmetic Credentials heading rewrite is listed explicitly in the machine report.
+
+The opening now assembles its real chrome geometry before a reversible scroll-driven camera orbit/dolly. GPU rendering, native forward/reverse camera travel, compact-laptop featured pinning, ad-frame fit and the interactive offer diagram were inspected in the latest preview. The original approved ad is unchanged.
+
 Source syntax/module checks and complete-content reconciliation pass for the correction. Source `a7809f5` deployed successfully on Vercel. Live checks observed a ready real WebGL hero, complete headline bounds at desktop/phone sizes, clear portrait faces on inspected desktop/tablet/phone frames, restored story motion, featured travel, the Systems fan and Reels arc/flip, manual pause, working phone navigation and readable phone collections. The current console snapshot contained no warnings or errors. The [Kinetic motion correction](design/cinematic/kinetic-motion-correction-2026-10-30.md) records exact viewport evidence, the asset prompt and practical limits. The [earlier implementation review](design/cinematic/implementation-review.md) remains historical evidence for `eec414b`, not verification of the changed modules.
 
 Run node scripts/serve.mjs for an ordinary local static preview where loopback routing is available. The original email API and SMTP configuration are unchanged. Three.js 0.180.0 and Reflector remain vendored with the MIT license.

@@ -6,7 +6,7 @@ import {initPremiumDetails} from './premium-details.js';
 const host=document.querySelector('#hero-scene'),hero=document.querySelector('.hero-sticky'),art=document.querySelector('.hero-art'),heroScroll=document.querySelector('.hero-scroll'),filmFrame=document.querySelector('.showreel-player');
 let engine=null,visible=true,scheduled=0,roleTimer=0,roleIndex=0;
 let filmVisible=false;
-const reduced=matchMedia('(prefers-reduced-motion: reduce)'),cinematic=matchMedia('(min-width:1000px) and (min-height:650px)');
+const reduced=matchMedia('(prefers-reduced-motion: reduce)'),cinematic=matchMedia('(min-width:850px) and (min-height:650px)');
 const paused=()=>{const value=getMotionState();return reduced.matches||(typeof value==='boolean'?value:Boolean(value?.paused));};
 const clamp=value=>Math.min(1,Math.max(0,value));
 function update(){scheduled=0;const travelRange=Math.max(1,heroScroll.offsetHeight-hero.offsetHeight);const progress=cinematic.matches&&!paused()?clamp(-heroScroll.getBoundingClientRect().top/travelRange):0;engine?.setProgress(progress);hero.style.setProperty('--hero-travel',progress.toFixed(4));if(filmFrame&&filmVisible){const top=filmFrame.getBoundingClientRect().top;filmFrame.style.setProperty('--video-approach',paused()?1:clamp((innerHeight*.92-top)/(innerHeight*.84)));}const range=document.documentElement.scrollHeight-innerHeight;document.querySelector('.page-progress').style.width=(range>0?clamp(scrollY/range)*100:0)+'%';document.querySelector('.site-nav')?.classList.toggle('is-scrolled',scrollY>30);}

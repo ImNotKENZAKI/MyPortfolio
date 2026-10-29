@@ -21,6 +21,12 @@
   "add_ons": 11,
   "roles": 5,
   "local_media_checked": 26,
+  "editorial_heading_rewrites": [
+    {
+      "original": "Certificates, profiles, and proof links in premium cards.",
+      "revised": "Credentials & proof."
+    }
+  ],
   "errors": [],
   "passed": true
 }

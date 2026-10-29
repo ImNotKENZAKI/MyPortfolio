@@ -52,6 +52,26 @@ export function initPremiumDetails(){
     path=document.createElementNS(ns,'path');path.setAttribute('d','M740 0V18Q740 34 724 34H196Q180 34 180 50V72 M740 34V72');path.setAttribute('pathLength','1');svg.append(path);thread.append(svg);
   }
   credentials.forEach(card=>card.classList.add('premium-credential'));actions.forEach(action=>action.classList.add('premium-contact-action'));
+  const offerText=[
+    'Video ads, VSLs and AI-assisted content with clear hooks, pacing and sound.',
+    'Websites and landing pages that present your offer and give visitors a clear next step.',
+    'GoHighLevel funnels, forms, calendars and follow-up workflows that organize inquiries.'
+  ];
+  const flowStates=flows.map(flow=>{
+    const buttons=[...flow.querySelectorAll('button[data-flow-step]')],detail=flow.querySelector('.connected-work-detail');
+    const saved={flow,buttons,detail,step:flow.getAttribute('data-flow-step'),text:detail?.textContent,pressed:buttons.map(button=>button.getAttribute('aria-pressed'))};
+    function select(index,animate=false){
+      if(!Number.isInteger(index)||index<0||index>=offerText.length||!buttons.length)return;
+      flow.dataset.flowStep=String(index);buttons.forEach(button=>button.setAttribute('aria-pressed',String(Number(button.dataset.flowStep)===index)));
+      if(detail)detail.textContent=offerText[index];
+      const connector=flow.querySelector('.flow-connector');
+      if(animate&&enabled&&visible.get(flow)===true&&connector){
+        cancelWithin(connector);connector.getAnimations?.().forEach(animation=>animation.cancel());
+        play(connector,[{strokeDashoffset:1},{strokeDashoffset:0}],{duration:1000,easing:'cubic-bezier(.25,.6,.25,1)'});
+      }
+    }
+    buttons.forEach(button=>listen(button,'click',()=>select(Number(button.dataset.flowStep),true)));select(0);return saved;
+  });
   function enter(node){
     if(seen.has(node))return;seen.add(node);if(!enabled)return;
     if(proofs.includes(node)){
@@ -96,6 +116,10 @@ export function initPremiumDetails(){
     proofs.forEach(proof=>{proof.classList.remove('premium-proof-frame');delete proof.dataset.premiumProof;});
     credentials.forEach(card=>{card.classList.remove('premium-credential');resetPointer(card);});actions.forEach(action=>action.classList.remove('premium-contact-action'));
     flows.forEach(flow=>flow.classList.remove('pd-in-view'));
+    flowStates.forEach(saved=>{
+      if(saved.step===null)saved.flow.removeAttribute('data-flow-step');else saved.flow.setAttribute('data-flow-step',saved.step);
+      saved.buttons.forEach((button,index)=>{if(saved.pressed[index]===null)button.removeAttribute('aria-pressed');else button.setAttribute('aria-pressed',saved.pressed[index]);});if(saved.detail)saved.detail.textContent=saved.text;
+    });
     body.classList.remove('premium-details-ready','premium-details-motion');delete body.premiumDetails;
   }};
   body.premiumDetails=api;return api;

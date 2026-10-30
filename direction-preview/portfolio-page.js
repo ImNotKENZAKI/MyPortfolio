@@ -3,6 +3,7 @@ import {initMotionSequences} from './motion-sequences.js';
 import {initMotionCollections} from './motion-collections.js';
 import {initPremiumDetails} from './premium-details.js';
 import {initWebsiteGallery} from './website-gallery.js';
+import {initWebExhibit} from './web-exhibit.js';
 
 const host=document.querySelector('#hero-scene'),hero=document.querySelector('.hero-sticky'),art=document.querySelector('.hero-art'),heroScroll=document.querySelector('.hero-scroll'),filmFrame=document.querySelector('.showreel-player');
 const pageProgress=document.querySelector('.page-progress'),navigation=document.querySelector('.site-nav'),roleNode=document.querySelector('#rotatingTitle'),portrait=document.querySelector('.hero-portrait');
@@ -42,7 +43,7 @@ function update(){
 function request(){if(!scheduled&&!document.hidden)scheduled=requestAnimationFrame(update);}
 function invalidateLayout(){layoutDirty=true;request();}
 function roles(){clearInterval(roleTimer);roleTimer=0;if(paused()||!visible||document.hidden||!roleNode)return;roleTimer=setInterval(()=>{const node=roleNode;roleIndex=(roleIndex+1)%roleTitles.length;const animation=node.animate([{opacity:1,transform:'translateY(0)'},{opacity:0,transform:'translateY(-8px)'}],{duration:180,easing:'ease-in'});animation.finished.then(()=>{if(node.previousSibling?.nodeType===Node.TEXT_NODE)node.previousSibling.textContent=roleTitles[roleIndex].startsWith('AI ')?'I’m an ':'I’m a ';node.textContent=roleTitles[roleIndex];node.animate([{opacity:0,transform:'translateY(8px)'},{opacity:1,transform:'translateY(0)'}],{duration:360,easing:'cubic-bezier(.2,.7,.2,1)'});}).catch(()=>{});},3200);}
-function initialize(){initMotionSequences();initMotionCollections();initPremiumDetails();initWebsiteGallery();roles();invalidateLayout();if(!paused()){
+function initialize(){initMotionSequences();initMotionCollections();initPremiumDetails();initWebsiteGallery();initWebExhibit();roles();invalidateLayout();if(!paused()){
  document.querySelectorAll('.headline-line>span').forEach((word,index)=>word.animate([{opacity:0,transform:'translateY(105%) rotate(3deg)'},{opacity:1,transform:'translateY(0) rotate(0)'}],{duration:1050,delay:150+index*150,easing:'cubic-bezier(.16,1,.3,1)',fill:'backwards'}));
  portrait?.animate([{opacity:0,transform:'translateY(35px) scale(1.035)'},{opacity:1,transform:'translateY(0) scale(1)'}],{duration:1300,delay:150,easing:'cubic-bezier(.16,1,.3,1)',fill:'backwards'});
 }}

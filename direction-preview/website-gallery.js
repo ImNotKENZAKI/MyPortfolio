@@ -51,7 +51,7 @@ export function initWebsiteGallery(){
   }
   listen(document,'click',event=>{
     const trigger=event.target.closest?.('[data-gallery-open]');
-    if(trigger){const index=entries.findIndex(entry=>entry.trigger===trigger);if(index>=0){augment(index);return;}}
+    if(trigger){const index=entries.findIndex(entry=>entry.trigger===trigger||entry.index===Number(trigger.dataset.galleryOpen));if(index>=0){augment(index);return;}}
     if(position>=0&&(event.target.closest?.('[data-modal],[data-close-dialog],[data-close-modal]')||!dialog.open))reset();
   });
   listen(dialog,'keydown',event=>{

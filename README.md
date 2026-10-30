@@ -1,8 +1,8 @@
 # KENZAKI — complete portfolio, Kinetic motion review
 
-The active review is /direction-preview/ on the existing Vercel branch preview. It contains the complete original portfolio in one coordinated design, together with all eight supplied MDS/SRG websites, genuine cybersecurity speaking evidence and the approved English service ad. Returning to the old layout is not required to read the collections or use their actions.
+The production entry is `/`. It contains the complete original portfolio in one coordinated design, together with all eight supplied MDS/SRG websites, genuine cybersecurity speaking evidence and the approved English service ad. `/direction-preview/` remains a noindex review route sharing the same runtime and assets.
 
-The original site at / remains the recovery baseline. Its index, stylesheet and interaction script are unchanged from commit d39a7cd and match the supplied ZIP. Review work uses the existing codex/portfolio-refresh-20261022 branch and draft PR.
+The original HTML is preserved in `design/baseline/original-index.html` and immutable commit `d39a7cd`, matching the supplied ZIP. The legacy stylesheet and script remain for recovery and the existing 404 page. The complete-content audits compare both current entry points against that immutable baseline.
 
 ## Integrated content
 
@@ -24,11 +24,11 @@ The October 30 correction returns the composition and animation to the original 
 
 The original motion signatures are rebuilt with native scrolling: the five-stage story pins and rotates into place, featured work moves horizontally, Systems Stack fans around its active case, and Reels Universe develops from scatter to line to circle and a scroll-driven arc, with card flips and direct item selection. Services select their preview as visitors scroll; heading entrances, magnetic actions and a restrained pointer glow connect the sections. Suitable desktop layouts receive these enhancements; phone, paused and reduced-motion paths retain readable content and direct controls. The linked review distinguishes observed behavior from remaining verification.
 
-All text and collections remain normal HTML. The website work is an image-first gallery grouped by client, with all eight screenshots, captions and live links in normal page flow. A lightweight full-image viewer adds previous/next navigation. Unsupported WebGL keeps a visual fallback without hiding content. Media starts on user action; dialogs clean up playback on close; the service ad pauses offscreen.
+All text and collections remain normal HTML. Website work now opens as a real Three.js screen exhibition: native screenshots on physical framed panels, staggered spatial selection, a gentle camera dolly and direct screen selection. The pale exhibition introduces a contrasting visual chapter. All eight native records remain in an expandable catalog that starts open and closes only after the 3D scene successfully renders. A full-image viewer adds previous/next navigation. Unsupported WebGL keeps the catalog available. Media starts on user action; dialogs clean up playback on close; the service ad pauses offscreen.
 
 ## Validation
 
-The latest [gallery and workload review](design/cinematic/website-gallery-review-2026-10-30.md) replaces the single website selector with an editorial project wall and reduces idle/offscreen animation work. WebGL sleeps after motion settles, collection geometry and layout measurements are cached, and blur-heavy entrances are removed. All original records remain reconciled; the one cosmetic Credentials heading rewrite is listed explicitly in the machine report. The [earlier detail review](design/cinematic/premium-detail-review-2026-10-30.md) is historical evidence; its website film-wipe selector has now been retired.
+The latest [spatial exhibition and release review](design/cinematic/spatial-exhibition-release-2026-10-30.md) records the real 3D website exhibition, root-path promotion, responsive checks and content reconciliation. WebGL sleeps after motion settles, collection geometry and layout measurements are cached, and blur-heavy entrances are removed. All original records remain reconciled; the one cosmetic Credentials heading rewrite is listed explicitly in the machine reports. Earlier reviews remain historical evidence for their named versions.
 
 The opening now assembles its real chrome geometry before a reversible scroll-driven camera orbit/dolly. GPU rendering, native forward/reverse camera travel, compact-laptop featured pinning, ad-frame fit and the interactive offer diagram were inspected in the latest preview. The original approved ad is unchanged.
 
@@ -36,4 +36,4 @@ Source syntax/module checks and complete-content reconciliation pass for the cor
 
 Run node scripts/serve.mjs for an ordinary local static preview where loopback routing is available. The original email API and SMTP configuration are unchanged. Three.js 0.180.0 and Reflector remain vendored with the MIT license.
 
-Historical flat/gallery prototypes and generated art references remain as source material. They are not the active page. Main/production has not been merged by this review update.
+Historical flat/gallery prototypes and generated art references remain as source material. Production HTML rebases asset URLs while keeping CSS and ES modules under `direction-preview/`; native anchors stay on the root page. Search metadata uses the supplied live portfolio domain, `jeff.marydigisolutions.com`.

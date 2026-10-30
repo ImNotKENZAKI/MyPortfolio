@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "node scripts/serve.mjs",
     "preview": "node scripts/serve.mjs",
-    "check": "node --check js/script.js && node --check scripts/serve.mjs && node --check api/contact.js"
+    "check": "node scripts/check-portfolio.mjs"
   },
   "license": "MIT",
   "dependencies": {

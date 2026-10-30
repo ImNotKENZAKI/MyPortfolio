@@ -34,13 +34,13 @@ export async function createWebExhibit(host,{paused=false,index=0,onReady,onSele
   function applyPanel(panel){
     const p=panel.pose;panel.root.position.set(p.x,0,p.z);panel.root.rotation.y=p.angle;panel.mount.position.y=p.y;panel.mount.scale.setScalar(p.scale);
     const stemHeight=Math.max(.13,p.y-panel.nativeHeight*p.scale/2-.15);panel.stem.scale.y=stemHeight;panel.stem.position.y=.12+stemHeight/2;
-    panel.foot.scale.x=1.3*p.scale;panel.shadow.scale.set(3.2*p.scale,1.15*p.scale,1);panel.root.visible=Math.abs(panel.offset)<3.1||panel.moving;
+    panel.foot.scale.x=1.3*p.scale;panel.shadow.scale.set(3.2*p.scale,1.15*p.scale,1);panel.root.visible=panel.loaded&&(Math.abs(panel.offset)<3.1||panel.moving);
   }
   function mountTexture(panel,texture){
     const ratio=texture.image.width/texture.image.height;
     if(Number.isFinite(ratio)&&ratio>0&&Math.abs(ratio-panel.ratio)>.0001){panel.ratio=ratio;panel.nativeHeight=4.6/ratio;discardGeometry(panel.frame.geometry);panel.frame.geometry=frameGeometry(4.78,panel.nativeHeight+.18);panel.screen.scale.set(4.6,panel.nativeHeight,1);applyPanel(panel);}
     texture.colorSpace=THREE.SRGBColorSpace;texture.anisotropy=Math.min(4,renderer.capabilities.getMaxAnisotropy());
-    panel.screen.material.color.set('#ffffff');panel.screen.material.map=texture;panel.screen.material.needsUpdate=true;panel.loaded=true;request();
+    panel.screen.material.color.set('#ffffff');panel.screen.material.map=texture;panel.screen.material.needsUpdate=true;panel.loaded=true;applyPanel(panel);request();
   }
   function loadPanel(panel){
     if(panel.loading||panel.loaded||panel.broken)return;panel.loading=true;

@@ -1,0 +1,43 @@
+/* Real project screenshots form a quiet editorial wall, with no rendering loop. */
+.website-gallery-section{overflow:clip}
+.gallery-heading{display:grid;grid-template-columns:1.15fr .85fr;align-items:end;column-gap:10%;margin-bottom:72px}
+.gallery-heading>.eyebrow{grid-column:1/-1;margin-bottom:28px}
+.website-gallery-section .gallery-heading h2{grid-column:1;grid-row:2;font-size:clamp(52px,6.5vw,96px);line-height:.97;letter-spacing:-.065em;font-weight:600;margin:0;text-transform:none}
+.gallery-heading h2 em{font-style:normal;color:var(--accent)}
+.website-gallery-section .gallery-heading>p{grid-column:2;grid-row:2;max-width:420px;font-size:15px;line-height:1.9;margin:0 0 6px}
+.gallery-collection+.gallery-collection{margin-top:110px}
+.gallery-collection-heading{display:grid;grid-template-columns:1fr 1.4fr 1fr;gap:24px;align-items:baseline;padding:22px 0;border-top:1px solid var(--line);margin-bottom:22px}
+.gallery-collection-heading>span,.gallery-type{font-size:10px;letter-spacing:.09em;line-height:1.6;color:var(--dim)}
+.gallery-collection-heading h3{font-size:24px;letter-spacing:-.035em;font-weight:500;line-height:1.25}
+.gallery-collection-heading p{font-size:12px;line-height:1.7;color:var(--muted);justify-self:end}
+.website-project-wall{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:64px 36px;align-items:start}
+.web-gallery-item{min-width:0;grid-column:span 7}
+.web-gallery-item:nth-child(4n+2){grid-column:span 5;margin-top:74px}
+.web-gallery-item:nth-child(4n+3){grid-column:span 5}
+.web-gallery-item:nth-child(4n+4){grid-column:span 7;margin-top:28px}
+.gallery-image{position:relative;display:block;overflow:hidden;background:var(--surface);isolation:isolate;outline-offset:6px}
+.gallery-image>img{display:block;width:100%;height:auto;max-height:none;object-fit:contain;transition:transform .65s cubic-bezier(.2,.65,.2,1)}
+.gallery-expand{position:absolute;right:16px;bottom:16px;display:flex;align-items:center;gap:20px;padding:9px 10px 9px 14px;background:#07111bed;color:#edf7fb;border:1px solid #aac8d447;font-size:10px;line-height:1.4}
+.gallery-expand b{display:grid;place-items:center;width:23px;height:23px;border:1px solid #aac8d44f;font-size:16px;font-weight:400;transition:transform .3s}
+.gallery-caption{display:grid;grid-template-columns:26px 1fr;gap:14px;padding-top:23px;border-top:1px solid var(--line);margin-top:15px}
+.gallery-ordinal{font-size:11px;color:var(--dim);font-variant-numeric:tabular-nums;line-height:1.5;padding-top:2px}
+.gallery-caption h3{font-size:clamp(22px,2.1vw,31px);font-weight:500;line-height:1.2;letter-spacing:-.035em;margin:9px 0 14px}
+.gallery-caption p{font-size:14px;line-height:1.8;color:var(--muted);max-width:470px;margin:0 0 15px}
+.gallery-live{display:inline-flex;align-items:center;gap:24px;font-size:12px;min-height:44px;border-bottom:1px solid var(--line);color:var(--ink)}
+.gallery-live>span{color:var(--accent);font-size:18px;transition:transform .25s}
+@media(hover:hover) and (pointer:fine){.gallery-image:hover>img{transform:scale(1.025)}.gallery-image:hover .gallery-expand b,.gallery-live:hover>span{transform:translate(2px,-2px)}.gallery-live:hover{border-color:var(--accent)}}
+#portfolio-dialog.website-gallery-dialog{width:min(1180px,calc(100vw - 40px));max-width:calc(100vw - 40px);border-radius:3px;padding:24px;max-height:94svh}
+.website-gallery-dialog .dialog-header{margin-bottom:16px;align-items:center}
+.website-gallery-dialog .dialog-title{font-size:clamp(19px,2vw,25px)}
+.website-gallery-dialog .dialog-body .modal-content>img{display:block;max-height:calc(94svh - 230px);width:100%;object-fit:contain}
+.gallery-lightbox-caption{font-size:13px;line-height:1.6;color:var(--muted);margin:15px 0 0;max-width:700px}
+.gallery-lightbox-footer{display:flex;align-items:center;justify-content:space-between;gap:24px;border-top:1px solid var(--line);padding-top:16px;margin-top:18px}
+.gallery-lightbox-nav{display:flex;align-items:center;gap:20px}
+.gallery-lightbox-button{width:44px;height:44px;font-size:22px;border:1px solid var(--line);transition:color .2s,border-color .2s}
+.gallery-lightbox-button:hover{border-color:var(--accent);color:var(--accent)}
+.gallery-lightbox-count{font-size:12px;min-width:53px;text-align:center;font-variant-numeric:tabular-nums;letter-spacing:.06em}
+.gallery-lightbox-live{font-size:12px;color:var(--accent);display:flex;align-items:center;min-height:44px}
+@media(max-width:980px){.gallery-heading{gap:28px 40px;margin-bottom:50px}.website-gallery-section .gallery-heading h2{font-size:clamp(49px,7.6vw,74px)}.gallery-heading>p{font-size:14px}.gallery-collection-heading{grid-template-columns:1fr 1fr;gap:10px 24px}.gallery-collection-heading>span{grid-column:1/-1}.gallery-collection-heading p{font-size:12px}.website-project-wall{grid-template-columns:repeat(2,minmax(0,1fr));gap:44px 24px}.web-gallery-item,.web-gallery-item:nth-child(n){grid-column:span 1;margin-top:0}.gallery-caption{gap:10px;grid-template-columns:22px 1fr}.gallery-caption h3{font-size:23px}.gallery-caption p{font-size:13px}.gallery-collection+.gallery-collection{margin-top:80px}}
+@media(max-width:600px){.gallery-heading{display:block;margin-bottom:40px}.gallery-heading>.eyebrow{margin-bottom:25px}.website-gallery-section .gallery-heading h2{font-size:clamp(46px,12vw,68px);margin-bottom:25px}.gallery-heading>p{font-size:14px;max-width:440px}.gallery-collection-heading{display:block;padding:19px 0;margin-bottom:15px}.gallery-collection-heading>span{display:block;font-size:10px;margin-bottom:13px}.gallery-collection-heading h3{font-size:25px;margin-bottom:8px}.gallery-collection-heading p{font-size:13px}.website-project-wall{grid-template-columns:1fr;gap:38px}.gallery-caption{padding-top:19px;margin-top:12px}.gallery-caption h3{font-size:25px}.gallery-caption p{font-size:14px}.gallery-type{font-size:10px}.gallery-expand{right:10px;bottom:10px;padding:6px 7px 6px 11px;gap:13px}.gallery-collection+.gallery-collection{margin-top:68px}#portfolio-dialog.website-gallery-dialog{padding:16px;width:calc(100vw - 20px);max-width:calc(100vw - 20px)}.website-gallery-dialog .dialog-body .modal-content>img{max-height:calc(94svh - 275px)}.gallery-lightbox-footer{gap:10px;flex-wrap:wrap}.gallery-lightbox-nav{gap:14px}.gallery-lightbox-live{font-size:11px}.gallery-lightbox-caption{font-size:12px}}
+@media(prefers-reduced-motion:reduce){.gallery-image>img,.gallery-expand b,.gallery-live>span{transition:none!important;transform:none!important}}
+.motion-paused .gallery-image>img,.motion-paused .gallery-expand b,.motion-paused .gallery-live>span{transition:none!important;transform:none!important}

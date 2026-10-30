@@ -1,0 +1,21 @@
+{
+  "status": "not rendered; planning only",
+  "purpose": "First continuity test: a physically credible macro-to-wide pullback from a consistent real 3D scene before integration into the interactive website",
+  "provider_state": "Local Blender scene/render route with existing Three.js interactions; runtime and hardware still to be checked; no paid video service prerequisite",
+  "production_method": "Build the exact K and a simplified matching environment as real geometry; use the images as visual references, not as a substitute for the scene",
+  "plan": "redesign-plan-2026-10-29.md",
+  "start_frame": "atelier-macro-v1.png",
+  "end_frame": "atelier-entrance-v1.png",
+  "aspect_ratio": "16:9",
+  "duration_seconds": 5,
+  "audio": false,
+  "prompt": "One slow, continuous, physically credible camera dolly backward from the supplied macro starting frame to the supplied entrance wide frame. Preserve the exact angular split-stem Kinetic K sculpture, cyan accents, stone architecture, brushed grain scale, lighting direction, blue-hour coastline, exposure, and object positions. Gentle lateral reveal and natural focus travel only. No morphing, extra props, new shapes, camera wobble, light pulsing, text, people, or excessive bloom. End stable. This is a short cinematic bridge; interactive controls and real project content remain in the website.",
+  "review": [
+    "K silhouette and cyan accents remain stable",
+    "Material scale and texture do not crawl",
+    "Geometry and coastline maintain continuity",
+    "Camera velocity is deliberate and can connect to the next shot",
+    "Highlights do not flicker or clip",
+    "No invented work or event evidence"
+  ]
+}

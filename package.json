@@ -2,6 +2,11 @@
   "name": "personal-website",
   "version": "1.0.0",
   "private": true,
+  "scripts": {
+    "dev": "node scripts/serve.mjs",
+    "preview": "node scripts/serve.mjs",
+    "check": "node scripts/check-portfolio.mjs"
+  },
   "license": "MIT",
   "dependencies": {
     "nodemailer": "^6.9.14"

@@ -1,0 +1,35 @@
+{
+  "document": "/index.html",
+  "baseline_commit": "d39a7cd",
+  "original_sections_preserved": 9,
+  "collection_counts": {
+    "story": 5,
+    "featured": 4,
+    "systems": 6,
+    "vault": 12,
+    "services": 6,
+    "credentials": 6,
+    "testimonials": 3,
+    "contact": 8
+  },
+  "website_projects": 8,
+  "exhibition_selectors": 8,
+  "packages": 4,
+  "package_inclusions": [
+    10,
+    11,
+    13,
+    12
+  ],
+  "add_ons": 11,
+  "roles": 5,
+  "local_media_checked": 26,
+  "editorial_heading_rewrites": [
+    {
+      "original": "Certificates, profiles, and proof links in premium cards.",
+      "revised": "Credentials & proof."
+    }
+  ],
+  "errors": [],
+  "passed": true
+}

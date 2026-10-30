@@ -1,4 +1,6 @@
 {
+  "document": "/direction-preview/index.html",
+  "baseline_commit": "d39a7cd",
   "original_sections_preserved": 9,
   "collection_counts": {
     "story": 5,
@@ -11,6 +13,7 @@
     "contact": 8
   },
   "website_projects": 8,
+  "exhibition_selectors": 8,
   "packages": 4,
   "package_inclusions": [
     10,
